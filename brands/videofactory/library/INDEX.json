@@ -1,0 +1,1515 @@
+[
+ {
+  "ref": "motion:videofactory/AI-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-01",
+  "title": "Chat assistant \u00b7 streaming",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-02",
+  "title": "Image generator \u00b7 scan reveal",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-03",
+  "title": "Agent workflow",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-04",
+  "title": "AI in a spreadsheet",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-05",
+  "title": "Voice assistant \u00b7 waveform",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-06",
+  "title": "Code assistant \u00b7 suggestion",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AI-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AI-07",
+  "title": "Inbox AI \u00b7 draft + stamp",
+  "description": "videofactory: 02 AI interfaces, scene. Render: python tools/motion.py render --brand videofactory --id AI-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai interfaces",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AI-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AIM-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AIM-01",
+  "title": "Prompt \u2192 result morph",
+  "description": "videofactory: 10 AI moments, scene. Render: python tools/motion.py render --brand videofactory --id AIM-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai moments",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AIM-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AIM-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AIM-02",
+  "title": "Token stream",
+  "description": "videofactory: 10 AI moments, scene. Render: python tools/motion.py render --brand videofactory --id AIM-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai moments",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AIM-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AIM-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AIM-03",
+  "title": "Model brain \u00b7 network",
+  "description": "videofactory: 10 AI moments, scene. Render: python tools/motion.py render --brand videofactory --id AIM-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai moments",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AIM-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AIM-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AIM-04",
+  "title": "Messy PDF \u2192 summary",
+  "description": "videofactory: 10 AI moments, scene. Render: python tools/motion.py render --brand videofactory --id AIM-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai moments",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AIM-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/AIM-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "AIM-05",
+  "title": "AI agent cursor \u00b7 fills form",
+  "description": "videofactory: 10 AI moments, scene. Render: python tools/motion.py render --brand videofactory --id AIM-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "ai moments",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/AIM-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/B2B-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "B2B-01",
+  "title": "Case result card",
+  "description": "videofactory: 14 B2B / lead gen, scene. Render: python tools/motion.py render --brand videofactory --id B2B-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "b2b / lead gen",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/B2B-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/B2B-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "B2B-02",
+  "title": "Testimonial",
+  "description": "videofactory: 14 B2B / lead gen, scene. Render: python tools/motion.py render --brand videofactory --id B2B-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "b2b / lead gen",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/B2B-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/B2B-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "B2B-03",
+  "title": "Process timeline \u00b7 scan \u2192 train",
+  "description": "videofactory: 14 B2B / lead gen, scene. Render: python tools/motion.py render --brand videofactory --id B2B-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "b2b / lead gen",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/B2B-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/B2B-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "B2B-04",
+  "title": "Calendar booking",
+  "description": "videofactory: 14 B2B / lead gen, scene. Render: python tools/motion.py render --brand videofactory --id B2B-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "b2b / lead gen",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/B2B-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-01",
+  "title": "Blueprint grid \u00b7 drift",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-02",
+  "title": "Ink grid \u00b7 scan sweep",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-03",
+  "title": "Hatching \u00b7 diagonal drift",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-04",
+  "title": "Dot matrix \u00b7 wave",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-05",
+  "title": "Floating squares",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-06",
+  "title": "Data rain",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-07",
+  "title": "Concentric squares",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-08",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-08",
+  "title": "Ticker rows",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-08 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-08.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BKG-09",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BKG-09",
+  "title": "Perspective floor",
+  "description": "videofactory: 16 Backgrounds, background. Render: python tools/motion.py render --brand videofactory --id BKG-09 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "background",
+   "backgrounds",
+   "motion"
+  ],
+  "license": "own",
+  "category": "backgrounds",
+  "path": "motion/BKG-09.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BRD-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BRD-01",
+  "title": "Logo sting",
+  "description": "videofactory: 07 Brand, scene. Render: python tools/motion.py render --brand videofactory --id BRD-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "brand",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/BRD-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BRD-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BRD-02",
+  "title": "Lower third + bug",
+  "description": "videofactory: 07 Brand, overlay. Render: python tools/motion.py render --brand videofactory --id BRD-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "brand",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/BRD-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/BRD-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "BRD-03",
+  "title": "End card \u00b7 CTA",
+  "description": "videofactory: 07 Brand, scene. Render: python tools/motion.py render --brand videofactory --id BRD-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "brand",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/BRD-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-01",
+  "title": "Karaoke block",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-02",
+  "title": "Fill progress \u00b7 card",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-03",
+  "title": "One word \u00b7 punch",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-04",
+  "title": "Stacked emphasis",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-05",
+  "title": "Subtitle \u00b7 speaker chip",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CAP-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CAP-06",
+  "title": "Typewriter transcript",
+  "description": "videofactory: 08 Voice-over captions, overlay. Render: python tools/motion.py render --brand videofactory --id CAP-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "voice-over captions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/CAP-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CIN-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CIN-01",
+  "title": "3D card stack",
+  "description": "videofactory: 11 Cinematic, scene. Render: python tools/motion.py render --brand videofactory --id CIN-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "cinematic",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/CIN-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CIN-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CIN-02",
+  "title": "Isometric workspace",
+  "description": "videofactory: 11 Cinematic, scene. Render: python tools/motion.py render --brand videofactory --id CIN-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "cinematic",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/CIN-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CIN-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CIN-03",
+  "title": "Infinite zoom",
+  "description": "videofactory: 11 Cinematic, scene. Render: python tools/motion.py render --brand videofactory --id CIN-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "cinematic",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/CIN-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/CIN-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "CIN-04",
+  "title": "Parallax layers",
+  "description": "videofactory: 11 Cinematic, scene. Render: python tools/motion.py render --brand videofactory --id CIN-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "cinematic",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/CIN-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-01",
+  "title": "Before / after bars",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-02",
+  "title": "Line chart \u00b7 draw-on",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-03",
+  "title": "Big counter \u00b7 segments",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-04",
+  "title": "Odometer \u00b7 rolling digits",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-05",
+  "title": "Weekly schedule \u00b7 AI takes over",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-06",
+  "title": "Comparison per task",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-07",
+  "title": "Stat trio",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DAT-08",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DAT-08",
+  "title": "Percentage \u00b7 vertical fill",
+  "description": "videofactory: 06 Data & counters, scene. Render: python tools/motion.py render --brand videofactory --id DAT-08 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "data & counters",
+   "motion"
+  ],
+  "license": "own",
+  "category": "data",
+  "path": "motion/DAT-08.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-01",
+  "title": "Browser \u00b7 3D tilt-in + push",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-02",
+  "title": "Phone \u00b7 swing + drift",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-03",
+  "title": "Terminal \u00b7 typing",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-04",
+  "title": "Phone \u00b7 hero float",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-05",
+  "title": "Phone duo \u00b7 parallax",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-06",
+  "title": "Phone \u00b7 feed scroll + tap",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/DEV-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "DEV-07",
+  "title": "Phone \u00b7 stand up + lock screen",
+  "description": "videofactory: 01 Device frames, device. Render: python tools/motion.py render --brand videofactory --id DEV-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "device frames",
+   "motion"
+  ],
+  "license": "own",
+  "category": "interface",
+  "path": "motion/DEV-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/EXP-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "EXP-01",
+  "title": "Flowchart builder",
+  "description": "videofactory: 13 Explainers, scene. Render: python tools/motion.py render --brand videofactory --id EXP-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "explainers",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/EXP-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/EXP-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "EXP-02",
+  "title": "Comparison table",
+  "description": "videofactory: 13 Explainers, scene. Render: python tools/motion.py render --brand videofactory --id EXP-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "explainers",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/EXP-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/EXP-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "EXP-03",
+  "title": "Timeline",
+  "description": "videofactory: 13 Explainers, scene. Render: python tools/motion.py render --brand videofactory --id EXP-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "explainers",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/EXP-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/EXP-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "EXP-04",
+  "title": "Quadrant / matrix",
+  "description": "videofactory: 13 Explainers, scene. Render: python tools/motion.py render --brand videofactory --id EXP-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "explainers",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/EXP-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/FX-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "FX-01",
+  "title": "Cursor \u00b7 click \u00b7 toast",
+  "description": "videofactory: 05 Overlays & effects, scene. Render: python tools/motion.py render --brand videofactory --id FX-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "overlays & effects",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/FX-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/FX-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "FX-02",
+  "title": "Focus brackets \u00b7 lock-on",
+  "description": "videofactory: 05 Overlays & effects, scene. Render: python tools/motion.py render --brand videofactory --id FX-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "overlays & effects",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/FX-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/FX-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "FX-03",
+  "title": "Camera HUD \u00b7 scanlines",
+  "description": "videofactory: 05 Overlays & effects, overlay. Render: python tools/motion.py render --brand videofactory --id FX-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "overlays & effects",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/FX-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/FX-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "FX-04",
+  "title": "Stamp impact + shake",
+  "description": "videofactory: 05 Overlays & effects, scene. Render: python tools/motion.py render --brand videofactory --id FX-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "overlays & effects",
+   "motion"
+  ],
+  "license": "own",
+  "category": "cinematic",
+  "path": "motion/FX-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/SOC-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "SOC-01",
+  "title": "Hook opener \u00b7 stop scrolling",
+  "description": "videofactory: 12 Social formats, scene. Render: python tools/motion.py render --brand videofactory --id SOC-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "social formats",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/SOC-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/SOC-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "SOC-02",
+  "title": "Comment reply card",
+  "description": "videofactory: 12 Social formats, overlay. Render: python tools/motion.py render --brand videofactory --id SOC-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "social formats",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/SOC-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/SOC-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "SOC-03",
+  "title": "Poll / quiz",
+  "description": "videofactory: 12 Social formats, scene. Render: python tools/motion.py render --brand videofactory --id SOC-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "social formats",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/SOC-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/SOC-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "SOC-04",
+  "title": "Carousel swipe",
+  "description": "videofactory: 12 Social formats, scene. Render: python tools/motion.py render --brand videofactory --id SOC-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "social formats",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/SOC-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/SOC-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "SOC-05",
+  "title": "Series progress \u00b7 part 2/5",
+  "description": "videofactory: 12 Social formats, scene. Render: python tools/motion.py render --brand videofactory --id SOC-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "social formats",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/SOC-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TRN-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TRN-01",
+  "title": "Hazard wipe",
+  "description": "videofactory: 04 Transitions, transition. Render: python tools/motion.py render --brand videofactory --id TRN-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "transition",
+   "transitions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "transitions",
+  "path": "motion/TRN-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TRN-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TRN-02",
+  "title": "Block wipe \u00b7 3 layers",
+  "description": "videofactory: 04 Transitions, transition. Render: python tools/motion.py render --brand videofactory --id TRN-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "transition",
+   "transitions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "transitions",
+  "path": "motion/TRN-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TRN-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TRN-03",
+  "title": "Scanline reveal",
+  "description": "videofactory: 04 Transitions, transition. Render: python tools/motion.py render --brand videofactory --id TRN-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "transition",
+   "transitions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "transitions",
+  "path": "motion/TRN-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TRN-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TRN-04",
+  "title": "Shutter \u00b7 8 slats",
+  "description": "videofactory: 04 Transitions, transition. Render: python tools/motion.py render --brand videofactory --id TRN-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "transition",
+   "transitions",
+   "motion"
+  ],
+  "license": "own",
+  "category": "transitions",
+  "path": "motion/TRN-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-01",
+  "title": "Headline \u00b7 mask + block",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-02",
+  "title": "Strikethrough + correction",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-03",
+  "title": "Reel captions \u00b7 pop",
+  "description": "videofactory: 03 Kinetic typography, overlay. Render: python tools/motion.py render --brand videofactory --id TYP-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-04",
+  "title": "List \u00b7 staggered",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-05",
+  "title": "Decode reveal",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-06",
+  "title": "Big number takeover",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/TYP-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "TYP-07",
+  "title": "Quote card",
+  "description": "videofactory: 03 Kinetic typography, scene. Render: python tools/motion.py render --brand videofactory --id TYP-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "kinetic typography",
+   "motion"
+  ],
+  "license": "own",
+  "category": "text",
+  "path": "motion/TYP-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-01",
+  "title": "Countdown 3-2-1",
+  "description": "videofactory: 15 Utility, scene. Render: python tools/motion.py render --brand videofactory --id UTL-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-02",
+  "title": "Timer \u00b7 countdown",
+  "description": "videofactory: 15 Utility, scene. Render: python tools/motion.py render --brand videofactory --id UTL-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-03",
+  "title": "Follow CTA",
+  "description": "videofactory: 15 Utility, overlay. Render: python tools/motion.py render --brand videofactory --id UTL-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-04",
+  "title": "Arrows & callouts",
+  "description": "videofactory: 15 Utility, overlay. Render: python tools/motion.py render --brand videofactory --id UTL-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-05",
+  "title": "Zoom highlight for screenshots",
+  "description": "videofactory: 15 Utility, scene. Render: python tools/motion.py render --brand videofactory --id UTL-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-05.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-06",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-06",
+  "title": "Grain + scanlines + vignette",
+  "description": "videofactory: 15 Utility, overlay. Render: python tools/motion.py render --brand videofactory --id UTL-06 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "overlay",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-06.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/UTL-07",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "UTL-07",
+  "title": "Audio bars \u00b7 beat",
+  "description": "videofactory: 15 Utility, scene. Render: python tools/motion.py render --brand videofactory --id UTL-07 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "scene",
+   "utility",
+   "motion"
+  ],
+  "license": "own",
+  "category": "scenes",
+  "path": "motion/UTL-07.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/VID-01",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "VID-01",
+  "title": "Video player \u00b7 play + progress",
+  "description": "videofactory: 09 Video players, device. Render: python tools/motion.py render --brand videofactory --id VID-01 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "video players",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/VID-01.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/VID-02",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "VID-02",
+  "title": "Reel player \u00b7 like burst",
+  "description": "videofactory: 09 Video players, device. Render: python tools/motion.py render --brand videofactory --id VID-02 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "video players",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/VID-02.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/VID-03",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "VID-03",
+  "title": "Picture-in-picture \u00b7 punch-in",
+  "description": "videofactory: 09 Video players, device. Render: python tools/motion.py render --brand videofactory --id VID-03 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "video players",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/VID-03.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/VID-04",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "VID-04",
+  "title": "Before/after split screen",
+  "description": "videofactory: 09 Video players, device. Render: python tools/motion.py render --brand videofactory --id VID-04 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "video players",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/VID-04.dc.html"
+ },
+ {
+  "ref": "motion:videofactory/VID-05",
+  "kind": "motion",
+  "set": "videofactory",
+  "name": "VID-05",
+  "title": "Video card \u00b7 thumbnail",
+  "description": "videofactory: 09 Video players, device. Render: python tools/motion.py render --brand videofactory --id VID-05 (see motion/CONTEXT.md)",
+  "tags": [
+   "videofactory",
+   "device",
+   "video players",
+   "motion"
+  ],
+  "license": "own",
+  "category": "media",
+  "path": "motion/VID-05.dc.html"
+ }
+]

@@ -1,0 +1,12 @@
+/* underline: the line hangs just below the line box, under the descenders; em sizes follow the font size. */
+.fx-underline-text { position: relative; display: inline-block; line-height: 1.1; }
+.fx-underline-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-1 * (var(--fx-ul-off, 0.02em) + var(--fx-ul-thick, 0.08em)));
+  height: var(--fx-ul-thick, 0.08em);
+  border-radius: 999px;
+  background: var(--fx-ul-color, var(--accent));
+  transform-origin: left center;
+}

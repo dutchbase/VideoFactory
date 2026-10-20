@@ -1,0 +1,2 @@
+/* shake-emphasis: the part sets the translate, rotate and scale properties, so it never fights a GSAP transform on the same element. */
+.fx-shake { will-change: translate, rotate, scale; }

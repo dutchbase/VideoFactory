@@ -1,0 +1,2 @@
+/* <id>: class names start with fx-<id>; colours and fonts only from brand variables (library/fx/CONTEXT.md). */
+.fx-<id> { color: var(--ink); font-family: var(--head); }

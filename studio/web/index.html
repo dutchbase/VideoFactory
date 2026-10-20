@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f0e8">
+    <title>VideoFactory · Studio</title>
+    <link rel="stylesheet" href="/app.css">
+    <script src="/creative.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to workspace</a>
+    <div class="studio-shell">
+      <aside class="sidebar" aria-label="Workspace navigation">
+        <a class="brand" href="/" aria-label="VideoFactory studio home">
+          <span class="brand-mark" aria-hidden="true"><span>VF</span><i></i></span>
+          <span class="brand-copy"><strong>VideoFactory</strong><small>Production studio</small></span>
+        </a>
+        <nav class="primary-nav" aria-label="Main">
+          <a href="/" data-nav="reviews"><span class="nav-glyph glyph-reviews" aria-hidden="true"><i></i><i></i><i></i></span><span>Reviews</span><span class="nav-count" id="review-count" hidden></span></a>
+          <a href="/videos" data-nav="videos"><span class="nav-glyph glyph-videos" aria-hidden="true"><i></i></span><span>Videos</span></a>
+          <a href="/library" data-nav="library"><span class="nav-glyph glyph-library" aria-hidden="true"><i></i></span><span>Library</span></a>
+          <a href="/styles" data-nav="styles"><span class="nav-glyph glyph-styles" aria-hidden="true"><i></i><i></i></span><span>Styles</span></a>
+          <a href="/characters" data-nav="characters"><span class="nav-glyph glyph-styles" aria-hidden="true"><i></i><i></i></span><span>Characters</span></a>
+        </nav>
+        <div class="sidebar-rule"><span>WORKSPACE</span><span class="rule-line"></span><span>LOCAL</span></div>
+        <a class="new-video-link" href="/videos/new"><span class="plus-mark" aria-hidden="true">+</span><span>New video</span></a>
+        <div class="sidebar-spacer"></div>
+        <a class="local-note" href="/settings">Settings and agent guide</a>
+        <a class="job-rail" id="job-rail" href="/jobs" hidden>
+          <span class="job-live-mark" aria-hidden="true"></span>
+          <span class="job-rail-copy"><strong id="job-rail-title">Production running</strong><small id="job-rail-meta">View job log</small></span>
+          <span class="job-rail-arrow" aria-hidden="true">↗</span>
+        </a>
+        <div class="local-note"><span class="local-dot" aria-hidden="true"></span><span>Local workspace</span></div>
+      </aside>
+      <div class="workspace-column">
+        <header class="workspace-topbar">
+          <div class="breadcrumb" id="breadcrumb" aria-label="Current location"><span>Studio</span></div>
+          <div class="topbar-right" id="topbar-right"></div>
+        </header>
+        <main id="main" tabindex="-1"></main>
+        <footer class="workspace-footer"><span>VideoFactory</span><span>Local production workspace</span></footer>
+      </div>
+    </div>
+    <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

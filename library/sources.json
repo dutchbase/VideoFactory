@@ -1,0 +1,20 @@
+{
+  "icons": {
+    "lucide": {"spdx": "ISC", "url": "https://lucide.dev"},
+    "tabler": {"spdx": "MIT", "url": "https://tabler.io/icons"},
+    "ph": {"spdx": "MIT", "url": "https://phosphoricons.com"},
+    "heroicons": {"spdx": "MIT", "url": "https://heroicons.com"},
+    "material-symbols": {"spdx": "Apache-2.0", "url": "https://fonts.google.com/icons"},
+    "bi": {"spdx": "MIT", "url": "https://icons.getbootstrap.com"},
+    "simple-icons": {"spdx": "CC0-1.0", "url": "https://simpleicons.org", "note": "brand logos: trademarks stay with the rights holders"}
+  },
+  "icons_animated": {
+    "lucide-animated": {"spdx": "MIT", "url": "https://lucide-animated.com", "note": "converted by tools/iconanim from github.com/pqoqubbw/icons; drawings are Lucide (ISC)"}
+  },
+  "stock": {
+    "pexels": {"spdx": "Pexels", "url": "https://www.pexels.com/license/", "key": "PEXELS_API_KEY"},
+    "pixabay": {"spdx": "Pixabay", "url": "https://pixabay.com/service/license-summary/", "key": "PIXABAY_API_KEY"},
+    "unsplash": {"spdx": "Unsplash", "url": "https://unsplash.com/license", "key": "UNSPLASH_ACCESS_KEY"}
+  },
+  "lottie": {"lottiefiles": {"spdx": "Lottie-Simple", "url": "https://lottiefiles.com/page/license"}}
+}

@@ -1,0 +1,2662 @@
+{
+ "voice": "voice.mp3",
+ "duration": 215.36,
+ "model": "large-v3-turbo",
+ "words": [
+  {
+   "text": "An",
+   "start": 0.0,
+   "end": 0.2
+  },
+  {
+   "text": "explainer",
+   "start": 0.2,
+   "end": 0.74
+  },
+  {
+   "text": "video",
+   "start": 0.74,
+   "end": 0.98
+  },
+  {
+   "text": "usually",
+   "start": 0.98,
+   "end": 1.6
+  },
+  {
+   "text": "means",
+   "start": 1.6,
+   "end": 1.98
+  },
+  {
+   "text": "three",
+   "start": 1.98,
+   "end": 2.28
+  },
+  {
+   "text": "tools,",
+   "start": 2.28,
+   "end": 2.78
+  },
+  {
+   "text": "a",
+   "start": 2.8,
+   "end": 3.28
+  },
+  {
+   "text": "timeline",
+   "start": 3.28,
+   "end": 3.68
+  },
+  {
+   "text": "and",
+   "start": 3.68,
+   "end": 4.24
+  },
+  {
+   "text": "a",
+   "start": 4.24,
+   "end": 4.48
+  },
+  {
+   "text": "lost",
+   "start": 4.48,
+   "end": 4.72
+  },
+  {
+   "text": "weekend.",
+   "start": 4.72,
+   "end": 5.18
+  },
+  {
+   "text": "VideoFactory",
+   "start": 5.94,
+   "end": 6.66
+  },
+  {
+   "text": "turns",
+   "start": 6.66,
+   "end": 7.02
+  },
+  {
+   "text": "all",
+   "start": 7.02,
+   "end": 7.38
+  },
+  {
+   "text": "of",
+   "start": 7.38,
+   "end": 7.54
+  },
+  {
+   "text": "that",
+   "start": 7.54,
+   "end": 7.76
+  },
+  {
+   "text": "into",
+   "start": 7.76,
+   "end": 8.0
+  },
+  {
+   "text": "one",
+   "start": 8.0,
+   "end": 8.38
+  },
+  {
+   "text": "conversation.",
+   "start": 8.38,
+   "end": 9.04
+  },
+  {
+   "text": "It",
+   "start": 9.44,
+   "end": 9.86
+  },
+  {
+   "text": "is",
+   "start": 9.86,
+   "end": 10.0
+  },
+  {
+   "text": "one",
+   "start": 10.0,
+   "end": 10.28
+  },
+  {
+   "text": "folder",
+   "start": 10.28,
+   "end": 10.7
+  },
+  {
+   "text": "on",
+   "start": 10.7,
+   "end": 10.94
+  },
+  {
+   "text": "your",
+   "start": 10.94,
+   "end": 11.1
+  },
+  {
+   "text": "computer.",
+   "start": 11.1,
+   "end": 11.56
+  },
+  {
+   "text": "Your",
+   "start": 11.9,
+   "end": 12.46
+  },
+  {
+   "text": "AI",
+   "start": 12.46,
+   "end": 12.78
+  },
+  {
+   "text": "agent,",
+   "start": 12.78,
+   "end": 13.32
+  },
+  {
+   "text": "Claude",
+   "start": 13.58,
+   "end": 13.86
+  },
+  {
+   "text": "Code",
+   "start": 13.86,
+   "end": 14.24
+  },
+  {
+   "text": "or",
+   "start": 14.24,
+   "end": 14.54
+  },
+  {
+   "text": "Codex,",
+   "start": 14.54,
+   "end": 15.14
+  },
+  {
+   "text": "does",
+   "start": 15.14,
+   "end": 15.52
+  },
+  {
+   "text": "the",
+   "start": 15.52,
+   "end": 15.7
+  },
+  {
+   "text": "work.",
+   "start": 15.7,
+   "end": 16.06
+  },
+  {
+   "text": "You",
+   "start": 16.32,
+   "end": 16.76
+  },
+  {
+   "text": "make",
+   "start": 16.76,
+   "end": 16.96
+  },
+  {
+   "text": "the",
+   "start": 16.96,
+   "end": 17.1
+  },
+  {
+   "text": "choices,",
+   "start": 17.1,
+   "end": 17.46
+  },
+  {
+   "text": "and",
+   "start": 17.46,
+   "end": 17.94
+  },
+  {
+   "text": "you",
+   "start": 17.94,
+   "end": 18.16
+  },
+  {
+   "text": "check",
+   "start": 18.16,
+   "end": 18.5
+  },
+  {
+   "text": "every",
+   "start": 18.5,
+   "end": 18.94
+  },
+  {
+   "text": "step.",
+   "start": 18.94,
+   "end": 19.34
+  },
+  {
+   "text": "First,",
+   "start": 19.34,
+   "end": 20.22
+  },
+  {
+   "text": "the",
+   "start": 20.6,
+   "end": 20.72
+  },
+  {
+   "text": "setup.",
+   "start": 20.72,
+   "end": 21.04
+  },
+  {
+   "text": "You",
+   "start": 21.74,
+   "end": 21.78
+  },
+  {
+   "text": "need",
+   "start": 21.78,
+   "end": 22.0
+  },
+  {
+   "text": "Linux,",
+   "start": 22.0,
+   "end": 22.36
+  },
+  {
+   "text": "Python",
+   "start": 22.68,
+   "end": 23.08
+  },
+  {
+   "text": "3.12,",
+   "start": 23.08,
+   "end": 24.04
+  },
+  {
+   "text": "FFmpeg,",
+   "start": 24.5,
+   "end": 25.34
+  },
+  {
+   "text": "and",
+   "start": 25.34,
+   "end": 25.76
+  },
+  {
+   "text": "Claude",
+   "start": 25.76,
+   "end": 26.14
+  },
+  {
+   "text": "Code",
+   "start": 26.14,
+   "end": 26.52
+  },
+  {
+   "text": "or",
+   "start": 26.52,
+   "end": 26.8
+  },
+  {
+   "text": "Codex.",
+   "start": 26.8,
+   "end": 27.42
+  },
+  {
+   "text": "Type",
+   "start": 27.58,
+   "end": 28.22
+  },
+  {
+   "text": "slash",
+   "start": 28.22,
+   "end": 28.64
+  },
+  {
+   "text": "V",
+   "start": 28.64,
+   "end": 29.03
+  },
+  {
+   "text": "F",
+   "start": 29.03,
+   "end": 29.42
+  },
+  {
+   "text": "setup.",
+   "start": 29.42,
+   "end": 29.88
+  },
+  {
+   "text": "The",
+   "start": 30.36,
+   "end": 30.78
+  },
+  {
+   "text": "agent",
+   "start": 30.78,
+   "end": 31.16
+  },
+  {
+   "text": "installs",
+   "start": 31.16,
+   "end": 31.76
+  },
+  {
+   "text": "the",
+   "start": 31.76,
+   "end": 31.88
+  },
+  {
+   "text": "rest,",
+   "start": 31.88,
+   "end": 32.26
+  },
+  {
+   "text": "checks",
+   "start": 32.64,
+   "end": 32.8
+  },
+  {
+   "text": "your",
+   "start": 32.8,
+   "end": 32.98
+  },
+  {
+   "text": "computer,",
+   "start": 32.98,
+   "end": 33.44
+  },
+  {
+   "text": "and",
+   "start": 33.44,
+   "end": 33.9
+  },
+  {
+   "text": "renders",
+   "start": 33.9,
+   "end": 34.28
+  },
+  {
+   "text": "a",
+   "start": 34.28,
+   "end": 34.4
+  },
+  {
+   "text": "short",
+   "start": 34.4,
+   "end": 34.68
+  },
+  {
+   "text": "test",
+   "start": 34.68,
+   "end": 34.98
+  },
+  {
+   "text": "video.",
+   "start": 34.98,
+   "end": 35.34
+  },
+  {
+   "text": "Everything",
+   "start": 35.72,
+   "end": 36.38
+  },
+  {
+   "text": "else",
+   "start": 36.38,
+   "end": 36.6
+  },
+  {
+   "text": "is",
+   "start": 36.6,
+   "end": 36.86
+  },
+  {
+   "text": "optional.",
+   "start": 36.86,
+   "end": 37.28
+  },
+  {
+   "text": "Whisper",
+   "start": 37.9,
+   "end": 38.28
+  },
+  {
+   "text": "gives",
+   "start": 38.28,
+   "end": 38.56
+  },
+  {
+   "text": "every",
+   "start": 38.56,
+   "end": 38.92
+  },
+  {
+   "text": "word",
+   "start": 38.92,
+   "end": 39.24
+  },
+  {
+   "text": "a",
+   "start": 39.24,
+   "end": 39.42
+  },
+  {
+   "text": "time.",
+   "start": 39.42,
+   "end": 39.78
+  },
+  {
+   "text": "ElevenLabs",
+   "start": 40.4,
+   "end": 40.94
+  },
+  {
+   "text": "gives",
+   "start": 40.94,
+   "end": 41.2
+  },
+  {
+   "text": "you",
+   "start": 41.2,
+   "end": 41.36
+  },
+  {
+   "text": "a",
+   "start": 41.36,
+   "end": 41.48
+  },
+  {
+   "text": "paid",
+   "start": 41.48,
+   "end": 41.8
+  },
+  {
+   "text": "AI",
+   "start": 41.8,
+   "end": 42.12
+  },
+  {
+   "text": "voice.",
+   "start": 42.12,
+   "end": 42.62
+  },
+  {
+   "text": "Free",
+   "start": 43.04,
+   "end": 43.48
+  },
+  {
+   "text": "keys",
+   "start": 43.48,
+   "end": 43.8
+  },
+  {
+   "text": "from",
+   "start": 43.8,
+   "end": 44.06
+  },
+  {
+   "text": "Pexels,",
+   "start": 44.06,
+   "end": 44.62
+  },
+  {
+   "text": "Pixabay",
+   "start": 44.62,
+   "end": 45.4
+  },
+  {
+   "text": "and",
+   "start": 45.4,
+   "end": 45.58
+  },
+  {
+   "text": "Unsplash",
+   "start": 45.58,
+   "end": 46.24
+  },
+  {
+   "text": "unlock",
+   "start": 46.24,
+   "end": 46.78
+  },
+  {
+   "text": "stock",
+   "start": 46.78,
+   "end": 47.16
+  },
+  {
+   "text": "video",
+   "start": 47.16,
+   "end": 47.54
+  },
+  {
+   "text": "and",
+   "start": 47.54,
+   "end": 47.78
+  },
+  {
+   "text": "photos.",
+   "start": 47.78,
+   "end": 48.28
+  },
+  {
+   "text": "Earshot",
+   "start": 49.0,
+   "end": 49.46
+  },
+  {
+   "text": "lets",
+   "start": 49.46,
+   "end": 49.68
+  },
+  {
+   "text": "the",
+   "start": 49.68,
+   "end": 49.86
+  },
+  {
+   "text": "agent",
+   "start": 49.86,
+   "end": 50.18
+  },
+  {
+   "text": "listen",
+   "start": 50.18,
+   "end": 50.5
+  },
+  {
+   "text": "to",
+   "start": 50.5,
+   "end": 50.7
+  },
+  {
+   "text": "the",
+   "start": 50.7,
+   "end": 50.84
+  },
+  {
+   "text": "sound.",
+   "start": 50.84,
+   "end": 51.26
+  },
+  {
+   "text": "Node",
+   "start": 51.86,
+   "end": 52.24
+  },
+  {
+   "text": "adds",
+   "start": 52.24,
+   "end": 52.54
+  },
+  {
+   "text": "an",
+   "start": 52.54,
+   "end": 52.72
+  },
+  {
+   "text": "advanced",
+   "start": 52.72,
+   "end": 53.14
+  },
+  {
+   "text": "animation",
+   "start": 53.14,
+   "end": 53.52
+  },
+  {
+   "text": "engine.",
+   "start": 53.52,
+   "end": 54.08
+  },
+  {
+   "text": "And",
+   "start": 54.36,
+   "end": 54.8
+  },
+  {
+   "text": "Brainstormform",
+   "start": 54.8,
+   "end": 55.72
+  },
+  {
+   "text": "shows",
+   "start": 55.72,
+   "end": 56.08
+  },
+  {
+   "text": "the",
+   "start": 56.08,
+   "end": 56.3
+  },
+  {
+   "text": "agent's",
+   "start": 56.3,
+   "end": 56.74
+  },
+  {
+   "text": "questions",
+   "start": 56.74,
+   "end": 57.18
+  },
+  {
+   "text": "as",
+   "start": 57.18,
+   "end": 57.5
+  },
+  {
+   "text": "a",
+   "start": 57.5,
+   "end": 57.62
+  },
+  {
+   "text": "form",
+   "start": 57.62,
+   "end": 57.92
+  },
+  {
+   "text": "in",
+   "start": 57.92,
+   "end": 58.08
+  },
+  {
+   "text": "your",
+   "start": 58.08,
+   "end": 58.2
+  },
+  {
+   "text": "browser.",
+   "start": 58.2,
+   "end": 58.6
+  },
+  {
+   "text": "Not",
+   "start": 59.3,
+   "end": 59.48
+  },
+  {
+   "text": "sure",
+   "start": 59.48,
+   "end": 59.68
+  },
+  {
+   "text": "what",
+   "start": 59.68,
+   "end": 59.88
+  },
+  {
+   "text": "to",
+   "start": 59.88,
+   "end": 60.0
+  },
+  {
+   "text": "do",
+   "start": 60.0,
+   "end": 60.12
+  },
+  {
+   "text": "next?",
+   "start": 60.12,
+   "end": 60.48
+  },
+  {
+   "text": "Type",
+   "start": 60.92,
+   "end": 61.32
+  },
+  {
+   "text": "slash",
+   "start": 61.32,
+   "end": 61.74
+  },
+  {
+   "text": "V",
+   "start": 61.74,
+   "end": 62.027
+  },
+  {
+   "text": "F.",
+   "start": 62.027,
+   "end": 62.6
+  },
+  {
+   "text": "It",
+   "start": 62.82,
+   "end": 63.3
+  },
+  {
+   "text": "reads",
+   "start": 63.3,
+   "end": 63.6
+  },
+  {
+   "text": "your",
+   "start": 63.6,
+   "end": 63.76
+  },
+  {
+   "text": "folders",
+   "start": 63.76,
+   "end": 64.2
+  },
+  {
+   "text": "and",
+   "start": 64.2,
+   "end": 64.48
+  },
+  {
+   "text": "tells",
+   "start": 64.48,
+   "end": 64.72
+  },
+  {
+   "text": "you",
+   "start": 64.72,
+   "end": 64.88
+  },
+  {
+   "text": "the",
+   "start": 64.88,
+   "end": 65.0
+  },
+  {
+   "text": "next",
+   "start": 65.0,
+   "end": 65.22
+  },
+  {
+   "text": "step.",
+   "start": 65.22,
+   "end": 65.6
+  },
+  {
+   "text": "Slash",
+   "start": 66.18,
+   "end": 66.58
+  },
+  {
+   "text": "V",
+   "start": 66.58,
+   "end": 66.87
+  },
+  {
+   "text": "F",
+   "start": 66.87,
+   "end": 67.16
+  },
+  {
+   "text": "help",
+   "start": 67.16,
+   "end": 67.56
+  },
+  {
+   "text": "lists",
+   "start": 67.56,
+   "end": 67.88
+  },
+  {
+   "text": "every",
+   "start": 67.88,
+   "end": 68.36
+  },
+  {
+   "text": "command.",
+   "start": 68.36,
+   "end": 68.8
+  },
+  {
+   "text": "Every",
+   "start": 69.32,
+   "end": 69.82
+  },
+  {
+   "text": "video",
+   "start": 69.82,
+   "end": 70.18
+  },
+  {
+   "text": "starts",
+   "start": 70.18,
+   "end": 70.66
+  },
+  {
+   "text": "with",
+   "start": 70.66,
+   "end": 70.92
+  },
+  {
+   "text": "a",
+   "start": 70.92,
+   "end": 71.02
+  },
+  {
+   "text": "brand.",
+   "start": 71.02,
+   "end": 71.42
+  },
+  {
+   "text": "Slash",
+   "start": 71.42,
+   "end": 72.5
+  },
+  {
+   "text": "V",
+   "start": 72.5,
+   "end": 72.76
+  },
+  {
+   "text": "F",
+   "start": 72.76,
+   "end": 73.02
+  },
+  {
+   "text": "new",
+   "start": 73.02,
+   "end": 73.3
+  },
+  {
+   "text": "brand",
+   "start": 73.3,
+   "end": 73.62
+  },
+  {
+   "text": "asks",
+   "start": 73.62,
+   "end": 74.22
+  },
+  {
+   "text": "for",
+   "start": 74.22,
+   "end": 74.44
+  },
+  {
+   "text": "your",
+   "start": 74.44,
+   "end": 74.58
+  },
+  {
+   "text": "colours,",
+   "start": 74.58,
+   "end": 74.96
+  },
+  {
+   "text": "fonts,",
+   "start": 75.22,
+   "end": 75.58
+  },
+  {
+   "text": "logo",
+   "start": 75.86,
+   "end": 76.14
+  },
+  {
+   "text": "and",
+   "start": 76.14,
+   "end": 76.48
+  },
+  {
+   "text": "voice.",
+   "start": 76.48,
+   "end": 76.92
+  },
+  {
+   "text": "Slash",
+   "start": 77.3,
+   "end": 77.9
+  },
+  {
+   "text": "V",
+   "start": 77.9,
+   "end": 78.16
+  },
+  {
+   "text": "F",
+   "start": 78.16,
+   "end": 78.42
+  },
+  {
+   "text": "new",
+   "start": 78.42,
+   "end": 78.68
+  },
+  {
+   "text": "style",
+   "start": 78.68,
+   "end": 79.04
+  },
+  {
+   "text": "designs",
+   "start": 79.04,
+   "end": 79.54
+  },
+  {
+   "text": "a",
+   "start": 79.54,
+   "end": 79.9
+  },
+  {
+   "text": "new",
+   "start": 79.9,
+   "end": 80.1
+  },
+  {
+   "text": "look.",
+   "start": 80.1,
+   "end": 80.48
+  },
+  {
+   "text": "Slash",
+   "start": 80.86,
+   "end": 81.46
+  },
+  {
+   "text": "V",
+   "start": 81.46,
+   "end": 81.72
+  },
+  {
+   "text": "F",
+   "start": 81.72,
+   "end": 81.98
+  },
+  {
+   "text": "new",
+   "start": 81.98,
+   "end": 82.28
+  },
+  {
+   "text": "character",
+   "start": 82.28,
+   "end": 82.7
+  },
+  {
+   "text": "creates",
+   "start": 82.7,
+   "end": 83.3
+  },
+  {
+   "text": "a",
+   "start": 83.3,
+   "end": 83.48
+  },
+  {
+   "text": "mascot,",
+   "start": 83.48,
+   "end": 83.9
+  },
+  {
+   "text": "with",
+   "start": 83.9,
+   "end": 84.46
+  },
+  {
+   "text": "AI",
+   "start": 84.46,
+   "end": 84.78
+  },
+  {
+   "text": "images",
+   "start": 84.78,
+   "end": 85.26
+  },
+  {
+   "text": "that",
+   "start": 85.26,
+   "end": 85.54
+  },
+  {
+   "text": "you",
+   "start": 85.54,
+   "end": 85.72
+  },
+  {
+   "text": "approve",
+   "start": 85.72,
+   "end": 86.22
+  },
+  {
+   "text": "batch",
+   "start": 86.22,
+   "end": 86.68
+  },
+  {
+   "text": "by",
+   "start": 86.68,
+   "end": 86.9
+  },
+  {
+   "text": "batch.",
+   "start": 86.9,
+   "end": 87.36
+  },
+  {
+   "text": "Then",
+   "start": 87.72,
+   "end": 88.18
+  },
+  {
+   "text": "type",
+   "start": 88.18,
+   "end": 88.56
+  },
+  {
+   "text": "slash",
+   "start": 88.56,
+   "end": 89.22
+  },
+  {
+   "text": "V",
+   "start": 89.22,
+   "end": 89.59
+  },
+  {
+   "text": "F",
+   "start": 89.59,
+   "end": 89.96
+  },
+  {
+   "text": "new",
+   "start": 89.96,
+   "end": 90.42
+  },
+  {
+   "text": "video.",
+   "start": 90.42,
+   "end": 90.78
+  },
+  {
+   "text": "Pick",
+   "start": 91.18,
+   "end": 91.72
+  },
+  {
+   "text": "your",
+   "start": 91.72,
+   "end": 91.92
+  },
+  {
+   "text": "brand,",
+   "start": 91.92,
+   "end": 92.34
+  },
+  {
+   "text": "wide",
+   "start": 92.52,
+   "end": 93.06
+  },
+  {
+   "text": "or",
+   "start": 93.06,
+   "end": 93.32
+  },
+  {
+   "text": "tall,",
+   "start": 93.32,
+   "end": 93.6
+  },
+  {
+   "text": "and",
+   "start": 93.8,
+   "end": 94.12
+  },
+  {
+   "text": "write",
+   "start": 94.12,
+   "end": 94.34
+  },
+  {
+   "text": "a",
+   "start": 94.34,
+   "end": 94.46
+  },
+  {
+   "text": "short",
+   "start": 94.46,
+   "end": 94.74
+  },
+  {
+   "text": "brief:",
+   "start": 94.74,
+   "end": 95.14
+  },
+  {
+   "text": "who",
+   "start": 95.32,
+   "end": 95.78
+  },
+  {
+   "text": "the",
+   "start": 95.78,
+   "end": 95.92
+  },
+  {
+   "text": "video",
+   "start": 95.92,
+   "end": 96.18
+  },
+  {
+   "text": "is",
+   "start": 96.18,
+   "end": 96.36
+  },
+  {
+   "text": "for,",
+   "start": 96.36,
+   "end": 96.7
+  },
+  {
+   "text": "and",
+   "start": 96.7,
+   "end": 97.06
+  },
+  {
+   "text": "what",
+   "start": 97.06,
+   "end": 97.22
+  },
+  {
+   "text": "they",
+   "start": 97.22,
+   "end": 97.36
+  },
+  {
+   "text": "must",
+   "start": 97.36,
+   "end": 97.54
+  },
+  {
+   "text": "do",
+   "start": 97.54,
+   "end": 97.76
+  },
+  {
+   "text": "after.",
+   "start": 97.76,
+   "end": 98.2
+  },
+  {
+   "text": "Need",
+   "start": 98.8,
+   "end": 99.14
+  },
+  {
+   "text": "facts?",
+   "start": 99.14,
+   "end": 99.52
+  },
+  {
+   "text": "Slash",
+   "start": 99.52,
+   "end": 100.46
+  },
+  {
+   "text": "V",
+   "start": 100.46,
+   "end": 100.69
+  },
+  {
+   "text": "F",
+   "start": 100.69,
+   "end": 100.92
+  },
+  {
+   "text": "research",
+   "start": 100.92,
+   "end": 101.36
+  },
+  {
+   "text": "collects",
+   "start": 101.36,
+   "end": 102.0
+  },
+  {
+   "text": "them",
+   "start": 102.0,
+   "end": 102.2
+  },
+  {
+   "text": "from",
+   "start": 102.2,
+   "end": 102.42
+  },
+  {
+   "text": "public",
+   "start": 102.42,
+   "end": 102.8
+  },
+  {
+   "text": "web",
+   "start": 102.8,
+   "end": 103.04
+  },
+  {
+   "text": "pages,",
+   "start": 103.04,
+   "end": 103.48
+  },
+  {
+   "text": "with",
+   "start": 103.48,
+   "end": 103.86
+  },
+  {
+   "text": "a",
+   "start": 103.86,
+   "end": 103.98
+  },
+  {
+   "text": "source",
+   "start": 103.98,
+   "end": 104.28
+  },
+  {
+   "text": "for",
+   "start": 104.28,
+   "end": 104.48
+  },
+  {
+   "text": "each",
+   "start": 104.48,
+   "end": 104.72
+  },
+  {
+   "text": "one.",
+   "start": 104.72,
+   "end": 105.1
+  },
+  {
+   "text": "Slash",
+   "start": 105.48,
+   "end": 106.14
+  },
+  {
+   "text": "V",
+   "start": 106.14,
+   "end": 106.35
+  },
+  {
+   "text": "F",
+   "start": 106.35,
+   "end": 106.56
+  },
+  {
+   "text": "script",
+   "start": 106.56,
+   "end": 106.94
+  },
+  {
+   "text": "writes",
+   "start": 106.94,
+   "end": 107.5
+  },
+  {
+   "text": "the",
+   "start": 107.5,
+   "end": 107.68
+  },
+  {
+   "text": "narration",
+   "start": 107.68,
+   "end": 108.06
+  },
+  {
+   "text": "with",
+   "start": 108.06,
+   "end": 108.4
+  },
+  {
+   "text": "you.",
+   "start": 108.4,
+   "end": 108.66
+  },
+  {
+   "text": "A",
+   "start": 108.98,
+   "end": 109.3
+  },
+  {
+   "text": "tone",
+   "start": 109.3,
+   "end": 109.5
+  },
+  {
+   "text": "check",
+   "start": 109.5,
+   "end": 109.8
+  },
+  {
+   "text": "removes",
+   "start": 109.8,
+   "end": 110.28
+  },
+  {
+   "text": "hype",
+   "start": 110.28,
+   "end": 110.64
+  },
+  {
+   "text": "and",
+   "start": 110.64,
+   "end": 110.9
+  },
+  {
+   "text": "empty",
+   "start": 110.9,
+   "end": 111.28
+  },
+  {
+   "text": "words",
+   "start": 111.28,
+   "end": 111.7
+  },
+  {
+   "text": "before",
+   "start": 111.7,
+   "end": 112.1
+  },
+  {
+   "text": "anything",
+   "start": 112.1,
+   "end": 112.52
+  },
+  {
+   "text": "is",
+   "start": 112.52,
+   "end": 112.78
+  },
+  {
+   "text": "recorded.",
+   "start": 112.78,
+   "end": 113.22
+  },
+  {
+   "text": "Slash",
+   "start": 113.84,
+   "end": 114.3
+  },
+  {
+   "text": "V",
+   "start": 114.3,
+   "end": 114.55
+  },
+  {
+   "text": "F",
+   "start": 114.55,
+   "end": 114.8
+  },
+  {
+   "text": "voice",
+   "start": 114.8,
+   "end": 115.16
+  },
+  {
+   "text": "makes",
+   "start": 115.16,
+   "end": 115.72
+  },
+  {
+   "text": "the",
+   "start": 115.72,
+   "end": 115.92
+  },
+  {
+   "text": "voice.",
+   "start": 115.92,
+   "end": 116.3
+  },
+  {
+   "text": "Record",
+   "start": 116.52,
+   "end": 117.26
+  },
+  {
+   "text": "yourself",
+   "start": 117.26,
+   "end": 117.64
+  },
+  {
+   "text": "for",
+   "start": 117.64,
+   "end": 117.9
+  },
+  {
+   "text": "free,",
+   "start": 117.9,
+   "end": 118.22
+  },
+  {
+   "text": "or",
+   "start": 118.22,
+   "end": 118.7
+  },
+  {
+   "text": "let",
+   "start": 118.7,
+   "end": 118.96
+  },
+  {
+   "text": "ElevenLabs",
+   "start": 118.96,
+   "end": 119.64
+  },
+  {
+   "text": "read",
+   "start": 119.64,
+   "end": 119.94
+  },
+  {
+   "text": "the",
+   "start": 119.94,
+   "end": 120.1
+  },
+  {
+   "text": "script.",
+   "start": 120.1,
+   "end": 120.46
+  },
+  {
+   "text": "A",
+   "start": 120.74,
+   "end": 121.28
+  },
+  {
+   "text": "paid",
+   "start": 121.28,
+   "end": 121.52
+  },
+  {
+   "text": "voice",
+   "start": 121.52,
+   "end": 121.84
+  },
+  {
+   "text": "only",
+   "start": 121.84,
+   "end": 122.22
+  },
+  {
+   "text": "runs",
+   "start": 122.22,
+   "end": 122.56
+  },
+  {
+   "text": "after",
+   "start": 122.56,
+   "end": 122.96
+  },
+  {
+   "text": "you",
+   "start": 122.96,
+   "end": 123.1
+  },
+  {
+   "text": "approve",
+   "start": 123.1,
+   "end": 123.44
+  },
+  {
+   "text": "the",
+   "start": 123.44,
+   "end": 123.68
+  },
+  {
+   "text": "script",
+   "start": 123.68,
+   "end": 123.96
+  },
+  {
+   "text": "in",
+   "start": 123.96,
+   "end": 124.16
+  },
+  {
+   "text": "the",
+   "start": 124.16,
+   "end": 124.26
+  },
+  {
+   "text": "Studio.",
+   "start": 124.26,
+   "end": 124.68
+  },
+  {
+   "text": "Slash",
+   "start": 125.3,
+   "end": 125.88
+  },
+  {
+   "text": "V",
+   "start": 125.88,
+   "end": 126.1
+  },
+  {
+   "text": "F",
+   "start": 126.1,
+   "end": 126.32
+  },
+  {
+   "text": "transcript",
+   "start": 126.32,
+   "end": 126.82
+  },
+  {
+   "text": "gives",
+   "start": 126.82,
+   "end": 127.4
+  },
+  {
+   "text": "every",
+   "start": 127.4,
+   "end": 127.8
+  },
+  {
+   "text": "word",
+   "start": 127.8,
+   "end": 128.18
+  },
+  {
+   "text": "an",
+   "start": 128.18,
+   "end": 128.38
+  },
+  {
+   "text": "exact",
+   "start": 128.38,
+   "end": 128.78
+  },
+  {
+   "text": "time.",
+   "start": 128.78,
+   "end": 129.2
+  },
+  {
+   "text": "Slash",
+   "start": 129.52,
+   "end": 130.3
+  },
+  {
+   "text": "V",
+   "start": 130.3,
+   "end": 130.53
+  },
+  {
+   "text": "F",
+   "start": 130.53,
+   "end": 130.76
+  },
+  {
+   "text": "cues",
+   "start": 130.76,
+   "end": 131.26
+  },
+  {
+   "text": "marks",
+   "start": 131.26,
+   "end": 131.76
+  },
+  {
+   "text": "the",
+   "start": 131.76,
+   "end": 131.94
+  },
+  {
+   "text": "moments",
+   "start": 131.94,
+   "end": 132.28
+  },
+  {
+   "text": "when",
+   "start": 132.28,
+   "end": 132.5
+  },
+  {
+   "text": "the",
+   "start": 132.5,
+   "end": 132.62
+  },
+  {
+   "text": "picture",
+   "start": 132.62,
+   "end": 132.94
+  },
+  {
+   "text": "must",
+   "start": 132.94,
+   "end": 133.16
+  },
+  {
+   "text": "change.",
+   "start": 133.16,
+   "end": 133.7
+  },
+  {
+   "text": "Now",
+   "start": 134.08,
+   "end": 134.6
+  },
+  {
+   "text": "the",
+   "start": 134.6,
+   "end": 134.8
+  },
+  {
+   "text": "fun",
+   "start": 134.8,
+   "end": 135.1
+  },
+  {
+   "text": "part.",
+   "start": 135.1,
+   "end": 135.52
+  },
+  {
+   "text": "Slash",
+   "start": 135.92,
+   "end": 136.48
+  },
+  {
+   "text": "V",
+   "start": 136.48,
+   "end": 136.73
+  },
+  {
+   "text": "F",
+   "start": 136.73,
+   "end": 136.98
+  },
+  {
+   "text": "scene",
+   "start": 136.98,
+   "end": 137.24
+  },
+  {
+   "text": "builds",
+   "start": 137.24,
+   "end": 137.84
+  },
+  {
+   "text": "the",
+   "start": 137.84,
+   "end": 138.04
+  },
+  {
+   "text": "animation.",
+   "start": 138.04,
+   "end": 138.5
+  },
+  {
+   "text": "It",
+   "start": 138.84,
+   "end": 139.3
+  },
+  {
+   "text": "takes",
+   "start": 139.3,
+   "end": 139.56
+  },
+  {
+   "text": "icons,",
+   "start": 139.56,
+   "end": 140.06
+  },
+  {
+   "text": "graphics",
+   "start": 140.36,
+   "end": 140.86
+  },
+  {
+   "text": "and",
+   "start": 140.86,
+   "end": 141.26
+  },
+  {
+   "text": "Lottie",
+   "start": 141.26,
+   "end": 141.62
+  },
+  {
+   "text": "animations",
+   "start": 141.62,
+   "end": 142.06
+  },
+  {
+   "text": "from",
+   "start": 142.06,
+   "end": 142.36
+  },
+  {
+   "text": "the",
+   "start": 142.36,
+   "end": 142.5
+  },
+  {
+   "text": "library.",
+   "start": 142.5,
+   "end": 142.88
+  },
+  {
+   "text": "It",
+   "start": 143.14,
+   "end": 143.58
+  },
+  {
+   "text": "finds",
+   "start": 143.58,
+   "end": 143.9
+  },
+  {
+   "text": "stock",
+   "start": 143.9,
+   "end": 144.22
+  },
+  {
+   "text": "video,",
+   "start": 144.22,
+   "end": 144.64
+  },
+  {
+   "text": "photos",
+   "start": 144.92,
+   "end": 145.32
+  },
+  {
+   "text": "and",
+   "start": 145.32,
+   "end": 145.62
+  },
+  {
+   "text": "music.",
+   "start": 145.62,
+   "end": 145.94
+  },
+  {
+   "text": "It",
+   "start": 146.24,
+   "end": 146.68
+  },
+  {
+   "text": "takes",
+   "start": 146.68,
+   "end": 146.94
+  },
+  {
+   "text": "screenshots",
+   "start": 146.94,
+   "end": 147.46
+  },
+  {
+   "text": "and",
+   "start": 147.46,
+   "end": 147.84
+  },
+  {
+   "text": "screen",
+   "start": 147.84,
+   "end": 148.14
+  },
+  {
+   "text": "recordings",
+   "start": 148.14,
+   "end": 148.64
+  },
+  {
+   "text": "of",
+   "start": 148.64,
+   "end": 148.92
+  },
+  {
+   "text": "real",
+   "start": 148.92,
+   "end": 149.24
+  },
+  {
+   "text": "websites.",
+   "start": 149.24,
+   "end": 149.76
+  },
+  {
+   "text": "It",
+   "start": 150.2,
+   "end": 150.54
+  },
+  {
+   "text": "drops",
+   "start": 150.54,
+   "end": 150.82
+  },
+  {
+   "text": "in",
+   "start": 150.82,
+   "end": 151.06
+  },
+  {
+   "text": "ready-made",
+   "start": 151.06,
+   "end": 151.6
+  },
+  {
+   "text": "motion",
+   "start": 151.6,
+   "end": 152.0
+  },
+  {
+   "text": "components.",
+   "start": 152.0,
+   "end": 152.64
+  },
+  {
+   "text": "And",
+   "start": 152.88,
+   "end": 153.5
+  },
+  {
+   "text": "it",
+   "start": 153.5,
+   "end": 153.74
+  },
+  {
+   "text": "adds",
+   "start": 153.74,
+   "end": 154.0
+  },
+  {
+   "text": "sound",
+   "start": 154.0,
+   "end": 154.28
+  },
+  {
+   "text": "effects",
+   "start": 154.28,
+   "end": 154.56
+  },
+  {
+   "text": "and",
+   "start": 154.56,
+   "end": 154.84
+  },
+  {
+   "text": "music,",
+   "start": 154.84,
+   "end": 155.26
+  },
+  {
+   "text": "from",
+   "start": 155.26,
+   "end": 155.72
+  },
+  {
+   "text": "free",
+   "start": 155.72,
+   "end": 156.06
+  },
+  {
+   "text": "CC0",
+   "start": 156.06,
+   "end": 156.92
+  },
+  {
+   "text": "files,",
+   "start": 156.92,
+   "end": 157.44
+  },
+  {
+   "text": "or",
+   "start": 157.44,
+   "end": 157.82
+  },
+  {
+   "text": "generated",
+   "start": 157.82,
+   "end": 158.34
+  },
+  {
+   "text": "on",
+   "start": 158.34,
+   "end": 158.6
+  },
+  {
+   "text": "your",
+   "start": 158.6,
+   "end": 158.74
+  },
+  {
+   "text": "own",
+   "start": 158.74,
+   "end": 158.94
+  },
+  {
+   "text": "computer.",
+   "start": 158.94,
+   "end": 159.4
+  },
+  {
+   "text": "Before",
+   "start": 159.52,
+   "end": 160.38
+  },
+  {
+   "text": "you",
+   "start": 160.38,
+   "end": 160.62
+  },
+  {
+   "text": "see",
+   "start": 160.62,
+   "end": 160.86
+  },
+  {
+   "text": "anything,",
+   "start": 160.86,
+   "end": 161.34
+  },
+  {
+   "text": "the",
+   "start": 161.8,
+   "end": 161.9
+  },
+  {
+   "text": "agent",
+   "start": 161.9,
+   "end": 162.2
+  },
+  {
+   "text": "takes",
+   "start": 162.2,
+   "end": 162.54
+  },
+  {
+   "text": "a",
+   "start": 162.54,
+   "end": 162.7
+  },
+  {
+   "text": "still",
+   "start": 162.7,
+   "end": 163.0
+  },
+  {
+   "text": "at",
+   "start": 163.0,
+   "end": 163.28
+  },
+  {
+   "text": "every",
+   "start": 163.28,
+   "end": 163.66
+  },
+  {
+   "text": "cue.",
+   "start": 163.66,
+   "end": 163.98
+  },
+  {
+   "text": "A",
+   "start": 164.44,
+   "end": 164.84
+  },
+  {
+   "text": "checker",
+   "start": 164.84,
+   "end": 165.2
+  },
+  {
+   "text": "counts",
+   "start": 165.2,
+   "end": 165.56
+  },
+  {
+   "text": "the",
+   "start": 165.56,
+   "end": 165.72
+  },
+  {
+   "text": "problems,",
+   "start": 165.72,
+   "end": 166.16
+  },
+  {
+   "text": "and",
+   "start": 166.16,
+   "end": 166.48
+  },
+  {
+   "text": "the",
+   "start": 166.48,
+   "end": 166.6
+  },
+  {
+   "text": "agent",
+   "start": 166.6,
+   "end": 166.92
+  },
+  {
+   "text": "fixes",
+   "start": 166.92,
+   "end": 167.32
+  },
+  {
+   "text": "them",
+   "start": 167.32,
+   "end": 167.62
+  },
+  {
+   "text": "until",
+   "start": 167.62,
+   "end": 167.94
+  },
+  {
+   "text": "every",
+   "start": 167.94,
+   "end": 168.42
+  },
+  {
+   "text": "counter",
+   "start": 168.42,
+   "end": 168.8
+  },
+  {
+   "text": "reads",
+   "start": 168.8,
+   "end": 169.24
+  },
+  {
+   "text": "zero.",
+   "start": 169.24,
+   "end": 169.62
+  },
+  {
+   "text": "Slash",
+   "start": 170.4,
+   "end": 170.82
+  },
+  {
+   "text": "V",
+   "start": 170.82,
+   "end": 171.05
+  },
+  {
+   "text": "F",
+   "start": 171.05,
+   "end": 171.28
+  },
+  {
+   "text": "render",
+   "start": 171.28,
+   "end": 171.62
+  },
+  {
+   "text": "makes",
+   "start": 171.62,
+   "end": 172.04
+  },
+  {
+   "text": "the",
+   "start": 172.04,
+   "end": 172.24
+  },
+  {
+   "text": "final",
+   "start": 172.24,
+   "end": 172.6
+  },
+  {
+   "text": "video",
+   "start": 172.6,
+   "end": 172.9
+  },
+  {
+   "text": "file.",
+   "start": 172.9,
+   "end": 173.34
+  },
+  {
+   "text": "Voice,",
+   "start": 173.8,
+   "end": 174.34
+  },
+  {
+   "text": "music",
+   "start": 174.56,
+   "end": 175.02
+  },
+  {
+   "text": "and",
+   "start": 175.02,
+   "end": 175.26
+  },
+  {
+   "text": "effects",
+   "start": 175.26,
+   "end": 175.68
+  },
+  {
+   "text": "are",
+   "start": 175.68,
+   "end": 175.96
+  },
+  {
+   "text": "mixed",
+   "start": 175.96,
+   "end": 176.26
+  },
+  {
+   "text": "and",
+   "start": 176.26,
+   "end": 176.52
+  },
+  {
+   "text": "leveled.",
+   "start": 176.52,
+   "end": 176.9
+  },
+  {
+   "text": "You",
+   "start": 177.1,
+   "end": 177.56
+  },
+  {
+   "text": "also",
+   "start": 177.56,
+   "end": 177.88
+  },
+  {
+   "text": "get",
+   "start": 177.88,
+   "end": 178.08
+  },
+  {
+   "text": "a",
+   "start": 178.08,
+   "end": 178.22
+  },
+  {
+   "text": "phone",
+   "start": 178.22,
+   "end": 178.46
+  },
+  {
+   "text": "copy,",
+   "start": 178.46,
+   "end": 178.8
+  },
+  {
+   "text": "a",
+   "start": 179.06,
+   "end": 179.24
+  },
+  {
+   "text": "thumbnail,",
+   "start": 179.24,
+   "end": 179.58
+  },
+  {
+   "text": "and",
+   "start": 179.58,
+   "end": 180.04
+  },
+  {
+   "text": "chapters",
+   "start": 180.04,
+   "end": 180.42
+  },
+  {
+   "text": "for",
+   "start": 180.42,
+   "end": 180.7
+  },
+  {
+   "text": "YouTube.",
+   "start": 180.7,
+   "end": 181.02
+  },
+  {
+   "text": "With",
+   "start": 181.44,
+   "end": 182.04
+  },
+  {
+   "text": "Earshot,",
+   "start": 182.04,
+   "end": 182.58
+  },
+  {
+   "text": "the",
+   "start": 182.76,
+   "end": 182.92
+  },
+  {
+   "text": "agent",
+   "start": 182.92,
+   "end": 183.22
+  },
+  {
+   "text": "even",
+   "start": 183.22,
+   "end": 183.58
+  },
+  {
+   "text": "listens",
+   "start": 183.58,
+   "end": 183.96
+  },
+  {
+   "text": "to",
+   "start": 183.96,
+   "end": 184.22
+  },
+  {
+   "text": "the",
+   "start": 184.22,
+   "end": 184.32
+  },
+  {
+   "text": "result.",
+   "start": 184.32,
+   "end": 184.72
+  },
+  {
+   "text": "The",
+   "start": 184.98,
+   "end": 185.5
+  },
+  {
+   "text": "Studio",
+   "start": 185.5,
+   "end": 185.84
+  },
+  {
+   "text": "is",
+   "start": 185.84,
+   "end": 186.22
+  },
+  {
+   "text": "a",
+   "start": 186.22,
+   "end": 186.32
+  },
+  {
+   "text": "web",
+   "start": 186.32,
+   "end": 186.466
+  },
+  {
+   "text": "page",
+   "start": 186.466,
+   "end": 186.66
+  },
+  {
+   "text": "on",
+   "start": 186.66,
+   "end": 187.04
+  },
+  {
+   "text": "your",
+   "start": 187.04,
+   "end": 187.2
+  },
+  {
+   "text": "own",
+   "start": 187.2,
+   "end": 187.46
+  },
+  {
+   "text": "computer.",
+   "start": 187.46,
+   "end": 187.96
+  },
+  {
+   "text": "It",
+   "start": 187.96,
+   "end": 188.72
+  },
+  {
+   "text": "shows",
+   "start": 188.72,
+   "end": 189.0
+  },
+  {
+   "text": "every",
+   "start": 189.0,
+   "end": 189.42
+  },
+  {
+   "text": "video,",
+   "start": 189.42,
+   "end": 189.8
+  },
+  {
+   "text": "and",
+   "start": 189.8,
+   "end": 190.18
+  },
+  {
+   "text": "the",
+   "start": 190.18,
+   "end": 190.3
+  },
+  {
+   "text": "pages",
+   "start": 190.3,
+   "end": 190.68
+  },
+  {
+   "text": "where",
+   "start": 190.68,
+   "end": 190.92
+  },
+  {
+   "text": "you",
+   "start": 190.92,
+   "end": 191.06
+  },
+  {
+   "text": "review",
+   "start": 191.06,
+   "end": 191.44
+  },
+  {
+   "text": "and",
+   "start": 191.44,
+   "end": 191.76
+  },
+  {
+   "text": "approve.",
+   "start": 191.76,
+   "end": 192.2
+  },
+  {
+   "text": "Slash",
+   "start": 192.6,
+   "end": 193.24
+  },
+  {
+   "text": "V",
+   "start": 193.24,
+   "end": 193.49
+  },
+  {
+   "text": "F",
+   "start": 193.49,
+   "end": 193.74
+  },
+  {
+   "text": "status",
+   "start": 193.74,
+   "end": 194.1
+  },
+  {
+   "text": "shows",
+   "start": 194.1,
+   "end": 194.72
+  },
+  {
+   "text": "where",
+   "start": 194.72,
+   "end": 195.0
+  },
+  {
+   "text": "each",
+   "start": 195.0,
+   "end": 195.3
+  },
+  {
+   "text": "video",
+   "start": 195.3,
+   "end": 195.62
+  },
+  {
+   "text": "is.",
+   "start": 195.62,
+   "end": 196.08
+  },
+  {
+   "text": "Each",
+   "start": 196.34,
+   "end": 196.92
+  },
+  {
+   "text": "command",
+   "start": 196.92,
+   "end": 197.28
+  },
+  {
+   "text": "does",
+   "start": 197.28,
+   "end": 197.64
+  },
+  {
+   "text": "one",
+   "start": 197.64,
+   "end": 197.92
+  },
+  {
+   "text": "step,",
+   "start": 197.92,
+   "end": 198.32
+  },
+  {
+   "text": "and",
+   "start": 198.32,
+   "end": 198.64
+  },
+  {
+   "text": "then",
+   "start": 198.64,
+   "end": 198.78
+  },
+  {
+   "text": "it",
+   "start": 198.78,
+   "end": 198.94
+  },
+  {
+   "text": "stops.",
+   "start": 198.94,
+   "end": 199.36
+  },
+  {
+   "text": "Nothing",
+   "start": 199.78,
+   "end": 200.34
+  },
+  {
+   "text": "is",
+   "start": 200.34,
+   "end": 200.56
+  },
+  {
+   "text": "paid",
+   "start": 200.56,
+   "end": 200.86
+  },
+  {
+   "text": "or",
+   "start": 200.86,
+   "end": 201.14
+  },
+  {
+   "text": "published",
+   "start": 201.14,
+   "end": 201.6
+  },
+  {
+   "text": "without",
+   "start": 201.6,
+   "end": 201.88
+  },
+  {
+   "text": "a",
+   "start": 201.88,
+   "end": 202.1
+  },
+  {
+   "text": "clear",
+   "start": 202.1,
+   "end": 202.42
+  },
+  {
+   "text": "yes",
+   "start": 202.42,
+   "end": 202.8
+  },
+  {
+   "text": "from",
+   "start": 202.8,
+   "end": 203.2
+  },
+  {
+   "text": "you.",
+   "start": 203.2,
+   "end": 203.5
+  },
+  {
+   "text": "This",
+   "start": 203.82,
+   "end": 204.36
+  },
+  {
+   "text": "video",
+   "start": 204.36,
+   "end": 204.64
+  },
+  {
+   "text": "was",
+   "start": 204.64,
+   "end": 204.92
+  },
+  {
+   "text": "made",
+   "start": 204.92,
+   "end": 205.18
+  },
+  {
+   "text": "with",
+   "start": 205.18,
+   "end": 205.36
+  },
+  {
+   "text": "those",
+   "start": 205.36,
+   "end": 205.6
+  },
+  {
+   "text": "same",
+   "start": 205.6,
+   "end": 205.92
+  },
+  {
+   "text": "commands.",
+   "start": 205.92,
+   "end": 206.48
+  },
+  {
+   "text": "VideoFactory",
+   "start": 207.22,
+   "end": 207.82
+  },
+  {
+   "text": "is",
+   "start": 207.82,
+   "end": 208.18
+  },
+  {
+   "text": "free",
+   "start": 208.18,
+   "end": 208.5
+  },
+  {
+   "text": "and",
+   "start": 208.5,
+   "end": 208.82
+  },
+  {
+   "text": "open",
+   "start": 208.82,
+   "end": 209.12
+  },
+  {
+   "text": "source.",
+   "start": 209.12,
+   "end": 209.54
+  },
+  {
+   "text": "Clone",
+   "start": 209.92,
+   "end": 210.4
+  },
+  {
+   "text": "the",
+   "start": 210.4,
+   "end": 210.54
+  },
+  {
+   "text": "repo,",
+   "start": 210.54,
+   "end": 210.94
+  },
+  {
+   "text": "type",
+   "start": 211.26,
+   "end": 211.5
+  },
+  {
+   "text": "slash",
+   "start": 211.5,
+   "end": 211.86
+  },
+  {
+   "text": "V",
+   "start": 211.86,
+   "end": 212.14
+  },
+  {
+   "text": "F",
+   "start": 212.14,
+   "end": 212.42
+  },
+  {
+   "text": "setup,",
+   "start": 212.42,
+   "end": 212.82
+  },
+  {
+   "text": "and",
+   "start": 212.82,
+   "end": 213.28
+  },
+  {
+   "text": "make",
+   "start": 213.28,
+   "end": 213.48
+  },
+  {
+   "text": "your",
+   "start": 213.48,
+   "end": 213.66
+  },
+  {
+   "text": "first",
+   "start": 213.66,
+   "end": 214.0
+  },
+  {
+   "text": "video",
+   "start": 214.0,
+   "end": 214.34
+  },
+  {
+   "text": "today.",
+   "start": 214.34,
+   "end": 214.56
+  }
+ ]
+}

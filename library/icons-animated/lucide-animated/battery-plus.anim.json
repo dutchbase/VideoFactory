@@ -1,0 +1,37 @@
+{
+ "v": 1,
+ "name": "battery-plus",
+ "dur": 0.5,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0.5,
+       1
+      ],
+      "scale": [
+       1,
+       0.8,
+       1.2,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

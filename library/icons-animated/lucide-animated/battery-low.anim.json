@@ -1,0 +1,37 @@
+{
+ "v": 1,
+ "name": "battery-low",
+ "dur": 1,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 3,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.4,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

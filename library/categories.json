@@ -1,0 +1,26 @@
+{
+ "categories": {
+  "text": "Animated words and letters: typewriter, scramble, highlight, glitch, kinetic type.",
+  "entrances": "How a thing appears or leaves: fade, slide, scale, blur, spring, stagger.",
+  "transitions": "Cuts between two shots: wipes, pushes, zooms, light leaks.",
+  "backgrounds": "Full-frame backdrops: gradients, grids, particles, noise, light.",
+  "data": "Numbers made visible: charts, counters, progress, stats.",
+  "interface": "Rebuilt app parts: chat, cards, buttons, notifications, code, terminal, devices, browser, cursor.",
+  "shapes": "Lines and vector art: path draw, arrows, morphs, stamps, connectors.",
+  "media": "Pictures, video, sound and words on screen: frames, captions, audio visualizers, screen recordings.",
+  "cinematic": "Camera and lens: push, parallax, grain, vignette, letterbox, flashes.",
+  "scenes": "Whole layouts: title card, lower third, end card, templates.",
+  "3d": "3D objects and scenes. WebGL items in the upstream catalog are not ported.",
+  "icons": "Symbols in the text colour, static or animated. Groups: Lucide categories.",
+  "pictograms": "Colour pictures of one thing (emoji style).",
+  "animations": "Lottie motion graphics: loading, success, confetti, hints.",
+  "helpers": "Code that other parts need; not a picture on its own."
+ },
+ "motion_sections": {
+  "01 Device frames": "interface", "02 AI interfaces": "interface", "03 Kinetic typography": "text",
+  "04 Transitions": "transitions", "05 Overlays & effects": "cinematic", "06 Data & counters": "data",
+  "07 Brand": "scenes", "08 Voice-over captions": "media", "09 Video players": "media", "10 AI moments": "interface",
+  "11 Cinematic": "cinematic", "12 Social formats": "scenes", "13 Explainers": "scenes", "14 B2B / lead gen": "scenes",
+  "15 Utility": "scenes", "16 Backgrounds": "backgrounds"
+ }
+}

@@ -1,0 +1,2 @@
+.b-stamp { position: absolute; left: 0; top: 0; white-space: nowrap; padding: 14px 36px; border: 10px solid var(--accent); background: var(--cream);
+           color: var(--accent); font-family: var(--head); font-weight: 900; font-size: 120px; text-transform: uppercase; letter-spacing: 0.01em; z-index: 7; }

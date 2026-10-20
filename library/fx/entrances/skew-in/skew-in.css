@@ -1,0 +1,2 @@
+/* skew-in: a block element keeps its own width while it leans. */
+.fx-skew-in { will-change: transform, opacity; }

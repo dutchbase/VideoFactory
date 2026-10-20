@@ -1,0 +1,27 @@
+{
+  "brand": "videofactory",
+  "voice": {
+    "voice_id": "JBFqnCBsd6RMkjVDRZzb",
+    "model": "eleven_v4",
+    "stability": "natural",
+    "similarity_boost": "0.75",
+    "format": "mp3_44100_128"
+  },
+  "language": null,
+  "format": "wide",
+  "engine": "hyperframes",
+  "brand_sources": {
+    "voice.md": {
+      "sha256": "73d9515f97f3d73540e28e1f8fc5a090681768979eeaee88376db68bfde64540",
+      "content": "---\nvoice_id: JBFqnCBsd6RMkjVDRZzb\nmodel: eleven_v4\nstability: natural\nsimilarity_boost: 0.75\nformat: mp3_44100_128\n---\n# VideoFactory voice settings\n\nTwo ways to get a voice. Both make the same video.\n\n1. **Free: record it yourself.** Read `01_voice/script.md` aloud and save the file in `01_voice/`\n   (`voice.wav`, `.m4a` or `.mp3`). Any phone or laptop microphone works in a quiet room.\n2. **Paid: ElevenLabs.** `python anim.py speak <slug>` uses the settings above. The key goes in the local `.env`\n   (`ELEVENLABS_API_KEY=...`), never in a file you commit. Check your key and model first:\n   `python anim.py speak <slug> --check`.\n\nThe voice above is \"George\", one of the default voices every ElevenLabs account has.\nTo change it, copy a voice id from the ElevenLabs voice library into `voice_id`.\nIf your plan does not have `eleven_v4`, `--check` lists the models you can use; put one in `model`.\n\nEach video freezes these settings in its own `settings.json` when it is created, so a change here only affects new videos.\nHow to write a script for a voice, review it and listen to the result: `../../_shared/voice.md`.\n"
+    },
+    "brand.md": {
+      "sha256": "bb24c7da828b170a8e8ff06c248ab9981373373dc1f8ba30e516db05b0aa88c3",
+      "content": "# VideoFactory brand for animation (id: `videofactory`)\n\nThe house brand of this repo. It shows every brand part in one place, so a new brand can copy it.\nValues live in `tokens.js`; this file says how to use them.\n\n## Look\n- Dark studio. Near-black field (`bg`), slightly lighter cards (`surface`), cream text (`ink`).\n- One hot accent: factory orange `#FF5B2E`. Use it for the one thing the viewer must look at. Never for body text.\n- One cool second voice: violet `#7C5CFF`. Use it for a contrast idea, a second series in a chart, or a tag.\n- Green `#3DDC84` means done or correct. Red `#FF4D5E` means wrong or stop. Use them for nothing else.\n- Soft depth: big rounded cards (28 px corners), deep soft shadows, two slow glows in the background. No hard outlines, no textures.\n- Big type with tight letter spacing. Few words on screen; the voice carries the detail.\n\n## Fonts (all SIL Open Font License, local in `_runtime/fonts/`)\n- Headings: Archivo, weight 750\u2013800.\n- Body: Inter.\n- Labels, numbers in code, kickers: JetBrains Mono, uppercase with wide spacing.\n- Hand notes: Caveat, at most one per shot.\n\n## Logo\n- `logo/mark.svg`: the mark in brand colours. `logo/mark-mono.svg`: one colour (`currentColor`).\n- The word mark is live text: `Video` in `ink` and `Factory` in `accent`, Archivo 800. Do not stretch or recolour the mark.\n\n## Motion\n- Things enter fast and land soft (`rise`, `words`, `pop` in `_shared/modern.md`). Exits are short.\n- Each shot has one entrance moment on a spoken cue. Do not animate what the voice does not mention.\n- The motion pack in `library/motion/` uses the same tokens.\n\n## Sound\n- Soft clicks, whooshes and pops, never chiptune. Files and their licences: `sound/SOURCES.md`.\n\n## Cast\n- None. All people in examples are invented. Never use a real customer, quote or face.\n\n## Tone\nRules: `_shared/tone.md`. Brand notes: friendly maker, plain English, short sentences, no hype words.\nAudience: people who want to make explainer videos with an AI agent and do not want to learn video software.\nCall to action: \"Clone the repo and run `/vf-setup`.\"\n"
+    },
+    "tokens.js": {
+      "sha256": "db2705981b6692da3f2041e3383e9df1960f118e4f06ee474e0953d92238bec9",
+      "content": "// VideoFactory brand tokens: the house brand of this repo. Dark studio look, one warm accent, one cool accent.\n// Keep this file flat: one key per line, single quotes, no helpers. Checkers read it with a regex.\nwindow.BrandTokens = {\n  id: 'videofactory', // same as the folder name in brands/\n  name: 'VideoFactory',\n  bg: '#0B0B10', // page background\n  surface: '#16161F', // cards, windows, panels\n  raised: '#20202C', // parts inside a card\n  ink: '#F5F2EA', // main text\n  dim: '#B4B1BF', // secondary text\n  faint: '#77758A', // labels and muted text\n  line: '#2C2C3A', // borders and dividers\n  accent: '#FF5B2E', // brand orange: the one thing to look at\n  accent2: '#7C5CFF', // violet: the second voice\n  green: '#3DDC84', // success\n  danger: '#FF4D5E', // error\n  ramp: ['#0B0B10','#16161F','#8A2E14','#FF5B2E','#FF9A6B','#FFD8C7','#F5F2EA','#FBF9F4'], // darkest to lightest; 3 = accent, 6 = cream\n  font: '\"Inter\", system-ui, sans-serif', // body text\n  head: '\"Archivo\", \"Inter\", system-ui, sans-serif', // headings\n  mono: '\"JetBrains Mono\", ui-monospace, monospace', // labels and code\n  hand: '\"Caveat\", cursive', // handwritten notes\n  grads: [['#FF5B2E','#FFB547'],['#7C5CFF','#C084FC'],['#14B8A6','#5EEAD4'],['#3DDC84','#A3E635'],['#FF4D8D','#FF9A6B']], // gradient pairs [from, to]\n};\n"
+    }
+  }
+}

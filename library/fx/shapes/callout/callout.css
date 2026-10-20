@@ -1,0 +1,6 @@
+/* callout: the box and the line sit on top of their root; the box is centred on its left/top point by the tween. */
+.fx-callout-svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 3; }
+.fx-callout-line { fill: none; stroke-linecap: round; }
+.fx-callout { position: absolute; z-index: 4; box-sizing: border-box; padding: 18px 34px; border: 3px solid var(--accent); border-radius: 22px;
+  background: color-mix(in srgb, var(--ink) 8%, var(--cream)); color: var(--ink); font-family: var(--head); font-weight: 700; line-height: 1.1;
+  white-space: nowrap; box-shadow: 0 14px 34px -14px rgba(0, 0, 0, 0.5); }

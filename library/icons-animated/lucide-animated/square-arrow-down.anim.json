@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "name": "square-arrow-down",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "m8 12 4 4 4-4"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "y": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "base": {
+    "d": "M12 8v8"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "d": [
+       "M12 8v8",
+       "M12 8v5",
+       "M12 8v8"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

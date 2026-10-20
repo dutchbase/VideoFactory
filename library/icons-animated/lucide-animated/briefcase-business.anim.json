@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "name": "briefcase-business",
+ "dur": 0.9,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "12px",
+    "y": "4px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.25,
+      0.5,
+      0.75,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       4,
+       -3,
+       2,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

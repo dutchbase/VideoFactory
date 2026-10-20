@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "name": "chevron-first",
+ "dur": 0.6,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.3,
+      0.7,
+      1
+     ],
+     "props": {
+      "x": [
+       -2,
+       1,
+       -1,
+       0
+      ]
+     },
+     "pre": {
+      "x": 0
+     }
+    }
+   ]
+  }
+ ]
+}

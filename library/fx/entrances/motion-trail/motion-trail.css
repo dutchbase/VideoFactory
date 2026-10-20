@@ -1,0 +1,2 @@
+/* motion-trail: echoes are copies of the element placed behind it. */
+.fx-trail-echo { will-change: transform, opacity; }

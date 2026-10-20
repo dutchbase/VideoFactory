@@ -1,0 +1,7 @@
+/* marquee: a clipped row; the track holds copies of one set of words side by side. */
+.fx-marquee { position: relative; overflow: hidden; white-space: nowrap; color: var(--fx-marquee-color, var(--ink)); font-family: var(--head); font-weight: 800; line-height: 1.2;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent); }
+.fx-marquee-track { display: flex; width: max-content; will-change: transform; }
+.fx-marquee-set { display: flex; align-items: center; flex: none; }
+.fx-marquee-word { flex: none; letter-spacing: 0.02em; }
+.fx-marquee-dot { flex: none; width: 0.28em; height: 0.28em; margin: 0 var(--fx-marquee-gap, 96px); border-radius: 50%; background: var(--accent); }

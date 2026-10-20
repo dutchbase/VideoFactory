@@ -1,0 +1,50 @@
+{
+ "v": 1,
+ "name": "construction",
+ "dur": null,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "linear",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "x": [
+       0,
+       6
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "x": [
+       6,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "v": 1,
+ "name": "coffee",
+ "dur": null,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.04,
+     "duration": 1.5,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ],
+      "y": [
+       0,
+       -3
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -3,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.08,
+     "duration": 1.5,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ],
+      "y": [
+       0,
+       -3
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -3,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.5,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ],
+      "y": [
+       0,
+       -3
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -3,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

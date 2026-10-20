@@ -1,0 +1,48 @@
+# Secrets and local state. Never commit these.
+.env*
+!.env.example
+_auth/
+.studio/
+.claude/settings.local.json
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Downloaded tools and caches
+library/cache/
+# Sound library: audio stays local (licences forbid sharing the files); only the contract and source list are committed
+library/audio/*
+!library/audio/CONTEXT.md
+!library/audio/sources.json
+tools/hyperframes/node_modules/
+tools/iconanim/node_modules/
+tools/earshot/
+
+# Agent work folders
+.worktrees/
+.superpowers/
+.impeccable/
+.playwright-mcp/
+design-system/
+
+# Video outputs: big or generated files stay local
+videos/*/*/01_voice/takes/
+videos/*/*/00_research/pages/
+videos/*/*/05_render/_segments/
+videos/*/*/05_render/*.mp4
+videos/*/*/05_render/check.md
+videos/*/*/05_render/check-video.md
+videos/*/*/05_render/listen.md
+videos/*/*/05_render/benchmarks/
+videos/*/*/05_render/review-rounds/
+
+# The demo video ships with the repo
+!videos/videofactory/what-is-videofactory/05_render/what-is-videofactory.mp4
+
+# Generated setup fixture output
+tests/fixtures/silent-first-scene/05_render/*.mp4
+tests/fixtures/silent-first-scene/05_render/*.render.json
+tests/fixtures/silent-first-scene/05_render/check*.md
+tests/fixtures/silent-first-scene/05_render/listen.md

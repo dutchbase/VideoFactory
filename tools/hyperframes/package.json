@@ -1,0 +1,8 @@
+{
+  "name": "va-animations-hyperframes",
+  "private": true,
+  "description": "Pinned HyperFrames toolchain (optional second render engine)",
+  "dependencies": {
+    "hyperframes": "0.8.86"
+  }
+}

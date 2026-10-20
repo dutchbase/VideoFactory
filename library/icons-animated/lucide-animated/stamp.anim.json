@@ -1,0 +1,108 @@
+{
+ "v": 1,
+ "name": "stamp",
+ "dur": 0.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      0.82,
+      1
+     ],
+     "props": {
+      "y": [
+       0,
+       4,
+       4,
+       -1,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      0.82,
+      1
+     ],
+     "props": {
+      "y": [
+       0,
+       4,
+       4,
+       -1,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "origin": {
+    "x": "12px",
+    "y": "22px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      1
+     ],
+     "props": {
+      "opacity": [
+       1,
+       0.4,
+       1.4,
+       1
+      ],
+      "scaleX": [
+       1,
+       0.85,
+       0.85,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

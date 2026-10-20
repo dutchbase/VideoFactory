@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<canvas version="0.9" width="256" height="256" xres="2834.645752" yres="2834.645752" view-box="-1 1 1 -1" antialias="1" fps="24" begin-time="0f" end-time="239f" bgcolor="0 0 0 0">
+  <name>Synfig native switch and gesture pilot</name>
+  <desc>Synthetic proof fixture; no approved character artwork.</desc>
+  <layer type="switch" active="true" version="0.0" desc="Expression switch">
+    <param name="z_depth"><real value="0"/></param>
+    <param name="amount"><real value="1"/></param>
+    <param name="blend_method"><integer value="0"/></param>
+    <param name="origin"><vector><x>0</x><y>0</y></vector></param>
+    <param name="canvas"><canvas>
+      <layer type="import" active="true" version="0.1" desc="eyes-open">
+      <param name="z_depth"><real value="0"/></param>
+      <param name="amount"><real value="1"/></param>
+      <param name="blend_method"><integer value="0"/></param>
+      <param name="tl"><vector><x>-0.5</x><y>0.7</y></vector></param>
+      <param name="br"><vector><x>0.5</x><y>-0.3</y></vector></param>
+      <param name="c"><integer value="1"/></param>
+      <param name="gamma_adjust"><real value="1"/></param>
+      <param name="filename"><string>./face-open.png</string></param>
+      <param name="time_offset"><time value="0s"/></param>
+    </layer>
+      <layer type="import" active="true" version="0.1" desc="eyes-closed">
+      <param name="z_depth"><real value="0"/></param>
+      <param name="amount"><real value="1"/></param>
+      <param name="blend_method"><integer value="0"/></param>
+      <param name="tl"><vector><x>-0.5</x><y>0.7</y></vector></param>
+      <param name="br"><vector><x>0.5</x><y>-0.3</y></vector></param>
+      <param name="c"><integer value="1"/></param>
+      <param name="gamma_adjust"><real value="1"/></param>
+      <param name="filename"><string>./face-closed.png</string></param>
+      <param name="time_offset"><time value="0s"/></param>
+    </layer>
+    </canvas></param>
+    <param name="time_offset"><time value="0s"/></param>
+    <param name="children_lock"><bool value="false"/></param>
+    <param name="outline_grow"><real value="0"/></param>
+    <param name="layer_name"><animated type="string">
+      <waypoint time="0f"><string>eyes-open</string></waypoint>
+      <waypoint time="96f"><string>eyes-closed</string></waypoint>
+      <waypoint time="104f"><string>eyes-open</string></waypoint>
+    </animated></param>
+  </layer>
+  <layer type="PasteCanvas" active="true" version="0.1" desc="Reusable gesture group">
+    <param name="z_depth"><real value="0"/></param>
+    <param name="amount"><real value="1"/></param>
+    <param name="blend_method"><integer value="0"/></param>
+    <param name="origin"><animated type="vector">
+      <waypoint time="0f" before="linear" after="linear"><vector><x>0</x><y>0</y></vector></waypoint>
+      <waypoint time="72f" before="linear" after="linear"><vector><x>0</x><y>0</y></vector></waypoint>
+      <waypoint time="120f" before="linear" after="linear"><vector><x>0.2</x><y>0.22</y></vector></waypoint>
+      <waypoint time="168f" before="linear" after="linear"><vector><x>0</x><y>0</y></vector></waypoint>
+      <waypoint time="239f" before="linear" after="linear"><vector><x>0</x><y>0</y></vector></waypoint>
+    </animated></param>
+    <param name="canvas"><canvas><layer type="import" active="true" version="0.1" desc="arm">
+      <param name="z_depth"><real value="0"/></param>
+      <param name="amount"><real value="1"/></param>
+      <param name="blend_method"><integer value="0"/></param>
+      <param name="tl"><vector><x>-0.1</x><y>0.1</y></vector></param>
+      <param name="br"><vector><x>0.9</x><y>-0.9</y></vector></param>
+      <param name="c"><integer value="1"/></param>
+      <param name="gamma_adjust"><real value="1"/></param>
+      <param name="filename"><string>./arm.png</string></param>
+      <param name="time_offset"><time value="0s"/></param>
+    </layer></canvas></param>
+    <param name="time_offset"><time value="0s"/></param>
+    <param name="children_lock"><bool value="false"/></param>
+    <param name="outline_grow"><real value="0"/></param>
+  </layer>
+</canvas>

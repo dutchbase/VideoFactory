@@ -1,0 +1,6 @@
+/* line-chart: axis labels and the last value sit on the ground, outside the line. */
+.fx-line-chart { color: var(--ink); font-family: var(--font); }
+.fx-line-chart-plot { position: relative; }
+.fx-line-chart-plot svg { display: block; }
+.fx-line-chart-tick { position: absolute; transform: translateX(-50%); font: 600 32px/1 var(--font); color: var(--dim); white-space: nowrap; }
+.fx-line-chart-last { position: absolute; transform: translateY(-50%); font: 800 64px/1 var(--head); color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }

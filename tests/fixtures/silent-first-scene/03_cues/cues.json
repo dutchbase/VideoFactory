@@ -1,0 +1,58 @@
+{
+ "meta": {
+  "duration": 8.0,
+  "voice": "../01_voice/voice.wav",
+  "slug": "silent-first-scene",
+  "music": null,
+  "music_gain": 0.25
+ },
+ "cueList": [
+  {
+   "id": "intro",
+   "start": 0.0,
+   "end": 4.0,
+   "phraseEnd": 0.0,
+   "phrase": null,
+   "text": "",
+   "note": "Logo, the brand name and the title \"Your first scene\".",
+   "score": 1.0,
+   "sfx": []
+  },
+  {
+   "id": "build",
+   "start": 4.0,
+   "end": 8.0,
+   "phraseEnd": 4.0,
+   "phrase": null,
+   "text": "",
+   "note": "Three cards slide in: browser, FFmpeg, checks. The last card lifts.",
+   "score": 1.0,
+   "sfx": []
+  }
+ ],
+ "cues": {
+  "intro": {
+   "id": "intro",
+   "start": 0.0,
+   "end": 4.0,
+   "phraseEnd": 0.0,
+   "phrase": null,
+   "text": "",
+   "note": "Logo, the brand name and the title \"Your first scene\".",
+   "score": 1.0,
+   "sfx": []
+  },
+  "build": {
+   "id": "build",
+   "start": 4.0,
+   "end": 8.0,
+   "phraseEnd": 4.0,
+   "phrase": null,
+   "text": "",
+   "note": "Three cards slide in: browser, FFmpeg, checks. The last card lifts.",
+   "score": 1.0,
+   "sfx": []
+  }
+ },
+ "words": []
+}

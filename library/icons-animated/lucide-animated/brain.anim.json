@@ -1,0 +1,188 @@
+{
+ "v": 1,
+ "name": "brain",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "scale": [
+       1,
+       1.08,
+       1
+      ],
+      "strokeWidth": [
+       2,
+       2.25,
+       2
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 1,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.4,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.25,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.5,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.25,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.8,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.07,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.8,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.07,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.8,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.14,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.4,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "pathLength": [
+       1,
+       0.8,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.14,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

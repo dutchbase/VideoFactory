@@ -1,0 +1,4 @@
+.b-panel { position: absolute; inset: 0; background: var(--accent); z-index: 9; }
+.b-panel-big { position: absolute; left: 6.5%; top: 29%; font-family: var(--head); font-weight: 900; font-size: 210px; line-height: 0.9;
+               text-transform: uppercase; letter-spacing: -0.03em; color: var(--ink); }
+.b-panel-line { display: block; opacity: 0; }

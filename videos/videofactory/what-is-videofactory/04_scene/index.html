@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>What Is VideoFactory</title>
+<link rel="stylesheet" href="runtime/fonts/fonts.css">
+<link rel="stylesheet" href="runtime/modern.css">
+<style>
+  /* Styles for this scene only. Brand values come from tokens.js through the CSS variables. */
+  .vf-shot { gap: 44px; padding-top: 100px; padding-bottom: 200px; }
+  .mono { font-family: var(--mono); }
+  .vf-term, .vf-code { text-align: left; }
+  .cmd { font: 700 40px/1 var(--mono); color: var(--accent); letter-spacing: -.01em; }
+  .grow { flex: 1; min-width: 0; }
+
+  /* hook and turn: the three tools */
+  .tools { display: flex; gap: 44px; }
+  .tool { width: 320px; align-items: center; text-align: center; padding: 48px 30px 44px; }
+  .tool b { position: relative; font: 750 46px/1.1 var(--head); letter-spacing: -.02em; }
+  .tool b::after { content: ""; position: absolute; left: -6%; right: -6%; top: 54%; height: 6px; border-radius: 3px;
+    background: var(--danger); transform: scaleX(var(--strike, 0)); transform-origin: left; }
+  .weekend { margin-top: 8px; }
+  .tools.fold { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; }
+  .fold .tool { opacity: .45; }
+  .fold .tool b { --strike: 1; }
+
+  /* chat */
+  .chat { width: 1180px; padding: 40px 48px; gap: 22px; }
+  .bubble { max-width: 78%; padding: 22px 30px; border-radius: 26px; font-size: 36px; line-height: 1.3; }
+  .bubble.me { align-self: flex-end; background: var(--accent); color: var(--bg); font-weight: 600; border-bottom-right-radius: 8px; }
+  .bubble.ai { align-self: flex-start; background: var(--raised); color: var(--ink); border-bottom-left-radius: 8px; }
+  .bubble.me.mono { font-family: var(--mono); font-weight: 700; }
+
+  /* folder tree and stage steps */
+  .what-top { display: flex; gap: 72px; align-items: center; justify-content: center; width: 100%; }
+  .tree pre { font-size: 40px; line-height: 1.5; color: var(--dim); padding: 30px 44px; }
+  .tree pre b { color: var(--ink); font-weight: 700; }
+  .agent-col { display: flex; flex-direction: column; gap: 30px; }
+  .agent-col .vf-row { gap: 22px; }
+  .agent-col .vf-chip { font-size: 30px; padding: 16px 30px; }
+  .stages { display: flex; gap: 22px; width: 100%; }
+  .stage { flex: 1; display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-radius: 22px;
+    background: var(--surface); border: 1.5px solid var(--line); font: 700 30px/1.1 var(--head); }
+  .stage .ck { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    background: var(--green); color: var(--bg); font-size: 28px; }
+
+  /* lists, terminals */
+  .need { min-width: 760px; padding: 44px 52px; }
+  .need .vf-list li { font-size: 50px; }
+  .vf-shot .term-wide { flex: 0 0 1000px; width: 1000px; }
+  .vf-term pre { font-size: 30px; line-height: 1.6; color: var(--ink); }
+  .term-wide pre, .vf-scan pre { font-size: 40px; }
+  .vf-term .p { color: var(--accent); }
+  .vf-term .ok { color: var(--green); font-weight: 700; }
+  .vf-term .opt { color: var(--faint); }
+  .vf-term .dim { color: var(--dim); }
+  .row-line { display: block; white-space: pre; }
+  .testcard { width: 420px; align-items: center; text-align: center; }
+  .testcard .vf-tile { width: 150px; height: 150px; font-size: 78px; border-radius: 40px; }
+  .ok-line { font: 700 38px/1.2 var(--head); color: var(--green); }
+
+  /* optional parts: a grid of names, and one big panel that says what the named part does */
+  .vf-shot.opt-split { gap: 72px; }
+  .vf-shot .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; width: 940px; flex: 0 0 940px; }
+  .optc { --lit: 0; flex-direction: row; align-items: center; gap: 22px; padding: 26px 26px; border-radius: 24px;
+    border-color: color-mix(in srgb, var(--accent) calc(var(--lit) * 100%), var(--line)); }
+  .optc > * { opacity: calc(.32 + .68 * var(--lit)); }
+  .optc .vf-tile { width: 76px; height: 76px; font-size: 40px; border-radius: 20px; flex: none; }
+  .optc b { display: block; font: 750 40px/1.1 var(--head); letter-spacing: -.02em; white-space: nowrap; }
+  .opt-side { display: flex; flex-direction: column; gap: 40px; flex: 1; min-width: 0; height: 700px; justify-content: center; }
+  .spot { position: relative; height: 430px; }
+  .spot-p { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
+  .spot-p p { font: 750 56px/1.1 var(--head); letter-spacing: -.025em; }
+  .spot-p .vf-row { gap: 16px; }
+  .spot-p .vf-chip { font-size: 32px; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 16px 26px; }
+  .spot-word { display: inline-flex; align-items: baseline; gap: 22px; align-self: flex-start; padding: 22px 30px; border-radius: 22px;
+    background: var(--surface); border: 1.5px solid var(--accent); }
+  .spot-word b { font: 750 56px/1 var(--head); }
+  .spot-word small { font: 600 34px var(--mono); color: var(--accent); }
+  .spot svg { width: 100%; height: 150px; }
+  .photos { display: flex; gap: 20px; }
+  .photos img { width: 180px; height: 240px; object-fit: cover; border-radius: 20px; border: 1.5px solid var(--line); }
+  .spot-p .url-mid { font: 700 34px/1.25 var(--mono); letter-spacing: 0; color: var(--ink); }
+  .url-mid em { font-style: normal; color: var(--accent); }
+
+  /* /vf */
+  .vf-scan { width: 900px; }
+  .next-card { width: 560px; }
+  .next-card .cmd { font-size: 52px; }
+  .cmd-grid { display: grid; grid-template-columns: repeat(5, auto); gap: 20px 22px; justify-content: center; }
+  .cmd-grid .vf-chip { font-size: 32px; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 16px 26px; }
+  .cmd-grid .vf-chip.hot { color: var(--bg); }
+
+  /* brand */
+  .brand-top { display: flex; align-items: center; gap: 80px; width: 100%; }
+  .wordmark { display: flex; align-items: center; gap: 30px; }
+  .wordmark img { height: 150px; }
+  .wordmark b { font: 800 104px/1 var(--head); letter-spacing: -.045em; }
+  .wordmark b em { font-style: normal; color: var(--accent); }
+  .swatches { display: flex; gap: 18px; }
+  .sw { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .sw i { width: 104px; height: 104px; border-radius: 26px; border: 1.5px solid var(--line); }
+  .sw span { font: 600 26px var(--mono); color: var(--dim); }
+  .brand-bottom { display: flex; gap: 36px; width: 100%; }
+  .fonts { flex: 1.6; }
+  .fonts .f { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.5px solid var(--line); padding-bottom: 10px; }
+  .fonts .f:last-child { border-bottom: 0; }
+  .fonts .f small { font: 500 30px var(--mono); color: var(--dim); }
+  .voicec { flex: 1; }
+  .styles { display: flex; gap: 44px; }
+  .stylec { width: 620px; height: 470px; }
+  .stylec .mini { flex: 1; border-radius: 18px; background: var(--bg); border: 1.5px solid var(--line); padding: 30px; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
+  .stylec .mini b { font: 800 56px/1 var(--head); letter-spacing: -.04em; }
+  .stylec .bar { height: 14px; border-radius: 7px; background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); width: 70%; }
+  .stylec.new { border-style: dashed; border-width: 3px; background: transparent; box-shadow: none; align-items: center; justify-content: center; text-align: center; }
+  .stylec.new .vf-tile { width: 140px; height: 140px; font-size: 72px; border-radius: 40px; }
+  .char-steps .vf-step { position: relative; }
+  .char-steps .vf-step::before { content: none; }
+  .stamp { align-self: flex-start; margin-top: 8px; padding: 10px 20px; border: 4px solid var(--green); color: var(--green);
+    border-radius: 12px; font: 800 26px var(--mono); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-8deg); background: var(--bg); }
+
+  /* new video */
+  .frames { display: flex; gap: 36px; align-items: flex-end; }
+  .frm { border: 3px solid var(--accent2); border-radius: 18px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent2) 10%, transparent); }
+  .frm span { font: 700 32px var(--mono); color: var(--ink); }
+  .frm.wide { width: 400px; height: 225px; }
+  .frm.tall { width: 160px; height: 284px; }
+  .brief { width: 760px; }
+  .brief dl { display: grid; grid-template-columns: auto 1fr; gap: 22px 28px; font-size: 40px; line-height: 1.2; }
+  .brief dt { font: 600 28px/1.6 var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
+  .brief dd { color: var(--ink); }
+
+  /* screens */
+  .screen { width: 1360px; }
+  .wide-screen { width: 1600px; }
+  .wide-screen .view { height: 700px; }
+  .screen .view { height: 560px; overflow: hidden; position: relative; }
+  .screen .view img { position: absolute; left: 0; top: 0; width: 100%; }
+  .float-chip { position: absolute; z-index: 3; }
+  .src { font-size: 34px; text-transform: none; letter-spacing: 0; color: var(--ink); }
+  .screen .cmd-tag { position: absolute; left: 40px; top: 96px; z-index: 3; padding: 18px 28px; border-radius: 18px; background: var(--bg);
+    border: 1.5px solid var(--line); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); }
+  .screen .cmd-tag .cmd { font-size: 46px; }
+
+  /* script and tone */
+  .script-card { width: 1300px; }
+  .script-card pre { font-size: 40px; }
+  .tone { display: flex; flex-direction: column; align-items: center; gap: 30px; }
+  .tone .vf-icon { transform: rotate(90deg); }
+  .tone .bad { font: 750 72px/1.1 var(--head); color: var(--faint); position: relative; white-space: nowrap; }
+  .tone .bad::after { content: ""; position: absolute; left: -2%; right: -2%; top: 52%; height: 7px; border-radius: 4px; background: var(--danger); transform: scaleX(var(--strike, 0)); transform-origin: left; }
+  .tone .good { font: 750 60px/1.12 var(--head); max-width: 1300px; }
+  .tone .vf-icon { font-size: 64px; color: var(--accent); }
+
+  /* voice */
+  .voice-cards { display: flex; gap: 44px; }
+  .vcard { width: 640px; padding: 0; overflow: hidden; gap: 0; }
+  .vcard .pic { height: 300px; position: relative; overflow: hidden; }
+  .vcard .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .vcard .pic.wave { display: grid; place-items: center; background: var(--raised); }
+  .vcard .meta { padding: 30px 38px; display: flex; justify-content: space-between; align-items: center; }
+  .vcard h3 { font: 750 46px/1.05 var(--head); }
+
+  /* transcript and cues */
+  .words { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; max-width: 1600px; }
+  .word { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px 22px; border-radius: 20px; background: var(--surface); border: 1.5px solid var(--line); }
+  .word b { font: 750 52px/1 var(--head); color: var(--faint); letter-spacing: -.02em; }
+  .word small { font: 600 30px var(--mono); color: var(--faint); padding: 4px 10px; border-radius: 8px; }
+  .track { position: relative; width: 1500px; height: 300px; }
+  .track .line { position: absolute; left: 0; right: 0; top: 170px; height: 4px; border-radius: 2px; background: var(--line); }
+  .track .tick { position: absolute; top: 160px; width: 4px; height: 24px; border-radius: 2px; background: var(--dim); }
+  .track .tw { position: absolute; top: 204px; transform: translateX(-50%); font: 600 30px var(--font); color: var(--dim); white-space: nowrap; }
+  .track .mk { position: absolute; top: 70px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .track .mk i { width: 34px; height: 34px; background: var(--accent); transform: rotate(45deg); border-radius: 6px; }
+  .track .mk span { font: 700 30px var(--mono); color: var(--accent); }
+  .transcript-term { align-self: center; }
+  .transcript-term pre { font-size: 44px; }
+
+  /* scene */
+  .build { display: flex; align-items: center; gap: 50px; }
+  .build .vf-code { width: 760px; }
+  .build .vf-code pre { font-size: 32px; }
+  .build .arrow { font-size: 80px; color: var(--accent); }
+  .mini-frame { width: 720px; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); background: var(--bg); position: relative;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .mini-frame b { font: 750 34px/1.05 var(--head); letter-spacing: -.02em; }
+  .mini-frame .mt { display: flex; gap: 16px; }
+  .mini-frame .mt span { width: 120px; height: 100px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--accent); font-size: 42px; }
+  .lib { display: flex; align-items: center; gap: 70px; }
+  .icon-grid { display: grid; grid-template-columns: repeat(4, 120px); gap: 22px; }
+  .icon-grid .vf-tile { width: 120px; height: 120px; font-size: 60px; }
+  #lottie { width: 520px; height: 520px; border-radius: 30px; background: var(--surface); border: 1.5px solid var(--line); }
+  .stock { display: flex; gap: 32px; align-items: stretch; }
+  .clip-frame { width: 860px; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); }
+  .stock .side { display: flex; flex-direction: column; gap: 32px; width: 520px; }
+  .stock .side img { width: 100%; height: 300px; object-fit: cover; border-radius: 24px; border: 1.5px solid var(--line); }
+  .music { flex-direction: row; align-items: center; gap: 24px; padding: 26px 30px; }
+  .music b { display: block; font: 750 38px/1.1 var(--head); }
+  .music span { display: block; font-size: 30px; color: var(--dim); margin-top: 6px; }
+  .rec { width: 1100px; }
+  .rec .url { font-size: 26px; }
+  .motion-frame { width: 1380px; border-radius: 26px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .fx-row { display: flex; gap: 28px; }
+  .fx { width: 330px; align-items: center; padding: 30px; }
+  .fx svg { width: 100%; height: 110px; }
+  .fx path { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; }
+  .fx.two path { stroke: var(--accent2); }
+  .fx b { font: 700 32px var(--mono); }
+  .src-row { display: flex; gap: 24px; }
+  .src-row .vf-chip { font-size: 30px; padding: 18px 32px; }
+
+  /* check */
+  .check { display: flex; align-items: center; gap: 70px; }
+  .sheet { width: 880px; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .sheet img { display: block; width: 100%; }
+  .counters { display: flex; flex-direction: column; gap: 24px; width: 700px; }
+  .counter { flex-direction: row; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 34px; text-align: left; }
+  .counter span { font-size: 40px; line-height: 1.15; color: var(--ink); }
+  .counter b { font: 800 72px/1 var(--head); font-variant-numeric: tabular-nums; color: var(--danger); }
+
+  /* render */
+  .player-frame { width: 100%; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .file-chip { align-self: flex-start; text-transform: none; letter-spacing: 0; font-size: 28px; }
+  .mix { width: 100%; height: auto; }
+  .mix .lab { font: 700 26px var(--mono); fill: var(--dim); }
+  .mix path { fill: none; stroke-width: 6; stroke-linecap: round; }
+  .extras { display: flex; gap: 48px; align-items: center; }
+  .extras .vf-phone { width: 250px; padding: 12px; border-radius: 48px; }
+  .extras .vf-phone > * { border-radius: 38px; }
+  .phone-mini { background: var(--bg) !important; display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+  .phone-mini b { font: 750 34px/1.05 var(--head); text-align: center; padding: 0 20px; }
+  .phone-mini .mt span { width: 70px; height: 70px; border-radius: 14px; background: var(--surface); border: 1.5px solid var(--line); display: inline-grid; place-items: center; color: var(--accent); font-size: 32px; margin: 0 4px; }
+  .thumb { width: 480px; aspect-ratio: 16 / 9; border-radius: 20px; background: var(--bg); border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 18px; }
+  .thumb img { height: 90px; }
+  .thumb b { font: 800 50px/1 var(--head); letter-spacing: -.04em; }
+  .thumb b em { font-style: normal; color: var(--accent); }
+  .chapters { width: 520px; }
+  .chapters li { display: flex; gap: 24px; font-size: 40px; }
+  .chapters li span { font: 600 36px var(--mono); color: var(--accent); width: 104px; }
+  .chapters ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .earshot { width: 1100px; flex-direction: row; align-items: center; gap: 36px; }
+  .earshot .vf-tile { width: 130px; height: 130px; font-size: 66px; }
+  .earshot .cmd { font-size: 40px; }
+
+  /* studio, status, rules, end */
+  .studio-pair { position: relative; width: 1560px; height: 780px; }
+  .studio-pair .vf-browser { position: absolute; width: 1180px; }
+  .studio-pair .a { left: 0; top: 0; }
+  .studio-pair .b { right: 0; bottom: 0; }
+  .studio-pair .view { height: 560px; overflow: hidden; }
+  .studio-pair .view img { width: 100%; }
+  .status-term { width: 1640px; }
+  .status-term pre { font-size: 44px; }
+  .stat-table { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0 16px; padding: 10px 44px 40px; }
+  .stat-table.hd { padding-bottom: 0; }
+  .stat-table .h { font: 600 30px var(--mono); color: var(--dim); padding-bottom: 14px; border-bottom: 1.5px solid var(--line); }
+  .stat-table .v { font: 750 52px/1 var(--head); padding-top: 22px; color: var(--green); }
+  .stat-table .v.no { color: var(--faint); }
+  .stat-id { font: 600 34px var(--mono); color: var(--ink); padding: 0 44px 22px; }
+  .next-line { font: 700 52px/1.1 var(--head); }
+  .next-line .cmd { font-size: 52px; }
+  .rule-line { font: 800 120px/1 var(--head); letter-spacing: -.045em; }
+  .steps-dots { display: flex; gap: 30px; align-items: center; }
+  .steps-dots i { width: 120px; height: 16px; border-radius: 8px; background: var(--line); }
+  .steps-dots i.on { background: var(--accent); }
+  .yes-btn { padding: 28px 60px; border-radius: 20px; background: var(--green); color: var(--bg); font: 800 50px/1 var(--head); }
+  .used { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1500px; }
+  .used .vf-chip { text-transform: none; letter-spacing: 0; font-size: 28px; color: var(--ink); }
+  .end-mark { display: flex; align-items: center; gap: 36px; }
+  .end-mark img { height: 190px; }
+  .end-mark b { font: 800 150px/1 var(--head); letter-spacing: -.05em; }
+  .end-mark b em { font-style: normal; color: var(--accent); }
+  .url-big { font: 700 62px/1 var(--mono); color: var(--ink); }
+  .url-big em { font-style: normal; color: var(--accent); }
+</style>
+</head>
+<body>
+<div id="stage" data-width="1920" data-height="1080">
+  <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+
+  <!-- 0:00 hook: three tools, then a lost weekend -->
+  <section class="vf-shot center" data-cue="hook">
+    <h2 class="vf-h2" data-in="words">An explainer video usually means</h2>
+    <div class="tools" data-in="drop" data-stagger="0.12" data-at="hook+0.5">
+      <div class="tool vf-card"><span class="vf-tile"><i data-icon="video"></i></span><b>Editor</b></div>
+      <div class="tool vf-card"><span class="vf-tile two"><i data-icon="layers"></i></span><b>Timeline</b></div>
+      <div class="tool vf-card"><span class="vf-tile"><i data-icon="headphones"></i></span><b>Audio</b></div>
+    </div>
+    <p class="vf-title weekend" data-in="pop" data-at="hook.weekend">a lost <em>weekend</em></p>
+  </section>
+
+  <!-- 0:06 turn: the tools fold into one chat -->
+  <section class="vf-shot center" data-cue="turn">
+    <div class="tools fold">
+      <div class="tool vf-card"><span class="vf-tile"><i data-icon="video"></i></span><b>Editor</b></div>
+      <div class="tool vf-card"><span class="vf-tile two"><i data-icon="layers"></i></span><b>Timeline</b></div>
+      <div class="tool vf-card"><span class="vf-tile"><i data-icon="headphones"></i></span><b>Audio</b></div>
+    </div>
+    <div class="vf-card chat">
+      <div class="bubble me mono">/vf-new-video</div>
+      <div class="bubble ai">Which brand? Wide or tall?</div>
+      <div class="bubble me">House brand. Wide.</div>
+    </div>
+  </section>
+
+  <!-- 0:09 what: one folder, your agent, six checked stages -->
+  <section class="vf-shot center" data-cue="what">
+    <h2 class="vf-h2" data-in="words" data-delay="0.2">One folder. Your <em>agent</em> does the work.</h2>
+    <div class="what-top">
+      <div class="vf-code tree" data-in="rise">
+        <div class="top"><i></i><i></i><i></i></div>
+        <pre><b>videofactory/</b>
+  brands/
+  videos/
+  anim.py</pre>
+      </div>
+      <div class="agent-col">
+        <div class="vf-row" data-in="pop" data-stagger="0.12" data-at="what.agent">
+          <span class="vf-chip hot">Claude Code</span><span class="vf-chip hot">Codex</span>
+        </div>
+        <div class="vf-row">
+          <span class="vf-chip" data-in="rise" data-at="@choices>what">You choose</span><span class="vf-chip ok" data-in="rise" data-at="@check>what">You check</span>
+        </div>
+      </div>
+    </div>
+    <div class="stages" data-in="rise" data-stagger="0.07" data-at="what.check">
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Research</div>
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Voice</div>
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Words</div>
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Cues</div>
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Scene</div>
+      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Render</div>
+    </div>
+  </section>
+
+  <!-- 0:19 setup: what you need -->
+  <section class="vf-shot center" data-cue="setup" data-until="setup.type">
+    <h2 class="vf-title" data-in="words">What you need</h2>
+    <div class="vf-card need" data-in="rise" data-delay="0.2">
+      <ul class="vf-list">
+        <li data-in="left" data-at="setup.need"><i data-icon="laptop"></i>Linux</li>
+        <li data-in="left" data-at="@python>setup.need"><i data-icon="code"></i>Python 3.12</li>
+        <li data-in="left" data-at="@ffmpeg>setup.need"><i data-icon="video"></i>FFmpeg</li>
+        <li data-in="left" data-at="setup.agent"><i data-icon="bot"></i>Claude Code or Codex</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 0:28 setup: /vf-setup, the doctor rows, a test video -->
+  <section class="vf-shot split" data-cue="setup.type" data-until="optional">
+    <div class="vf-term term-wide" data-in="rise">
+      <div class="top"><i></i><i></i><i></i></div>
+      <pre><span class="row-line"><span class="p">&gt; </span><span id="t-setup">/vf-setup</span></span><span class="doc" data-in="left" data-stagger="0.3" data-at="setup.doctor"><span class="row-line"><span class="ok">OK</span>  Python    <span class="dim">3.12.14</span></span><span class="row-line"><span class="ok">OK</span>  Chromium  <span class="dim">opens a page</span></span><span class="row-line"><span class="ok">OK</span>  ffmpeg    <span class="dim">n9.0.2</span></span><span class="row-line"><span class="ok">OK</span>  Fonts     <span class="dim">with licences</span></span><span class="row-line"><span class="ok">OK</span>  Whisper   <span class="dim">installed</span></span></span></pre>
+    </div>
+    <div class="vf-card testcard" data-in="pop" data-at="setup.test">
+      <span class="vf-tile"><i data-icon="play"></i></span>
+      <h3>Test video</h3>
+      <p class="ok-line">All required parts are OK.</p>
+    </div>
+  </section>
+
+  <!-- 0:36 optional parts: the grid names them, the panel says what each one does -->
+  <section class="vf-shot split opt-split" data-cue="optional">
+    <div class="opt-grid" data-in="rise" data-stagger="0.04">
+      <div class="vf-card optc" id="o-whisper"><span class="vf-tile"><i data-icon="clock"></i></span><b>Whisper</b></div>
+      <div class="vf-card optc" id="o-eleven"><span class="vf-tile two"><i data-icon="mic"></i></span><b>ElevenLabs</b></div>
+      <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="camera"></i></span><b>Pexels</b></div>
+      <div class="vf-card optc o-stock"><span class="vf-tile two"><i data-icon="image"></i></span><b>Pixabay</b></div>
+      <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="image"></i></span><b>Unsplash</b></div>
+      <div class="vf-card optc" id="o-earshot"><span class="vf-tile two"><i data-icon="headphones"></i></span><b>Earshot</b></div>
+      <div class="vf-card optc" id="o-node"><span class="vf-tile"><i data-icon="code"></i></span><b>Node</b></div>
+      <div class="vf-card optc" id="o-form"><span class="vf-tile two"><i data-icon="message-circle"></i></span><b>Brainstormform</b></div>
+    </div>
+    <div class="opt-side">
+      <h2 class="vf-h2" data-in="words" data-delay="0.2">Everything else is <em>optional</em>.</h2>
+      <div class="spot">
+        <div class="spot-p" data-spot="optional.whisper"><p>A time for every word</p><div class="spot-word" id="spot-word"><b></b><small></small></div></div>
+        <div class="spot-p" data-spot="optional.eleven"><p>A paid AI voice</p><svg viewBox="0 0 600 150"><path id="owave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
+        <div class="spot-p" data-spot="optional.stock"><p>Free keys for stock video and photos</p></div>
+        <div class="spot-p" data-spot="optional.photos"><div class="photos" id="photos"><img src="assets/mic.jpg" alt=""><img src="assets/timeline/f040.jpg" alt=""><img src="assets/mic-pink.jpg" alt=""></div></div>
+        <div class="spot-p" data-spot="optional.earshot"><p>The agent listens to the sound</p></div>
+        <div class="spot-p" data-spot="optional.node"><p>An advanced animation engine</p><div class="vf-row"><span class="vf-chip">HyperFrames</span></div></div>
+        <div class="spot-p" data-spot="optional.form"><p>Questions as a form in your browser</p><p class="url-mid" id="bf-url">github.com/<br><em>dutchbase/brainstormform</em></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 0:59 /vf reads the folders and names the next step -->
+  <section class="vf-shot center" data-cue="vf" data-until="vf.help">
+    <h2 class="vf-h2" data-in="words">Not sure what to do <em>next</em>?</h2>
+    <div class="vf-row" style="gap:44px;align-items:stretch">
+      <div class="vf-term vf-scan" data-in="rise" data-at="vf.type-0.3">
+        <div class="top"><i></i><i></i><i></i></div>
+        <pre><span class="row-line"><span class="p">&gt; </span><span id="t-vf">/vf</span></span><span class="scan" data-in="left" data-stagger="0.18" data-at="vf.reads"><span class="row-line"><span class="ok">done</span>  01 voice</span><span class="row-line"><span class="ok">done</span>  02 transcript</span><span class="row-line"><span class="ok">done</span>  03 cues</span><span class="row-line"><span class="opt">open</span>  04 scene</span></span></pre>
+      </div>
+      <div class="vf-card hot next-card" data-in="pop" data-at="vf.reads+1.1">
+        <span class="vf-small">Next step</span>
+        <span class="cmd">/vf-scene</span>
+        <p>Build the animation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:06 /vf-help: every command -->
+  <section class="vf-shot center" data-cue="vf.help" data-until="brand">
+    <h2 class="vf-h2" data-in="words"><em>/vf-help</em> lists every command</h2>
+    <div class="cmd-grid" data-in="pop" data-stagger="0.035">
+      <span class="vf-chip hot">/vf</span><span class="vf-chip">/vf-help</span><span class="vf-chip">/vf-setup</span><span class="vf-chip">/vf-new-brand</span><span class="vf-chip">/vf-new-style</span>
+      <span class="vf-chip">/vf-new-character</span><span class="vf-chip">/vf-new-video</span><span class="vf-chip">/vf-research</span><span class="vf-chip">/vf-script</span><span class="vf-chip">/vf-voice</span>
+      <span class="vf-chip">/vf-transcript</span><span class="vf-chip">/vf-cues</span><span class="vf-chip">/vf-scene</span><span class="vf-chip">/vf-render</span><span class="vf-chip">/vf-status</span>
+    </div>
+  </section>
+
+  <!-- 1:09 brand: logo, colours, fonts, voice -->
+  <section class="vf-shot" data-cue="brand" data-until="brand.style">
+    <div class="brand-top">
+      <div class="wordmark" data-in="pop"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
+      <div class="swatches" data-in="rise" data-stagger="0.06" data-at="brand.new">
+        <div class="sw"><i style="background:var(--bg)"></i><span data-hex="bg"></span></div>
+        <div class="sw"><i style="background:var(--surface)"></i><span data-hex="surface"></span></div>
+        <div class="sw"><i style="background:var(--ink)"></i><span data-hex="ink"></span></div>
+        <div class="sw"><i style="background:var(--accent)"></i><span data-hex="accent"></span></div>
+        <div class="sw"><i style="background:var(--accent2)"></i><span data-hex="accent2"></span></div>
+        <div class="sw"><i style="background:var(--green)"></i><span data-hex="green"></span></div>
+      </div>
+    </div>
+    <div class="brand-bottom">
+      <div class="vf-card fonts" data-in="rise" data-at="brand.fonts">
+        <div class="f"><span style="font:800 64px/1 var(--head);letter-spacing:-.04em">Archivo</span><small>headings</small></div>
+        <div class="f"><span style="font:500 52px/1 var(--font)">Inter</span><small>body</small></div>
+        <div class="f"><span style="font:600 44px/1 var(--mono)">JetBrains Mono</span><small>labels</small></div>
+      </div>
+      <div class="vf-card voicec" data-in="rise" data-at="brand.fonts+0.15">
+        <span class="vf-tile two"><i data-icon="mic"></i></span>
+        <h3>George</h3>
+        <p>ElevenLabs voice</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:17 /vf-new-style -->
+  <section class="vf-shot center" data-cue="brand.style">
+    <h2 class="vf-h2" data-in="words"><em>/vf-new-style</em> designs a new look</h2>
+    <div class="styles">
+      <div class="vf-card stylec" data-in="left">
+        <div class="mini"><b>Big type.</b><div class="bar"></div><div class="vf-row" style="gap:14px"><span class="vf-chip hot">Modern</span><span class="vf-chip">Dark</span></div></div>
+        <h3>Modern</h3>
+      </div>
+      <div class="vf-card stylec new" data-in="right" data-delay="0.15">
+        <span class="vf-tile"><i data-icon="plus"></i></span>
+        <h3>Your style</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:21 /vf-new-character: steps, approved batch by batch -->
+  <section class="vf-shot center" data-cue="brand.character" data-until="video">
+    <h2 class="vf-h2" data-in="words"><em>/vf-new-character</em> makes a mascot</h2>
+    <div class="vf-steps char-steps" data-in="rise" data-stagger="0.1">
+      <div class="vf-step on"><b>Brief</b><span>Who it is</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><b>Concepts</b><span>AI images</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><b>Identity</b><span>One locked look</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><b>Variants</b><span>Poses and faces</span><span class="stamp">Approved</span></div>
+    </div>
+  </section>
+
+  <!-- 1:28 /vf-new-video: brand, format, brief -->
+  <section class="vf-shot split" data-cue="video">
+    <div class="vf-col" style="gap:50px">
+      <div class="vf-term" data-in="rise">
+        <div class="top"><i></i><i></i><i></i></div>
+        <pre><span class="p">&gt; </span><span id="t-video">/vf-new-video</span></pre>
+      </div>
+      <div class="frames" data-in="pop" data-stagger="0.12" data-at="video.format">
+        <div class="frm wide"><span>wide 16:9</span></div>
+        <div class="frm tall"><span>tall</span></div>
+      </div>
+    </div>
+    <div class="vf-card brief" data-in="right" data-at="video.brief">
+      <h3>Brief</h3>
+      <dl>
+        <dt>For</dt><dd>Friends who make content or code a little</dd>
+        <dt>After</dt><dd>They know every command and make a video</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 1:39 /vf-research: a public page, a source -->
+  <section class="vf-shot center" data-cue="research">
+    <div class="vf-browser screen wide-screen" data-in="rise" style="position:relative">
+      <div class="top"><i></i><i></i><i></i><div class="url">en.wikipedia.org/wiki/Tutorial</div></div>
+      <div class="view"><img id="research-img" src="assets/research-page.png" alt=""></div>
+      <div class="cmd-tag" data-in="left" data-delay="0.4"><span class="cmd" id="t-research">/vf-research</span></div>
+      <span class="vf-chip hot float-chip src" style="right:40px;bottom:40px" data-in="pop" data-at="research.source-0.6">Source: Wikipedia</span>
+    </div>
+  </section>
+
+  <!-- 1:46 /vf-script and the tone check -->
+  <section class="vf-shot center" data-cue="script" data-until="script.tone">
+    <h2 class="vf-h2" data-in="words"><em>/vf-script</em> writes the narration with you</h2>
+    <div class="vf-code script-card" data-in="rise" data-delay="0.1">
+      <div class="top"><i></i><i></i><i></i></div>
+      <pre><span class="c"># script.md</span>
+<span class="sl" data-in="wipe" data-delay="0.3">An explainer video usually means three tools,</span>
+<span class="sl" data-in="wipe" data-delay="0.7">a timeline and a lost weekend.</span></pre>
+    </div>
+  </section>
+  <section class="vf-shot center" data-cue="script.tone">
+    <h2 class="vf-h2" data-in="words">A tone check removes the hype</h2>
+    <div class="tone">
+      <span class="bad" id="bad">Unlock your productivity</span>
+      <i data-icon="arrow-right" data-in="fade" data-at="script.tone+1.4"></i>
+      <span class="good" data-in="words" data-at="script.tone+1.6">Move the invoice into this folder, then check its label.</span>
+    </div>
+  </section>
+
+  <!-- 1:54 /vf-voice: free or paid -->
+  <section class="vf-shot center" data-cue="voice" data-until="voice.approve">
+    <h2 class="vf-h2" data-in="words"><em>/vf-voice</em> makes the voice</h2>
+    <div class="voice-cards">
+      <div class="vf-card vcard" data-in="left" data-at="voice.free">
+        <div class="pic"><img id="mic" src="assets/mic.jpg" alt=""></div>
+        <div class="meta"><h3>Your own voice</h3><span class="vf-chip ok">Free</span></div>
+      </div>
+      <div class="vf-card vcard" data-in="right" data-at="voice.eleven">
+        <div class="pic wave"><svg viewBox="0 0 600 200" width="560" height="190"><path id="vwave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
+        <div class="meta"><h3>ElevenLabs</h3><span class="vf-chip">Paid</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2:01 approve the script in the Studio first -->
+  <section class="vf-shot center" data-cue="voice.approve" data-until="transcript">
+    <div class="vf-browser screen" data-in="rise" style="position:relative">
+      <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / review / script</div></div>
+      <div class="view"><img id="review-img" style="transform-origin:465px 815px" src="assets/studio-review.png" alt=""></div>
+    </div>
+  </section>
+
+  <!-- 2:05 /vf-transcript: every word gets a time -->
+  <section class="vf-shot center" data-cue="transcript">
+    <div class="vf-term transcript-term" data-in="rise"><div class="top"><i></i><i></i><i></i></div><pre><span class="p">&gt; </span><span id="t-transcript">/vf-transcript</span></pre></div>
+    <div class="words" id="words"></div>
+  </section>
+
+  <!-- 2:10 /vf-cues: markers snap to words -->
+  <section class="vf-shot center" data-cue="cues">
+    <h2 class="vf-h2" data-in="words"><em>/vf-cues</em> marks where the picture changes</h2>
+    <div class="track" id="track" data-in="fade" data-delay="0.2"><div class="line"></div></div>
+  </section>
+
+  <!-- 2:14 /vf-scene: code becomes a picture -->
+  <section class="vf-shot center" data-cue="scene" data-until="scene.library">
+    <h2 class="vf-h2" data-in="words"><em>/vf-scene</em> builds the animation</h2>
+    <div class="build">
+      <div class="vf-code" data-in="left" data-at="scene.build">
+        <div class="top"><i></i><i></i><i></i></div>
+        <pre><span class="k">&lt;section</span> <span class="n">data-cue</span>=<span class="s">"hook"</span><span class="k">&gt;</span>
+  <span class="k">&lt;h2</span> <span class="n">data-in</span>=<span class="s">"words"</span><span class="k">&gt;</span>
+    <span>An explainer video</span>
+  <span class="k">&lt;/h2&gt;</span>
+<span class="k">&lt;/section&gt;</span></pre>
+      </div>
+      <i class="arrow" data-icon="arrow-right" data-in="fade" data-at="scene.build+0.5"></i>
+      <div class="mini-frame" data-in="zoom" data-at="scene.build+0.8">
+        <b>An explainer video usually means</b>
+        <div class="mt"><span><i data-icon="video"></i></span><span><i data-icon="layers"></i></span><span><i data-icon="headphones"></i></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2:19 library: icons and a Lottie animation -->
+  <section class="vf-shot center" data-cue="scene.library">
+    <h2 class="vf-h2" data-in="words">Icons, graphics and Lottie from the library</h2>
+    <div class="lib">
+      <div class="icon-grid" data-in="pop" data-stagger="0.03">
+        <span class="vf-tile"><i data-icon="rocket"></i></span><span class="vf-tile two"><i data-icon="globe"></i></span><span class="vf-tile"><i data-icon="chart-bar"></i></span><span class="vf-tile two"><i data-icon="lightbulb"></i></span>
+        <span class="vf-tile two"><i data-icon="shield-check"></i></span><span class="vf-tile"><i data-icon="users"></i></span><span class="vf-tile two"><i data-icon="target"></i></span><span class="vf-tile"><i data-icon="zap"></i></span>
+        <span class="vf-tile"><i data-icon="book-open"></i></span><span class="vf-tile two"><i data-icon="calendar"></i></span><span class="vf-tile"><i data-icon="trending-up"></i></span><span class="vf-tile two"><i data-icon="star"></i></span>
+      </div>
+      <canvas id="lottie" width="1040" height="1040" data-in="zoom" data-delay="0.3"></canvas>
+    </div>
+  </section>
+
+  <!-- 2:23 stock video, a photo, music -->
+  <section class="vf-shot center" data-cue="scene.stock">
+    <div class="stock">
+      <div class="clip-frame" id="stock-clip" data-in="left"></div>
+      <div class="side">
+        <img src="assets/mic-pink.jpg" alt="" data-in="right" data-delay="0.2">
+        <div class="vf-card music" data-in="right" data-delay="0.35">
+          <span class="vf-tile two"><i data-icon="headphones"></i></span>
+          <div><b>Calm Piano 1</b><span>cynicmusic, CC0</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2:26 a real browser recording -->
+  <section class="vf-shot center" data-cue="scene.capture">
+    <div class="vf-browser rec" data-in="rise">
+      <div class="top"><i></i><i></i><i></i><div class="url">en.wikipedia.org</div></div>
+      <div id="rec-clip"></div>
+    </div>
+  </section>
+
+  <!-- 2:30 a ready-made motion component -->
+  <section class="vf-shot center" data-cue="scene.motion">
+    <div class="motion-frame" id="motion-clip" data-in="zoom"></div>
+  </section>
+
+  <!-- 2:33 sound effects and music: CC0 files or generated -->
+  <section class="vf-shot center" data-cue="scene.sound" data-until="check">
+    <h2 class="vf-h2" data-in="words">Sound effects and music</h2>
+    <div class="fx-row" data-in="pop" data-stagger="0.08">
+      <div class="vf-card fx"><svg viewBox="0 0 300 110"><path class="fxw" data-k="0" d=""/></svg><b>whoosh</b></div>
+      <div class="vf-card fx two"><svg viewBox="0 0 300 110"><path class="fxw" data-k="1" d=""/></svg><b>pop</b></div>
+      <div class="vf-card fx"><svg viewBox="0 0 300 110"><path class="fxw" data-k="2" d=""/></svg><b>stamp</b></div>
+      <div class="vf-card fx two"><svg viewBox="0 0 300 110"><path class="fxw" data-k="3" d=""/></svg><b>chime</b></div>
+    </div>
+    <div class="src-row" data-in="rise" data-stagger="0.15" data-at="scene.cc0">
+      <span class="vf-chip ok">Free CC0 files</span><span class="vf-chip hot">Generated on your computer</span>
+    </div>
+  </section>
+
+  <!-- 2:40 check: a still per cue, counters to zero -->
+  <section class="vf-shot center" data-cue="check">
+    <h2 class="vf-h2" data-in="words">Every counter must read <em>zero</em></h2>
+    <div class="check">
+      <div class="sheet" data-in="rise" data-at="check.still"><img src="assets/contact.jpg" alt=""></div>
+      <div class="counters" data-in="right" data-stagger="0.1" data-at="check.count">
+        <div class="vf-card counter"><span>Text overlaps</span><b id="c1">0</b></div>
+        <div class="vf-card counter"><span>Text too short to read</span><b id="c2">0</b></div>
+        <div class="vf-card counter"><span>Sound design missing</span><b id="c3">0</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2:50 render: one file, the mix -->
+  <section class="vf-shot split" data-cue="render" data-until="render.extras">
+    <div class="vf-col">
+      <div class="player-frame" id="player-clip" data-in="zoom"></div>
+      <span class="vf-chip hot file-chip" data-in="pop" data-delay="0.5">what-is-videofactory.mp4</span>
+    </div>
+    <svg class="mix" viewBox="0 0 760 360" data-in="fade" data-at="render+0.6">
+      <text class="lab" x="0" y="66">Voice</text><text class="lab" x="0" y="186">Music</text><text class="lab" x="0" y="306">Effects</text>
+      <path id="mw0" d="" stroke="var(--accent)"/><path id="mw1" d="" stroke="var(--accent2)"/><path id="mw2" d="" stroke="var(--green)"/>
+    </svg>
+  </section>
+
+  <!-- 2:57 phone copy, thumbnail, chapters, Earshot -->
+  <section class="vf-shot center" data-cue="render.extras" data-until="studio">
+    <div class="extras">
+      <div class="vf-phone" data-in="rise"><div class="phone-mini"><b>An explainer video usually means</b><div class="mt"><span><i data-icon="video"></i></span><span><i data-icon="layers"></i></span><span><i data-icon="headphones"></i></span></div></div></div>
+      <div class="thumb" data-in="rise" data-delay="0.15"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
+      <div class="vf-card chapters" data-in="rise" data-delay="0.3">
+        <h3>Chapters</h3>
+        <ul><li><span>0:00</span>Intro</li><li><span>0:19</span>Setup</li><li><span>1:09</span>Brand</li><li><span>2:14</span>Scene</li><li><span>2:50</span>Render</li></ul>
+      </div>
+    </div>
+    <div class="vf-card earshot" data-in="rise" data-at="render.earshot">
+      <span class="vf-tile two"><i data-icon="headphones"></i></span>
+      <div class="vf-col" style="gap:10px"><h3>Earshot listens to the render</h3><span class="cmd">python anim.py listen</span></div>
+    </div>
+  </section>
+
+  <!-- 3:05 the Studio -->
+  <section class="vf-shot center" data-cue="studio">
+    <div class="studio-pair">
+      <div class="vf-browser a" data-in="rise">
+        <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / videos</div></div>
+        <div class="view"><img src="assets/studio-home.png" alt=""></div>
+      </div>
+      <div class="vf-browser b" data-in="right" data-at="studio.pages">
+        <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / review / script</div></div>
+        <div class="view"><img src="assets/studio-review.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3:13 /vf-status: the real table for this video, then the next command -->
+  <section class="vf-shot center" data-cue="status">
+    <div class="vf-term status-term" data-in="rise">
+      <div class="top"><i></i><i></i><i></i></div>
+      <pre><span class="row-line"><span class="p">&gt; </span><span id="t-status">/vf-status</span></span></pre>
+      <div class="stat-id" data-in="fade" data-at="status+0.7">videofactory/what-is-videofactory</div>
+      <div class="stat-table hd" data-in="rise" data-stagger="0.12" data-at="status+0.8">
+        <span class="h">00_research</span><span class="h">01_voice</span><span class="h">02_transcript</span><span class="h">03_cues</span><span class="h">04_scene</span><span class="h">05_render</span>
+      </div>
+      <div class="stat-table" data-in="pop" data-stagger="0.12" data-at="status+1.0">
+        <span class="v no">not used</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v no">-</span>
+      </div>
+    </div>
+    <p class="next-line" data-in="rise" data-at="status+2.4">Next: <span class="cmd">/vf-render</span></p>
+  </section>
+
+  <!-- 3:16 the rules -->
+  <section class="vf-shot center" data-cue="rules">
+    <p class="rule-line" data-in="words">One step. Then it <em style="font-style:normal;color:var(--accent)">stops</em>.</p>
+    <div class="steps-dots" id="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <span class="yes-btn" data-in="zoom" data-at="rules.yes">A clear yes from you</span>
+  </section>
+
+  <!-- 3:24 reveal -->
+  <section class="vf-shot center" data-cue="reveal">
+    <h2 class="vf-title" data-in="words">This video was made with <em>these commands</em>.</h2>
+    <div class="used" data-in="pop" data-stagger="0.05" data-delay="0.6">
+      <span class="vf-chip">/vf-new-video</span><span class="vf-chip">/vf-script</span><span class="vf-chip">/vf-voice</span><span class="vf-chip">/vf-transcript</span><span class="vf-chip">/vf-cues</span><span class="vf-chip">/vf-scene</span><span class="vf-chip hot">/vf-render</span>
+    </div>
+  </section>
+
+  <!-- 3:27 call to action -->
+  <section class="vf-shot center" data-cue="cta">
+    <div class="end-mark" data-in="zoom"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
+    <div class="vf-row" style="gap:20px" data-in="rise" data-stagger="0.1" data-delay="0.4"><span class="vf-chip ok">Free</span><span class="vf-chip ok">Open source</span><span class="vf-chip ok">MIT</span></div>
+    <div class="vf-term" data-in="rise" data-at="cta.clone" style="width:1240px">
+      <div class="top"><i></i><i></i><i></i></div>
+      <pre><span class="row-line"><span class="p">$ </span><span id="t-clone">git clone https://github.com/dutchbase/videofactory</span></span><span class="row-line" id="l-setup"><span class="p">&gt; </span>/vf-setup</span></pre>
+    </div>
+    <p class="url-big" data-in="pop" data-at="cta.today">github.com/<em>dutchbase/videofactory</em></p>
+  </section>
+
+  <div class="vf-captions"><p></p></div>
+</div>
+<script src="cues/cues.js"></script>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="runtime/player.js"></script>
+<script src="runtime/icons.js"></script>
+<script src="runtime/lib.js"></script>
+<script src="assets/real.js"></script>
+<script src="runtime/modern.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "name": "server",
+ "dur": 1.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      1
+     ],
+     "repeat": 1,
+     "repeatType": "loop",
+     "props": {
+      "y": [
+       0,
+       12,
+       12,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      1
+     ],
+     "repeat": 1,
+     "repeatType": "loop",
+     "props": {
+      "y": [
+       0,
+       -12,
+       -12,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

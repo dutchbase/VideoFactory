@@ -1,0 +1,95 @@
+{
+ "v": 1,
+ "name": "battery-full",
+ "dur": 1.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 3,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.4,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.4,
+     "delay": 0.4,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.4,
+     "delay": 0.8,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

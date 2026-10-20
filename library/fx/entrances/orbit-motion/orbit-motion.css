@@ -1,0 +1,5 @@
+/* orbit-motion: the ring is a zero-size box at the centre (no transform, so depth order works); items are placed from it. */
+.fx-orbit { position: absolute; inset: 0; }
+.fx-orbit-ring { position: absolute; width: 0; height: 0; }
+.fx-orbit-item { position: absolute; will-change: transform, opacity; }
+.fx-orbit-path { position: absolute; box-sizing: border-box; border: 2px solid var(--line); border-radius: 50%; }

@@ -1,0 +1,4 @@
+/* arrow-annotate: the SVG fills its root; the pen colour and stroke width come from the options. */
+.fx-arrow-annotate { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 3; }
+.fx-arrow-annotate-path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.fx-arrow-annotate-label { font-family: var(--head); font-weight: 700; }

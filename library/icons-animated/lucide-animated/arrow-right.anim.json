@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "name": "arrow-right",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "base": {
+    "d": "M5 12h14"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "d": [
+       "M5 12h14",
+       "M5 12h9",
+       "M5 12h14"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "m12 5 7 7-7 7"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "x": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

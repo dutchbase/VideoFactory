@@ -1,0 +1,12 @@
+/* donut-chart: the total sits in the hole and the legend sits beside the ring, both on the ground. */
+.fx-donut-chart { display: flex; align-items: center; gap: 80px; color: var(--ink); font-family: var(--font); }
+.fx-donut-chart-ring { position: relative; flex: none; }
+.fx-donut-chart-ring svg { display: block; transform: rotate(0deg); }
+.fx-donut-chart-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; }
+.fx-donut-chart-total { font: 800 96px/1 var(--head); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.fx-donut-chart-caption { font: 600 32px/1.1 var(--font); color: var(--dim); }
+.fx-donut-chart-legend { flex: 1; display: flex; flex-direction: column; gap: 30px; }
+.fx-donut-chart-row { display: flex; align-items: center; gap: 24px; }
+.fx-donut-chart-swatch { flex: none; width: 36px; height: 36px; border-radius: 10px; }
+.fx-donut-chart-name { flex: 1; font: 600 44px/1.1 var(--font); color: var(--ink); }
+.fx-donut-chart-val { font: 800 52px/1 var(--head); color: var(--ink); font-variant-numeric: tabular-nums; }

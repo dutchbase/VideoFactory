@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "name": "phone",
+ "dur": 0.9,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       10,
+       20,
+       -10,
+       10,
+       0
+      ],
+      "scale": [
+       1,
+       1.1,
+       1
+      ]
+     },
+     "pre": {
+      "rotate": 0
+     }
+    }
+   ]
+  }
+ ]
+}

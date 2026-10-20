@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "name": "hammer",
+ "dur": 0.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "0%",
+    "y": "100%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": [
+      "easeInOut",
+      "easeOut",
+      "easeOut"
+     ],
+     "times": [
+      0,
+      0.6,
+      0.8,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       -20,
+       25,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

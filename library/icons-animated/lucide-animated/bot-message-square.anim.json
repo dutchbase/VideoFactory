@@ -1,0 +1,235 @@
+{
+ "v": 1,
+ "name": "bot-message-square",
+ "dur": null,
+ "rdur": 0.3,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -3,
+       3,
+       0,
+       0
+      ],
+      "scale": [
+       1,
+       1.03,
+       1
+      ],
+      "y": [
+       0,
+       1.5,
+       -1.5,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "repeat": 1,
+     "repeatType": "loop",
+     "props": {
+      "scale": [
+       1,
+       1.04,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "scaleY": [
+       1,
+       0.1,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.2,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "scaleY": [
+       1,
+       0.1,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0.3,
+       1,
+       0.3
+      ]
+     },
+     "pre": {
+      "opacity": 0
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0.3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.3,
+     "duration": 1.2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0.3,
+       1,
+       0.3
+      ]
+     },
+     "pre": {
+      "opacity": 0
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0.3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.6,
+     "duration": 1.2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0.3,
+       1,
+       0.3
+      ]
+     },
+     "pre": {
+      "opacity": 0
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "opacity": [
+       0.3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

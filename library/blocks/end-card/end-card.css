@@ -1,0 +1,6 @@
+.b-mark { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 20px; color: var(--ink); z-index: 5; }
+.b-mark-cross { width: 54px; height: 54px; box-sizing: border-box; border: 7px solid currentColor; position: relative; }
+.b-mark-cross::before, .b-mark-cross::after { content: ""; position: absolute; background: currentColor; }
+.b-mark-cross::before { left: 50%; top: 0; width: 7px; height: 100%; transform: translateX(-50%); }
+.b-mark-cross::after { top: 50%; left: 0; height: 7px; width: 100%; transform: translateY(-50%); }
+.b-mark-word { font-family: var(--head); font-weight: 900; font-size: 50px; text-transform: uppercase; }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- VideoFactory mark: a play button above a timeline with a playhead. -->
+  <rect width="128" height="128" rx="34" fill="#FF5B2E"/>
+  <path d="M52 32 L90 56 L52 80 Z" fill="#0B0B10" stroke="#0B0B10" stroke-width="8" stroke-linejoin="round"/>
+  <rect x="26" y="96" width="76" height="8" rx="4" fill="#0B0B10" opacity=".3"/>
+  <rect x="26" y="96" width="46" height="8" rx="4" fill="#0B0B10"/>
+  <circle cx="72" cy="100" r="9" fill="#F5F2EA" stroke="#0B0B10" stroke-width="4"/>
+</svg>

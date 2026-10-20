@@ -1,0 +1,168 @@
+{
+ "v": 1,
+ "name": "sun",
+ "dur": 1.1,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.2,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.3,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.4,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.5,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.6,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.7,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.8,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  }
+ ]
+}

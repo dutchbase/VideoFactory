@@ -1,0 +1,6 @@
+/* handwriting-text: each letter is revealed left to right by a clip; a small pen dot rides the edge. */
+.fx-hand { color: var(--ink); font-family: var(--head); font-style: italic; font-weight: 700; line-height: 1.15; }
+.fx-hand-char { position: relative; }
+.fx-hand-ink { display: inline-block; white-space: pre; will-change: clip-path; }
+.fx-hand-pen { position: absolute; bottom: 0.08em; border-radius: 50%; visibility: hidden; }
+.fx-hand-line { position: absolute; left: 0; right: 0; top: 100%; width: 100%; height: 0.24em; overflow: visible; pointer-events: none; }

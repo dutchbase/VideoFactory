@@ -1,0 +1,88 @@
+{
+ "v": 1,
+ "name": "lock",
+ "dur": 1,
+ "rdur": 0.3,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": [
+      0.4,
+      0,
+      0.2,
+      1
+     ],
+     "props": {
+      "rotate": [
+       -3,
+       1,
+       -2,
+       0
+      ],
+      "scale": [
+       0.95,
+       1.05,
+       0.98,
+       1
+      ]
+     },
+     "pre": {
+      "rotate": 0,
+      "scale": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": [
+      0.4,
+      0,
+      0.2,
+      1
+     ],
+     "props": {
+      "pathLength": [
+       1,
+       0.7
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": [
+      0.4,
+      0,
+      0.2,
+      1
+     ],
+     "props": {
+      "pathLength": [
+       0.7,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

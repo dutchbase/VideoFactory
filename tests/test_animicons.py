@@ -1,0 +1,226 @@
+"""Animated icons: converted files follow the spec schema, the converter is repeatable, and the icons play
+deterministically on a GSAP timeline (same time = same picture, also after jumping backwards)."""
+import json, re, shutil, subprocess, sys, tempfile, unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SET = ROOT / "library" / "icons-animated"
+ICONS = SET / "lucide-animated"
+TOOL = ROOT / "tools" / "iconanim"
+RUNTIME = ROOT / "_runtime"
+
+EASES = {"linear", "easeIn", "easeOut", "easeInOut", "circIn", "circOut", "circInOut", "backIn", "backOut", "backInOut", "anticipate"}
+PROPS = {"opacity", "scale", "scaleX", "scaleY", "x", "y", "xPercent", "yPercent", "rotate", "skewX", "skewY", "pathLength", "pathOffset",
+         "strokeDashoffset", "strokeOpacity", "strokeWidth", "cx", "cy", "r", "rx", "ry", "d", "points", "width", "height", "fill", "x1", "x2", "y1", "y2"}
+TRACK_KEYS = {"at", "delay", "duration", "ease", "spring", "times", "repeat", "repeatType", "repeatDelay", "props", "pre"}
+SAMPLES = ["bell", "wifi", "palette", "heart-pulse", "airplay", "cloud-rain", "grip", "arrow-down-left",
+           "refresh-cw", "chevrons-left-right", "accessibility", "check", "sunset"]
+
+
+def is_ease(e):
+    one = lambda x: (isinstance(x, str) and x in EASES) or (isinstance(x, list) and len(x) == 4 and all(isinstance(v, (int, float)) for v in x))
+    return one(e) or (isinstance(e, list) and bool(e) and all(one(x) for x in e))
+
+
+def check_track(tc, tr, where):
+    tc.assertLessEqual(set(tr), TRACK_KEYS, where)
+    for k in ("at", "delay", "duration", "props"):
+        tc.assertIn(k, tr, where)
+    tc.assertGreaterEqual(tr["at"], 0, where); tc.assertGreaterEqual(tr["delay"], 0, where); tc.assertGreaterEqual(tr["duration"], 0, where)
+    tc.assertTrue(("spring" in tr) != ("ease" in tr), where + ": spring or ease")
+    if "spring" in tr:
+        tc.assertEqual(len(tr["spring"]), 3, where); tc.assertTrue(all(v > 0 for v in tr["spring"]), where)
+    else:
+        tc.assertTrue(is_ease(tr["ease"]), f"{where}: ease {tr['ease']}")
+    tc.assertTrue(tr["props"], where)
+    for p, arr in tr["props"].items():
+        tc.assertIn(p, PROPS, where)
+        tc.assertIsInstance(arr, list, where); tc.assertGreaterEqual(len(arr), 2, f"{where}: {p} needs from and to")
+        if "times" in tr:
+            tc.assertEqual(len(tr["times"]), len(arr), f"{where}: times vs {p}")
+    if "times" in tr:
+        tc.assertEqual(tr["times"], sorted(tr["times"]), where)
+    tc.assertLessEqual(set(tr.get("pre", {})), set(tr["props"]), where + ": pre")
+    if "repeat" in tr:
+        tc.assertTrue(tr["repeat"] == -1 or tr["repeat"] >= 1, where)
+        tc.assertIn(tr.get("repeatType"), ("loop", "reverse", "mirror"), where)
+
+
+class Files(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.names = sorted(p.name[:-len(".anim.json")] for p in ICONS.glob("*.anim.json"))
+        cls.tags = json.loads((ICONS / "TAGS.json").read_text(encoding="utf-8"))
+
+    def test_most_icons_converted(self):
+        self.assertGreaterEqual(len(self.names), 420)   # 468 in the source; the rest need runtime logic (REPORT.md)
+
+    def test_every_spec_matches_the_schema(self):
+        for n in self.names:
+            spec = json.loads((ICONS / f"{n}.anim.json").read_text(encoding="utf-8"))
+            self.assertEqual(spec["v"], 1, n); self.assertEqual(spec["name"], n)
+            self.assertLessEqual(set(spec), {"v", "name", "dur", "rdur", "els"}, n)
+            self.assertTrue(spec["dur"] is None or spec["dur"] >= 0, n)
+            self.assertGreaterEqual(spec["rdur"], 0, n)
+            self.assertTrue(spec["els"], n)
+            seen = set()
+            for e in spec["els"]:
+                self.assertLessEqual(set(e), {"i", "origin", "base", "start", "reset"}, n)
+                self.assertNotIn(e["i"], seen, n); seen.add(e["i"])
+                if "origin" in e:
+                    self.assertIn(e["origin"]["box"], ("fill", "view"), n)
+                    self.assertTrue(e["origin"]["x"] and e["origin"]["y"], n)
+                for t in e.get("start", []) + e.get("reset", []):
+                    check_track(self, t, f"{n} el {e['i']}")
+            self.assertTrue(any(e.get("start") for e in spec["els"]), n)
+
+    def test_every_icon_has_all_files(self):
+        for n in self.names:
+            svg = (ICONS / f"{n}.svg").read_text(encoding="utf-8")
+            self.assertTrue(svg.startswith("<svg ") and svg.rstrip().endswith("</svg>"), n)
+            self.assertRegex(svg, r'viewBox="0 0 (\d+) \1"', n); self.assertIn('stroke="currentColor"', svg)
+            self.assertNotRegex(svg, r"<script|\son\w+=|javascript:", n)
+            self.assertNotRegex(svg.split(">")[0], r"\s(width|height)=", n)   # the root has no fixed size
+            wrapper = (ICONS / f"{n}.js").read_text(encoding="utf-8")
+            self.assertTrue(wrapper.startswith(f"// GENERATED by tools/iconanim from {n}.anim.json. Never edit.\n"), n)
+            m = re.search(r'\["lucide-animated/%s"\] = (.*);\n$' % re.escape(n), wrapper, re.S)
+            self.assertIsNotNone(m, n)
+            body = json.loads(m.group(1))
+            self.assertEqual(body["svg"], svg.rstrip("\n"), n)
+            self.assertEqual(body["spec"], json.loads((ICONS / f"{n}.anim.json").read_text(encoding="utf-8")), n)
+            self.assertIn(n, self.tags, n)
+
+    def test_tags_file(self):
+        self.assertEqual(list(self.tags), sorted(self.tags))
+        self.assertEqual(set(self.tags), set(self.names))
+        for n, t in self.tags.items():
+            self.assertEqual(set(t), {"tags", "groups"}, n)
+            self.assertEqual(len(set(t["tags"])), len(t["tags"]), n)
+        self.assertIn("notifications", self.tags["bell"]["groups"])
+
+    def test_gallery_lists_every_icon(self):
+        html = (SET / "GALLERY.html").read_text(encoding="utf-8")
+        self.assertIn("GENERATED by tools/iconanim/convert.mjs. Never edit.", html)
+        for n in self.names:
+            self.assertIn(f'src="lucide-animated/{n}.js"', html)
+        self.assertIn("_runtime/animicon.js", html); self.assertIn("_runtime/vendor/gsap.min.js", html)
+
+    def test_runtime_has_no_clock(self):
+        src = (RUNTIME / "animicon.js").read_text(encoding="utf-8")
+        for bad in ("requestAnimationFrame", "setTimeout", "setInterval", "Date.now", "Math.random", "performance.now"):
+            self.assertNotIn(bad, src)
+
+
+@unittest.skipUnless(shutil.which("node") and (TOOL / "node_modules" / "@babel" / "parser").is_dir(), "node or tools/iconanim/node_modules missing")
+class Converter(unittest.TestCase):
+    def test_second_run_is_identical(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            outs = []
+            for i in (1, 2):
+                out = Path(tmp) / f"run{i}"
+                subprocess.run(["node", str(TOOL / "convert.mjs"), "--out", str(out)], check=True, capture_output=True, timeout=300)
+                outs.append(out)
+            files = lambda d: sorted(p.relative_to(d) for p in d.rglob("*") if p.is_file())
+            self.assertEqual(files(outs[0]), files(outs[1]))
+            for f in files(outs[0]):
+                self.assertEqual((outs[0] / f).read_bytes(), (outs[1] / f).read_bytes(), str(f))
+            # and the committed files are what the converter makes today
+            for f in files(outs[0]):
+                if f.name == "REPORT.md":
+                    continue
+                self.assertEqual((outs[0] / f).read_bytes(), (SET / f).read_bytes(), f"committed {f} is stale: run node tools/iconanim/convert.mjs")
+
+
+class Playback(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from playwright.sync_api import sync_playwright
+        cls.pw = sync_playwright().start()
+        cls.browser = cls.pw.chromium.launch()
+        cls.tmp = tempfile.mkdtemp(prefix="animicons-")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.browser.close(); cls.pw.stop()
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def page(self, html, name):
+        f = Path(self.tmp) / name
+        f.write_text(html, encoding="utf-8")
+        pg = self.browser.new_page(viewport={"width": 900, "height": 500})
+        errors = []
+        pg.on("pageerror", lambda e: errors.append(str(e)))
+        pg.on("console", lambda m: errors.append(m.text) if m.type == "error" else None)
+        pg.goto(f.as_uri())
+        return pg, errors
+
+    def test_same_time_same_picture(self):
+        names = [n for n in SAMPLES if (ICONS / f"{n}.js").is_file()]
+        self.assertGreaterEqual(len(names), 12)
+        cells = "".join(f'<i id="i-{n}" data-n="{n}" style="display:block;width:64px;height:64px;margin:8px"></i>' for n in names)
+        scripts = "".join(f'<script src="{(ICONS / (n + ".js")).as_uri()}"></script>' for n in names)
+        html = f"""<!doctype html><body style="margin:0;background:#111;color:#eee;display:flex;flex-wrap:wrap">{cells}
+<script src="{(RUNTIME / 'vendor' / 'gsap.min.js').as_uri()}"></script><script src="{(RUNTIME / 'animicon.js').as_uri()}"></script>{scripts}
+<script>
+window.TL = gsap.timeline({{ paused: true }});
+document.querySelectorAll('i[data-n]').forEach(function (el) {{
+  var n = 'lucide-animated/' + el.dataset.n;
+  AnimIcon.mount(el, n);
+  AnimIcon.play(TL, el, n, 0.2, {{ loop: true, gap: 0.3, until: 3 }});
+}});
+</script></body>"""
+        pg, errors = self.page(html, "icons.html")
+        shots = {}
+
+        def grab(t, key):
+            pg.evaluate("t => { window.TL.totalTime(t, true); }", t)   # return nothing: a timeline is thenable
+            shots.setdefault(key, {})
+            for n in names:
+                pg.locator(f"#i-{n}").screenshot()   # first picture after a change can still be warming up (raster); keep the second
+                shots[key][n] = pg.locator(f"#i-{n}").screenshot()
+        grab(0.0, "first0")
+        grab(0.4, "a"); grab(0.1, "b"); grab(0.4, "c"); grab(0.0, "d")
+        pg.close()
+        self.assertEqual(errors, [])
+        moved = 0
+        for n in names:
+            with self.subTest(icon=n):
+                self.assertEqual(shots["a"][n], shots["c"][n], "same time, different picture")
+                self.assertEqual(shots["first0"][n], shots["d"][n], "back at 0 the icon is not in its normal state")
+                if shots["a"][n] != shots["d"][n]:
+                    moved += 1
+        self.assertGreaterEqual(moved, len(names) - 2, "icons that should move did not")
+
+    def test_modern_kit_data_play(self):
+        """<i data-icon="lucide-animated/bell" data-play="intro+0.2"> plays on the scene clock; a static icon still mounts."""
+        anim = {"meta": {"duration": 3.0}, "cueList": [{"id": "intro", "start": 0.0, "end": 3.0}], "cues": {"intro": {"id": "intro", "start": 0.0, "end": 3.0}}, "words": []}
+        html = f"""<!doctype html><link rel="stylesheet" href="{(RUNTIME / 'modern.css').as_uri()}">
+<div id="stage" data-width="1920" data-height="1080"><section class="vf-shot" data-cue="intro">
+<i id="moving" style="font-size:96px" data-icon="lucide-animated/bell" data-play="intro+0.2" data-loop="1"></i>
+<i id="plain" style="font-size:96px" data-icon="lucide-animated/bell"></i>
+<i id="static" style="font-size:96px" data-icon="rocket"></i></section></div>
+<script>window.ANIM = {json.dumps(anim)};</script>
+<script src="{(RUNTIME / 'vendor' / 'gsap.min.js').as_uri()}"></script><script src="{(RUNTIME / 'player.js').as_uri()}"></script>
+<script src="{(RUNTIME / 'icons.js').as_uri()}"></script><script src="{(RUNTIME / 'animicon.js').as_uri()}"></script>
+<script src="{(ICONS / 'bell.js').as_uri()}"></script><script src="{(RUNTIME / 'modern.js').as_uri()}"></script>"""
+        f = Path(self.tmp) / "modern.html"
+        f.write_text(html, encoding="utf-8")
+        pg = self.browser.new_page(viewport={"width": 900, "height": 400})
+        errors = []
+        pg.on("pageerror", lambda e: errors.append(str(e)))
+        pg.goto(f.as_uri() + "?render")
+        pg.wait_for_function("typeof window.__seek === 'function'", timeout=10000)
+        shot = lambda t: (pg.evaluate("t => { window.__seek(t); }", t), pg.locator("#moving").screenshot())[1]
+        a, b, c = shot(0.2 + 0.125), shot(0.0), shot(0.2 + 0.125)
+        self.assertEqual(pg.locator("#moving svg").count(), 1)
+        self.assertEqual(pg.locator("#static svg").count(), 1)
+        self.assertEqual(pg.locator("#plain svg").count(), 1)
+        self.assertNotEqual(a, b)
+        self.assertEqual(a, c)
+        self.assertEqual(pg.locator("#plain").screenshot(), pg.locator("#plain").screenshot())
+        pg.close()
+        self.assertEqual(errors, [])
+
+
+if __name__ == "__main__":
+    unittest.main()

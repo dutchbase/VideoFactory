@@ -1,0 +1,42 @@
+{
+ "v": 1,
+ "name": "bold",
+ "dur": 0.6,
+ "rdur": 0.6,
+ "els": [
+  {
+   "i": 1,
+   "base": {
+    "strokeWidth": 2
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "strokeWidth": [
+       2,
+       3.5
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "strokeWidth": [
+       3.5,
+       2
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+.b-cursor { position: absolute; left: 0; top: 0; width: 78px; height: 117px; z-index: 20; }
+.b-cursor svg { width: 100%; height: 100%; fill: var(--cream); stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.b-cursor-ring { position: absolute; left: -45px; top: -45px; width: 90px; height: 90px; box-sizing: border-box; border-radius: 50%;
+                 border: 7px solid var(--accent); z-index: 19; }

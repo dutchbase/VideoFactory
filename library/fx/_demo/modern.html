@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>fx demo (Modern kit)</title>
+<link rel="stylesheet" href="../../../_runtime/fonts/fonts.css">
+<link rel="stylesheet" href="../../../_runtime/modern.css">
+</head>
+<body>
+<div id="stage" data-width="1920" data-height="1080"></div>
+<script src="cues.js"></script>
+<script src="../../../brands/videofactory/tokens.js"></script>
+<script src="../../../_runtime/vendor/gsap.min.js"></script>
+<script src="../../../_runtime/player.js"></script>
+<script src="../../../_runtime/icons.js"></script>
+<script src="../../../_runtime/modern.js"></script>
+<script src="parts.js"></script>
+<script src="load.js"></script>
+<script>
+  P.wait(FXDemo.load().then(() => {
+    const H = Blocks.core(P.timeline());
+    window.FX_DEMO(H, FXDemo.stage);
+    return document.fonts.ready;  // the fonts that the demo text asks for; a render waits the same way
+  }).catch(e => { window.__fxError = String(e); throw e; }));
+</script>
+</body>
+</html>

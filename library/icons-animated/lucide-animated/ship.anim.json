@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "name": "ship",
+ "dur": null,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 1,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.15,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "mirror",
+     "props": {
+      "rotate": [
+       -3,
+       3,
+       -3
+      ]
+     },
+     "pre": {
+      "rotate": 0
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "rotate": [
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

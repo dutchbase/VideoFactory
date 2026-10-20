@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "name": "arrow-down-left",
+ "dur": 0.5,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "x": [
+       0,
+       3,
+       0
+      ],
+      "y": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "100%",
+    "y": "100%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       0.85,
+       1
+      ],
+      "x": [
+       0,
+       3,
+       0
+      ],
+      "y": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

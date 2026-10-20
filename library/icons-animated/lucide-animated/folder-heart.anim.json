@@ -1,0 +1,45 @@
+{
+ "v": 1,
+ "name": "folder-heart",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "18px",
+    "y": "18px",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0.9
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0.9,
+       1,
+       0.85,
+       1,
+       0.9
+      ],
+      "scale": [
+       1,
+       1.12,
+       1.04,
+       1.12,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

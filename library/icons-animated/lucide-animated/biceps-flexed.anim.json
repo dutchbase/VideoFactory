@@ -1,0 +1,88 @@
+{
+ "v": 1,
+ "name": "biceps-flexed",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "rotate": [
+       0,
+       15,
+       0
+      ],
+      "scale": [
+       1,
+       1.3,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "rotate": [
+       0,
+       15,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "rotate": [
+       0,
+       15,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

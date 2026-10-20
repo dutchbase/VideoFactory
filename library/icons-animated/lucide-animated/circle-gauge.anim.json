@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "name": "circle-gauge",
+ "dur": 0.4125,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "rotate": [
+       0,
+       72
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "rotate": [
+       72,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

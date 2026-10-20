@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "name": "chart-line",
+ "dur": 0.9,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.15,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  }
+ ]
+}

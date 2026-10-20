@@ -1,0 +1,5 @@
+.b-prompt-layers3d .b-camera3d { left:150px; top:720px; width:780px; height:620px; }
+.b-prompt-layers3d .b-face3d.b-front { flex-direction:row; justify-content:flex-start; gap:24px; padding:24px; }
+.b-prompt-layers3d .b-layer-name { width:245px; flex-shrink:0; font-weight:900; font-size:36px; line-height:1; }
+.b-prompt-layers3d .b-layer-body { font-size:40px; line-height:1.1; font-weight:500; }
+.b-prompt-layers3d .b-face3d.b-front::before { content:''; position:absolute; left:0; top:0; bottom:0; width:12px; background:var(--accent); }

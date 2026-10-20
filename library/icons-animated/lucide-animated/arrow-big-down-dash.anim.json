@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "name": "arrow-big-down-dash",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "y": [
+       0,
+       1,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "y": [
+       0,
+       3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

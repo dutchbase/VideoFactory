@@ -1,0 +1,2 @@
+/* rotate-in: split words need their own box to turn. */
+.fx-rotate-part { display: inline-block; }

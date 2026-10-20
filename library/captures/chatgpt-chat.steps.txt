@@ -1,0 +1,18 @@
+# ChatGPT: type one prompt and record the answer. Copy this file next to your video and change the prompt line only.
+# Log in once, by hand: anim.py login chatgpt https://chatgpt.com --expect '[data-testid="accounts-profile-button"]'
+# expect is the account button: logged-out chatgpt.com shows the composer too (check this selector in the first live run)
+# Record: anim.py record <slug> chat <copy of this file>   (frames go through the privacy scan; crop keeps the sidebar out)
+url: https://chatgpt.com/
+auth: chatgpt
+breakpoints: mobile
+scheme: dark
+expect: [data-testid="accounts-profile-button"]
+---
+# keep only the conversation column: chat history, account menu and sidebar never enter the recording
+crop main
+click #prompt-textarea
+# the prompt: one neutral sentence, no names or personal data
+type #prompt-textarea "Write a short, friendly email to my customer."
+wait 0.5
+press Enter
+wait 12

@@ -1,0 +1,11 @@
+{
+  "name": "iconanim",
+  "private": true,
+  "description": "Converts lucide-animated (motion/react) icons into time-driven specs for the VideoFactory engines.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": { "convert": "node convert.mjs" },
+  "dependencies": {
+    "@babel/parser": "8.0.7"
+  }
+}

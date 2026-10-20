@@ -1,0 +1,7 @@
+/* rgb-glitch-text: two coloured copies sit under the main text; the part moves them with em offsets. */
+.fx-rgb-glitch-text { white-space: nowrap; }
+.fx-rgb-glitch-text-wrap { position: relative; display: inline-block; white-space: pre; }
+.fx-rgb-glitch-text-a, .fx-rgb-glitch-text-b { position: absolute; inset: 0; display: none; }
+.fx-rgb-glitch-text-a { color: var(--fx-rg-a, var(--accent)); }
+.fx-rgb-glitch-text-b { color: var(--fx-rg-b, var(--green)); }
+.fx-rgb-glitch-text-main { position: relative; color: var(--fx-rg-main, var(--ink)); }

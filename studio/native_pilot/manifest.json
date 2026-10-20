@@ -1,0 +1,103 @@
+{
+  "audio": {
+    "path": "audio/approved-voice-10s.wav",
+    "sha256": "ae83fd6237dd29e71960cc5e8b22fc4ef9af2a15f711d07b81f8b1015642e66a"
+  },
+  "capabilities": {
+    "audio_converter": {
+      "name": "FFmpeg",
+      "version": "ffmpeg version n9.0.1 Copyright (c) 2000-2026 the FFmpeg developers"
+    },
+    "lip_sync": {
+      "name": "Rhubarb Lip Sync",
+      "pinned": true,
+      "version": "Rhubarb Lip Sync version 1.14.0"
+    },
+    "renderer": {
+      "name": "Synfig",
+      "pinned": true,
+      "png_target": true,
+      "version": "synfig 1.4.5"
+    }
+  },
+  "capabilities_sha256": "75ed7e9b8aad2fce191debc79d41faaf7fd1c5fa4f974509b70091d230d09df0",
+  "controls": {
+    "expression_switch": {
+      "closed_asset": "face-closed.png",
+      "closed_at_frame": 96,
+      "open_asset": "face-open.png",
+      "open_at_frame": 104
+    },
+    "gesture": {
+      "asset": "arm.png",
+      "peak_frame": 120,
+      "rest_frame": 0
+    }
+  },
+  "controls_sha256": "18c7e586775e73fc08c0cfea6d20e3fc7816532b3fe33ba1c74b328facbb194f",
+  "corrections": {
+    "path": "cues/corrections.json",
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "cues": {
+    "path": "cues/raw.rhubarb.json",
+    "sha256": "b81c0a31a86b5085b532ab524dfa64ac7cb570d2fa6f4c0ee43679199ca9a1b7"
+  },
+  "dialog": {
+    "path": "dialog-10s.txt",
+    "sha256": "7080b1b520f0fa560bc4cccf17aef67ef01c5c3a3fd637ac87b448a8141742ff"
+  },
+  "projects": {
+    "default": {
+      "linked_assets": {
+        "arm.png": {
+          "sha256": "f6b1fc0e85bb9619bca914b9e52532e3887eeb95b0a6e3c6b13cc7cb2d603c61"
+        },
+        "face-closed.png": {
+          "sha256": "20a48b8917a72996d86a4a92b3ea40c68b051bbd92e3f6da924d40dbe346406b"
+        },
+        "face-open.png": {
+          "sha256": "89395e0753d0a007f27ae511ab16e0a0e81563dad7f2836360bf7a6e1dc680b8"
+        }
+      },
+      "path": "switch-gesture.sif",
+      "sha256": "49250084b29581165967950e3248a6043e44004e6a9f27c2a867d445ad7b1df0"
+    }
+  },
+  "recognition": {
+    "audio_start_seconds": 0.0,
+    "corrections_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "dialog_sha256": "7080b1b520f0fa560bc4cccf17aef67ef01c5c3a3fd637ac87b448a8141742ff",
+    "export_format": "json",
+    "raw_cues_sha256": "b81c0a31a86b5085b532ab524dfa64ac7cb570d2fa6f4c0ee43679199ca9a1b7",
+    "recognizer": "pocketSphinx",
+    "rendered_audio_sha256": "ae83fd6237dd29e71960cc5e8b22fc4ef9af2a15f711d07b81f8b1015642e66a",
+    "silence_pad_seconds": 1.02,
+    "source_audio_sha256": "3c3650f7d4ee18ad9bb6ff3aed8c1e93dbbe6f12f5f35f380696e58e995b3de7",
+    "spoken_segment_seconds": 8.98,
+    "threads": 1,
+    "tool": "Rhubarb Lip Sync",
+    "tool_binary_sha256": "d9aefa0627f843cd306333cc761368c4750ceddfa43236f0e607fa074249390c",
+    "tool_version": "1.14.0"
+  },
+  "recognition_sha256": "6ae3eb59b9c4855e5479e04292d121ecbd55061cd9e5534be721fc260a3bcc75",
+  "schema": 1,
+  "settings": {
+    "duration_seconds": 10,
+    "fps": 24,
+    "frame_count": 240,
+    "height": 720,
+    "max_memory_bytes": 4294967296,
+    "render_queue_threads": 4,
+    "require_no_swap": true,
+    "scanline_threads": 1,
+    "synfig_appimage_sha256": "2f2f073a171a9a7eec1f89e70ad3ac2ff96f10ea9dc561cb1a1855c194801715",
+    "target_seconds": 60,
+    "width": 1280
+  },
+  "settings_sha256": "d4500bf425f748299d29d5cd674b003a3f05998df87a616d67e20e221086eead",
+  "source_audio": {
+    "path": "audio/source-approved-voice.mp3",
+    "sha256": "3c3650f7d4ee18ad9bb6ff3aed8c1e93dbbe6f12f5f35f380696e58e995b3de7"
+  }
+}

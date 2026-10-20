@@ -1,0 +1,4 @@
+/* dynamic-grid: sits under the content of its root; the plane is larger than the frame by one cell on each side. */
+.fx-grid { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.fx-grid-plane { position: absolute; background-repeat: repeat; }
+.fx-grid-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, var(--accent) 0%, transparent 55%); }

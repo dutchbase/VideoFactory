@@ -1,0 +1,2233 @@
+{
+  "brand": "VideoFactory",
+  "version": 2,
+  "fps": 30,
+  "loop": 6,
+  "assets": [
+    {
+      "id": "DEV-01",
+      "name": "Browser · 3D tilt-in + push",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-02",
+      "name": "Phone · swing + drift",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-03",
+      "name": "Terminal · typing",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-04",
+      "name": "Phone · hero float",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": true,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-05",
+      "name": "Phone duo · parallax",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": true,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-06",
+      "name": "Phone · feed scroll + tap",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DEV-07",
+      "name": "Phone · stand up + lock screen",
+      "section": "01 Device frames",
+      "type": "device",
+      "file": "DEV-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-01",
+      "name": "Chat assistant · streaming",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-02",
+      "name": "Image generator · scan reveal",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-03",
+      "name": "Agent workflow",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-04",
+      "name": "AI in a spreadsheet",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-05",
+      "name": "Voice assistant · waveform",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-06",
+      "name": "Code assistant · suggestion",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AI-07",
+      "name": "Inbox AI · draft + stamp",
+      "section": "02 AI interfaces",
+      "type": "scene",
+      "file": "AI-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-01",
+      "name": "Headline · mask + block",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-02",
+      "name": "Strikethrough + correction",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-03",
+      "name": "Reel captions · pop",
+      "section": "03 Kinetic typography",
+      "type": "overlay",
+      "file": "TYP-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-04",
+      "name": "List · staggered",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-05",
+      "name": "Decode reveal",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-06",
+      "name": "Big number takeover",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TYP-07",
+      "name": "Quote card",
+      "section": "03 Kinetic typography",
+      "type": "scene",
+      "file": "TYP-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TRN-01",
+      "name": "Hazard wipe",
+      "section": "04 Transitions",
+      "type": "transition",
+      "file": "TRN-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TRN-02",
+      "name": "Block wipe · 3 layers",
+      "section": "04 Transitions",
+      "type": "transition",
+      "file": "TRN-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TRN-03",
+      "name": "Scanline reveal",
+      "section": "04 Transitions",
+      "type": "transition",
+      "file": "TRN-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "TRN-04",
+      "name": "Shutter · 8 slats",
+      "section": "04 Transitions",
+      "type": "transition",
+      "file": "TRN-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "FX-01",
+      "name": "Cursor · click · toast",
+      "section": "05 Overlays & effects",
+      "type": "scene",
+      "file": "FX-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "FX-02",
+      "name": "Focus brackets · lock-on",
+      "section": "05 Overlays & effects",
+      "type": "scene",
+      "file": "FX-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "FX-03",
+      "name": "Camera HUD · scanlines",
+      "section": "05 Overlays & effects",
+      "type": "overlay",
+      "file": "FX-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "FX-04",
+      "name": "Stamp impact + shake",
+      "section": "05 Overlays & effects",
+      "type": "scene",
+      "file": "FX-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-01",
+      "name": "Before / after bars",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-02",
+      "name": "Line chart · draw-on",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-03",
+      "name": "Big counter · segments",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-04",
+      "name": "Odometer · rolling digits",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-05",
+      "name": "Weekly schedule · AI takes over",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-06",
+      "name": "Comparison per task",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-07",
+      "name": "Stat trio",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "DAT-08",
+      "name": "Percentage · vertical fill",
+      "section": "06 Data & counters",
+      "type": "scene",
+      "file": "DAT-08.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BRD-01",
+      "name": "Logo sting",
+      "section": "07 Brand",
+      "type": "scene",
+      "file": "BRD-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BRD-02",
+      "name": "Lower third + bug",
+      "section": "07 Brand",
+      "type": "overlay",
+      "file": "BRD-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BRD-03",
+      "name": "End card · CTA",
+      "section": "07 Brand",
+      "type": "scene",
+      "file": "BRD-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-01",
+      "name": "Karaoke block",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-02",
+      "name": "Fill progress · card",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-03",
+      "name": "One word · punch",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-04",
+      "name": "Stacked emphasis",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-05",
+      "name": "Subtitle · speaker chip",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CAP-06",
+      "name": "Typewriter transcript",
+      "section": "08 Voice-over captions",
+      "type": "overlay",
+      "file": "CAP-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "VID-01",
+      "name": "Video player · play + progress",
+      "section": "09 Video players",
+      "type": "device",
+      "file": "VID-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "VID-02",
+      "name": "Reel player · like burst",
+      "section": "09 Video players",
+      "type": "device",
+      "file": "VID-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "VID-03",
+      "name": "Picture-in-picture · punch-in",
+      "section": "09 Video players",
+      "type": "device",
+      "file": "VID-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "VID-04",
+      "name": "Before/after split screen",
+      "section": "09 Video players",
+      "type": "device",
+      "file": "VID-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "VID-05",
+      "name": "Video card · thumbnail",
+      "section": "09 Video players",
+      "type": "device",
+      "file": "VID-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AIM-01",
+      "name": "Prompt → result morph",
+      "section": "10 AI moments",
+      "type": "scene",
+      "file": "AIM-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AIM-02",
+      "name": "Token stream",
+      "section": "10 AI moments",
+      "type": "scene",
+      "file": "AIM-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AIM-03",
+      "name": "Model brain · network",
+      "section": "10 AI moments",
+      "type": "scene",
+      "file": "AIM-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AIM-04",
+      "name": "Messy PDF → summary",
+      "section": "10 AI moments",
+      "type": "scene",
+      "file": "AIM-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "AIM-05",
+      "name": "AI agent cursor · fills form",
+      "section": "10 AI moments",
+      "type": "scene",
+      "file": "AIM-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CIN-01",
+      "name": "3D card stack",
+      "section": "11 Cinematic",
+      "type": "scene",
+      "file": "CIN-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CIN-02",
+      "name": "Isometric workspace",
+      "section": "11 Cinematic",
+      "type": "scene",
+      "file": "CIN-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CIN-03",
+      "name": "Infinite zoom",
+      "section": "11 Cinematic",
+      "type": "scene",
+      "file": "CIN-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "CIN-04",
+      "name": "Parallax layers",
+      "section": "11 Cinematic",
+      "type": "scene",
+      "file": "CIN-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "SOC-01",
+      "name": "Hook opener · stop scrolling",
+      "section": "12 Social formats",
+      "type": "scene",
+      "file": "SOC-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "SOC-02",
+      "name": "Comment reply card",
+      "section": "12 Social formats",
+      "type": "overlay",
+      "file": "SOC-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "SOC-03",
+      "name": "Poll / quiz",
+      "section": "12 Social formats",
+      "type": "scene",
+      "file": "SOC-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "SOC-04",
+      "name": "Carousel swipe",
+      "section": "12 Social formats",
+      "type": "scene",
+      "file": "SOC-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "SOC-05",
+      "name": "Series progress · part 2/5",
+      "section": "12 Social formats",
+      "type": "scene",
+      "file": "SOC-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "EXP-01",
+      "name": "Flowchart builder",
+      "section": "13 Explainers",
+      "type": "scene",
+      "file": "EXP-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "EXP-02",
+      "name": "Comparison table",
+      "section": "13 Explainers",
+      "type": "scene",
+      "file": "EXP-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "EXP-03",
+      "name": "Timeline",
+      "section": "13 Explainers",
+      "type": "scene",
+      "file": "EXP-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "EXP-04",
+      "name": "Quadrant / matrix",
+      "section": "13 Explainers",
+      "type": "scene",
+      "file": "EXP-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "B2B-01",
+      "name": "Case result card",
+      "section": "14 B2B / lead gen",
+      "type": "scene",
+      "file": "B2B-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "B2B-02",
+      "name": "Testimonial",
+      "section": "14 B2B / lead gen",
+      "type": "scene",
+      "file": "B2B-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": true,
+      "supportsTransparent": true
+    },
+    {
+      "id": "B2B-03",
+      "name": "Process timeline · scan → train",
+      "section": "14 B2B / lead gen",
+      "type": "scene",
+      "file": "B2B-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "B2B-04",
+      "name": "Calendar booking",
+      "section": "14 B2B / lead gen",
+      "type": "scene",
+      "file": "B2B-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-01",
+      "name": "Countdown 3-2-1",
+      "section": "15 Utility",
+      "type": "scene",
+      "file": "UTL-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-02",
+      "name": "Timer · countdown",
+      "section": "15 Utility",
+      "type": "scene",
+      "file": "UTL-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-03",
+      "name": "Follow CTA",
+      "section": "15 Utility",
+      "type": "overlay",
+      "file": "UTL-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-04",
+      "name": "Arrows & callouts",
+      "section": "15 Utility",
+      "type": "overlay",
+      "file": "UTL-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-05",
+      "name": "Zoom highlight for screenshots",
+      "section": "15 Utility",
+      "type": "scene",
+      "file": "UTL-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": true,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-06",
+      "name": "Grain + scanlines + vignette",
+      "section": "15 Utility",
+      "type": "overlay",
+      "file": "UTL-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "UTL-07",
+      "name": "Audio bars · beat",
+      "section": "15 Utility",
+      "type": "scene",
+      "file": "UTL-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-01",
+      "name": "Blueprint grid · drift",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-01.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-02",
+      "name": "Ink grid · scan sweep",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-02.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-03",
+      "name": "Hatching · diagonal drift",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-03.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-04",
+      "name": "Dot matrix · wave",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-04.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-05",
+      "name": "Floating squares",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-05.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-06",
+      "name": "Data rain",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-06.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-07",
+      "name": "Concentric squares",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-07.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-08",
+      "name": "Ticker rows",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-08.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    },
+    {
+      "id": "BKG-09",
+      "name": "Perspective floor",
+      "section": "16 Backgrounds",
+      "type": "background",
+      "file": "BKG-09.dc.html",
+      "defaultDuration": 6,
+      "fps": 30,
+      "formats": {
+        "16:9": [
+          1920,
+          1080
+        ],
+        "9:16": [
+          1080,
+          1920
+        ],
+        "1:1": [
+          1080,
+          1080
+        ]
+      },
+      "hasImageSlots": false,
+      "supportsTransparent": true
+    }
+  ]
+}

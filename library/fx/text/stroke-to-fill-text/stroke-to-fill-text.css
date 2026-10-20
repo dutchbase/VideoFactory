@@ -1,0 +1,17 @@
+/* stroke-to-fill-text: the part's own text is the outline; ::after is the solid copy that a gradient mask floods. */
+.fx-stroke-to-fill-text { white-space: nowrap; }
+.fx-stroke-to-fill-text-part {
+  position: relative;
+  color: transparent;
+  -webkit-text-stroke: calc(var(--fx-sf-sw, 3) * 1px) var(--fx-sf-stroke, var(--ink));
+}
+.fx-stroke-to-fill-text-part::after {
+  content: attr(data-t);
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--fx-sf-fill, var(--ink));
+  -webkit-text-stroke: 0;
+  -webkit-mask-image: linear-gradient(var(--fx-sf-dir, to top), rgba(0, 0, 0, 1) calc(var(--fx-sf-f, 0) * 1% - var(--fx-sf-soft, 14) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-sf-f, 0) * 1%));
+  mask-image: linear-gradient(var(--fx-sf-dir, to top), rgba(0, 0, 0, 1) calc(var(--fx-sf-f, 0) * 1% - var(--fx-sf-soft, 14) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-sf-f, 0) * 1%));
+}

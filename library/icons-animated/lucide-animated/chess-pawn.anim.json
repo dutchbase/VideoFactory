@@ -1,0 +1,78 @@
+{
+ "v": 1,
+ "name": "chess-pawn",
+ "dur": 2.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "12px",
+    "y": "21px",
+    "box": "view"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.8,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.08,
+      0.3,
+      0.52,
+      0.72,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       5,
+       5,
+       5,
+       3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2.4,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.33,
+      0.66,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       -15,
+       15,
+       0
+      ],
+      "x": [
+       0,
+       -5,
+       5,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

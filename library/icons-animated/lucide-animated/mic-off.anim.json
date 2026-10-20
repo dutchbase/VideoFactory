@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "name": "mic-off",
+ "dur": 0.55,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.15,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.15,
+     "duration": 0.1,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ]
+  }
+ ]
+}

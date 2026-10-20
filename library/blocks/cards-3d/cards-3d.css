@@ -1,0 +1,4 @@
+.b-cards3d .b-camera3d { top:720px; }
+.b-cards3d .b-face3d.b-front { flex-direction:column; justify-content:center; gap:20px; padding:32px; }
+.b-cards3d .b-face3d .b-head3d { font-size:90px; }
+.b-cards3d .b-face3d svg { width:110px; height:110px; flex-shrink:0; }

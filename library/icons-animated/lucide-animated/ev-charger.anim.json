@@ -1,0 +1,28 @@
+{
+ "v": 1,
+ "name": "ev-charger",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 5,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       1,
+       0.4,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

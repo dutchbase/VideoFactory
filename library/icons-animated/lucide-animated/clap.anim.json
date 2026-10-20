@@ -1,0 +1,69 @@
+{
+ "v": 1,
+ "name": "clap",
+ "dur": 0.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "4px",
+    "y": "20px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.5,
+      1
+     ],
+     "props": {
+      "rotate": [
+       -10,
+       -10,
+       0
+      ]
+     },
+     "pre": {
+      "rotate": 0
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "3px",
+    "y": "11px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.3,
+      0.6,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       -10,
+       16,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

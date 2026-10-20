@@ -1,0 +1,89 @@
+{
+ "v": 1,
+ "name": "map-pin-check-inside",
+ "dur": 0.6,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.6,
+      1
+     ],
+     "props": {
+      "y": [
+       0,
+       -5,
+       -3
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.3,
+     "duration": 0.1,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.3,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  }
+ ]
+}

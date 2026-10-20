@@ -1,0 +1,14 @@
+# Browser recording for the scene.capture shot: search a public page and scroll.
+url: https://en.wikipedia.org/wiki/Special:Search
+expect: input[name="search"]
+---
+wait 1
+click input[name="search"]
+type input[name="search"] "Speech synthesis"
+wait 0.6
+press Enter
+wait 2
+scroll 420
+wait 1.2
+scroll 420
+wait 1

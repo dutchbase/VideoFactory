@@ -1,0 +1,18 @@
+{
+  "format": "wide",
+  "style": "modern",
+  "renderer": "modern",
+  "brand": "videofactory",
+  "engine": "canvas",
+  "title": "What Is Videofactory",
+  "voice_test": {
+    "path": "01_voice/takes/01.mp3",
+    "origin": "generated",
+    "script_fingerprint": "5d26d125109ef150db6b84f7f205e8108a883f613117ca5d717a48791c2a1688"
+  },
+  "voice": {
+    "path": "01_voice/voice.mp3",
+    "origin": "generated",
+    "script_fingerprint": "5d26d125109ef150db6b84f7f205e8108a883f613117ca5d717a48791c2a1688"
+  }
+}

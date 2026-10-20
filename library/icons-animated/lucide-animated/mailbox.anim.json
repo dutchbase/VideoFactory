@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "name": "mailbox",
+ "dur": 0.8667,
+ "rdur": 0.5333,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "18px",
+    "y": "11px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      280,
+      12,
+      1
+     ],
+     "duration": 0.8667,
+     "props": {
+      "rotate": [
+       0,
+       -90
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      300,
+      18,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "rotate": [
+       -90,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

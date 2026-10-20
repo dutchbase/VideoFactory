@@ -1,0 +1,76 @@
+{
+ "v": 1,
+ "name": "hand-heart",
+ "dur": 0.4667,
+ "rdur": 0.4667,
+ "els": [
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "spring": [
+      200,
+      25,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "y": [
+       0,
+       -2
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       1.1
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "spring": [
+      200,
+      25,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "y": [
+       -2,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1.1,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

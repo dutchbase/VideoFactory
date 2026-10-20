@@ -1,0 +1,100 @@
+{
+ "v": 1,
+ "name": "audio-lines",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "base": {
+    "d": "M6 6v11"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.5,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "d": [
+       "M6 6v11",
+       "M6 10v3",
+       "M6 6v11"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "base": {
+    "d": "M10 3v18"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "d": [
+       "M10 3v18",
+       "M10 9v5",
+       "M10 3v18"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "base": {
+    "d": "M14 8v7"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "d": [
+       "M14 8v7",
+       "M14 6v11",
+       "M14 8v7"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "base": {
+    "d": "M18 5v13"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.5,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "d": [
+       "M18 5v13",
+       "M18 7v9",
+       "M18 5v13"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

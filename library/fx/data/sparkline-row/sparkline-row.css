@@ -1,0 +1,8 @@
+/* sparkline-row: label, headline value and change sit in their own columns on the ground; only the trend line is drawn. */
+.fx-sparkline-row { display: flex; flex-direction: column; color: var(--ink); font-family: var(--font); }
+.fx-sparkline-row-item { display: grid; align-items: center; column-gap: 40px; border-bottom: 2px solid var(--line); }
+.fx-sparkline-row-item:last-child { border-bottom: 0; }
+.fx-sparkline-row-item svg { display: block; }
+.fx-sparkline-row-label { font: 700 44px/1.1 var(--head); color: var(--ink); }
+.fx-sparkline-row-value { font: 800 72px/1 var(--head); color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+.fx-sparkline-row-delta { font: 800 44px/1 var(--head); text-align: right; font-variant-numeric: tabular-nums; }

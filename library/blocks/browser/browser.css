@@ -1,0 +1,9 @@
+.b-browser { position: absolute; inset: 0; box-sizing: border-box; background: var(--cream); border: 6px solid var(--ink);
+             box-shadow: 18px 18px 0 0 var(--accent); overflow: hidden; }
+.b-browser-bar { height: 72px; display: flex; align-items: center; gap: 12px; padding: 0 24px; background: var(--ink); }
+.b-browser-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--dim); }
+.b-browser-url { margin-left: 18px; flex: 1; height: 44px; line-height: 44px; padding: 0 22px; border-radius: 22px; background: var(--dim);
+                 color: var(--cream); font-family: var(--font); font-size: 26px; }
+.b-browser-view { position: absolute; left: 0; right: 0; top: 72px; bottom: 0; overflow: hidden; background: var(--cream); }
+.b-browser-inner { position: absolute; inset: 0; }
+.b-browser-frame { display: none; position: absolute; left: 0; top: 0; width: 100%; height: auto; }

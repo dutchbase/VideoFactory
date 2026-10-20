@@ -1,0 +1,2 @@
+/* camera-shake: no markup of its own. Wrap the scene in one element and pass it; the part moves that element. */
+.fx-camera-shake { will-change: transform; }

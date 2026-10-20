@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "name": "arrow-down",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "m19 12-7 7-7-7"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "y": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "base": {
+    "d": "M12 5v14"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "d": [
+       "M12 5v14",
+       "M12 5v9",
+       "M12 5v14"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

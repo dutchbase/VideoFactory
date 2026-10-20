@@ -1,0 +1,124 @@
+{
+ "v": 1,
+ "name": "flask",
+ "dur": 0.9667,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "linear",
+     "props": {
+      "y": [
+       0,
+       -12
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       5,
+       -5,
+       3,
+       -3,
+       0
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -12,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      150,
+      10,
+      1
+     ],
+     "duration": 0.9667,
+     "props": {
+      "scale": [
+       1,
+       0.9
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       6,
+       -6,
+       3,
+       -3,
+       0
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.9,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

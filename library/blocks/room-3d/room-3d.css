@@ -1,0 +1,19 @@
+.b-space3d { position:absolute; inset:0; perspective:1800px; perspective-origin:50% 48%; }
+.b-camera3d,.b-solid { position:absolute; transform-style:preserve-3d; }
+.b-camera3d { left:170px; top:650px; width:740px; height:740px; }
+.b-solid .b-face3d { position:absolute; display:flex; align-items:center; justify-content:center; border:6px solid var(--ink); background:var(--cream); backface-visibility:hidden; }
+.b-solid .b-face3d.b-side3d { background:var(--accent); border-width:4px; }
+.b-solid .b-face3d.b-back { background:var(--dim); }
+.b-solid .b-face3d.b-bottom { background:var(--ink); }
+.b-solid .b-face3d.b-top { background:var(--line); }
+.b-solid .b-face3d.b-left { background:var(--dim); }
+.b-face3d.b-front,.b-face3d.b-right { flex-direction:column; gap:44px; }
+.b-face3d .b-head3d { font-family:var(--head); font-size:108px; font-weight:900; line-height:.98; letter-spacing:-.035em; text-transform:uppercase; }
+.b-face3d > svg,.b-card-icon > svg { width:260px; height:240px; fill:none; stroke:var(--ink); stroke-width:14px; }
+.b-face3d .b-accent-plate { fill:var(--accent); }
+.b-headline3d { position:absolute; left:100px; top:300px; width:880px; font-family:var(--head); font-size:100px; font-weight:900; line-height:1; letter-spacing:-.035em; text-transform:uppercase; }
+.b-shadow3d { position:absolute; left:160px; top:1400px; width:760px; height:120px; fill:var(--ink); }
+
+.b-space3d { color:var(--ink); font-family:var(--font); }
+.b-space3d,.b-space3d * { box-sizing:border-box; }
+.b-space3d .b-head3d,.b-space3d p { margin:0; }

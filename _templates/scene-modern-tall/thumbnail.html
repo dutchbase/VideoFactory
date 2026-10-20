@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}} thumbnail</title>
+<link rel="stylesheet" href="runtime/fonts/fonts.css">
+<link rel="stylesheet" href="runtime/modern.css">
+<style>
+  .thumb .vf-hero { font-size: 150px; max-width: 9ch; }
+  .thumb.center .vf-hero { max-width: 13ch; }
+  .thumb .vf-logo { height: 120px; }
+</style>
+</head>
+<body>
+<div id="stage" data-width="1080" data-height="1920">
+  <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+  <section class="vf-shot thumb" data-thumb="1">
+    <img class="vf-logo" src="brand/logo/mark.svg" alt="">
+    <h1 class="vf-hero">{{TITLE}}</h1>
+  </section>
+  <section class="vf-shot thumb center" data-thumb="2">
+    <div class="vf-kicker plain" data-brand="name"></div>
+    <h1 class="vf-hero">{{TITLE}}</h1>
+  </section>
+</div>
+<script src="cues/cues.js"></script>
+<script src="brand/tokens.js"></script>
+<script src="runtime/player.js"></script>
+<script src="runtime/icons.js"></script>
+<script src="runtime/modern.js"></script>
+<script src="thumbnail.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{
+ "v": 1,
+ "name": "facebook",
+ "dur": 0.6,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.1,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "linear",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ],
+      "pathOffset": [
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "pathLength": 1,
+      "pathOffset": 0
+     }
+    }
+   ]
+  }
+ ]
+}

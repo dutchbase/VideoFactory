@@ -1,0 +1,1267 @@
+[
+ {
+  "name": "animated-counter",
+  "title": "Animated counter",
+  "description": "Counter that interpolates between values with optional prefix, postfix and formatting.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "animated",
+   "counter"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 132,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/AnimatedCounter.tsx",
+  "file": "src/components/AnimatedCounter.tsx",
+  "status": "covered",
+  "covered_by": "data-count"
+ },
+ {
+  "name": "animated-text",
+  "title": "Animated text",
+  "description": "Character-by-character, word-by-word, or full text animations with staggering, easing, and transform controls.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "animated",
+   "text"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 189,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/AnimatedText.tsx",
+  "file": "src/components/AnimatedText.tsx",
+  "status": "available"
+ },
+ {
+  "name": "basic-typewriter",
+  "title": "Basic typewriter",
+  "description": "Simple typing animation with cursor",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "basic",
+   "typewriter"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 39,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/typewriter/BasicTypewriter.tsx",
+  "file": "docs/src/bits/examples/typewriter/BasicTypewriter.tsx",
+  "status": "covered",
+  "covered_by": "data-type"
+ },
+ {
+  "name": "bit-3d-basic",
+  "title": "3d basic",
+  "description": "3D camera transitions between positioned steps, impress.js style",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "basic"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 70,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/3DBasic.tsx",
+  "file": "docs/src/bits/examples/scene-3d/3DBasic.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-3d-elements",
+  "title": "3d elements",
+  "description": "3D Scene allows placing arbitrary elements in 3D space",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "elements"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 173,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/3DElements.tsx",
+  "file": "docs/src/bits/examples/scene-3d/3DElements.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-3d-step-timing-context",
+  "title": "3d step timing context",
+  "description": "Demonstrates useMotionTiming context awareness in Scene3D Steps",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "context",
+   "step",
+   "timing"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 175,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/StepTimingContext.tsx",
+  "file": "docs/src/bits/examples/scene-3d/StepTimingContext.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-bar-chart",
+  "title": "Bar chart",
+  "description": "Horizontal bar chart growing in with staggered bars and counting values.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "bar",
+   "chart"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 178,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-counter/BarChart.tsx",
+  "file": "docs/src/bits/examples/animated-counter/BarChart.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-basic-code-block",
+  "title": "Basic code block",
+  "description": "Syntax highlighted code with line-by-line reveal",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "basic",
+   "block",
+   "code"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 47,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/code-block/BasicCodeBlock.tsx",
+  "file": "docs/src/bits/examples/code-block/BasicCodeBlock.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-basic-counter",
+  "title": "Basic counter",
+  "description": "Animated counter that interpolates between values.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "basic",
+   "counter"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 39,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-counter/BasicCounter.tsx",
+  "file": "docs/src/bits/examples/animated-counter/BasicCounter.tsx",
+  "status": "covered",
+  "covered_by": "data-count"
+ },
+ {
+  "name": "bit-blur-slide-word",
+  "title": "Blur slide word",
+  "description": "Text that fades, unblurs and slides up word by word",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "blur",
+   "slide",
+   "word"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 43,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/BlurSlideWord.tsx",
+  "file": "docs/src/bits/examples/animated-text/BlurSlideWord.tsx",
+  "status": "covered",
+  "covered_by": "fx:blur-reveal (by: 'words')"
+ },
+ {
+  "name": "bit-card-stack",
+  "title": "Card stack",
+  "description": "A stack of cards that spreads out in 3D space.",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "card",
+   "stack"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 97,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/CardStack.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/CardStack.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-carousel-3d",
+  "title": "Carousel 3d",
+  "description": "Rotating carousel of cards in 3D space",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "carousel"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 106,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/Carousel.tsx",
+  "file": "docs/src/bits/examples/scene-3d/Carousel.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-char-by-char",
+  "title": "Char by char",
+  "description": "Text that appears character by character with staggered timing",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "by",
+   "char"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 43,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/CharByChar.tsx",
+  "file": "docs/src/bits/examples/animated-text/CharByChar.tsx",
+  "status": "covered",
+  "covered_by": "data-in=\"chars\""
+ },
+ {
+  "name": "bit-chat-conversation",
+  "title": "Chat conversation",
+  "description": "Messaging-app style conversation with bubbles arriving one after another.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "chat",
+   "conversation"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 173,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/ChatConversation.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/ChatConversation.tsx",
+  "status": "covered",
+  "covered_by": "block:chat"
+ },
+ {
+  "name": "bit-conic-gradient",
+  "title": "Conic gradient",
+  "description": "Colorful conic gradient rotation",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "conic",
+   "gradient"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 37,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/gradient-transition/ConicGradient.tsx",
+  "file": "docs/src/bits/examples/gradient-transition/ConicGradient.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-counter-confetti",
+  "title": "Counter confetti",
+  "description": "Counter reaching 1000 with confetti particles bursting from the sides.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "confetti",
+   "counter"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 174,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-counter/CounterConfetti.tsx",
+  "file": "docs/src/bits/examples/animated-counter/CounterConfetti.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-cursor-flyover",
+  "title": "Cursor flyover",
+  "description": "Camera flies over an app screenshot while a cursor highlights different areas",
+  "category": "cinematic",
+  "upstream_category": null,
+  "tags": [
+   "cursor",
+   "flyover"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 113,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/CursorFlyover.tsx",
+  "file": "docs/src/bits/examples/scene-3d/CursorFlyover.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-easings-visualizer",
+  "title": "Easings visualizer",
+  "description": "Visualizes different easing functions with sliding squares.",
+  "category": "helpers",
+  "upstream_category": null,
+  "tags": [
+   "easings",
+   "visualizer"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 127,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/EasingsVisualizer.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/EasingsVisualizer.tsx",
+  "status": "skip",
+  "reason": "a helper, not a picture"
+ },
+ {
+  "name": "bit-fade-in",
+  "title": "Fade in",
+  "description": "Simple fade-in text animation from transparent to opaque",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "fade",
+   "in"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 33,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/FadeIn.tsx",
+  "file": "docs/src/bits/examples/animated-text/FadeIn.tsx",
+  "status": "covered",
+  "covered_by": "data-in=\"fade\""
+ },
+ {
+  "name": "bit-fireflies",
+  "title": "Fireflies",
+  "description": "Wandering particles with glow effect simulating fireflies",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "fireflies"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 61,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/particle-system/Fireflies.tsx",
+  "file": "docs/src/bits/examples/particle-system/Fireflies.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-flying-through-words",
+  "title": "Flying through words",
+  "description": "Words spawning and flying past the camera",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "flying",
+   "through",
+   "words"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 72,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/FlyingThroughWords.tsx",
+  "file": "docs/src/bits/examples/scene-3d/FlyingThroughWords.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-fracture-reassemble",
+  "title": "Fracture reassemble",
+  "description": "Grid of tiles shatters into 3D space and reassembles with abstract symbol accents",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "fracture",
+   "reassemble"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 160,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/FractureReassemble.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/FractureReassemble.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-glitch-cycle",
+  "title": "Glitch cycle",
+  "description": "Cycling text with glitch transitions",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "cycle",
+   "glitch"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 43,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/GlitchCycle.tsx",
+  "file": "docs/src/bits/examples/animated-text/GlitchCycle.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-glitch-in",
+  "title": "Glitch in",
+  "description": "Text effect that glitches into existence",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "glitch",
+   "in"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 45,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/GlitchIn.tsx",
+  "file": "docs/src/bits/examples/animated-text/GlitchIn.tsx",
+  "status": "covered",
+  "covered_by": "fx:rgb-glitch-text"
+ },
+ {
+  "name": "bit-grid-stagger",
+  "title": "Grid stagger",
+  "description": "A grid of elements staggering in from the center using scale and opacity.",
+  "category": "entrances",
+  "upstream_category": null,
+  "tags": [
+   "grid",
+   "stagger"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 100,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/GridStagger.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/GridStagger.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-ken-burns",
+  "title": "Ken burns",
+  "description": "Slow camera movement over images using Scene3D steps with Ken Burns effect.",
+  "category": "media",
+  "upstream_category": null,
+  "tags": [
+   "burns",
+   "ken"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 110,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/KenBurns.tsx",
+  "file": "docs/src/bits/examples/scene-3d/KenBurns.tsx",
+  "status": "covered",
+  "covered_by": "fx:ken-burns"
+ },
+ {
+  "name": "bit-linear-gradient",
+  "title": "Linear gradient",
+  "description": "Smooth transition between linear gradients",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "gradient",
+   "linear"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 56,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/gradient-transition/LinearGradient.tsx",
+  "file": "docs/src/bits/examples/gradient-transition/LinearGradient.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-list-reveal",
+  "title": "List reveal",
+  "description": "A vertical list of items scaling and finding their place.",
+  "category": "entrances",
+  "upstream_category": null,
+  "tags": [
+   "list",
+   "reveal"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 117,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/ListReveal.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/ListReveal.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-lower-third",
+  "title": "Lower third",
+  "description": "Broadcast-style name and title card that slides in, holds, and slides out.",
+  "category": "scenes",
+  "upstream_category": null,
+  "tags": [
+   "lower",
+   "third"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 150,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/LowerThird.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/LowerThird.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-matrix-rain",
+  "title": "Matrix rain",
+  "description": "Digital rain animation inspired by The Matrix",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "matrix",
+   "rain"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 51,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/MatrixRain.tsx",
+  "file": "docs/src/bits/examples/animated-text/MatrixRain.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-mosaic-reframe",
+  "title": "Mosaic reframe",
+  "description": "Twelve image tiles transition from a grid to a feature mosaic, then into a diagonal cascade",
+  "category": "media",
+  "upstream_category": null,
+  "tags": [
+   "mosaic",
+   "reframe"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 248,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/MosaicReframe.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/MosaicReframe.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-particles-fountain",
+  "title": "Particles fountain",
+  "description": "Bursting fountain particles effect",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "fountain",
+   "particles"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 64,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/particle-system/ParticlesFountain.tsx",
+  "file": "docs/src/bits/examples/particle-system/ParticlesFountain.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-particles-grid",
+  "title": "Particles grid",
+  "description": "Particles snapping to a grid",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "grid",
+   "particles"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 84,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/particle-system/ParticlesGrid.tsx",
+  "file": "docs/src/bits/examples/particle-system/ParticlesGrid.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-particles-snow",
+  "title": "Particles snow",
+  "description": "Falling snow particles effect",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "particles",
+   "snow"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 75,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/particle-system/ParticlesSnow.tsx",
+  "file": "docs/src/bits/examples/particle-system/ParticlesSnow.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-radial-gradient",
+  "title": "Radial gradient",
+  "description": "Smooth transition between radial gradients",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "gradient",
+   "radial"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 38,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/gradient-transition/RadialGradient.tsx",
+  "file": "docs/src/bits/examples/gradient-transition/RadialGradient.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-remotion-bits-promo",
+  "title": "Remotion bits promo",
+  "description": "A promotional showcase highlighting RemotionBits library capabilities.",
+  "category": "scenes",
+  "upstream_category": null,
+  "tags": [
+   "bits",
+   "promo",
+   "remotion"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 1219,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/showcase/FeatureShowcase.tsx",
+  "file": "docs/src/bits/examples/showcase/FeatureShowcase.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-scene-3d-cube-nav",
+  "title": "Scene 3d cube nav",
+  "description": "Navigate through faces of a 3D Cube using Scene3D steps",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "cube",
+   "nav",
+   "scene"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 189,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/CubeNavigation.tsx",
+  "file": "docs/src/bits/examples/scene-3d/CubeNavigation.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-scrolling-columns",
+  "title": "Scrolling columns",
+  "description": "Four columns of images scrolling with different speeds in a panning 3D scene",
+  "category": "media",
+  "upstream_category": null,
+  "tags": [
+   "columns",
+   "scrolling"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 140,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/particle-system/ScrollingColumns.tsx",
+  "file": "docs/src/bits/examples/particle-system/ScrollingColumns.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-slide-from-left",
+  "title": "Slide from left",
+  "description": "Text that slides in from the left with fade-in effect",
+  "category": "entrances",
+  "upstream_category": null,
+  "tags": [
+   "from",
+   "left",
+   "slide"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 39,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/SlideFromLeft.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/SlideFromLeft.tsx",
+  "status": "covered",
+  "covered_by": "data-in=\"left\""
+ },
+ {
+  "name": "bit-staggered-fade-in",
+  "title": "Staggered fade in",
+  "description": "Elements fading in sequentially",
+  "category": "entrances",
+  "upstream_category": null,
+  "tags": [
+   "fade",
+   "in",
+   "staggered"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 58,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/staggered-motion/StaggeredFadeIn.tsx",
+  "file": "docs/src/bits/examples/staggered-motion/StaggeredFadeIn.tsx",
+  "status": "covered",
+  "covered_by": "data-stagger"
+ },
+ {
+  "name": "bit-stat-rings",
+  "title": "Stat rings",
+  "description": "Circular progress rings filling up with percentage counters in the center.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "rings",
+   "stat"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 180,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-counter/StatRings.tsx",
+  "file": "docs/src/bits/examples/animated-counter/StatRings.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-terminal-3d",
+  "title": "Terminal 3d",
+  "description": "A 3D scene with multiple terminal windows executing commands.",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "terminal"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 236,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/Terminal3D.tsx",
+  "file": "docs/src/bits/examples/scene-3d/Terminal3D.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-transform3d-showcase",
+  "title": "Transform3d showcase",
+  "description": "Demonstrates chainable Transform3D API with matrix-based interpolation",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "showcase",
+   "transform3d"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "remotion-bits",
+   "three"
+  ],
+  "lines": 385,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/scene-3d/Transform3DShowcase.tsx",
+  "file": "docs/src/bits/examples/scene-3d/Transform3DShowcase.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "bit-typing-code-block",
+  "title": "Typing code block",
+  "description": "Syntax highlighted code with typing effect",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "block",
+   "code",
+   "typing"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 64,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/code-block/TypingCodeBlock.tsx",
+  "file": "docs/src/bits/examples/code-block/TypingCodeBlock.tsx",
+  "status": "available"
+ },
+ {
+  "name": "bit-word-by-word",
+  "title": "Word by word",
+  "description": "Animated text that appears word by word with staggered timing",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "by",
+   "word"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 41,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/animated-text/WordByWord.tsx",
+  "file": "docs/src/bits/examples/animated-text/WordByWord.tsx",
+  "status": "covered",
+  "covered_by": "data-in=\"words\""
+ },
+ {
+  "name": "cli-simulation",
+  "title": "Cli simulation",
+  "description": "Simulates a command-line interface with user typing and system output.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "cli",
+   "simulation"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 89,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/typewriter/CLISimulation.tsx",
+  "file": "docs/src/bits/examples/typewriter/CLISimulation.tsx",
+  "status": "covered",
+  "covered_by": "fx:terminal"
+ },
+ {
+  "name": "code-block",
+  "title": "Code block",
+  "description": "Syntax-highlighted code block with line-by-line reveal, focus, and highlight animations.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "block",
+   "code"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "prism-react-renderer"
+  ],
+  "lines": 301,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/CodeBlock.tsx",
+  "file": "src/components/CodeBlock.tsx",
+  "status": "covered",
+  "covered_by": "fx:code-block"
+ },
+ {
+  "name": "gradient-transition",
+  "title": "Gradient transition",
+  "description": "Smooth CSS gradient transitions with intelligent interpolation (linear, radial, conic).",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "gradient"
+  ],
+  "difficulty": "easy",
+  "deps": [
+   "culori"
+  ],
+  "lines": 179,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/GradientTransition.tsx",
+  "file": "src/components/GradientTransition.tsx",
+  "status": "available"
+ },
+ {
+  "name": "matrix-rain",
+  "title": "Matrix rain",
+  "description": "Matrix digital rain effect with customizable characters, density, and speed.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "matrix",
+   "rain"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 154,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/MatrixRain.tsx",
+  "file": "src/components/MatrixRain.tsx",
+  "status": "available"
+ },
+ {
+  "name": "multitext-typewriter",
+  "title": "Multitext typewriter",
+  "description": "Typing multiple sentences in sequence with deleting phase",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "multitext",
+   "typewriter"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 49,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/typewriter/MultiTextTypewriter.tsx",
+  "file": "docs/src/bits/examples/typewriter/MultiTextTypewriter.tsx",
+  "status": "available"
+ },
+ {
+  "name": "particle-system",
+  "title": "Particle system",
+  "description": "Complete particle effect system with spawners, behaviors (gravity, drag, wiggle, scale, opacity), and deterministic simulation.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "particle",
+   "system"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 297,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/ParticleSystem/Particles.tsx",
+  "file": "src/components/ParticleSystem/Particles.tsx",
+  "status": "available"
+ },
+ {
+  "name": "scene-3d",
+  "title": "Scene 3d",
+  "description": "3D scene rendering with camera controls, steps, elements, transforms, and transitions.",
+  "category": "3d",
+  "upstream_category": null,
+  "tags": [
+   "3d",
+   "scene"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "three"
+  ],
+  "lines": 1082,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/Scene3D/Scene3D.tsx",
+  "file": "src/components/Scene3D/Scene3D.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (three)"
+ },
+ {
+  "name": "scrolling-columns",
+  "title": "Scrolling columns",
+  "description": "Infinitely scrolling columns of images with configurable speed and direction.",
+  "category": "media",
+  "upstream_category": null,
+  "tags": [
+   "columns",
+   "scrolling"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 167,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/ScrollingImages.tsx",
+  "file": "src/components/ScrollingImages.tsx",
+  "status": "available"
+ },
+ {
+  "name": "staggered-motion",
+  "title": "Staggered motion",
+  "description": "Advanced motion and transform animations for child elements with stagger effects, directional timing, and easing control.",
+  "category": "entrances",
+  "upstream_category": null,
+  "tags": [
+   "motion",
+   "staggered"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 142,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/StaggeredMotion.tsx",
+  "file": "src/components/StaggeredMotion.tsx",
+  "status": "available"
+ },
+ {
+  "name": "type-writer",
+  "title": "Type writer",
+  "description": "Typewriter text effect with customizable typing/deleting speed, error simulation, and cursor blinking.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "type",
+   "writer"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 408,
+  "featured": true,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/src/components/TypeWriter.tsx",
+  "file": "src/components/TypeWriter.tsx",
+  "status": "available"
+ },
+ {
+  "name": "variable-speed-typewriter",
+  "title": "Variable speed typewriter",
+  "description": "Advanced typewriter with variable speed curves and error simulation",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "speed",
+   "typewriter",
+   "variable"
+  ],
+  "difficulty": "medium",
+  "deps": [
+   "remotion-bits"
+  ],
+  "lines": 47,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://remotion-bits.dev/",
+  "source_file": "https://github.com/av/remotion-bits/blob/de35fda84b7b6acbe549a0b302a82ef211e8ef1e/docs/src/bits/examples/typewriter/VariableSpeedTypewriter.tsx",
+  "file": "docs/src/bits/examples/typewriter/VariableSpeedTypewriter.tsx",
+  "status": "available"
+ }
+]

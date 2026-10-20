@@ -1,0 +1,33 @@
+{
+ "v": 1,
+ "name": "hand",
+ "dur": 0.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "90%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.8,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -15,
+       10,
+       -5,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

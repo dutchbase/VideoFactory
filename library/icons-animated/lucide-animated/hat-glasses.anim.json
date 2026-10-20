@@ -1,0 +1,72 @@
+{
+ "v": 1,
+ "name": "hat-glasses",
+ "dur": 0.6,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "12px",
+    "y": "11px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeOut",
+     "times": [
+      0,
+      0.35,
+      0.65,
+      1
+     ],
+     "props": {
+      "rotate": [
+       0,
+       -4,
+       2,
+       0
+      ],
+      "y": [
+       0,
+       -3,
+       1,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.28,
+     "duration": 0.32,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       0.96,
+       1
+      ],
+      "y": [
+       0,
+       1,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

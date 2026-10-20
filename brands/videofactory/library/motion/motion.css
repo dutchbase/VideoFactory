@@ -1,0 +1,100 @@
+/* VideoFactory motion pack: dark brand. Tokens mirror brands/videofactory/tokens.js. Change colours here only. */
+:root{
+  --vf-bg:#0B0B10;--vf-surface:#16161F;--vf-raised:#20202C;--vf-ink:#F5F2EA;--vf-dim:#B4B1BF;--vf-faint:#77758A;--vf-line:#2C2C3A;
+  --vf-accent:#FF5B2E;--vf-accent2:#7C5CFF;--vf-green:#3DDC84;--vf-danger:#FF4D5E;
+  --vf-accent-lo:#8A2E14;--vf-accent-hi:#FF9A6B;--vf-accent-tint:#FFD8C7;
+  --vf-on-accent:var(--vf-bg);--vf-shadow:var(--vf-line);
+  --vf-bg-rgb:11 11 16;--vf-ink-rgb:245 242 234;--vf-accent-rgb:255 91 46;
+  --vf-head:"Archivo","Inter",system-ui,sans-serif;--vf-mono:"JetBrains Mono",ui-monospace,monospace;--vf-hand:"Caveat",cursive;
+}
+body{margin:0;background:var(--vf-bg);}
+a{color:var(--vf-ink);}a:hover{color:var(--vf-accent);}
+@keyframes riseIn{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes popIn{0%{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.04)}100%{opacity:1;transform:scale(1)}}
+@keyframes tiltIn{from{opacity:0;transform:perspective(1400px) rotateX(32deg) translateY(90px) scale(.86)}to{opacity:1;transform:perspective(1400px) rotateX(0deg) translateY(0) scale(1)}}
+@keyframes swingIn{from{opacity:0;transform:perspective(1400px) rotateY(-50deg) translateX(-80px) scale(.9)}to{opacity:1;transform:perspective(1400px) rotateY(0deg) translateX(0) scale(1)}}
+@keyframes camPush{from{transform:scale(1)}to{transform:scale(1.07)}}
+@keyframes camDrift{from{transform:perspective(1400px) rotateY(-10deg) rotateX(4deg)}to{transform:perspective(1400px) rotateY(8deg) rotateX(-2deg)}}
+@keyframes maskUp{from{transform:translateY(110%)}to{transform:none}}
+@keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes stampHit{0%{opacity:0;transform:scale(2.4) rotate(-16deg)}55%{opacity:1;transform:scale(.94) rotate(-6deg)}100%{opacity:1;transform:scale(1) rotate(-6deg)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translate(-5px,3px)}40%{transform:translate(4px,-3px)}60%{transform:translate(-3px,2px)}80%{transform:translate(2px,-1px)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes wave{0%,100%{transform:scaleY(.15)}50%{transform:scaleY(1)}}
+@keyframes draw{from{stroke-dashoffset:1200}to{stroke-dashoffset:0}}
+@keyframes wipeAcross{0%{transform:translateX(-101%)}45%,55%{transform:translateX(0)}100%{transform:translateX(101%)}}
+@keyframes revealDown{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes revealRight{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes scanTop{from{top:0%}to{top:100%}}
+@keyframes bandSweep{from{left:-20%}to{left:100%}}
+@keyframes ripple{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}1%{opacity:1;transform:translate(-50%,-50%) scale(.2)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.6)}}
+@keyframes press{0%,100%{transform:none;box-shadow:6px 6px 0 0 var(--vf-shadow)}45%{transform:translate(6px,6px);box-shadow:0 0 0 0 var(--vf-shadow)}}
+@keyframes tileOut{0%,91%{opacity:1;transform:none}100%{opacity:0;transform:scale(1.03)}}
+@keyframes flicker{0%,100%{opacity:1}3%{opacity:.35}6%{opacity:1}52%{opacity:.8}54%{opacity:1}}
+@keyframes slideL{from{opacity:0;transform:translateX(-80px)}to{opacity:1;transform:none}}
+@keyframes blipShow{0%{opacity:0}10%,90%{opacity:1}100%{opacity:0}}
+@keyframes showAt{from{opacity:0}to{opacity:1}}
+@keyframes hideAt{from{opacity:1}to{opacity:0}}
+@keyframes lockIn{from{opacity:0;transform:scale(1.7)}to{opacity:1;transform:scale(1)}}
+@keyframes cursorMove{from{left:86%;top:88%}to{left:50%;top:52%}}
+@keyframes linesMove{from{background-position:0 0}to{background-position:0 40px}}
+@keyframes growXY{from{transform:scale(0)}to{transform:scale(1)}}
+@keyframes drawP{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes rollUp{from{transform:translateY(0)}to{transform:translateY(calc(-100% + 1.1em))}}
+@keyframes glare{0%,25%{transform:translateX(-30%)}65%,100%{transform:translateX(30%)}}
+@keyframes phoneUp{from{opacity:0;transform:perspective(1600px) translateY(35%) rotateX(25deg)}to{opacity:1;transform:perspective(1600px) translateY(0) rotateX(0deg)}}
+@keyframes floatPhone{0%{transform:perspective(1600px) rotateY(-14deg) rotateX(6deg) translateY(0)}100%{transform:perspective(1600px) rotateY(10deg) rotateX(-2deg) translateY(-2%)}}
+@keyframes slideRIn{from{opacity:0;transform:translateX(80px)}to{opacity:1;transform:none}}
+@keyframes driftUp{from{transform:translateY(2%)}to{transform:translateY(-2%)}}
+@keyframes driftDown{from{transform:translateY(-2%)}to{transform:translateY(2%)}}
+@keyframes feedScroll{0%,15%{transform:translateY(0)}42%,58%{transform:translateY(-34%)}85%,100%{transform:translateY(-58%)}}
+@keyframes standUp{from{opacity:0;transform:perspective(1200px) rotateX(72deg) translateY(30%) scale(.85)}to{opacity:1;transform:perspective(1200px) rotateX(0deg) translateY(0) scale(1)}}
+@keyframes playOut{0%{transform:scale(1);opacity:1}40%{transform:scale(.85);opacity:1}100%{transform:scale(1.6);opacity:0}}
+@keyframes prog{from{transform:scaleX(.27)}to{transform:scaleX(1)}}
+@keyframes progHead{from{left:11%}to{left:40%}}
+@keyframes likeBurst{0%{opacity:0;transform:scale(.3) rotate(-14deg)}30%{opacity:1;transform:scale(1.1) rotate(-6deg)}60%{opacity:1;transform:scale(1) rotate(-6deg)}100%{opacity:0;transform:scale(1.4) rotate(-6deg)}}
+@keyframes punchIn{0%,45%{transform:scale(1)}62%,100%{transform:scale(1.4)}}
+@keyframes splitMove{0%{clip-path:inset(0 0 0 100%)}18%{clip-path:inset(0 0 0 50%)}40%{clip-path:inset(0 0 0 22%)}65%{clip-path:inset(0 0 0 72%)}85%,100%{clip-path:inset(0 0 0 50%)}}
+@keyframes splitLine{0%{left:100%}18%{left:50%}40%{left:22%}65%{left:72%}85%,100%{left:50%}}
+@keyframes lift{from{transform:none;box-shadow:1.6cqmin 1.6cqmin 0 0 var(--vf-shadow)}to{transform:translate(-1cqmin,-1cqmin);box-shadow:3cqmin 3cqmin 0 0 var(--vf-shadow)}}
+@keyframes morphOut{0%{transform:scale(1);opacity:1}100%{transform:scale(1.05,.4);opacity:0}}
+@keyframes morphIn{0%{opacity:0;transform:scale(.9,.12)}60%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes agentPath{0%{left:105%;top:105%;animation-timing-function:cubic-bezier(.65,0,.35,1)}12%{left:60%;top:29%}29%{left:60%;top:29%;animation-timing-function:cubic-bezier(.65,0,.35,1)}35%{left:60%;top:48%}51%{left:60%;top:48%;animation-timing-function:cubic-bezier(.65,0,.35,1)}57%{left:60%;top:67%}71%{left:60%;top:67%;animation-timing-function:cubic-bezier(.65,0,.35,1)}77%{left:30%;top:86%}100%{left:30%;top:86%}}
+@keyframes numTake{0%{opacity:0;transform:scale(.2)}55%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
+@keyframes stackCam{from{transform:rotateX(56deg) rotateZ(-38deg)}to{transform:rotateX(50deg) rotateZ(-24deg) translateZ(4cqmin)}}
+@keyframes cardDrop{from{opacity:0;transform:translateZ(60cqmin)}to{opacity:1;transform:none}}
+@keyframes spread0{from{transform:translateZ(0cqmin)}to{transform:translateZ(0cqmin)}}
+@keyframes spread1{from{transform:translateZ(6cqmin)}to{transform:translateZ(15cqmin)}}
+@keyframes spread2{from{transform:translateZ(12cqmin)}to{transform:translateZ(30cqmin)}}
+@keyframes spread3{from{transform:translateZ(18cqmin)}to{transform:translateZ(45cqmin)}}
+@keyframes spread4{from{transform:translateZ(24cqmin)}to{transform:translateZ(60cqmin)}}
+@keyframes isoCam{from{transform:rotateX(58deg) rotateZ(-45deg) scale(.9)}to{transform:rotateX(54deg) rotateZ(-34deg) scale(1)}}
+@keyframes standPanel{from{transform:rotateX(0deg)}to{transform:rotateX(-90deg)}}
+@keyframes isoSlide{from{opacity:0;transform:translate(60%,60%) rotate(10deg)}to{opacity:1;transform:rotate(10deg)}}
+@keyframes zoomDive{from{transform:scale(1)}to{transform:scale(9)}}
+@keyframes settle{from{transform:scale(1.25)}to{transform:scale(1)}}
+@keyframes parBack{from{transform:translateX(0)}to{transform:translateX(-4%)}}
+@keyframes parMid{from{transform:translateX(5%)}to{transform:translateX(-10%)}}
+@keyframes parFront{from{transform:translateX(14%)}to{transform:translateX(-20%)}}
+@keyframes slam{0%{opacity:0;transform:scale(2.4)}55%{opacity:1;transform:scale(.94)}100%{opacity:1;transform:scale(1)}}
+@keyframes hazardMove{from{background-position:0 0}to{background-position:8.5cqmin 0}}
+@keyframes shrinkX{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes carouselSteps{0%,18%{transform:translateX(0)}28%,46%{transform:translateX(-25%)}56%,74%{transform:translateX(-50%)}84%,100%{transform:translateX(-75%)}}
+@keyframes dotSteps{0%,18%{left:0%}28%,46%{left:25%}56%,74%{left:50%}84%,100%{left:75%}}
+@keyframes calMove{from{left:105%;top:110%}to{left:70%;top:62.5%}}
+@keyframes spotIn{from{left:0%;top:0%;width:100%;height:100%;box-shadow:0 0 0 200cqmax rgb(var(--vf-bg-rgb) / 0)}to{left:50%;top:28%;width:38%;height:30%;box-shadow:0 0 0 200cqmax rgb(var(--vf-bg-rgb) / .68)}}
+@keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-5%,3%)}50%{transform:translate(4%,-4%)}75%{transform:translate(-3%,-2%)}100%{transform:translate(2%,5%)}}
+@keyframes bgGridA{from{background-position:0 0}to{background-position:8cqmin 8cqmin}}
+@keyframes bgGridB{from{background-position:0 0}to{background-position:32cqmin 0}}
+@keyframes bgPulse{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes bgScan{from{top:-35%}to{top:100%}}
+@keyframes bgHatch{from{transform:translateX(0)}to{transform:translateX(-5.657cqmin)}}
+@keyframes bgWave{from{mask-position:-100% 0}to{mask-position:200% 0}}
+@keyframes floatFade{0%{transform:translateY(0) rotate(0deg);opacity:0}15%,85%{opacity:1}100%{transform:translateY(-40cqh) rotate(90deg);opacity:0}}
+@keyframes rainDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+@keyframes sqExpand{0%{transform:scale(0) rotate(0deg);opacity:0}12%{opacity:1}100%{transform:scale(1) rotate(45deg);opacity:0}}
+@keyframes tickerL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bgFloor{from{background-position:0 0}to{background-position:0 10cqmin}}
+@keyframes slat{0%{transform-origin:top;transform:scaleY(0)}35%{transform-origin:top;transform:scaleY(1)}65%{transform-origin:bottom;transform:scaleY(1)}100%{transform-origin:bottom;transform:scaleY(0)}}

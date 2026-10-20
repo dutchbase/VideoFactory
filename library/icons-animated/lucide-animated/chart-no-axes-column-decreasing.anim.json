@@ -1,0 +1,119 @@
+{
+ "v": 1,
+ "name": "chart-no-axes-column-decreasing",
+ "dur": 1,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ],
+      "pathLength": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.5,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ],
+      "pathLength": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.5,
+     "delay": 0.1,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.2,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ],
+      "pathLength": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.5,
+     "delay": 0.2,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "v": 1,
+ "name": "user-plus",
+ "dur": 0.7,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 3,
+   "origin": {
+    "x": "19px",
+    "y": "11px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.25,
+     "duration": 0.45,
+     "ease": "easeOut",
+     "times": [
+      0,
+      0.7,
+      1
+     ],
+     "props": {
+      "opacity": [
+       0,
+       1,
+       1
+      ],
+      "rotate": [
+       -90,
+       0,
+       0
+      ],
+      "scale": [
+       0,
+       1.15,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1,
+      "rotate": 0,
+      "scale": 1
+     }
+    }
+   ]
+  }
+ ]
+}

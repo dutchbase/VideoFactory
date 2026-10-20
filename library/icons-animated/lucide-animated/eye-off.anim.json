@@ -1,0 +1,71 @@
+{
+ "v": 1,
+ "name": "eye-off",
+ "dur": 0.6,
+ "rdur": 0.3667,
+ "els": [
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       2
+      ],
+      "pathOffset": [
+       0,
+       2
+      ]
+     },
+     "pre": {
+      "opacity": 1,
+      "pathLength": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "pathLength": [
+       2,
+       1
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      46.9042,
+      1
+     ],
+     "duration": 0.3208,
+     "props": {
+      "pathOffset": [
+       2,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

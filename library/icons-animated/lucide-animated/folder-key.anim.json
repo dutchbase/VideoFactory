@@ -1,0 +1,40 @@
+{
+ "v": 1,
+ "name": "folder-key",
+ "dur": null,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "16px",
+    "y": "18px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "rotate": [
+       0,
+       -15,
+       8,
+       -5,
+       0
+      ],
+      "x": [
+       0,
+       0.5,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

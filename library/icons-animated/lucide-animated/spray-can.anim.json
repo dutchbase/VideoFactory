@@ -1,0 +1,260 @@
+{
+ "v": 1,
+ "name": "spray-can",
+ "dur": null,
+ "rdur": 0.2,
+ "els": [
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.05,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.07,
+     "duration": 1.11,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.14,
+     "duration": 1.17,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.21,
+     "duration": 1.23,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 10,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.28,
+     "duration": 1.29,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 11,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.35,
+     "duration": 1.35,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.45,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       1,
+       0
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

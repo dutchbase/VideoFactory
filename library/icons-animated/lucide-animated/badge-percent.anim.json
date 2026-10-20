@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "name": "badge-percent",
+ "dur": 0.8958,
+ "rdur": 0.8667,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "spring": [
+      80,
+      13,
+      1
+     ],
+     "duration": 0.7958,
+     "props": {
+      "rotate": [
+       0,
+       180
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      60,
+      10,
+      1
+     ],
+     "duration": 0.8667,
+     "props": {
+      "rotate": [
+       180,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

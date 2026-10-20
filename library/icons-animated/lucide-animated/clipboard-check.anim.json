@@ -1,0 +1,49 @@
+{
+ "v": 1,
+ "name": "clipboard-check",
+ "dur": 0.3,
+ "rdur": 0.3,
+ "els": [
+  {
+   "i": 3,
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

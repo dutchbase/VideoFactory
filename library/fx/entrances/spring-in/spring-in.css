@@ -1,0 +1,2 @@
+/* spring-in: no CSS needed; the part only moves the element it is given. */
+.fx-spring-in { will-change: transform, opacity; }

@@ -1,0 +1,3 @@
+/* mesh-gradient: sits under the content of its root. The blobs layer carries the opacity and a little blur. */
+.fx-mesh { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.fx-mesh-blobs { position: absolute; inset: -4%; filter: blur(12px); background-repeat: no-repeat; }

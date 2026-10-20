@@ -1,0 +1,38 @@
+{
+ "v": 1,
+ "name": "hand-fist",
+ "dur": 0.8,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "repeat": 1,
+     "repeatType": "reverse",
+     "props": {
+      "scale": [
+       1,
+       1.1,
+       1
+      ],
+      "y": [
+       0,
+       -4,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,479 @@
+{
+ "v": 1,
+ "name": "cup-soda",
+ "dur": null,
+ "rdur": 0.4125,
+ "els": [
+  {
+   "i": 3,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.8,
+     "ease": "easeInOut",
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "y": [
+       0,
+       -1,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "100%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": [
+      0.34,
+      1.56,
+      0.64,
+      1
+     ],
+     "times": [
+      0,
+      0.35,
+      0.65,
+      1
+     ],
+     "props": {
+      "scaleY": [
+       1,
+       1.06,
+       0.99,
+       1
+      ],
+      "y": [
+       0,
+       -0.85,
+       0.15,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1.5,
+     "ease": "easeIn",
+     "times": [
+      0,
+      0.08,
+      0.7,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       0.9,
+       0.4,
+       0
+      ],
+      "scale": [
+       1,
+       1,
+       0.85,
+       0.6
+      ],
+      "y": [
+       0,
+       -3,
+       -10,
+       -14
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -14,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.6,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.35,
+     "duration": 1.5,
+     "ease": "easeIn",
+     "times": [
+      0,
+      0.08,
+      0.7,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       0.9,
+       0.4,
+       0
+      ],
+      "scale": [
+       1,
+       1,
+       0.85,
+       0.6
+      ],
+      "y": [
+       0,
+       -3,
+       -10,
+       -14
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -14,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.6,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 7,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.7,
+     "duration": 1.5,
+     "ease": "easeIn",
+     "times": [
+      0,
+      0.08,
+      0.7,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       0.9,
+       0.4,
+       0
+      ],
+      "scale": [
+       1,
+       1,
+       0.85,
+       0.6
+      ],
+      "y": [
+       0,
+       -3,
+       -10,
+       -14
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -14,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.6,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 1.05,
+     "duration": 1.5,
+     "ease": "easeIn",
+     "times": [
+      0,
+      0.08,
+      0.7,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       0.9,
+       0.4,
+       0
+      ],
+      "scale": [
+       1,
+       1,
+       0.85,
+       0.6
+      ],
+      "y": [
+       0,
+       -3,
+       -10,
+       -14
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -14,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.6,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 9,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.55,
+     "duration": 1.5,
+     "ease": "easeIn",
+     "times": [
+      0,
+      0.08,
+      0.7,
+      1
+     ],
+     "repeat": -1,
+     "repeatType": "loop",
+     "props": {
+      "opacity": [
+       0,
+       0.9,
+       0.4,
+       0
+      ],
+      "scale": [
+       1,
+       1,
+       0.85,
+       0.6
+      ],
+      "y": [
+       0,
+       -3,
+       -10,
+       -14
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      500,
+      25,
+      1
+     ],
+     "duration": 0.4125,
+     "props": {
+      "y": [
+       -14,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      550,
+      30,
+      1
+     ],
+     "duration": 0.3667,
+     "props": {
+      "scale": [
+       0.6,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

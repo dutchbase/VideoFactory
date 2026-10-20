@@ -1,0 +1,6 @@
+/* timeline: labels sit under the line on the ground, so they stay readable while the line draws. */
+.fx-timeline { position: relative; color: var(--ink); font-family: var(--font); }
+.fx-timeline svg { position: absolute; left: 0; top: 0; display: block; }
+.fx-timeline-label { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+.fx-timeline-name { font: 800 44px/1.1 var(--head); color: var(--ink); text-wrap: balance; }
+.fx-timeline-sub { font: 600 32px/1.2 var(--font); color: var(--dim); }

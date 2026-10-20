@@ -1,0 +1,96 @@
+{
+ "v": 1,
+ "name": "hand-coins",
+ "dur": 0.8875,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      150,
+      15,
+      1
+     ],
+     "duration": 0.7375,
+     "props": {
+      "y": [
+       -20,
+       0
+      ]
+     },
+     "pre": {
+      "y": 0
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.15,
+     "duration": 0.2,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0.15,
+     "spring": [
+      150,
+      15,
+      1
+     ],
+     "duration": 0.7375,
+     "props": {
+      "y": [
+       -20,
+       0
+      ]
+     },
+     "pre": {
+      "y": 0
+     }
+    }
+   ]
+  }
+ ]
+}

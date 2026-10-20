@@ -1,0 +1,43 @@
+{
+ "v": 1,
+ "name": "book-text",
+ "dur": 0.6,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.6,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -8,
+       8,
+       -8,
+       0
+      ],
+      "scale": [
+       1,
+       1.04,
+       1
+      ],
+      "y": [
+       0,
+       -2,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

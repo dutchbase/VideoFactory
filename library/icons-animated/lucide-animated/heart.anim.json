@@ -1,0 +1,33 @@
+{
+ "v": 1,
+ "name": "heart",
+ "dur": 1.35,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 0,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.45,
+     "ease": "easeInOut",
+     "repeat": 2,
+     "repeatType": "loop",
+     "props": {
+      "scale": [
+       1,
+       1.08,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

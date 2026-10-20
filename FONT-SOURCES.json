@@ -1,0 +1,34 @@
+[
+  {
+    "family": "Archivo",
+    "path": "_runtime/fonts/archivo/Archivo[wdth,wght].ttf",
+    "licence": "OFL-1.1",
+    "licence_file": "_runtime/fonts/archivo/OFL.txt",
+    "source": "https://github.com/google/fonts/tree/main/ofl/archivo",
+    "sha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053"
+  },
+  {
+    "family": "Caveat",
+    "path": "_runtime/fonts/caveat/Caveat[wght].ttf",
+    "licence": "OFL-1.1",
+    "licence_file": "_runtime/fonts/caveat/OFL.txt",
+    "source": "https://github.com/google/fonts/tree/main/ofl/caveat",
+    "sha256": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988"
+  },
+  {
+    "family": "Inter",
+    "path": "_runtime/fonts/inter/Inter[opsz,wght].ttf",
+    "licence": "OFL-1.1",
+    "licence_file": "_runtime/fonts/inter/OFL.txt",
+    "source": "https://github.com/google/fonts/tree/main/ofl/inter",
+    "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031"
+  },
+  {
+    "family": "JetBrains Mono",
+    "path": "_runtime/fonts/jetbrainsmono/JetBrainsMono[wght].ttf",
+    "licence": "OFL-1.1",
+    "licence_file": "_runtime/fonts/jetbrainsmono/OFL.txt",
+    "source": "https://github.com/google/fonts/tree/main/ofl/jetbrainsmono",
+    "sha256": "48715a42ec242c21e9f02692891e147d022299a52e48d5e413e1a942193ffeda"
+  }
+]

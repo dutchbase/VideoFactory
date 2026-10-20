@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "name": "square-arrow-right",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "base": {
+    "d": "M8 12h8"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "d": [
+       "M8 12h8",
+       "M8 12h5",
+       "M8 12h8"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "m12 8 4 4-4 4"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "x": [
+       0,
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

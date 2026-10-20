@@ -1,0 +1,28 @@
+{
+ "v": 1,
+ "name": "phone-off",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "linear",
+     "props": {
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  }
+ ]
+}

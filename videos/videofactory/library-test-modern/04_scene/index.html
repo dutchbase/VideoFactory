@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Library Test Modern</title>
+<link rel="stylesheet" href="runtime/fonts/fonts.css">
+<link rel="stylesheet" href="runtime/modern.css">
+<link rel="stylesheet" href="blocks/core.css">
+<link rel="stylesheet" href="fx/dynamic-grid.css">
+<link rel="stylesheet" href="fx/matrix-decode.css">
+<link rel="stylesheet" href="fx/underline.css">
+<link rel="stylesheet" href="fx/circle-reveal.css">
+<link rel="stylesheet" href="fx/arrow-annotate.css">
+<link rel="stylesheet" href="fx/terminal.css">
+<style>
+  /* Library test: fx parts, an animated icon and a Lottie clip in one Modern-kit scene. */
+  .lt-bg { position: absolute; inset: 0; }
+  .lt-b { background: var(--surface); }
+  .lt-mic { width: 220px; height: 220px; font-size: 140px; margin-bottom: 40px; }
+  .lt-cards { width: 1500px; }
+  .lt-card { font: 700 64px/1.1 var(--head); padding: 64px 48px; text-align: center; }
+  .lt-lottie { position: absolute; right: 160px; bottom: 140px; width: 300px; height: 300px; }
+  .lt-term { position: absolute; inset: 0; }
+</style>
+</head>
+<body>
+<div id="stage" data-width="1920" data-height="1080">
+  <div class="lt-bg"></div>
+
+  <!-- Shots A and B have no data-cue: the circle-reveal cut sets their visibility. -->
+  <section class="vf-shot center lt-a">
+    <h1 class="vf-hero lt-title">VideoFactory</h1>
+    <p class="vf-sub lt-sub">turns a script into a finished video</p>
+  </section>
+  <section class="vf-shot center lt-b">
+    <div class="vf-tile lt-mic"><i data-icon="lucide-animated/mic" data-play="@voice" data-loop="1"></i></div>
+    <h2 class="vf-title">Every word gets a time.</h2>
+  </section>
+
+  <section class="vf-shot center lt-scene" data-cue="scene" data-until="render">
+    <div class="vf-cards lt-cards" style="--cols:3" data-stagger="0.25">
+      <div class="vf-card lt-card" data-in="rise">Script</div>
+      <div class="vf-card hot lt-card lt-target" data-in="rise">Voice</div>
+      <div class="vf-card lt-card" data-in="rise">Picture</div>
+    </div>
+    <canvas class="lt-lottie" width="600" height="600"></canvas>
+  </section>
+
+  <section class="vf-shot lt-render" data-cue="render"><div class="lt-term"></div></section>
+
+  <div class="vf-captions"><p></p></div>
+  <div class="vf-progress"></div>
+</div>
+<script src="cues/cues.js"></script>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="runtime/player.js"></script>
+<script src="runtime/lib.js"></script>
+<script src="runtime/icons.js"></script>
+<script src="runtime/animicon.js"></script>
+<script src="assets/icons-animated/lucide-animated/mic.js"></script>
+<script src="runtime/modern.js"></script>
+<script src="blocks/core.js"></script>
+<script src="fx/kit.js"></script>
+<script src="fx/dynamic-grid.js"></script>
+<script src="fx/matrix-decode.js"></script>
+<script src="fx/underline.js"></script>
+<script src="fx/circle-reveal.js"></script>
+<script src="fx/arrow-annotate.js"></script>
+<script src="fx/terminal.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "browser": "Chromium",
+  "browser_version": "139.0.7258.5",
+  "browser_connection": "Playwright launch",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "workers": 4,
+  "frames": 6461,
+  "start": 0.0,
+  "end": 215.36,
+  "elapsed_seconds": 661.919
+}

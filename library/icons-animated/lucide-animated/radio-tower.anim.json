@@ -1,0 +1,140 @@
+{
+ "v": 1,
+ "name": "radio-tower",
+ "dur": 0.9333,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0.1,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 5,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0.1,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

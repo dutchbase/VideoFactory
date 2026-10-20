@@ -1,0 +1,59 @@
+{
+ "v": 1,
+ "name": "cooking-pot",
+ "dur": 0.95,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "12px",
+    "y": "16px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.95,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       1.08,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "18px",
+    "y": "6px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.9,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -14,
+       14,
+       -10,
+       10,
+       -6,
+       6,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

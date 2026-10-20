@@ -1,0 +1,52 @@
+{
+ "v": 1,
+ "name": "hourglass",
+ "dur": 0.7208,
+ "rdur": 0.7208,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "12px",
+    "y": "12px",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      100,
+      15,
+      1
+     ],
+     "duration": 0.7208,
+     "props": {
+      "rotate": [
+       0,
+       180
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "spring": [
+      100,
+      15,
+      1
+     ],
+     "duration": 0.7208,
+     "props": {
+      "rotate": [
+       180,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

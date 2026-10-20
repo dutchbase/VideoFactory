@@ -1,0 +1,35 @@
+# Brief
+- Type: course | short | ad | explainer | founder story | onboarding
+- Script workflow: direction-v1
+- Purpose:
+- Language: en | other (use the language code)
+- Format: wide | tall
+- Audience:
+- One outcome:
+- Call to action:
+- Sources (selected brand pages, supplied material, screenshots; optional: 00_research/research.md):
+- Evidence and uncertainties:
+- Opening angle 1:
+- Opening angle 2:
+- Opening angle 3:
+- Framework and reason:
+- Selected opening:
+- Beat outline:
+- Promised payoff:
+- Essential visual support:
+- Hook (first 1 to 2 s, picture and first spoken words):
+- Scene list (numbered; a new beat every 3 to 5 s; per scene: time, spoken words, picture, motion asset, kinetic type, sound, cut id from `_shared/transitions.md` and the carried thing):
+  1. 0:00-0:02 hook:
+  2.
+- Plan check (`_shared/plan-check.md` part A; one sentence per reach you chose on purpose, and the one thing):
+- Motion assets (library `motion:<brand>/<ID>` per scene, plus new assets to build):
+- Sound design (music bed: file, source, licence, gain, ducked under the voice; effects on cuts, snaps and reveals; record in `04_scene/assets/sound.md`):
+- Captions and on-screen text (readable at phone size, inside the safe zone; `_shared/motion.md`):
+- End card (the call to action only; credit only where the brand allows it):
+- Voice and disclosure (own recording, or ElevenLabs after script approval; put any disclosure your platform needs in the description, not in the video):
+- What the viewer can do:
+- Captures (pages, breakpoints; from `04_scene/assets/captures.md`):
+- Authored examples:
+- Tone: selected brands/<id>/brand.md and its voice references, then _shared/tone.md
+- Never say:
+- Review decision:

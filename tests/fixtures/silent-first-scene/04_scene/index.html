@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Silent First Scene</title>
+<link rel="stylesheet" href="runtime/fonts/fonts.css">
+<link rel="stylesheet" href="runtime/modern.css">
+<style>
+  /* Styles for this scene only. Use brand variables: var(--accent), var(--surface), var(--head) ... (_shared/modern.md) */
+</style>
+</head>
+<body>
+<div id="stage" data-width="1920" data-height="1080">
+  <div class="vf-bg grid"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+
+  <section class="vf-shot" data-cue="intro">
+    <img class="vf-logo" src="brand/logo/mark.svg" alt="" data-in="pop">
+    <div class="vf-kicker" data-brand="name" data-in="fade" data-delay="0.2"></div>
+    <h1 class="vf-hero" data-in="words" data-delay="0.35">Your first <em>scene</em></h1>
+    <p class="vf-sub" data-in="rise" data-delay="1.3">Two shots, no voice, one render.</p>
+  </section>
+
+  <section class="vf-shot" data-cue="build">
+    <div class="vf-kicker" data-in="fade">What the setup test shows</div>
+    <h2 class="vf-title" data-in="words" data-delay="0.15">It <em>works</em> here</h2>
+    <div class="vf-cards" style="--cols:3" data-in="rise" data-stagger="0.25" data-delay="0.8">
+      <div class="vf-card">
+        <div class="vf-tile"><i data-icon="monitor"></i></div>
+        <h3>Browser</h3>
+        <p>draws each frame</p>
+      </div>
+      <div class="vf-card">
+        <div class="vf-tile two"><i data-icon="video"></i></div>
+        <h3>FFmpeg</h3>
+        <p>joins them into an MP4</p>
+      </div>
+      <div class="vf-card hot">
+        <div class="vf-tile"><i data-icon="circle-check"></i></div>
+        <h3>Checks</h3>
+        <p>every counter reads 0</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="vf-captions"><p></p></div>
+  <div class="vf-progress"></div>
+</div>
+<script src="cues/cues.js"></script>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="runtime/player.js"></script>
+<script src="runtime/icons.js"></script>
+<script src="runtime/modern.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

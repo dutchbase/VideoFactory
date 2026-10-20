@@ -1,0 +1,116 @@
+{
+ "v": 1,
+ "name": "send",
+ "dur": 0.65,
+ "rdur": 0.5,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       0.8
+      ],
+      "x": [
+       0,
+       3
+      ],
+      "y": [
+       0,
+       -3
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       0.8,
+       1
+      ],
+      "x": [
+       3,
+       0
+      ],
+      "y": [
+       -3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "opacity": 0,
+    "pathLength": 0
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0.1,
+     "duration": 0.55,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     }
+    }
+   ],
+   "reset": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ],
+      "pathLength": [
+       1,
+       0
+      ],
+      "x": [
+       0,
+       -3
+      ],
+      "y": [
+       0,
+       3
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

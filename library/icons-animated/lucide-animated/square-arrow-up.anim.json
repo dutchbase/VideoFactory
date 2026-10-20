@@ -1,0 +1,55 @@
+{
+ "v": 1,
+ "name": "square-arrow-up",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "m16 12-4-4-4 4"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "y": [
+       0,
+       3,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 3,
+   "base": {
+    "d": "M12 16V8"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "d": [
+       "M12 16V8",
+       "M12 16V13",
+       "M12 16V8"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

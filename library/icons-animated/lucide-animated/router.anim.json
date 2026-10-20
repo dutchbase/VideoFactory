@@ -1,0 +1,74 @@
+{
+ "v": 1,
+ "name": "router",
+ "dur": 1.0333,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 5,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0.1,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.3,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       1,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0.3,
+     "delay": 0.2,
+     "spring": [
+      300,
+      20,
+      1
+     ],
+     "duration": 0.5333,
+     "props": {
+      "opacity": [
+       0,
+       1
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

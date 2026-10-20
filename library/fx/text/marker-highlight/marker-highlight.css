@@ -1,0 +1,27 @@
+/* marker-highlight: the band sits behind the word and is revealed by a gradient mask that follows --fx-mh-p (0 to 100 + softness). */
+.fx-marker-highlight { line-height: 1.3; }
+.fx-marker-highlight-word { position: relative; display: inline-block; white-space: nowrap; }
+.fx-marker-highlight-label { position: relative; }
+.fx-marker-highlight-band {
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  top: 0.19em;
+  height: 0.9em;
+  border-radius: 0.12em;
+  background: var(--fx-mh-color, var(--accent));
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-mh-p, 0) * 1%));
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-mh-p, 0) * 1%));
+}
+.fx-marker-highlight-join { right: -0.34em; }
+.fx-marker-highlight-knockout .fx-marker-highlight-band { top: 0.17em; border-radius: 0.06em; }
+.fx-marker-highlight-underline .fx-marker-highlight-band { top: 1.0em; height: 0.12em; border-radius: 0.06em; }
+.fx-marker-highlight-box .fx-marker-highlight-band { top: 0.11em; height: 1.04em; border-radius: 0.07em; background: none; border: 0.035em solid var(--fx-mh-color, var(--accent)); box-sizing: border-box; }
+.fx-marker-highlight-flip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--fx-mh-flip, var(--cream));
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1% + 1.5%));
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 1) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1%), rgba(0, 0, 0, 0) calc(var(--fx-mh-p, 0) * 1% - var(--fx-mh-soft, 12) * 1% + 1.5%));
+}

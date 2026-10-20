@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{TITLE}}</title>
+<link rel="stylesheet" href="runtime/fonts/fonts.css">
+<link rel="stylesheet" href="runtime/modern.css">
+<style>
+  /* Styles for this scene only. Use brand variables: var(--accent), var(--surface), var(--head) ... (_shared/modern.md) */
+</style>
+</head>
+<body>
+<div id="stage" data-width="1920" data-height="1080">
+  <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+
+  <!-- One <section class="vf-shot" data-cue="CUE-ID"> per idea. Cue ids come from 03_cues/cues.md.
+       A shot without data-cue is always visible. Entrances: data-in="rise|words|pop|wipe|..." (_shared/modern.md). -->
+  <section class="vf-shot">
+    <img class="vf-logo" src="brand/logo/mark.svg" alt="" data-in="pop">
+    <div class="vf-kicker" data-brand="name" data-in="fade" data-delay="0.2"></div>
+    <h1 class="vf-hero" data-in="words" data-delay="0.35">{{TITLE}}</h1>
+  </section>
+
+  <div class="vf-captions"><p></p></div>
+  <div class="vf-progress"></div>
+</div>
+<script src="cues/cues.js"></script>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="runtime/player.js"></script>
+<script src="runtime/icons.js"></script>
+<script src="runtime/modern.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

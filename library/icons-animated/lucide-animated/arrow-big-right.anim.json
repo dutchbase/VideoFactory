@@ -1,0 +1,34 @@
+{
+ "v": 1,
+ "name": "arrow-big-right",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "base": {
+    "d": "M6 9h6V5l7 7-7 7v-4H6V9z"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "x": [
+       0,
+       3,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

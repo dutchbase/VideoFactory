@@ -1,0 +1,1000 @@
+{
+ "about": "Every audio source of library/audio/. Read by audio.py (`anim.py audio ...`). Edit this file to add a source; never add one whose licence is not in `licences`. Contract: library/audio/CONTEXT.md.",
+ "licences": {
+  "CC0-1.0": {
+   "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+   "terms": "Public domain. Use anywhere, no credit."
+  },
+  "Sonniss-GDC": {
+   "url": "https://sonniss.com/gdc-bundle-license/",
+   "terms": "Royalty-free in your productions, no credit. Never share the files themselves (not in git, not as a pack). No AI or machine-learning training."
+  },
+  "Mixkit-Free": {
+   "url": "https://mixkit.co/license/",
+   "terms": "Free in videos, no credit. Never share the files themselves. Never register them in Content ID. Download by hand only."
+  }
+ },
+ "categories": {
+  "sfx": {
+   "whoosh": "whooshes, swishes, swipes, pass-bys",
+   "transition": "risers, downers, sweeps, reverses, builds",
+   "impact": "hits, booms, thuds, slams, explosions, punches",
+   "ui": "clicks, beeps, buttons, notifications, confirms, errors",
+   "tech": "digital, glitch, data, sci-fi, electric, lasers, robots",
+   "designed": "designed textures, drones, magic, cartoon",
+   "ambience": "room tones, places, backgrounds, loops",
+   "nature": "water, rain, wind, fire, weather, ice, rocks",
+   "foley": "footsteps, cloth, paper, doors, glass, wood, metal, objects",
+   "mechanical": "machines, motors, tools, gears",
+   "vehicle": "cars, trains, aircraft, boats, horns",
+   "weapon": "guns, swords, bullets, battle",
+   "creature": "animals, birds, monsters, zombies",
+   "human": "voices, breaths, crowds, laughs, whistles",
+   "music-element": "stingers, jingles, musical hits, bells, instruments",
+   "other": "not sorted"
+  },
+  "music": {
+   "corporate-upbeat": "positive, happy, funk, pop electronic",
+   "inspirational": "uplifting, hopeful",
+   "cinematic": "epic, orchestral, trailer, title themes",
+   "electronic": "synth, retro wave, beats, DnB",
+   "ambient-calm": "calm, relaxing, ambient, chillout",
+   "lofi-chill": "lo-fi, chill beats, jazz",
+   "piano-classical": "piano, classical, instrumental",
+   "playful-game": "chiptune, 8-bit, game themes, silly",
+   "dark-tension": "horror, spooky, suspense",
+   "rock-pop": "rock, pop, J-pop",
+   "jingles-stingers": "short jingles and stingers",
+   "other": "not sorted"
+  }
+ },
+ "sources": [
+  {
+   "id": "kenney-ui-audio",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/ui-audio",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "kenney-interface-sounds",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/interface-sounds",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "kenney-impact-sounds",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/impact-sounds",
+   "author": "Kenney",
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "kenney-sci-fi-sounds",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/sci-fi-sounds",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "tech"
+  },
+  {
+   "id": "kenney-digital-audio",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/digital-audio",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "tech"
+  },
+  {
+   "id": "kenney-rpg-audio",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/rpg-audio",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "foley"
+  },
+  {
+   "id": "kenney-casino-audio",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/casino-audio",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "foley"
+  },
+  {
+   "id": "kenney-music-jingles",
+   "kind": "music",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/music-jingles",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "jingles-stingers"
+  },
+  {
+   "id": "kenney-voiceover-pack",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/voiceover-pack",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "human"
+  },
+  {
+   "id": "kenney-voiceover-pack-fighter",
+   "kind": "sfx",
+   "method": "kenney",
+   "page": "https://kenney.nl/assets/voiceover-pack-fighter",
+   "author": "Kenney",
+   "licence": "CC0-1.0",
+   "category": "human"
+  },
+  {
+   "id": "open-game-sfx-index",
+   "kind": "sfx",
+   "method": "zip",
+   "url": "https://codeload.github.com/Mcamento8/open-game-sfx-index/zip/refs/heads/main",
+   "page": "https://github.com/Mcamento8/open-game-sfx-index",
+   "author": "various (see each pack page)",
+   "licence": "CC0-1.0",
+   "note": "Only its OpenGameArt packs; its Kenney copies come from kenney.nl.",
+   "only": [
+    "audio/oga-"
+   ],
+   "packs": {
+    "oga-512-retro": {
+     "page": "https://opengameart.org/content/512-sound-effects-8-bit-style",
+     "author": "SubspaceAudio"
+    },
+    "oga-rpg-pack": {
+     "page": "https://opengameart.org/content/rpg-sound-pack",
+     "author": "artisticdude",
+     "category": "foley"
+    },
+    "oga-gui-lokif": {
+     "page": "https://opengameart.org/content/gui-sound-effects",
+     "author": "LokiF",
+     "category": "ui"
+    },
+    "oga-hits-punches": {
+     "page": "https://opengameart.org/content/37-hitspunches",
+     "author": "qubodup",
+     "category": "impact"
+    },
+    "oga-levelup-powerup": {
+     "page": "https://opengameart.org/content/level-up-power-up-coin-get-13-sounds",
+     "author": "wobbleboxx",
+     "category": "ui"
+    },
+    "oga-zombies": {
+     "page": "https://opengameart.org/content/zombies-sound-pack",
+     "author": "artisticdude",
+     "category": "creature"
+    },
+    "oga-footsteps": {
+     "page": "https://opengameart.org/content/different-steps-on-wood-stone-leaves-gravel-and-mud",
+     "author": "TinyWorlds",
+     "category": "foley"
+    },
+    "oga-battle": {
+     "page": "https://opengameart.org/content/battle-sound-effects",
+     "author": "Ogrebane",
+     "category": "weapon"
+    }
+   }
+  },
+  {
+   "id": "oga-100-cc0-metal-and-wood-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+   "licence": "CC0-1.0",
+   "category": "foley"
+  },
+  {
+   "id": "oga-100-cc0-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/100-cc0-sfx",
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "oga-100-cc0-sfx-2",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/100-cc0-sfx-2",
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "oga-25-cc0-bang-firework-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/25-cc0-bang-firework-sfx",
+   "licence": "CC0-1.0",
+   "category": "impact"
+  },
+  {
+   "id": "oga-25-cc0-mud-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/25-cc0-mud-sfx",
+   "licence": "CC0-1.0",
+   "category": "foley"
+  },
+  {
+   "id": "oga-30-cc0-sfx-loops",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/30-cc0-sfx-loops",
+   "licence": "CC0-1.0",
+   "category": "ambience"
+  },
+  {
+   "id": "oga-30-weird-cc0-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/30-weird-cc0-sfx",
+   "licence": "CC0-1.0",
+   "category": "designed"
+  },
+  {
+   "id": "oga-40-cc0-water-splash-slime-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+   "licence": "CC0-1.0",
+   "category": "nature"
+  },
+  {
+   "id": "oga-50-cc0-retro-synth-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/50-cc0-retro-synth-sfx",
+   "licence": "CC0-1.0",
+   "category": "tech"
+  },
+  {
+   "id": "oga-50-cc0-sci-fi-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/50-cc0-sci-fi-sfx",
+   "licence": "CC0-1.0",
+   "category": "tech"
+  },
+  {
+   "id": "oga-60-cc0-sci-fi-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/60-cc0-sci-fi-sfx",
+   "licence": "CC0-1.0",
+   "category": "tech"
+  },
+  {
+   "id": "oga-75-cc0-breaking-falling-hit-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx",
+   "licence": "CC0-1.0",
+   "category": "impact"
+  },
+  {
+   "id": "oga-80-cc0-creature-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/80-cc0-creature-sfx",
+   "licence": "CC0-1.0",
+   "category": "creature"
+  },
+  {
+   "id": "oga-80-cc0-creture-sfx-2",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/80-cc0-creture-sfx-2",
+   "licence": "CC0-1.0",
+   "category": "creature"
+  },
+  {
+   "id": "oga-80-cc0-rpg-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/80-cc0-rpg-sfx",
+   "licence": "CC0-1.0"
+  },
+  {
+   "id": "oga-swishes-sound-pack",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/swishes-sound-pack",
+   "licence": "CC0-1.0",
+   "category": "whoosh"
+  },
+  {
+   "id": "oga-wierd-whooshes",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/wierd-whooshes",
+   "licence": "CC0-1.0",
+   "category": "whoosh"
+  },
+  {
+   "id": "oga-air-whoosh",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/air-whoosh",
+   "licence": "CC0-1.0",
+   "category": "whoosh"
+  },
+  {
+   "id": "oga-wind-hit-time-morph",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/wind-hit-time-morph",
+   "licence": "CC0-1.0",
+   "category": "transition"
+  },
+  {
+   "id": "oga-swish-bamboo-stick-weapon-swhoshes",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/swish-bamboo-stick-weapon-swhoshes",
+   "licence": "CC0-1.0",
+   "category": "whoosh"
+  },
+  {
+   "id": "oga-ui-sounds",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/ui-sounds",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-chimey-ui-sounds",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/chimey-ui-sounds",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-button-sfx-pack-ii-granular-synthesis-styled",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/button-sfx-pack-ii-granular-synthesis-styled",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-botton-sound-pack",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/botton-sound-pack",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-accept-decline-ui-menu",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/accept-decline-ui-menu",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-beep-tone-sound-sfx",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/beep-tone-sound-sfx",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-6-user-interface-ding-clicks",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/6-user-interface-ding-clicks",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-87-clickety-clips",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/87-clickety-clips",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "oga-7-assorted-sound-effects-menu-level-up",
+   "kind": "sfx",
+   "method": "oga",
+   "page": "https://opengameart.org/content/7-assorted-sound-effects-menu-level-up",
+   "licence": "CC0-1.0",
+   "category": "ui"
+  },
+  {
+   "id": "sse-library",
+   "kind": "sfx",
+   "method": "archive",
+   "remote": true,
+   "page": "https://archive.org/details/SSE_Library_SWOOSHES",
+   "author": "USC Cinema / Sunset Editorial (SSE Library)",
+   "licence": "CC0-1.0",
+   "note": "Old film-studio effects. One file often holds many takes: cut one with use --start/--end.",
+   "items": {
+    "SSE_Library_AIR": "mechanical",
+    "SSE_Library_AIRCRAFT": "vehicle",
+    "SSE_Library_ALARMS": "ui",
+    "SSE_Library_AMBIENCE": "ambience",
+    "SSE_Library_ANIMALS": "creature",
+    "SSE_Library_ARCHIVED": "other",
+    "SSE_Library_BEEPS": "ui",
+    "SSE_Library_BELLS": "music-element",
+    "SSE_Library_BIRDS": "creature",
+    "SSE_Library_BOATS": "vehicle",
+    "SSE_Library_BULLETS": "weapon",
+    "SSE_Library_CARTOON": "designed",
+    "SSE_Library_CERAMICS": "foley",
+    "SSE_Library_CHAINS": "foley",
+    "SSE_Library_CLOCKS": "foley",
+    "SSE_Library_COMMUNICATIONS": "tech",
+    "SSE_Library_CREATURES": "creature",
+    "SSE_Library_CROWDS": "human",
+    "SSE_Library_DESIGNED": "designed",
+    "SSE_Library_DESTRUCTION": "impact",
+    "SSE_Library_DIRT_SAND": "foley",
+    "SSE_Library_DOORS": "foley",
+    "SSE_Library_ELECTRICITY": "tech",
+    "SSE_Library_EXPLOSIONS": "impact",
+    "SSE_Library_FIGHT": "impact",
+    "SSE_Library_FIRE": "nature",
+    "SSE_Library_FIREWORKS": "impact",
+    "SSE_Library_FOLEY": "foley",
+    "SSE_Library_FOOD_DRINK": "foley",
+    "SSE_Library_FOOTSTEPS": "foley",
+    "SSE_Library_GAMES": "foley",
+    "SSE_Library_GEOTHERMAL": "nature",
+    "SSE_Library_GLASS": "foley",
+    "SSE_Library_GUNS": "weapon",
+    "SSE_Library_HORNS": "vehicle",
+    "SSE_Library_HUMAN": "human",
+    "SSE_Library_ICE": "nature",
+    "SSE_Library_LIQUID_MUD": "nature",
+    "SSE_Library_MACHINES": "mechanical",
+    "SSE_Library_MAGIC": "designed",
+    "SSE_Library_MECHANICAL": "mechanical",
+    "SSE_Library_METAL": "foley",
+    "SSE_Library_MOTORS": "mechanical",
+    "SSE_Library_MOVEMENT": "foley",
+    "SSE_Library_MUSICAL": "music-element",
+    "SSE_Library_NATURAL_DISASTER": "nature",
+    "SSE_Library_OBJECTS": "foley",
+    "SSE_Library_RAIN": "nature",
+    "SSE_Library_ROCKS": "nature",
+    "SSE_Library_SCIFI": "tech",
+    "SSE_Library_SNOW": "nature",
+    "SSE_Library_SPORTS": "foley",
+    "SSE_Library_SWOOSHES": "whoosh",
+    "SSE_Library_TOOLS": "mechanical",
+    "SSE_Library_TRAINS": "vehicle",
+    "SSE_Library_VEHICLES": "vehicle",
+    "SSE_Library_VOICES": "human",
+    "SSE_Library_WATER": "nature",
+    "SSE_Library_WEAPONS": "weapon",
+    "SSE_Library_WEATHER": "nature",
+    "SSE_Library_WHISTLES": "human",
+    "SSE_Library_WIND": "nature",
+    "SSE_Library_WOOD": "foley"
+   }
+  },
+  {
+   "id": "sonniss-2026",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://gdc.sonniss.com/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com-GDC2026-GameAudioBundle1of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2026-GameAudioBundle2of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2026-GameAudioBundle3of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2026-GameAudioBundle4of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2026-GameAudioBundle5of5.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2024",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle1of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle2of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle3of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle4of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle5of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle6of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle7of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle8of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2024-GameAudioBundle9of9.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2023",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle1of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle2of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle3of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle4of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle5of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle6of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle7of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle8of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle9of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle10of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle11of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle12of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle13of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com-GDC2023-GameAudioBundle14of14.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2020",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part1of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part2of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part3of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part4of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part5of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part6of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part7of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part8of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part9of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part10of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part11of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part12of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part13of14.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202020%20-%20Game%20Audio%20Bundle%20Part14of14.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2019",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%201of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%202of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%203of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%204of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%205of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%206of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%207of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202019%20-%20Game%20Audio%20Bundle%20Part%208of8.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2018",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%201of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%202of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%203of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%204of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%205of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%206of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%207of8.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202018%20-%20Game%20Audio%20Bundle%20Part%208of8.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2017",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%201of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%202of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%203of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%204of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%205of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%206of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%207of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%208of9.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202017%20-%20Game%20Audio%20Bundle%20Part%209of9.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2016",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%201of6.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%202of6.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%203of6.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%204of6.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%205of6.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%202016-%20Game%20Audio%20Bundle%20Part%206of6.zip"
+   ]
+  },
+  {
+   "id": "sonniss-2015",
+   "kind": "sfx",
+   "method": "sonniss",
+   "remote": true,
+   "page": "https://sonniss.com/gameaudiogdc/",
+   "author": "Sonniss and contributing sound libraries",
+   "licence": "Sonniss-GDC",
+   "note": "Professional WAV. One file often holds several takes: cut one with use --start/--end.",
+   "parts": [
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%20-%20Game%20Audio%20Bundle%201of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%20-%20Game%20Audio%20Bundle%202of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%20-%20Game%20Audio%20Bundle%203of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%20-%20Game%20Audio%20Bundle%204of5.zip",
+    "https://downloads.sonniss.com/Sonniss.com%20-%20GDC%20-%20Game%20Audio%20Bundle%205of5.zip"
+   ]
+  },
+  {
+   "id": "jfpx-cc0",
+   "kind": "music",
+   "method": "zip",
+   "url": "https://github.com/jfpx/cc0-media-library/releases/download/music-v1/music-cc0.zip",
+   "page": "https://github.com/jfpx/cc0-media-library",
+   "author": "various (mostly Abstraction / Tallbeard Studios)",
+   "licence": "CC0-1.0",
+   "catalog": "https://raw.githubusercontent.com/jfpx/cc0-media-library/music-v1/music/v1/catalog.json",
+   "category": "electronic"
+  },
+  {
+   "id": "duru-bgm",
+   "kind": "music",
+   "method": "zip",
+   "url": "https://github.com/uncle-sheepsky/duru-ai-cc0-bgm/releases/download/v2026.07.15/duru-ai-cc0-bgm-mp3.zip",
+   "page": "https://github.com/uncle-sheepsky/duru-ai-cc0-bgm",
+   "author": "uncle-sheepsky (DURU)",
+   "licence": "CC0-1.0",
+   "category": "playful-game",
+   "mixed": true
+  },
+  {
+   "id": "holizna-happy-pop-electronic",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/happy-pop-electronic-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "corporate-upbeat"
+  },
+  {
+   "id": "holizna-funk",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/funk-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "corporate-upbeat"
+  },
+  {
+   "id": "holizna-happy-lo-fi-lofi",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/happy-lo-fi-lofi-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "lofi-chill"
+  },
+  {
+   "id": "holizna-lo-fi-and-chill",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/lo-fi-and-chill-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "lofi-chill"
+  },
+  {
+   "id": "holizna-chill-beats",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/chill-beats-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "lofi-chill"
+  },
+  {
+   "id": "holizna-sad-lo-fi-lofi",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/sad-lo-fi-lofi-collectioni",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "lofi-chill"
+  },
+  {
+   "id": "holizna-chillout-instrumentals",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/chillout-instrumentals-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "ambient-calm"
+  },
+  {
+   "id": "holizna-relaxing-instrumentals",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/relaxing-instrumentals-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "ambient-calm"
+  },
+  {
+   "id": "holizna-quiet-village",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/quiet-village-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "ambient-calm"
+  },
+  {
+   "id": "holizna-caves",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/caves-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "ambient-calm"
+  },
+  {
+   "id": "holizna-chills",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/chills",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "ambient-calm"
+  },
+  {
+   "id": "holizna-retro-wave",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/retro-wave-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "electronic"
+  },
+  {
+   "id": "holizna-gamer-beats",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/gamer-beats-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "electronic"
+  },
+  {
+   "id": "holizna-scifi",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/scifi-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "electronic"
+  },
+  {
+   "id": "holizna-we-drove-all-night-game-soundtrack",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/we-drove-all-night-game-soundtrack",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "electronic"
+  },
+  {
+   "id": "holizna-title-screens-beginnings",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/title-screens-beginnings-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "cinematic"
+  },
+  {
+   "id": "holizna-all-the-fight-left",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/all-the-fight-left",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "cinematic"
+  },
+  {
+   "id": "holizna-horror-beats",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/horror-beats-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "dark-tension"
+  },
+  {
+   "id": "holizna-haunted-mansion",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/haunted-mansion-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "dark-tension"
+  },
+  {
+   "id": "holizna-adventure-chiptunes",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/adventure-chiptunes-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "playful-game"
+  },
+  {
+   "id": "holizna-chill-chiptunes",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/chill-chiptunes-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "playful-game"
+  },
+  {
+   "id": "holizna-happy-chiptunes",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/happy-chiptunes-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "playful-game"
+  },
+  {
+   "id": "holizna-game-boi",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/game-boi-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "playful-game"
+  },
+  {
+   "id": "holizna-game-over",
+   "kind": "music",
+   "method": "oga",
+   "page": "https://opengameart.org/content/game-over-collection",
+   "author": "Holizna",
+   "licence": "CC0-1.0",
+   "category": "playful-game"
+  },
+  {
+   "id": "keynata",
+   "kind": "music",
+   "method": "inbox",
+   "page": "https://carf-coder.itch.io/keynata-commons-music-pack",
+   "author": "carf-coder (Keynata Commons)",
+   "licence": "CC0-1.0",
+   "category": "rock-pop",
+   "mixed": true,
+   "note": "By hand: Download, then 'No thanks, just take me to the downloads'. Take the complete ZIP."
+  },
+  {
+   "id": "hellper",
+   "kind": "music",
+   "method": "inbox",
+   "page": "https://hellper.itch.io/free-music-pack",
+   "author": "Hellper",
+   "licence": "CC0-1.0",
+   "category": "playful-game",
+   "mixed": true,
+   "note": "By hand: take mega_pack.zip."
+  },
+  {
+   "id": "ondrosik",
+   "kind": "music",
+   "method": "inbox",
+   "page": "https://ondrosik.itch.io/instrumental-music",
+   "author": "Ondrosik",
+   "licence": "CC0-1.0",
+   "category": "piano-classical",
+   "mixed": true,
+   "note": "By hand: name your price 0, then the FLAC files."
+  },
+  {
+   "id": "not-jam",
+   "kind": "music",
+   "method": "inbox",
+   "page": "https://not-jam.itch.io/not-jam-music-pack",
+   "author": "Not Jam",
+   "licence": "CC0-1.0",
+   "category": "playful-game",
+   "mixed": true,
+   "note": "By hand: name your price 0, then the WAV ZIP."
+  },
+  {
+   "id": "mixkit-sfx",
+   "kind": "sfx",
+   "method": "inbox",
+   "page": "https://mixkit.co/free-sound-effects/",
+   "author": "Mixkit",
+   "licence": "Mixkit-Free",
+   "note": "By hand only: Mixkit forbids scripts and bulk download. One file at a time."
+  },
+  {
+   "id": "mixkit-music",
+   "kind": "music",
+   "method": "inbox",
+   "page": "https://mixkit.co/free-stock-music/",
+   "author": "Mixkit",
+   "licence": "Mixkit-Free",
+   "mixed": true,
+   "note": "By hand only: Mixkit forbids scripts and bulk download. One file at a time."
+  },
+  {
+   "id": "freesound-cc0",
+   "kind": "sfx",
+   "method": "inbox",
+   "page": "https://freesound.org/",
+   "author": "Freesound users",
+   "licence": "CC0-1.0",
+   "url_from_name": [
+    "^(\\d+)__",
+    "https://freesound.org/s/{0}/"
+   ],
+   "note": "By hand only, and only sounds marked Creative Commons 0. Keep the original file name (<id>__<user>__<name>)."
+  }
+ ]
+}

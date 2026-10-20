@@ -1,0 +1,3 @@
+# Style sample
+
+Save a real rendered 12-second sample for every claimed format under `wide/` or `tall/`. `studio.references.prepare_style_sample(root, style_id, format)` renders the style's authored `template/<format>/index.html`, which must use the player's `__seek(t)` contract (`_shared/modern.md`). `sample.mp4` and `sample.json` must prove 11.95–12.05 seconds, 24 fps, 288 frames, exact format dimensions, changing frames, and hashes of the scene, runtime and loaded local resources. A failed rerender keeps the previous video and manifest. Review readability, brand fit and motion before marking the sample ready; a rendered file never approves itself.

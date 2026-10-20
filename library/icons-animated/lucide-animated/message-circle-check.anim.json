@@ -1,0 +1,33 @@
+{
+ "v": 1,
+ "name": "message-circle-check",
+ "dur": 0.4,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.4,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       1
+      ],
+      "pathLength": [
+       0,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1,
+      "pathLength": 1
+     }
+    }
+   ]
+  }
+ ]
+}

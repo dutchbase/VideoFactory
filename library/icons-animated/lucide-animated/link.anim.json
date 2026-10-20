@@ -1,0 +1,112 @@
+{
+ "v": 1,
+ "name": "link",
+ "dur": 1,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.2,
+      0.4,
+      0.6,
+      1
+     ],
+     "props": {
+      "pathLength": [
+       1,
+       0.97,
+       1,
+       0.97,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.05,
+       0,
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -5,
+       0
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "i": 2,
+   "origin": {
+    "x": "50%",
+    "y": "50%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 1,
+     "ease": "easeInOut",
+     "times": [
+      0,
+      0.2,
+      0.4,
+      0.6,
+      1
+     ],
+     "props": {
+      "pathLength": [
+       1,
+       0.97,
+       1,
+       0.97,
+       1
+      ],
+      "pathOffset": [
+       0,
+       0.05,
+       0,
+       0.05,
+       0
+      ]
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "rotate": [
+       0,
+       -5,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

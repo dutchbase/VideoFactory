@@ -1,0 +1,7500 @@
+{
+ "a-arrow-down": {
+  "tags": [
+   "arrow",
+   "down",
+   "a",
+   "letter",
+   "font size",
+   "text",
+   "formatting",
+   "smaller"
+  ],
+  "groups": [
+   "text",
+   "design"
+  ]
+ },
+ "a-arrow-up": {
+  "tags": [
+   "arrow",
+   "up",
+   "a",
+   "letter",
+   "font size",
+   "text",
+   "formatting",
+   "larger",
+   "bigger"
+  ],
+  "groups": [
+   "text",
+   "design"
+  ]
+ },
+ "accessibility": {
+  "tags": [
+   "accessibility",
+   "disabled",
+   "wheelchair",
+   "assistive",
+   "disability",
+   "dda"
+  ],
+  "groups": [
+   "accessibility",
+   "medical"
+  ]
+ },
+ "activity": {
+  "tags": [
+   "pulse",
+   "action",
+   "motion/react",
+   "movement",
+   "exercise",
+   "fitness",
+   "healthcare",
+   "heart rate monitor",
+   "vital signs",
+   "vitals",
+   "emergency room",
+   "er",
+   "intensive care",
+   "hospital",
+   "defibrillator",
+   "earthquake",
+   "siesmic",
+   "magnitude",
+   "richter scale",
+   "aftershock",
+   "tremor",
+   "shockwave",
+   "audio",
+   "waveform",
+   "synthesizer",
+   "synthesiser",
+   "music",
+   "motion",
+   "seismic"
+  ],
+  "groups": [
+   "medical",
+   "account",
+   "social",
+   "science",
+   "multimedia"
+  ]
+ },
+ "air-vent": {
+  "tags": [
+   "air",
+   "vent",
+   "fan",
+   "air conditioning",
+   "wind",
+   "cooling",
+   "air conditioner",
+   "ac",
+   "central air",
+   "climate-control"
+  ],
+  "groups": [
+   "home"
+  ]
+ },
+ "airplane": {
+  "tags": [
+   "flight",
+   "path",
+   "journey",
+   "planner",
+   "points",
+   "stops",
+   "stations"
+  ],
+  "groups": []
+ },
+ "airplay": {
+  "tags": [
+   "stream",
+   "cast",
+   "device",
+   "screen",
+   "monitor",
+   "mirroring",
+   "macos",
+   "osx"
+  ],
+  "groups": [
+   "multimedia",
+   "connectivity"
+  ]
+ },
+ "alarm-clock": {
+  "tags": [
+   "morning"
+  ],
+  "groups": [
+   "devices",
+   "notifications",
+   "time"
+  ]
+ },
+ "alarm-clock-minus": {
+  "tags": [
+   "alarm",
+   "clock",
+   "minus",
+   "time",
+   "schedule",
+   "remove"
+  ],
+  "groups": [
+   "devices",
+   "notifications",
+   "time"
+  ]
+ },
+ "alarm-clock-plus": {
+  "tags": [
+   "alarm",
+   "clock",
+   "plus",
+   "time",
+   "schedule",
+   "add"
+  ],
+  "groups": [
+   "devices",
+   "notifications",
+   "time"
+  ]
+ },
+ "alarm-smoke": {
+  "tags": [
+   "alarm",
+   "smoke",
+   "fire",
+   "detector",
+   "fire alarm",
+   "alert",
+   "warning",
+   "carbon monoxide",
+   "safety",
+   "equipment",
+   "amenities"
+  ],
+  "groups": [
+   "home",
+   "devices",
+   "travel"
+  ]
+ },
+ "align-center": {
+  "tags": [
+   "text",
+   "alignment",
+   "center"
+  ],
+  "groups": []
+ },
+ "align-horizontal": {
+  "tags": [
+   "center",
+   "items",
+   "flex",
+   "justify",
+   "distribute",
+   "between"
+  ],
+  "groups": []
+ },
+ "align-left": {
+  "tags": [
+   "text",
+   "alignment",
+   "left",
+   "paragraph",
+   "format"
+  ],
+  "groups": []
+ },
+ "align-right": {
+  "tags": [
+   "text",
+   "alignment",
+   "right",
+   "paragraph",
+   "format"
+  ],
+  "groups": []
+ },
+ "align-vertical": {
+  "tags": [
+   "center",
+   "items",
+   "flex",
+   "justify",
+   "distribute",
+   "between"
+  ],
+  "groups": []
+ },
+ "ambulance": {
+  "tags": [
+   "ambulance",
+   "emergency",
+   "medical",
+   "hospital",
+   "vehicle",
+   "rescue",
+   "siren",
+   "healthcare",
+   "transportation",
+   "urgent",
+   "first aid"
+  ],
+  "groups": [
+   "medical",
+   "transportation"
+  ]
+ },
+ "angry": {
+  "tags": [
+   "mad",
+   "upset",
+   "angry",
+   "furious",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "annoyed": {
+  "tags": [
+   "annoyed",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "archive": {
+  "tags": [
+   "index",
+   "backup",
+   "box",
+   "storage",
+   "records"
+  ],
+  "groups": [
+   "files",
+   "mail"
+  ]
+ },
+ "arrow-big-down": {
+  "tags": [
+   "arrow",
+   "down",
+   "big",
+   "below",
+   "south",
+   "bottom",
+   "backwards",
+   "reverse",
+   "direction"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "arrow-big-down-dash": {
+  "tags": [
+   "arrow",
+   "down",
+   "big",
+   "below",
+   "south",
+   "bottom",
+   "dash",
+   "backwards",
+   "reverse",
+   "slow",
+   "direction",
+   "download"
+  ],
+  "groups": [
+   "arrows",
+   "gaming",
+   "files"
+  ]
+ },
+ "arrow-big-left": {
+  "tags": [
+   "arrow",
+   "left",
+   "big",
+   "west",
+   "previous",
+   "<-",
+   "back",
+   "direction",
+   "indicate turn"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "arrow-big-left-dash": {
+  "tags": [
+   "arrow",
+   "left",
+   "big",
+   "below",
+   "west",
+   "dash",
+   "previous",
+   "back",
+   "direction",
+   "turn",
+   "corner"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "arrow-big-right": {
+  "tags": [
+   "arrow",
+   "right",
+   "big",
+   "east",
+   "next",
+   "->",
+   "forward",
+   "direction",
+   "indicate turn"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "arrow-big-right-dash": {
+  "tags": [
+   "arrow",
+   "right",
+   "big",
+   "below",
+   "east",
+   "dash",
+   "next",
+   "forward",
+   "direction",
+   "turn",
+   "corner"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "arrow-big-up": {
+  "tags": [
+   "arrow",
+   "up",
+   "big",
+   "north",
+   "top",
+   "shift",
+   "keyboard",
+   "button",
+   "mac",
+   "capitalize",
+   "capitalise",
+   "forward",
+   "direction"
+  ],
+  "groups": [
+   "arrows",
+   "text",
+   "development",
+   "gaming"
+  ]
+ },
+ "arrow-big-up-dash": {
+  "tags": [
+   "arrow",
+   "up",
+   "big",
+   "above",
+   "north",
+   "dash",
+   "caps lock",
+   "capitals",
+   "keyboard",
+   "button",
+   "mac",
+   "forward",
+   "direction",
+   "faster",
+   "speed",
+   "boost"
+  ],
+  "groups": [
+   "arrows",
+   "text",
+   "development",
+   "gaming"
+  ]
+ },
+ "arrow-down": {
+  "tags": [
+   "down",
+   "below",
+   "direction",
+   "south",
+   "bottom",
+   "backwards",
+   "reverse"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-down-0-1": {
+  "tags": [
+   "filter",
+   "sort",
+   "ascending",
+   "descending",
+   "increasing",
+   "decreasing",
+   "rising",
+   "falling",
+   "numerical"
+  ],
+  "groups": [
+   "text",
+   "layout",
+   "arrows"
+  ]
+ },
+ "arrow-down-1-0": {
+  "tags": [
+   "filter",
+   "sort",
+   "ascending",
+   "descending",
+   "increasing",
+   "decreasing",
+   "rising",
+   "falling",
+   "numerical"
+  ],
+  "groups": [
+   "text",
+   "layout",
+   "arrows"
+  ]
+ },
+ "arrow-down-a-z": {
+  "tags": [
+   "filter",
+   "sort",
+   "ascending",
+   "descending",
+   "increasing",
+   "decreasing",
+   "rising",
+   "falling",
+   "alphabetical"
+  ],
+  "groups": [
+   "text",
+   "layout",
+   "arrows"
+  ]
+ },
+ "arrow-down-left": {
+  "tags": [
+   "arrow",
+   "down",
+   "left",
+   "direction",
+   "southwest",
+   "bottom left",
+   "south-west",
+   "diagonal"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-down-right": {
+  "tags": [
+   "arrow",
+   "down",
+   "right",
+   "direction",
+   "southeast",
+   "bottom right",
+   "south-east",
+   "diagonal"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-down-z-a": {
+  "tags": [
+   "filter",
+   "sort",
+   "ascending",
+   "descending",
+   "increasing",
+   "decreasing",
+   "rising",
+   "falling",
+   "alphabetical",
+   "reverse"
+  ],
+  "groups": [
+   "text",
+   "layout",
+   "arrows"
+  ]
+ },
+ "arrow-left": {
+  "tags": [
+   "previous",
+   "back",
+   "direction",
+   "west",
+   "<-"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-right": {
+  "tags": [
+   "forward",
+   "next",
+   "direction",
+   "east",
+   "->"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-up": {
+  "tags": [
+   "up",
+   "above",
+   "direction",
+   "north",
+   "top",
+   "forward"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-up-left": {
+  "tags": [
+   "arrow",
+   "up",
+   "left",
+   "direction",
+   "northwest",
+   "top left",
+   "north-west",
+   "diagonal"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "arrow-up-right": {
+  "tags": [
+   "arrow",
+   "up",
+   "right",
+   "direction",
+   "northeast",
+   "top right",
+   "north-east",
+   "diagonal"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "at-sign": {
+  "tags": [
+   "mention",
+   "at",
+   "email",
+   "message",
+   "@"
+  ],
+  "groups": [
+   "text",
+   "account"
+  ]
+ },
+ "atom": {
+  "tags": [
+   "science",
+   "physics",
+   "chemistry",
+   "nucleus",
+   "electron",
+   "atomic",
+   "nuclear",
+   "particle",
+   "element",
+   "molecule",
+   "electricity",
+   "energy"
+  ],
+  "groups": [
+   "science"
+  ]
+ },
+ "attach-file": {
+  "tags": [
+   "attachment",
+   "file"
+  ],
+  "groups": []
+ },
+ "audio-lines": {
+  "tags": [
+   "graphic equaliser",
+   "sound",
+   "noise",
+   "listen",
+   "hearing",
+   "hertz",
+   "frequency",
+   "wavelength",
+   "vibrate",
+   "sine",
+   "synthesizer",
+   "synthesiser",
+   "levels",
+   "track",
+   "music",
+   "playback",
+   "radio",
+   "broadcast",
+   "airwaves",
+   "voice",
+   "vocals",
+   "singer",
+   "song"
+  ],
+  "groups": [
+   "multimedia",
+   "communication"
+  ]
+ },
+ "axe": {
+  "tags": [
+   "hatchet",
+   "weapon",
+   "chop",
+   "sharp",
+   "equipment",
+   "fireman",
+   "firefighter",
+   "brigade",
+   "lumberjack",
+   "woodcutter",
+   "logger",
+   "forestry"
+  ],
+  "groups": [
+   "tools",
+   "gaming"
+  ]
+ },
+ "badge-alert": {
+  "tags": [
+   "check",
+   "verified",
+   "unverified",
+   "security",
+   "safety",
+   "issue"
+  ],
+  "groups": [
+   "account",
+   "social"
+  ]
+ },
+ "badge-percent": {
+  "tags": [
+   "verified",
+   "unverified",
+   "sale",
+   "discount",
+   "offer",
+   "marketing",
+   "sticker",
+   "price tag"
+  ],
+  "groups": [
+   "social",
+   "finance",
+   "shopping",
+   "math"
+  ]
+ },
+ "ban": {
+  "tags": [
+   "ban",
+   "stop",
+   "prevent",
+   "no",
+   "cancel",
+   "forbidden",
+   "prohibited",
+   "error",
+   "incorrect",
+   "mistake",
+   "wrong",
+   "failure",
+   "circle",
+   "slash",
+   "null",
+   "void"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "banana": {
+  "tags": [
+   "fruit",
+   "food",
+   "yellow",
+   "tropical"
+  ],
+  "groups": [
+   "food-beverage"
+  ]
+ },
+ "battery": {
+  "tags": [
+   "power",
+   "electricity",
+   "energy",
+   "accumulator",
+   "charge"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "battery-charging": {
+  "tags": [
+   "battery",
+   "charging",
+   "power",
+   "electricity",
+   "energy",
+   "accumulator",
+   "charge"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "battery-full": {
+  "tags": [
+   "battery",
+   "power",
+   "energy",
+   "full",
+   "charge",
+   "electricity",
+   "accumulator"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "battery-low": {
+  "tags": [
+   "battery",
+   "power",
+   "energy",
+   "low",
+   "charge",
+   "electricity",
+   "accumulator"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "battery-medium": {
+  "tags": [
+   "battery",
+   "power",
+   "energy",
+   "medium",
+   "charge",
+   "electricity",
+   "accumulator"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "battery-plus": {
+  "tags": [
+   "accumulator",
+   "charge",
+   "plus",
+   "add",
+   "battery",
+   "new",
+   "power",
+   "electricity",
+   "energy",
+   "economy",
+   "health",
+   "maximum",
+   "upgrade",
+   "extra",
+   "+"
+  ],
+  "groups": [
+   "devices"
+  ]
+ },
+ "battery-warning": {
+  "tags": [
+   "battery",
+   "warning",
+   "power",
+   "electricity",
+   "energy",
+   "alert",
+   "exclamation",
+   "accumulator",
+   "charge",
+   "exclamation mark"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "bell": {
+  "tags": [
+   "alarm",
+   "notification",
+   "sound",
+   "reminder"
+  ],
+  "groups": [
+   "account",
+   "notifications"
+  ]
+ },
+ "bell-electric": {
+  "tags": [
+   "bell",
+   "electric",
+   "notification",
+   "alert",
+   "fire alarm",
+   "flames",
+   "smoke",
+   "firefighter",
+   "fireman",
+   "department",
+   "brigade",
+   "station",
+   "emergency",
+   "safety",
+   "school bell",
+   "period break",
+   "recess",
+   "doorbell",
+   "entrance",
+   "entry",
+   "ring",
+   "reception"
+  ],
+  "groups": [
+   "devices",
+   "notifications",
+   "home"
+  ]
+ },
+ "biceps-flexed": {
+  "tags": [
+   "biceps",
+   "flexed",
+   "muscle",
+   "arm",
+   "strong",
+   "fitness",
+   "workout",
+   "gym",
+   "working out",
+   "athletic",
+   "toned",
+   "muscular",
+   "forelimb",
+   "curled"
+  ],
+  "groups": [
+   "emoji"
+  ]
+ },
+ "blocks": {
+  "tags": [
+   "block",
+   "blocks",
+   "addon",
+   "plugin",
+   "integration",
+   "extension",
+   "package",
+   "build",
+   "stack",
+   "toys",
+   "kids",
+   "children",
+   "learning",
+   "squares",
+   "corner"
+  ],
+  "groups": [
+   "development",
+   "layout",
+   "shapes"
+  ]
+ },
+ "bluetooth": {
+  "tags": [
+   "tool",
+   "connection",
+   "network",
+   "wireless"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "bluetooth-connected": {
+  "tags": [
+   "tool",
+   "connection",
+   "network",
+   "paired"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "bluetooth-off": {
+  "tags": [
+   "tool",
+   "connection",
+   "network",
+   "lost"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "bluetooth-searching": {
+  "tags": [
+   "tool",
+   "connection",
+   "network",
+   "pairing"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "bold": {
+  "tags": [
+   "text",
+   "strong",
+   "format"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "bone": {
+  "tags": [
+   "health",
+   "skeleton",
+   "skull",
+   "death",
+   "pets",
+   "dog"
+  ],
+  "groups": [
+   "animals",
+   "medical",
+   "gaming"
+  ]
+ },
+ "book-text": {
+  "tags": [
+   "reading",
+   "booklet",
+   "magazine",
+   "leaflet",
+   "pamphlet",
+   "tome",
+   "library",
+   "writing",
+   "written",
+   "writer",
+   "author",
+   "story",
+   "script",
+   "fiction",
+   "novel",
+   "information",
+   "knowledge",
+   "education",
+   "high school",
+   "university",
+   "college",
+   "academy",
+   "student",
+   "study",
+   "learning",
+   "homework",
+   "research",
+   "documentation"
+  ],
+  "groups": [
+   "text",
+   "gaming"
+  ]
+ },
+ "bookmark": {
+  "tags": [
+   "bookmark",
+   "save",
+   "tag",
+   "label",
+   "favorite",
+   "mark",
+   "attachment",
+   "file",
+   "stick",
+   "pin",
+   "read",
+   "clip",
+   "marker"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "bookmark-check": {
+  "tags": [
+   "bookmark",
+   "check",
+   "save",
+   "tag",
+   "label",
+   "read",
+   "finished",
+   "complete",
+   "clip",
+   "marker",
+   "task",
+   "todo"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "bookmark-minus": {
+  "tags": [
+   "bookmark",
+   "minus",
+   "remove",
+   "delete",
+   "tag",
+   "label"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "bookmark-plus": {
+  "tags": [
+   "bookmark",
+   "plus",
+   "add",
+   "create",
+   "tag",
+   "label"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "bookmark-x": {
+  "tags": [
+   "bookmark",
+   "x",
+   "remove",
+   "delete",
+   "tag",
+   "label",
+   "read",
+   "clip",
+   "marker",
+   "cancel",
+   "close",
+   "clear"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "bot": {
+  "tags": [
+   "bot",
+   "user",
+   "avatar",
+   "robot",
+   "ai",
+   "chat",
+   "assistant"
+  ],
+  "groups": [
+   "development",
+   "social"
+  ]
+ },
+ "bot-message-square": {
+  "tags": [
+   "bot",
+   "message",
+   "square",
+   "bubble",
+   "chat",
+   "conversation",
+   "robot",
+   "ai",
+   "assistant"
+  ],
+  "groups": [
+   "development",
+   "social"
+  ]
+ },
+ "box": {
+  "tags": [
+   "cube",
+   "package",
+   "container",
+   "storage",
+   "geometry",
+   "3d",
+   "isometric"
+  ],
+  "groups": [
+   "shapes",
+   "gaming",
+   "development",
+   "math"
+  ]
+ },
+ "boxes": {
+  "tags": [
+   "boxes",
+   "box",
+   "container",
+   "package",
+   "shipping",
+   "cubes",
+   "packages",
+   "parts",
+   "group",
+   "units",
+   "collection",
+   "cluster",
+   "geometry"
+  ],
+  "groups": [
+   "shapes",
+   "gaming",
+   "development"
+  ]
+ },
+ "brain": {
+  "tags": [
+   "medical",
+   "mind",
+   "mental",
+   "intellect",
+   "cerebral",
+   "consciousness",
+   "genius",
+   "artificial intelligence",
+   "ai",
+   "think",
+   "thought",
+   "insight",
+   "intelligent",
+   "smart"
+  ],
+  "groups": [
+   "medical",
+   "science"
+  ]
+ },
+ "briefcase-business": {
+  "tags": [
+   "briefcase",
+   "business",
+   "work",
+   "office",
+   "case",
+   "luggage",
+   "job",
+   "career",
+   "bag",
+   "baggage",
+   "folder",
+   "portfolio"
+  ],
+  "groups": [
+   "transportation"
+  ]
+ },
+ "calendar-check": {
+  "tags": [
+   "calendar",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "date",
+   "day",
+   "month",
+   "year",
+   "event",
+   "subscribe",
+   "schedule",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "time"
+  ]
+ },
+ "calendar-check-2": {
+  "tags": [
+   "calendar",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "date",
+   "day",
+   "month",
+   "year",
+   "event",
+   "subscribe",
+   "schedule",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "time"
+  ]
+ },
+ "calendar-cog": {
+  "tags": [
+   "date",
+   "day",
+   "month",
+   "year",
+   "events",
+   "settings",
+   "gear",
+   "cog"
+  ],
+  "groups": [
+   "time"
+  ]
+ },
+ "car": {
+  "tags": [
+   "car",
+   "vehicle",
+   "drive",
+   "trip",
+   "journey"
+  ],
+  "groups": [
+   "transportation"
+  ]
+ },
+ "cart": {
+  "tags": [
+   "trolley",
+   "cart",
+   "basket",
+   "e-commerce",
+   "store",
+   "purchase",
+   "products",
+   "items",
+   "ingredients"
+  ],
+  "groups": []
+ },
+ "cast": {
+  "tags": [
+   "cast",
+   "screen",
+   "chromecast",
+   "airplay",
+   "stream",
+   "streaming",
+   "display",
+   "wireless",
+   "broadcast",
+   "transmit",
+   "media",
+   "receiver",
+   "remote display",
+   "screen sharing",
+   "media streaming"
+  ],
+  "groups": [
+   "devices",
+   "connectivity"
+  ]
+ },
+ "cctv": {
+  "tags": [
+   "cctv",
+   "camera",
+   "surveillance",
+   "recording",
+   "film",
+   "videotape",
+   "crime",
+   "watching"
+  ],
+  "groups": [
+   "security",
+   "devices",
+   "communication",
+   "connectivity",
+   "photography"
+  ]
+ },
+ "chart-bar-decreasing": {
+  "tags": [
+   "chart",
+   "bar",
+   "decreasing",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending down"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-bar-increasing": {
+  "tags": [
+   "chart",
+   "bar",
+   "increasing",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending up"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-column-decreasing": {
+  "tags": [
+   "chart",
+   "column",
+   "decreasing",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending down"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-column-increasing": {
+  "tags": [
+   "chart",
+   "column",
+   "increasing",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending up"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-line": {
+  "tags": [
+   "chart",
+   "line",
+   "increasing",
+   "linechart",
+   "chartline",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-no-axes-column-decreasing": {
+  "tags": [
+   "chart",
+   "column",
+   "decreasing",
+   "chartnoaxes",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending down"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-no-axes-column-increasing": {
+  "tags": [
+   "chart",
+   "column",
+   "increasing",
+   "chartnoaxes",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "trending up"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-pie": {
+  "tags": [
+   "statistics",
+   "analytics",
+   "diagram",
+   "presentation"
+  ],
+  "groups": [
+   "charts",
+   "files"
+  ]
+ },
+ "chart-scatter": {
+  "tags": [
+   "chart",
+   "analytics",
+   "scatter",
+   "statistics",
+   "diagram",
+   "graph"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "chart-spline": {
+  "tags": [
+   "chart",
+   "spline",
+   "graph",
+   "statistics",
+   "analytics",
+   "diagram",
+   "presentation",
+   "curve",
+   "continuous",
+   "smooth",
+   "polynomial",
+   "quadratic",
+   "function",
+   "interpolation"
+  ],
+  "groups": [
+   "charts"
+  ]
+ },
+ "check": {
+  "tags": [
+   "done",
+   "todo",
+   "tick",
+   "complete",
+   "task"
+  ],
+  "groups": [
+   "notifications"
+  ]
+ },
+ "check-check": {
+  "tags": [
+   "done",
+   "received",
+   "double",
+   "todo",
+   "tick",
+   "complete",
+   "task"
+  ],
+  "groups": [
+   "notifications"
+  ]
+ },
+ "chess-bishop": {
+  "tags": [
+   "chess",
+   "bishop",
+   "piece",
+   "board game",
+   "strategy",
+   "game",
+   "bishop-shape",
+   "move",
+   "mitre",
+   "miter",
+   "religion"
+  ],
+  "groups": [
+   "gaming",
+   "emoji"
+  ]
+ },
+ "chess-king": {
+  "tags": [
+   "chess",
+   "king",
+   "piece",
+   "board game",
+   "strategy",
+   "game",
+   "checkmate",
+   "royal",
+   "crown",
+   "ruler",
+   "stalemate"
+  ],
+  "groups": [
+   "gaming",
+   "emoji"
+  ]
+ },
+ "chess-knight": {
+  "tags": [
+   "chess",
+   "knight",
+   "piece",
+   "board game",
+   "strategy",
+   "game",
+   "horse",
+   "L-shape",
+   "move"
+  ],
+  "groups": [
+   "gaming",
+   "emoji"
+  ]
+ },
+ "chess-pawn": {
+  "tags": [
+   "chess",
+   "pawn",
+   "piece",
+   "board game",
+   "strategy",
+   "game",
+   "pawn-shape",
+   "move"
+  ],
+  "groups": [
+   "gaming",
+   "emoji"
+  ]
+ },
+ "chevron-down": {
+  "tags": [
+   "chevron",
+   "down",
+   "expand",
+   "unfold",
+   "vertical",
+   "backwards",
+   "reverse",
+   "slow",
+   "dropdown"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "chevron-first": {
+  "tags": [
+   "chevron",
+   "first",
+   "down",
+   "arrow",
+   "previous",
+   "music"
+  ],
+  "groups": [
+   "arrows",
+   "multimedia"
+  ]
+ },
+ "chevron-left": {
+  "tags": [
+   "chevron",
+   "left",
+   "previous",
+   "back",
+   "direction",
+   "less than",
+   "fewer",
+   "menu",
+   "<"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "chevron-right": {
+  "tags": [
+   "chevron",
+   "right",
+   "next",
+   "forward",
+   "direction",
+   "more than",
+   "greater",
+   "menu",
+   "code",
+   "coding",
+   "command line",
+   "terminal",
+   "prompt",
+   "shell",
+   ">"
+  ],
+  "groups": [
+   "arrows",
+   "math",
+   "development"
+  ]
+ },
+ "chevron-up": {
+  "tags": [
+   "chevron",
+   "up",
+   "collapse",
+   "fold",
+   "vertical",
+   "caret",
+   "keyboard",
+   "mac",
+   "control",
+   "ctrl",
+   "superscript",
+   "exponential",
+   "power",
+   "ahead",
+   "fast",
+   "^",
+   "dropdown"
+  ],
+  "groups": [
+   "arrows",
+   "math",
+   "gaming"
+  ]
+ },
+ "chevrons-down-up": {
+  "tags": [
+   "collapse",
+   "fold",
+   "vertical",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "chevrons-left-right": {
+  "tags": [
+   "expand",
+   "unfold",
+   "horizontal",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "chevrons-right-left": {
+  "tags": [
+   "collapse",
+   "fold",
+   "horizontal",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "chevrons-up-down": {
+  "tags": [
+   "expand",
+   "unfold",
+   "vertical",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "chrome": {
+  "tags": [
+   "browser",
+   "google",
+   "internet",
+   "web",
+   "logo"
+  ],
+  "groups": []
+ },
+ "cigarette": {
+  "tags": [
+   "cigarette",
+   "smoking"
+  ],
+  "groups": [
+   "travel",
+   "transportation",
+   "medical"
+  ]
+ },
+ "cigarette-off": {
+  "tags": [
+   "cigarette",
+   "off",
+   "smoking",
+   "no-smoking"
+  ],
+  "groups": [
+   "travel",
+   "transportation",
+   "medical"
+  ]
+ },
+ "circle-check": {
+  "tags": [
+   "done",
+   "todo",
+   "tick",
+   "complete",
+   "task"
+  ],
+  "groups": [
+   "notifications"
+  ]
+ },
+ "circle-chevron-down": {
+  "tags": [
+   "back",
+   "menu",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "circle-chevron-left": {
+  "tags": [
+   "back",
+   "previous",
+   "less than",
+   "fewer",
+   "menu",
+   "<",
+   "chevron"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "circle-chevron-right": {
+  "tags": [
+   "next",
+   "forward",
+   "more than",
+   "greater",
+   "menu",
+   ">",
+   "chevron",
+   "back"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "circle-chevron-up": {
+  "tags": [
+   "caret",
+   "ahead",
+   "forward",
+   "menu",
+   "chevron",
+   "^"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "circle-dashed": {
+  "tags": [
+   "dashed",
+   "circle",
+   "dashed circle",
+   "pending",
+   "dot",
+   "progress",
+   "issue",
+   "draft",
+   "code",
+   "coding",
+   "version control"
+  ],
+  "groups": [
+   "development",
+   "shapes"
+  ]
+ },
+ "circle-dollar-sign": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "circle-gauge": {
+  "tags": [
+   "gauge",
+   "meter",
+   "speed",
+   "pressure",
+   "measure",
+   "circle",
+   "dashboard",
+   "dial",
+   "level"
+  ],
+  "groups": [
+   "transportation",
+   "sports",
+   "science"
+  ]
+ },
+ "circle-help": {
+  "tags": [
+   "question mark",
+   "off",
+   "zero",
+   "record",
+   "shape"
+  ],
+  "groups": [
+   "shapes"
+  ]
+ },
+ "clap": {
+  "tags": [
+   "clap",
+   "movie",
+   "film",
+   "video",
+   "camera",
+   "cinema",
+   "cut",
+   "action",
+   "television",
+   "tv",
+   "show",
+   "entertainment"
+  ],
+  "groups": []
+ },
+ "clipboard-check": {
+  "tags": [
+   "clipboard",
+   "check",
+   "clipboard-check",
+   "clipboard-checkmark",
+   "copied",
+   "pasted",
+   "done",
+   "todo",
+   "tick",
+   "complete",
+   "task"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "clock": {
+  "tags": [
+   "time",
+   "watch",
+   "alarm"
+  ],
+  "groups": [
+   "time"
+  ]
+ },
+ "cloud-backup": {
+  "tags": [
+   "cloud",
+   "backup",
+   "storage",
+   "memory",
+   "bytes",
+   "servers",
+   "time machine",
+   "rotate",
+   "synchronize",
+   "synchronise",
+   "refresh",
+   "reconnect",
+   "transfer",
+   "data",
+   "security",
+   "upload",
+   "save",
+   "remote",
+   "safety"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "cloud-cog": {
+  "tags": [
+   "cloud",
+   "cog",
+   "cloud cog",
+   "edit",
+   "gear",
+   "preferences",
+   "computing",
+   "ai",
+   "cluster",
+   "network"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "cloud-download": {
+  "tags": [
+   "cloud",
+   "download",
+   "weather",
+   "cloud download",
+   "import"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "cloud-lightning": {
+  "tags": [
+   "cloud",
+   "lightning",
+   "weather",
+   "cloud lightning",
+   "bolt"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "cloud-rain": {
+  "tags": [
+   "cloud",
+   "rain",
+   "weather",
+   "cloud rain",
+   "rainfall"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "cloud-rain-wind": {
+  "tags": [
+   "cloud",
+   "rain",
+   "wind",
+   "weather",
+   "cloud rain wind",
+   "rainfall"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "cloud-snow": {
+  "tags": [
+   "cloud snow",
+   "weather",
+   "blizzard"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "cloud-sun": {
+  "tags": [
+   "weather",
+   "sun",
+   "cloud",
+   "light",
+   "bright",
+   "partly"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "cloud-sync": {
+  "tags": [
+   "cloud",
+   "sync",
+   "synchronize",
+   "synchronise",
+   "refresh",
+   "reconnect",
+   "transfer",
+   "backup",
+   "storage",
+   "upload",
+   "download",
+   "connection",
+   "network",
+   "data"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "cloud-upload": {
+  "tags": [
+   "cloud",
+   "upload",
+   "weather",
+   "cloud upload",
+   "file"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "coffee": {
+  "tags": [
+   "coffee",
+   "drink",
+   "cup",
+   "mug",
+   "tea",
+   "cafe",
+   "hot",
+   "beverage"
+  ],
+  "groups": [
+   "food-beverage"
+  ]
+ },
+ "cog": {
+  "tags": [
+   "gear",
+   "settings",
+   "preferences",
+   "controls",
+   "computing",
+   "cog",
+   "edit",
+   "configuration",
+   "fixed",
+   "build",
+   "construction",
+   "parts"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "compass": {
+  "tags": [
+   "direction",
+   "navigation",
+   "north",
+   "south",
+   "east",
+   "west",
+   "compass",
+   "browser"
+  ],
+  "groups": [
+   "navigation",
+   "travel"
+  ]
+ },
+ "connect": {
+  "tags": [
+   "electricity",
+   "energy",
+   "electronics",
+   "socket",
+   "outlet",
+   "disconnect"
+  ],
+  "groups": []
+ },
+ "construction": {
+  "tags": [
+   "roadwork",
+   "maintenance",
+   "blockade",
+   "barricade",
+   "development"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "contrast": {
+  "tags": [
+   "contrast",
+   "brightness",
+   "adjust",
+   "enhance",
+   "change",
+   "theme",
+   "dark",
+   "light",
+   "mode",
+   "display",
+   "accessibility"
+  ],
+  "groups": [
+   "photography",
+   "accessibility",
+   "design"
+  ]
+ },
+ "cooking-pot": {
+  "tags": [
+   "pod",
+   "cooking",
+   "recipe",
+   "food",
+   "kitchen",
+   "chef",
+   "restaurant",
+   "dinner",
+   "lunch",
+   "breakfast",
+   "meal",
+   "eat"
+  ],
+  "groups": [
+   "food-beverage",
+   "home"
+  ]
+ },
+ "copy": {
+  "tags": [
+   "clone",
+   "duplicate",
+   "multiple"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "corner-down-left": {
+  "tags": [
+   "corner",
+   "down",
+   "left",
+   "arrow",
+   "return"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-down-right": {
+  "tags": [
+   "corner",
+   "down",
+   "right",
+   "arrow",
+   "indent",
+   "tab"
+  ],
+  "groups": [
+   "arrows",
+   "text",
+   "development"
+  ]
+ },
+ "corner-left-down": {
+  "tags": [
+   "corner",
+   "left",
+   "down",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-left-up": {
+  "tags": [
+   "corner",
+   "left",
+   "up",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-right-down": {
+  "tags": [
+   "corner",
+   "right",
+   "down",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-right-up": {
+  "tags": [
+   "corner",
+   "right",
+   "up",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-up-left": {
+  "tags": [
+   "corner",
+   "up",
+   "left",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "corner-up-right": {
+  "tags": [
+   "corner",
+   "up",
+   "right",
+   "arrow"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "cpu": {
+  "tags": [
+   "processor",
+   "chip",
+   "computer",
+   "hardware",
+   "central processing unit",
+   "computing",
+   "cores",
+   "technology",
+   "circuit",
+   "memory",
+   "ram",
+   "specs",
+   "gigahertz",
+   "ghz"
+  ],
+  "groups": [
+   "devices"
+  ]
+ },
+ "credit-card": {
+  "tags": [
+   "credit card",
+   "card",
+   "payment",
+   "debit",
+   "money",
+   "finance",
+   "bank",
+   "purchase",
+   "cc"
+  ],
+  "groups": [
+   "account",
+   "finance"
+  ]
+ },
+ "cup-soda": {
+  "tags": [
+   "beverage",
+   "cup",
+   "drink",
+   "soda",
+   "straw",
+   "water"
+  ],
+  "groups": [
+   "food-beverage"
+  ]
+ },
+ "cursor-click": {
+  "tags": [
+   "click",
+   "select"
+  ],
+  "groups": []
+ },
+ "database-backup": {
+  "tags": [
+   "database",
+   "backup",
+   "restore",
+   "storage",
+   "reload",
+   "sync",
+   "recovery",
+   "data",
+   "memory",
+   "bytes",
+   "servers",
+   "time machine",
+   "rotate",
+   "arrow",
+   "left"
+  ],
+  "groups": [
+   "devices",
+   "arrows",
+   "design",
+   "development",
+   "photography"
+  ]
+ },
+ "delete": {
+  "tags": [
+   "garbage",
+   "delete",
+   "remove",
+   "bin",
+   "backspace"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "disc-3": {
+  "tags": [
+   "disc",
+   "vinyl",
+   "record",
+   "music",
+   "audio",
+   "spin",
+   "rotate",
+   "cd",
+   "dvd",
+   "media",
+   "album",
+   "format",
+   "dj",
+   "rpm"
+  ],
+  "groups": [
+   "devices",
+   "multimedia"
+  ]
+ },
+ "discord": {
+  "tags": [
+   "social",
+   "network",
+   "discord"
+  ],
+  "groups": []
+ },
+ "dollar-sign": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "download": {
+  "tags": [
+   "import",
+   "export",
+   "save"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "downvote": {
+  "tags": [
+   "dislike",
+   "bad",
+   "emotion"
+  ],
+  "groups": []
+ },
+ "dribbble": {
+  "tags": [
+   "social",
+   "network",
+   "dribbble"
+  ],
+  "groups": []
+ },
+ "droplet": {
+  "tags": [
+   "water",
+   "weather",
+   "liquid",
+   "fluid",
+   "wet",
+   "moisture",
+   "damp",
+   "bead",
+   "globule"
+  ],
+  "groups": [
+   "weather",
+   "gaming"
+  ]
+ },
+ "drum": {
+  "tags": [
+   "music",
+   "instrument",
+   "percussion",
+   "beat",
+   "rhythm",
+   "sound",
+   "drummer",
+   "kit",
+   "sticks",
+   "bang",
+   "bass",
+   "backing track",
+   "band",
+   "play",
+   "performance",
+   "concert",
+   "march",
+   "audio",
+   "noise",
+   "loud"
+  ],
+  "groups": [
+   "multimedia",
+   "devices"
+  ]
+ },
+ "earth": {
+  "tags": [
+   "world",
+   "browser",
+   "language",
+   "translate",
+   "globe"
+  ],
+  "groups": [
+   "navigation"
+  ]
+ },
+ "euro": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "ev-charger": {
+  "tags": [
+   "ev",
+   "charger",
+   "charge",
+   "electric",
+   "vehicle",
+   "station",
+   "fast",
+   "plug",
+   "power",
+   "electricity",
+   "energy",
+   "accumulator"
+  ],
+  "groups": [
+   "transportation",
+   "navigation"
+  ]
+ },
+ "expand": {
+  "tags": [
+   "scale",
+   "fullscreen",
+   "maximize",
+   "minimize",
+   "contract"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "external-link": {
+  "tags": [
+   "external",
+   "link",
+   "outbound",
+   "open",
+   "share",
+   "north-east",
+   "diagonal"
+  ],
+  "groups": [
+   "arrows",
+   "text",
+   "social"
+  ]
+ },
+ "eye": {
+  "tags": [
+   "view",
+   "watch",
+   "see",
+   "show",
+   "expose",
+   "reveal",
+   "display",
+   "visible",
+   "visibility",
+   "vision",
+   "preview",
+   "read"
+  ],
+  "groups": [
+   "accessibility",
+   "photography",
+   "design",
+   "security"
+  ]
+ },
+ "eye-off": {
+  "tags": [
+   "view",
+   "watch",
+   "see",
+   "hide",
+   "conceal",
+   "mask",
+   "hidden",
+   "visibility",
+   "vision"
+  ],
+  "groups": [
+   "accessibility",
+   "photography",
+   "design",
+   "security"
+  ]
+ },
+ "facebook": {
+  "tags": [
+   "social",
+   "network",
+   "facebook"
+  ],
+  "groups": []
+ },
+ "fan": {
+  "tags": [
+   "fan",
+   "air",
+   "ventilation",
+   "breeze",
+   "cooler",
+   "ventilator",
+   "blower"
+  ],
+  "groups": [
+   "home"
+  ]
+ },
+ "feather": {
+  "tags": [
+   "feather",
+   "quill",
+   "writing",
+   "light",
+   "bird",
+   "plume",
+   "author",
+   "literature",
+   "poetry",
+   "manuscript",
+   "plumage",
+   "lightweight",
+   "soft"
+  ],
+  "groups": [
+   "nature",
+   "animals",
+   "gaming",
+   "text"
+  ]
+ },
+ "figma": {
+  "tags": [
+   "design",
+   "tool",
+   "logo"
+  ],
+  "groups": []
+ },
+ "file-chart-line": {
+  "tags": [
+   "file",
+   "chart",
+   "line",
+   "increasing",
+   "filechartline",
+   "statistics",
+   "analytics",
+   "diagram",
+   "graph",
+   "presentation"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "file-check": {
+  "tags": [
+   "file",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "document",
+   "confirm",
+   "complete",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "file-check-2": {
+  "tags": [
+   "file",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "document",
+   "confirm",
+   "complete",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "file-cog": {
+  "tags": [
+   "file",
+   "cog",
+   "settings",
+   "preferences",
+   "controls",
+   "executable",
+   "edit",
+   "gear"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "file-pen-line": {
+  "tags": [
+   "edit"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "file-stack": {
+  "tags": [
+   "versions",
+   "multiple",
+   "copy",
+   "documents",
+   "revisions",
+   "version control",
+   "history"
+  ],
+  "groups": [
+   "files",
+   "development"
+  ]
+ },
+ "file-text": {
+  "tags": [
+   "file",
+   "text",
+   "document",
+   "data",
+   "txt",
+   "pdf"
+  ],
+  "groups": [
+   "files",
+   "text"
+  ]
+ },
+ "fingerprint": {
+  "tags": [
+   "2fa",
+   "authentication",
+   "biometric",
+   "identity",
+   "security"
+  ],
+  "groups": []
+ },
+ "fish-symbol": {
+  "tags": [
+   "fish",
+   "seafood",
+   "ocean",
+   "marine",
+   "dish",
+   "restaurant",
+   "course",
+   "meal",
+   "pet",
+   "sea"
+  ],
+  "groups": [
+   "food-beverage",
+   "animals"
+  ]
+ },
+ "flame": {
+  "tags": [
+   "fire",
+   "flame",
+   "hot",
+   "heat",
+   "burn",
+   "light",
+   "glow",
+   "ignite",
+   "passion",
+   "ember",
+   "lit",
+   "burning",
+   "spark",
+   "embers",
+   "smoke",
+   "firefighter",
+   "fireman",
+   "department",
+   "brigade",
+   "station",
+   "emergency"
+  ],
+  "groups": [
+   "weather",
+   "social",
+   "gaming"
+  ]
+ },
+ "flask": {
+  "tags": [
+   "beaker",
+   "erlenmeyer",
+   "lab",
+   "chemistry",
+   "experiment",
+   "test"
+  ],
+  "groups": []
+ },
+ "folder-archive": {
+  "tags": [
+   "folder",
+   "archive",
+   "file",
+   "storage",
+   "organization",
+   "zip",
+   "package"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-check": {
+  "tags": [
+   "folder",
+   "check",
+   "file",
+   "storage",
+   "organization",
+   "done",
+   "directory",
+   "todo",
+   "tick",
+   "complete",
+   "task"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-clock": {
+  "tags": [
+   "folder",
+   "clock",
+   "time",
+   "schedule",
+   "history",
+   "directory"
+  ],
+  "groups": [
+   "files",
+   "time"
+  ]
+ },
+ "folder-code": {
+  "tags": [
+   "folder",
+   "code",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "coding",
+   "develop",
+   "software"
+  ],
+  "groups": [
+   "files",
+   "development"
+  ]
+ },
+ "folder-cog": {
+  "tags": [
+   "folder",
+   "cog",
+   "settings",
+   "configuration",
+   "directory",
+   "control",
+   "preferences",
+   "edit",
+   "gear"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-dot": {
+  "tags": [
+   "folder",
+   "dot",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "root",
+   "project",
+   "pinned",
+   "active",
+   "current",
+   "cogged",
+   "gear",
+   "mechanical",
+   "machinery",
+   "configuration",
+   "controls",
+   "preferences",
+   "settings",
+   "system",
+   "admin",
+   "edit"
+  ],
+  "groups": [
+   "files",
+   "development"
+  ]
+ },
+ "folder-down": {
+  "tags": [
+   "folder",
+   "down",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "download",
+   "import",
+   "export"
+  ],
+  "groups": [
+   "files",
+   "arrows"
+  ]
+ },
+ "folder-git": {
+  "tags": [
+   "folder",
+   "git",
+   "version control",
+   "repository",
+   "directory",
+   "root",
+   "project",
+   "repo"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-git-2": {
+  "tags": [
+   "folder",
+   "git",
+   "version control",
+   "repository",
+   "directory",
+   "root",
+   "project",
+   "repo"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-heart": {
+  "tags": [
+   "folder",
+   "heart",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "favourite",
+   "bookmark",
+   "quick link"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-input": {
+  "tags": [
+   "folder",
+   "input",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "import",
+   "export"
+  ],
+  "groups": [
+   "files",
+   "arrows"
+  ]
+ },
+ "folder-kanban": {
+  "tags": [
+   "folder",
+   "kanban",
+   "file",
+   "storage",
+   "organization",
+   "projects",
+   "manage",
+   "overview",
+   "board",
+   "tickets",
+   "issues",
+   "roadmap",
+   "plan",
+   "intentions",
+   "productivity",
+   "work",
+   "agile",
+   "code",
+   "coding",
+   "directory",
+   "project",
+   "root"
+  ],
+  "groups": [
+   "charts",
+   "development",
+   "design",
+   "files"
+  ]
+ },
+ "folder-key": {
+  "tags": [
+   "folder",
+   "key",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "private",
+   "security",
+   "protected"
+  ],
+  "groups": [
+   "files",
+   "security"
+  ]
+ },
+ "folder-lock": {
+  "tags": [
+   "folder",
+   "lock",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "private",
+   "security",
+   "protected"
+  ],
+  "groups": [
+   "files",
+   "security"
+  ]
+ },
+ "folder-minus": {
+  "tags": [
+   "folder",
+   "minus",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "remove",
+   "delete"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-open": {
+  "tags": [
+   "folder",
+   "open",
+   "file",
+   "storage",
+   "organization",
+   "directory"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-output": {
+  "tags": [
+   "folder",
+   "output",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "import",
+   "export"
+  ],
+  "groups": [
+   "files",
+   "arrows"
+  ]
+ },
+ "folder-plus": {
+  "tags": [
+   "folder",
+   "plus",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "add",
+   "create",
+   "new"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-root": {
+  "tags": [
+   "folder",
+   "root",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "project",
+   "git",
+   "repo"
+  ],
+  "groups": [
+   "files",
+   "development"
+  ]
+ },
+ "folder-sync": {
+  "tags": [
+   "folder",
+   "sync",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "synchronize",
+   "synchronise",
+   "refresh",
+   "reconnect",
+   "transfer",
+   "backup"
+  ],
+  "groups": [
+   "files",
+   "arrows"
+  ]
+ },
+ "folder-tree": {
+  "tags": [
+   "folder",
+   "tree",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "browser"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folder-up": {
+  "tags": [
+   "folder",
+   "up",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "upload",
+   "import",
+   "export"
+  ],
+  "groups": [
+   "files",
+   "arrows"
+  ]
+ },
+ "folder-x": {
+  "tags": [
+   "folder",
+   "x",
+   "file",
+   "storage",
+   "organization",
+   "directory",
+   "remove",
+   "delete"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "folders": {
+  "tags": [
+   "folder",
+   "directory",
+   "file",
+   "storage",
+   "organization",
+   "multiple",
+   "copy",
+   "directories"
+  ],
+  "groups": [
+   "files"
+  ]
+ },
+ "frame": {
+  "tags": [
+   "logo",
+   "design",
+   "tool"
+  ],
+  "groups": [
+   "design",
+   "photography"
+  ]
+ },
+ "frown": {
+  "tags": [
+   "frown",
+   "emotion",
+   "face",
+   "sad"
+  ],
+  "groups": []
+ },
+ "gallery-horizontal-end": {
+  "tags": [
+   "gallery",
+   "horizontal",
+   "end",
+   "last",
+   "carousel",
+   "pictures",
+   "images",
+   "scroll",
+   "swipe",
+   "album",
+   "portfolio",
+   "history",
+   "versions",
+   "backup",
+   "time machine"
+  ],
+  "groups": [
+   "layout",
+   "design",
+   "development",
+   "photography",
+   "multimedia",
+   "files"
+  ]
+ },
+ "gallery-thumbnails": {
+  "tags": [
+   "gallery",
+   "thumbnails",
+   "images",
+   "carousel",
+   "pictures",
+   "album",
+   "portfolio",
+   "preview"
+  ],
+  "groups": [
+   "layout",
+   "design",
+   "development",
+   "photography",
+   "multimedia"
+  ]
+ },
+ "gallery-vertical-end": {
+  "tags": [
+   "carousel",
+   "pictures",
+   "images",
+   "scroll",
+   "swipe",
+   "album",
+   "portfolio",
+   "history",
+   "versions",
+   "backup",
+   "time machine"
+  ],
+  "groups": [
+   "layout",
+   "design",
+   "development",
+   "photography",
+   "multimedia",
+   "files"
+  ]
+ },
+ "gauge": {
+  "tags": [
+   "dashboard",
+   "dial",
+   "meter",
+   "speed",
+   "pressure",
+   "measure",
+   "level"
+  ],
+  "groups": [
+   "transportation",
+   "sports",
+   "science"
+  ]
+ },
+ "gavel": {
+  "tags": [
+   "justice",
+   "law",
+   "court",
+   "judgment",
+   "legal",
+   "hands",
+   "penalty",
+   "decision",
+   "authority",
+   "hammer",
+   "mallet"
+  ],
+  "groups": [
+   "navigation",
+   "tools"
+  ]
+ },
+ "georgian-lari": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "git-branch": {
+  "tags": [
+   "git",
+   "branch",
+   "version control",
+   "repository",
+   "code",
+   "vcs"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-commit-horizontal": {
+  "tags": [
+   "code",
+   "open",
+   "version control ",
+   "waypoint",
+   "stop",
+   "station",
+   "version control"
+  ],
+  "groups": [
+   "development",
+   "navigation"
+  ]
+ },
+ "git-commit-vertical": {
+  "tags": [
+   "code",
+   "open",
+   "version control ",
+   "waypoint",
+   "stop",
+   "station",
+   "version control"
+  ],
+  "groups": [
+   "development",
+   "navigation"
+  ]
+ },
+ "git-compare": {
+  "tags": [
+   "git",
+   "compare",
+   "version control",
+   "repository",
+   "code",
+   "diff"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-compare-arrows": {
+  "tags": [
+   "git",
+   "compare",
+   "arrows",
+   "version control",
+   "repository",
+   "code",
+   "diff"
+  ],
+  "groups": [
+   "development",
+   "arrows"
+  ]
+ },
+ "git-fork": {
+  "tags": [
+   "git",
+   "fork",
+   "version control",
+   "repository",
+   "code"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-graph": {
+  "tags": [
+   "git",
+   "graph",
+   "version control",
+   "repository",
+   "code",
+   "commit graph",
+   "commits",
+   "gitlens"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-merge": {
+  "tags": [
+   "code",
+   "version control",
+   "merge",
+   "git",
+   "branch"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-pull-request": {
+  "tags": [
+   "code",
+   "version control",
+   "open"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-pull-request-closed": {
+  "tags": [
+   "git",
+   "pull request",
+   "closed",
+   "version control",
+   "repository",
+   "code",
+   "rejected",
+   "cancelled",
+   "x"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "git-pull-request-create": {
+  "tags": [
+   "git",
+   "pull request",
+   "create",
+   "version control",
+   "repository",
+   "code",
+   "open",
+   "plus",
+   "add",
+   "+"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "github": {
+  "tags": [
+   "logo",
+   "version control",
+   "repository",
+   "source code",
+   "git"
+  ],
+  "groups": []
+ },
+ "gitlab": {
+  "tags": [
+   "git",
+   "gitlab",
+   "version control",
+   "repository"
+  ],
+  "groups": []
+ },
+ "graduation-cap": {
+  "tags": [
+   "school",
+   "university",
+   "learn",
+   "study",
+   "mortarboard",
+   "education",
+   "ceremony",
+   "academic",
+   "hat",
+   "diploma",
+   "bachlor's",
+   "master's",
+   "doctorate",
+   "bachelor's"
+  ],
+  "groups": [
+   "buildings"
+  ]
+ },
+ "grip": {
+  "tags": [
+   "grab",
+   "dots",
+   "handle",
+   "move",
+   "drag"
+  ],
+  "groups": [
+   "layout"
+  ]
+ },
+ "grip-horizontal": {
+  "tags": [
+   "grip",
+   "move",
+   "drag",
+   "resize",
+   "drag and drop",
+   "grab",
+   "dots",
+   "handle"
+  ],
+  "groups": [
+   "layout"
+  ]
+ },
+ "grip-vertical": {
+  "tags": [
+   "grip",
+   "move",
+   "drag",
+   "resize",
+   "drag and drop",
+   "grab",
+   "dots",
+   "handle"
+  ],
+  "groups": [
+   "layout"
+  ]
+ },
+ "hammer": {
+  "tags": [
+   "mallet",
+   "nails",
+   "diy",
+   "toolbox",
+   "build",
+   "construction"
+  ],
+  "groups": [
+   "tools",
+   "home"
+  ]
+ },
+ "hand": {
+  "tags": [
+   "wave",
+   "hand",
+   "hello",
+   "bye",
+   "gesture",
+   "move",
+   "mouse",
+   "grab"
+  ],
+  "groups": [
+   "cursors",
+   "accessibility"
+  ]
+ },
+ "hand-coins": {
+  "tags": [
+   "savings",
+   "banking",
+   "money",
+   "finance",
+   "offers",
+   "mortgage",
+   "payment",
+   "received",
+   "wage",
+   "payroll",
+   "allowance",
+   "pocket money",
+   "handout",
+   "pennies"
+  ],
+  "groups": [
+   "finance",
+   "account"
+  ]
+ },
+ "hand-fist": {
+  "tags": [
+   "fist",
+   "bump",
+   "power",
+   "punch",
+   "strength",
+   "rock",
+   "clench",
+   "unity",
+   "solidarity",
+   "rebellion",
+   "victory",
+   "triumph",
+   "support",
+   "fight",
+   "combat",
+   "brawl"
+  ],
+  "groups": [
+   "social",
+   "emoji",
+   "communication",
+   "sports"
+  ]
+ },
+ "hand-grab": {
+  "tags": [
+   "gesture",
+   "hand",
+   "grab"
+  ],
+  "groups": [
+   "cursors",
+   "design",
+   "layout"
+  ]
+ },
+ "hand-heart": {
+  "tags": [
+   "hand",
+   "heart",
+   "love",
+   "affection",
+   "hug",
+   "cuddle",
+   "emotion",
+   "like"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "hand-helping": {
+  "tags": [
+   "agreement",
+   "assistance",
+   "help",
+   "partnership",
+   "support",
+   "volunteer",
+   "proposal",
+   "charity",
+   "begging",
+   "terms"
+  ],
+  "groups": [
+   "emoji"
+  ]
+ },
+ "hand-metal": {
+  "tags": [
+   "rock",
+   "metal",
+   "heavy metal",
+   "music",
+   "gesture",
+   "concert",
+   "horns"
+  ],
+  "groups": [
+   "emoji",
+   "multimedia"
+  ]
+ },
+ "hard-drive-download": {
+  "tags": [
+   "hard drive",
+   "download",
+   "storage",
+   "data",
+   "save",
+   "computer",
+   "server",
+   "memory",
+   "ssd",
+   "disk",
+   "hard disk"
+  ],
+  "groups": [
+   "development",
+   "devices",
+   "arrows",
+   "files"
+  ]
+ },
+ "hard-drive-upload": {
+  "tags": [
+   "hard drive",
+   "upload",
+   "storage",
+   "data",
+   "save",
+   "computer",
+   "server",
+   "memory",
+   "ssd",
+   "disk",
+   "hard disk"
+  ],
+  "groups": [
+   "development",
+   "devices",
+   "arrows",
+   "files"
+  ]
+ },
+ "hat-glasses": {
+  "tags": [
+   "incognito",
+   "disguise",
+   "costume",
+   "masked",
+   "anonymous",
+   "anonymity",
+   "privacy",
+   "private browsing",
+   "stealth",
+   "hidden",
+   "undercover",
+   "cloak",
+   "invisible",
+   "ghost",
+   "spy",
+   "agent",
+   "detective",
+   "identity",
+   "cap",
+   "fedora",
+   "spectacles",
+   "shades",
+   "sunglasses",
+   "eyewear"
+  ],
+  "groups": [
+   "social",
+   "account",
+   "security"
+  ]
+ },
+ "heart": {
+  "tags": [
+   "like",
+   "love",
+   "emotion",
+   "suit",
+   "playing",
+   "cards"
+  ],
+  "groups": [
+   "medical",
+   "social",
+   "multimedia",
+   "emoji",
+   "gaming",
+   "shapes"
+  ]
+ },
+ "heart-handshake": {
+  "tags": [
+   "agreement",
+   "charity",
+   "deal",
+   "handshake",
+   "heart",
+   "love",
+   "partnership",
+   "relationship",
+   "support",
+   "together",
+   "help",
+   "terms",
+   "emotion"
+  ],
+  "groups": [
+   "emoji",
+   "account",
+   "security"
+  ]
+ },
+ "heart-pulse": {
+  "tags": [
+   "heartbeat",
+   "pulse",
+   "health",
+   "medical",
+   "cardiac",
+   "ecg",
+   "vital",
+   "blood pressure",
+   "systole",
+   "diastole"
+  ],
+  "groups": [
+   "medical"
+  ]
+ },
+ "history": {
+  "tags": [
+   "history",
+   "back",
+   "previous",
+   "arrow"
+  ],
+  "groups": []
+ },
+ "home": {
+  "tags": [
+   "home",
+   "living",
+   "building",
+   "residence",
+   "architecture"
+  ],
+  "groups": []
+ },
+ "hourglass": {
+  "tags": [
+   "hourglass",
+   "time",
+   "timer",
+   "sandglass"
+  ],
+  "groups": [
+   "time",
+   "gaming"
+  ]
+ },
+ "id-card": {
+  "tags": [
+   "identification",
+   "personal",
+   "details",
+   "profile",
+   "card",
+   "badge",
+   "identity",
+   "authentication",
+   "secure"
+  ],
+  "groups": [
+   "security",
+   "account"
+  ]
+ },
+ "indian-rupee": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "instagram": {
+  "tags": [
+   "social",
+   "network",
+   "instagram"
+  ],
+  "groups": []
+ },
+ "italic": {
+  "tags": [
+   "oblique",
+   "text",
+   "format"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "japanese-yen": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "key": {
+  "tags": [
+   "key",
+   "authentication",
+   "security",
+   "access",
+   "password",
+   "login",
+   "secure",
+   "unlock",
+   "keychain",
+   "key ring",
+   "fob"
+  ],
+  "groups": [
+   "security",
+   "account"
+  ]
+ },
+ "key-circle": {
+  "tags": [
+   "key",
+   "authentication",
+   "security",
+   "access",
+   "password",
+   "login",
+   "secure",
+   "unlock",
+   "keychain",
+   "key ring",
+   "fob"
+  ],
+  "groups": [
+   "security",
+   "account"
+  ]
+ },
+ "key-square": {
+  "tags": [
+   "key",
+   "authentication",
+   "security",
+   "access",
+   "password",
+   "login",
+   "secure",
+   "unlock",
+   "car key"
+  ],
+  "groups": [
+   "security",
+   "account"
+  ]
+ },
+ "languages": {
+  "tags": [
+   "translate"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "laptop-minimal-check": {
+  "tags": [
+   "laptop",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "computer",
+   "running",
+   "active",
+   "virtual machine",
+   "vm",
+   "screen",
+   "remote",
+   "success",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "devices",
+   "notifications"
+  ]
+ },
+ "laugh": {
+  "tags": [
+   "laugh",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "layers": {
+  "tags": [
+   "stack",
+   "pile",
+   "pages",
+   "sheets",
+   "paperwork",
+   "copies",
+   "copy"
+  ],
+  "groups": [
+   "design",
+   "layout"
+  ]
+ },
+ "layout-grid": {
+  "tags": [
+   "layout",
+   "grid",
+   "dashboard",
+   "tiles",
+   "panels",
+   "gallery",
+   "window",
+   "interface",
+   "app",
+   "home",
+   "start"
+  ],
+  "groups": [
+   "design",
+   "layout"
+  ]
+ },
+ "layout-panel-top": {
+  "tags": [
+   "window",
+   "webpage",
+   "block",
+   "section",
+   "grid",
+   "template",
+   "structure"
+  ],
+  "groups": [
+   "layout"
+  ]
+ },
+ "leaf": {
+  "tags": [
+   "leaf",
+   "tree",
+   "plant",
+   "nature",
+   "green",
+   "sustainability",
+   "energy",
+   "autumn"
+  ],
+  "groups": [
+   "nature",
+   "sustainability",
+   "seasons"
+  ]
+ },
+ "leafy-green": {
+  "tags": [
+   "leaf",
+   "tree",
+   "plant",
+   "nature",
+   "green",
+   "salad",
+   "lettuce",
+   "vegetable",
+   "chard",
+   "cabbage",
+   "bok choy"
+  ],
+  "groups": [
+   "food-beverage",
+   "emoji",
+   "sustainability"
+  ]
+ },
+ "link": {
+  "tags": [
+   "chain",
+   "url"
+  ],
+  "groups": [
+   "text",
+   "account"
+  ]
+ },
+ "link-2": {
+  "tags": [
+   "link",
+   "connect",
+   "chain",
+   "url",
+   "hyperlink"
+  ],
+  "groups": [
+   "text",
+   "account"
+  ]
+ },
+ "linkedin": {
+  "tags": [
+   "social",
+   "network",
+   "linkedin"
+  ],
+  "groups": []
+ },
+ "loader": {
+  "tags": [
+   "loader",
+   "loading",
+   "spinner",
+   "spin",
+   "rotate",
+   "progress",
+   "wait",
+   "processing",
+   "busy",
+   "spinning",
+   "throbber"
+  ],
+  "groups": [
+   "cursors",
+   "multimedia",
+   "layout",
+   "design"
+  ]
+ },
+ "loader-circle": {
+  "tags": [
+   "loader",
+   "loading",
+   "spinner",
+   "spin",
+   "circle",
+   "progress",
+   "wait",
+   "processing",
+   "busy",
+   "spinning",
+   "throbber"
+  ],
+  "groups": [
+   "cursors",
+   "multimedia",
+   "layout"
+  ]
+ },
+ "loader-pinwheel": {
+  "tags": [
+   "loading",
+   "wait",
+   "busy",
+   "progress",
+   "throbber",
+   "spinner",
+   "spinning",
+   "beach ball",
+   "frozen",
+   "freeze"
+  ],
+  "groups": [
+   "cursors",
+   "design"
+  ]
+ },
+ "lock": {
+  "tags": [
+   "security",
+   "password",
+   "secure",
+   "admin",
+   "lock"
+  ],
+  "groups": [
+   "security"
+  ]
+ },
+ "lock-keyhole": {
+  "tags": [
+   "security",
+   "password",
+   "secure",
+   "admin",
+   "lock"
+  ],
+  "groups": [
+   "security"
+  ]
+ },
+ "lock-keyhole-open": {
+  "tags": [
+   "security",
+   "password",
+   "secure",
+   "admin",
+   "lock",
+   "open"
+  ],
+  "groups": [
+   "security"
+  ]
+ },
+ "lock-open": {
+  "tags": [
+   "security",
+   "password",
+   "secure",
+   "admin",
+   "lock",
+   "open"
+  ],
+  "groups": [
+   "security"
+  ]
+ },
+ "login": {
+  "tags": [
+   "sign in",
+   "arrow",
+   "enter",
+   "auth"
+  ],
+  "groups": []
+ },
+ "logout": {
+  "tags": [
+   "sign out",
+   "arrow",
+   "exit",
+   "auth"
+  ],
+  "groups": []
+ },
+ "mail-check": {
+  "tags": [
+   "mail",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "email",
+   "confirm",
+   "complete",
+   "delivered",
+   "message",
+   "sent",
+   "letter",
+   "subscribe",
+   "success",
+   "read",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "mail"
+  ]
+ },
+ "mailbox": {
+  "tags": [
+   "emails",
+   "messages",
+   "letters",
+   "mailing list",
+   "newsletter"
+  ],
+  "groups": [
+   "mail"
+  ]
+ },
+ "map-pin": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-check": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "done",
+   "tick",
+   "complete",
+   "task",
+   "added",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-check-inside": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "done",
+   "tick",
+   "complete",
+   "task",
+   "added",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-house": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "home",
+   "living",
+   "place",
+   "landmark",
+   "drop",
+   "building",
+   "residence",
+   "architecture",
+   "poi",
+   "real estate",
+   "property",
+   "navigation",
+   "destination",
+   "geolocation"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-minus": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "delete",
+   "remove",
+   "erase",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-minus-inside": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "delete",
+   "remove",
+   "erase",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-off": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "off",
+   "remove",
+   "non available",
+   "invalid"
+  ],
+  "groups": [
+   "navigation",
+   "travel"
+  ]
+ },
+ "map-pin-plus": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "add",
+   "create",
+   "new",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-plus-inside": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "add",
+   "create",
+   "new",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "map-pin-x-inside": {
+  "tags": [
+   "map",
+   "pin",
+   "marker",
+   "location",
+   "address",
+   "waypoint",
+   "delete",
+   "remove",
+   "erase",
+   "drop"
+  ],
+  "groups": [
+   "navigation",
+   "travel",
+   "account"
+  ]
+ },
+ "maximize": {
+  "tags": [
+   "maximize",
+   "fullscreen",
+   "expand",
+   "screen",
+   "dashed"
+  ],
+  "groups": [
+   "layout",
+   "design"
+  ]
+ },
+ "maximize-2": {
+  "tags": [
+   "maximize",
+   "fullscreen",
+   "expand",
+   "screen",
+   "arrows"
+  ],
+  "groups": [
+   "arrows",
+   "layout",
+   "design"
+  ]
+ },
+ "meh": {
+  "tags": [
+   "meh",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "menu": {
+  "tags": [
+   "bars",
+   "navigation",
+   "hamburger",
+   "options"
+  ],
+  "groups": [
+   "layout",
+   "account"
+  ]
+ },
+ "message-circle": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-circle-check": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "moderate",
+   "check",
+   "done",
+   "todo",
+   "complete"
+  ],
+  "groups": [
+   "social",
+   "account"
+  ]
+ },
+ "message-circle-dashed": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "typing",
+   "writing",
+   "message",
+   "responding",
+   "ellipsis",
+   "etc",
+   "draft"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-circle-more": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "typing",
+   "writing",
+   "responding",
+   "ellipsis",
+   "etc",
+   "et cetera",
+   "...",
+   "…"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-circle-plus": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "add"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-circle-x": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "clear",
+   "close",
+   "delete",
+   "remove",
+   "cancel",
+   "silence",
+   "mute",
+   "moderate"
+  ],
+  "groups": [
+   "account",
+   "social"
+  ]
+ },
+ "message-square": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "message"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-square-check": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "moderate",
+   "check",
+   "done",
+   "todo",
+   "complete"
+  ],
+  "groups": [
+   "social",
+   "account"
+  ]
+ },
+ "message-square-dashed": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "typing",
+   "writing",
+   "message",
+   "responding",
+   "ellipsis",
+   "etc",
+   "draft"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-square-more": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "typing",
+   "writing",
+   "message",
+   "responding",
+   "ellipsis",
+   "etc",
+   "et cetera",
+   "...",
+   "…"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-square-plus": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "add"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "message-square-x": {
+  "tags": [
+   "comment",
+   "chat",
+   "conversation",
+   "dialog",
+   "feedback",
+   "speech bubble",
+   "clear",
+   "close",
+   "delete",
+   "remove",
+   "cancel",
+   "silence",
+   "mute",
+   "moderate"
+  ],
+  "groups": [
+   "social"
+  ]
+ },
+ "mic": {
+  "tags": [
+   "microphone",
+   "audio",
+   "sound",
+   "record",
+   "voice",
+   "listen",
+   "radio",
+   "podcast"
+  ],
+  "groups": [
+   "devices",
+   "communication",
+   "connectivity",
+   "multimedia"
+  ]
+ },
+ "mic-off": {
+  "tags": [
+   "microphone",
+   "audio",
+   "sound",
+   "mute",
+   "silent",
+   "disabled",
+   "record"
+  ],
+  "groups": [
+   "devices",
+   "communication",
+   "connectivity",
+   "multimedia"
+  ]
+ },
+ "minimize": {
+  "tags": [
+   "minimize",
+   "contract",
+   "reduce",
+   "small",
+   "smaller",
+   "exit fullscreen",
+   "close",
+   "shrink"
+  ],
+  "groups": [
+   "layout",
+   "design"
+  ]
+ },
+ "monitor-check": {
+  "tags": [
+   "monitor",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "tv",
+   "screen",
+   "display",
+   "desktop",
+   "running",
+   "active",
+   "virtual machine",
+   "vm",
+   "computer",
+   "external display",
+   "screen sharing",
+   "connected",
+   "success",
+   "verified"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "monitor-cog": {
+  "tags": [
+   "tv",
+   "screen",
+   "display",
+   "virtual machine",
+   "vm",
+   "executable",
+   "settings",
+   "cog",
+   "edit",
+   "gear",
+   "configuration",
+   "preferences",
+   "system",
+   "control panel",
+   "network",
+   "computing",
+   "computer",
+   "desktop",
+   "external display"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "moon": {
+  "tags": [
+   "night",
+   "dark",
+   "moon"
+  ],
+  "groups": [
+   "accessibility"
+  ]
+ },
+ "nfc": {
+  "tags": [
+   "nfc",
+   "near field communication",
+   "wireless",
+   "signal",
+   "contactless",
+   "payment",
+   "near-field communication"
+  ],
+  "groups": [
+   "communication",
+   "finance",
+   "devices"
+  ]
+ },
+ "palette": {
+  "tags": [
+   "palette",
+   "color",
+   "colour",
+   "paint",
+   "art",
+   "brush",
+   "theme",
+   "colors",
+   "colours",
+   "scheme",
+   "watercolor",
+   "watercolour",
+   "artist"
+  ],
+  "groups": [
+   "text",
+   "design",
+   "photography"
+  ]
+ },
+ "panel-left-close": {
+  "tags": [
+   "panel",
+   "left",
+   "close",
+   "menu",
+   "navigation",
+   "primary",
+   "drawer",
+   "hide",
+   "chevron",
+   "<"
+  ],
+  "groups": [
+   "layout",
+   "arrows"
+  ]
+ },
+ "panel-left-open": {
+  "tags": [
+   "panel",
+   "left",
+   "open",
+   "menu",
+   "navigation",
+   "primary",
+   "drawer",
+   "show",
+   "reveal",
+   "chevron",
+   "right",
+   ">"
+  ],
+  "groups": [
+   "layout",
+   "arrows"
+  ]
+ },
+ "panel-right-open": {
+  "tags": [
+   "panel",
+   "right",
+   "open",
+   "menu",
+   "navigation",
+   "sidebar",
+   "secondary",
+   "drawer",
+   "show",
+   "reveal",
+   "chevron",
+   "left",
+   "<"
+  ],
+  "groups": [
+   "layout",
+   "arrows"
+  ]
+ },
+ "party-popper": {
+  "tags": [
+   "emoji",
+   "congratulations",
+   "celebration",
+   "party",
+   "tada",
+   "🎉",
+   "🎊",
+   "excitement",
+   "exciting",
+   "excites",
+   "confetti"
+  ],
+  "groups": [
+   "emoji"
+  ]
+ },
+ "pause": {
+  "tags": [
+   "video",
+   "pause",
+   "stop",
+   "music"
+  ],
+  "groups": [
+   "multimedia"
+  ]
+ },
+ "pen-tool": {
+  "tags": [
+   "vector",
+   "drawing",
+   "path"
+  ],
+  "groups": [
+   "text",
+   "design",
+   "cursors"
+  ]
+ },
+ "philippine-peso": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment",
+   "peso",
+   "php"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "phone": {
+  "tags": [
+   "phone",
+   "call",
+   "communication",
+   "signal",
+   "wireless"
+  ],
+  "groups": [
+   "text",
+   "connectivity",
+   "devices",
+   "communication"
+  ]
+ },
+ "phone-forwarded": {
+  "tags": [
+   "phone",
+   "forwarded",
+   "communication",
+   "signal",
+   "wireless",
+   "call"
+  ],
+  "groups": [
+   "arrows",
+   "connectivity",
+   "devices",
+   "communication"
+  ]
+ },
+ "phone-incoming": {
+  "tags": [
+   "phone",
+   "incoming",
+   "communication",
+   "signal",
+   "wireless",
+   "call"
+  ],
+  "groups": [
+   "arrows",
+   "connectivity",
+   "devices",
+   "communication"
+  ]
+ },
+ "phone-missed": {
+  "tags": [
+   "phone",
+   "missed",
+   "communication",
+   "signal",
+   "wireless",
+   "call"
+  ],
+  "groups": [
+   "connectivity",
+   "devices",
+   "communication"
+  ]
+ },
+ "phone-off": {
+  "tags": [
+   "phone",
+   "off",
+   "communication",
+   "signal",
+   "wireless",
+   "call",
+   "mute"
+  ],
+  "groups": [
+   "connectivity",
+   "devices",
+   "communication"
+  ]
+ },
+ "pickaxe": {
+  "tags": [
+   "mining",
+   "mine",
+   "land worker",
+   "extraction",
+   "labor",
+   "construction",
+   "progress",
+   "advancement",
+   "crafting",
+   "building",
+   "creation"
+  ],
+  "groups": [
+   "tools",
+   "gaming"
+  ]
+ },
+ "plane-landing": {
+  "tags": [
+   "plane",
+   "landing",
+   "flight",
+   "airplane",
+   "aircraft",
+   "arrival",
+   "trip"
+  ],
+  "groups": [
+   "transportation",
+   "travel"
+  ]
+ },
+ "plane-takeoff": {
+  "tags": [
+   "plane",
+   "takeoff",
+   "flight",
+   "airplane",
+   "aircraft",
+   "departure",
+   "trip"
+  ],
+  "groups": [
+   "transportation",
+   "travel"
+  ]
+ },
+ "play": {
+  "tags": [
+   "video",
+   "play",
+   "start",
+   "music",
+   "audio",
+   "run"
+  ],
+  "groups": [
+   "arrows",
+   "multimedia"
+  ]
+ },
+ "plug-zap": {
+  "tags": [
+   "plug",
+   "zap",
+   "power",
+   "energy",
+   "charge",
+   "electricity",
+   "electronics",
+   "charging",
+   "battery",
+   "connect"
+  ],
+  "groups": [
+   "devices"
+  ]
+ },
+ "plus": {
+  "tags": [
+   "add",
+   "new",
+   "increase",
+   "increment",
+   "positive",
+   "calculate",
+   "toolbar",
+   "crosshair",
+   "aim",
+   "target",
+   "scope",
+   "sight",
+   "reticule",
+   "maximum",
+   "upgrade",
+   "extra",
+   "+"
+  ],
+  "groups": [
+   "math",
+   "tools",
+   "development",
+   "text",
+   "cursors",
+   "gaming"
+  ]
+ },
+ "pound-sterling": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "projector": {
+  "tags": [
+   "projector",
+   "screen",
+   "display",
+   "video",
+   "projection",
+   "cinema",
+   "film",
+   "movie",
+   "home video",
+   "presentation",
+   "slideshow",
+   "office",
+   "meeting",
+   "project",
+   "planning"
+  ],
+  "groups": [
+   "multimedia",
+   "photography",
+   "devices",
+   "communication"
+  ]
+ },
+ "rabbit": {
+  "tags": [
+   "bunny",
+   "hare",
+   "animal",
+   "mammal",
+   "ears",
+   "fluffy",
+   "rodent",
+   "pet",
+   "pest",
+   "fast",
+   "speed",
+   "hop"
+  ],
+  "groups": [
+   "animals"
+  ]
+ },
+ "radio": {
+  "tags": [
+   "radio",
+   "signal",
+   "broadcast",
+   "wireless",
+   "frequency",
+   "connectivity",
+   "live"
+  ],
+  "groups": [
+   "devices",
+   "multimedia",
+   "social"
+  ]
+ },
+ "radio-tower": {
+  "tags": [
+   "radio",
+   "tower",
+   "radio tower",
+   "signal",
+   "broadcast",
+   "wireless",
+   "frequency",
+   "connectivity",
+   "live"
+  ],
+  "groups": [
+   "devices",
+   "multimedia",
+   "social"
+  ]
+ },
+ "receipt": {
+  "tags": [
+   "receipt",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "invoice",
+   "details",
+   "transaction",
+   "purchase",
+   "expense",
+   "currency",
+   "dollar",
+   "usd",
+   "$"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-cent": {
+  "tags": [
+   "receipt",
+   "cent",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "invoice",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "cents",
+   "dollar",
+   "usd",
+   "$",
+   "¢"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-euro": {
+  "tags": [
+   "receipt",
+   "euro",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "invoice",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "€"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-indian-rupee": {
+  "tags": [
+   "receipt",
+   "indian rupee",
+   "inr",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "₹"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-japanese-yen": {
+  "tags": [
+   "receipt",
+   "japanese yen",
+   "yen",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "jpy",
+   "¥"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-pound-sterling": {
+  "tags": [
+   "receipt",
+   "pound sterling",
+   "gbp",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "british",
+   "£"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-russian-ruble": {
+  "tags": [
+   "receipt",
+   "russian ruble",
+   "ruble",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "rub",
+   "₽"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-swiss-franc": {
+  "tags": [
+   "receipt",
+   "swiss franc",
+   "chf",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "₣"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-text": {
+  "tags": [
+   "receipt",
+   "text",
+   "details",
+   "invoice",
+   "bill",
+   "purchase",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "small print",
+   "terms",
+   "conditions",
+   "contract"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "receipt-turkish-lira": {
+  "tags": [
+   "receipt",
+   "turkish lira",
+   "try",
+   "currency",
+   "money",
+   "payment",
+   "bill",
+   "voucher",
+   "slip",
+   "check",
+   "counterfoil",
+   "₺"
+  ],
+  "groups": [
+   "finance",
+   "travel"
+  ]
+ },
+ "redo": {
+  "tags": [
+   "redo",
+   "repeat",
+   "undo",
+   "back",
+   "previous",
+   "arrow",
+   "rerun",
+   "history"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "redo-dot": {
+  "tags": [
+   "redo",
+   "repeat",
+   "undo",
+   "back",
+   "previous",
+   "arrow",
+   "history",
+   "step",
+   "over",
+   "forward"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "refresh-ccw": {
+  "tags": [
+   "arrows",
+   "rotate",
+   "reload",
+   "rerun",
+   "synchronise",
+   "synchronize",
+   "circular",
+   "cycle"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "refresh-ccw-dot": {
+  "tags": [
+   "refresh",
+   "rotate",
+   "reload",
+   "rerun",
+   "circular",
+   "cycle",
+   "arrows",
+   "synchronise",
+   "synchronize",
+   "issue",
+   "code",
+   "coding",
+   "version control"
+  ],
+  "groups": [
+   "arrows",
+   "development"
+  ]
+ },
+ "refresh-cw": {
+  "tags": [
+   "refresh",
+   "rotate",
+   "reload",
+   "rerun",
+   "circular",
+   "cycle",
+   "synchronise",
+   "synchronize",
+   "arrows"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "refresh-cw-off": {
+  "tags": [
+   "refresh",
+   "rotate",
+   "reload",
+   "rerun",
+   "circular",
+   "cycle",
+   "synchronise",
+   "synchronize",
+   "arrows",
+   "cancel",
+   "no",
+   "stop",
+   "error",
+   "disconnect",
+   "ignore"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "rocket": {
+  "tags": [
+   "launch",
+   "space",
+   "boost",
+   "release",
+   "version"
+  ],
+  "groups": [
+   "gaming",
+   "development"
+  ]
+ },
+ "rocking-chair": {
+  "tags": [
+   "furniture",
+   "seat",
+   "rock",
+   "relax",
+   "sit",
+   "chair",
+   "comfort"
+  ],
+  "groups": [
+   "home"
+  ]
+ },
+ "roller-coaster": {
+  "tags": [
+   "ride",
+   "fun",
+   "amusement",
+   "park",
+   "thrill",
+   "excitement",
+   "attraction",
+   "entertainment",
+   "amusement park",
+   "theme park",
+   "funfair"
+  ],
+  "groups": [
+   "navigation"
+  ]
+ },
+ "rotate-ccw": {
+  "tags": [
+   "rotate",
+   "counterclockwise",
+   "turn",
+   "degrees",
+   "clockwise",
+   "arrow",
+   "left",
+   "counter-clockwise",
+   "restart",
+   "reload",
+   "rerun",
+   "refresh",
+   "backup",
+   "undo",
+   "replay",
+   "redo",
+   "retry",
+   "rewind",
+   "reverse"
+  ],
+  "groups": [
+   "arrows",
+   "design",
+   "photography"
+  ]
+ },
+ "rotate-cw": {
+  "tags": [
+   "rotate",
+   "clockwise",
+   "turn",
+   "degrees",
+   "counterclockwise",
+   "arrow",
+   "right",
+   "refresh",
+   "reload",
+   "rerun",
+   "redo"
+  ],
+  "groups": [
+   "arrows",
+   "design",
+   "photography"
+  ]
+ },
+ "route": {
+  "tags": [
+   "path",
+   "journey",
+   "planner",
+   "points",
+   "stops",
+   "stations"
+  ],
+  "groups": [
+   "navigation"
+  ]
+ },
+ "router": {
+  "tags": [
+   "router",
+   "network",
+   "communication",
+   "signal",
+   "wireless",
+   "computer",
+   "server",
+   "cloud"
+  ],
+  "groups": [
+   "development",
+   "devices",
+   "connectivity",
+   "home"
+  ]
+ },
+ "russian-ruble": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "saudi-riyal": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "scan-face": {
+  "tags": [
+   "scan",
+   "face",
+   "emotion",
+   "biometric",
+   "identification",
+   "authentication",
+   "2fa",
+   "access",
+   "login",
+   "dashed"
+  ],
+  "groups": [
+   "account",
+   "security",
+   "devices",
+   "social"
+  ]
+ },
+ "scan-text": {
+  "tags": [
+   "recognition",
+   "read",
+   "translate",
+   "copy",
+   "lines"
+  ],
+  "groups": [
+   "text",
+   "devices"
+  ]
+ },
+ "search": {
+  "tags": [
+   "find",
+   "scan",
+   "magnifier",
+   "magnifying glass",
+   "lens",
+   "locate",
+   "explore",
+   "discover",
+   "enlarge",
+   "zoom"
+  ],
+  "groups": [
+   "text",
+   "social"
+  ]
+ },
+ "send": {
+  "tags": [
+   "email",
+   "message",
+   "mail",
+   "paper airplane",
+   "paper aeroplane",
+   "submit"
+  ],
+  "groups": [
+   "mail",
+   "communication",
+   "connectivity"
+  ]
+ },
+ "server": {
+  "tags": [
+   "server",
+   "network",
+   "communication",
+   "signal",
+   "wireless",
+   "cloud",
+   "storage"
+  ],
+  "groups": [
+   "development",
+   "devices"
+  ]
+ },
+ "server-cog": {
+  "tags": [
+   "server",
+   "network",
+   "communication",
+   "signal",
+   "wireless",
+   "cloud",
+   "storage",
+   "computing",
+   "cog",
+   "gear"
+  ],
+  "groups": [
+   "development",
+   "devices"
+  ]
+ },
+ "server-crash": {
+  "tags": [
+   "server",
+   "network",
+   "communication",
+   "signal",
+   "wireless",
+   "cloud",
+   "storage",
+   "problem",
+   "error"
+  ],
+  "groups": [
+   "development",
+   "devices"
+  ]
+ },
+ "settings": {
+  "tags": [
+   "cog",
+   "edit",
+   "gear",
+   "preferences"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "shield-check": {
+  "tags": [
+   "security",
+   "verified",
+   "safe",
+   "protection",
+   "secure",
+   "cybersecurity",
+   "secured",
+   "safety",
+   "protected",
+   "guardian",
+   "guarded",
+   "armored",
+   "armoured",
+   "defense",
+   "defence",
+   "defended",
+   "blocked",
+   "threat",
+   "prevention",
+   "prevented",
+   "antivirus",
+   "vigilance",
+   "vigilant",
+   "active",
+   "activated",
+   "enabled",
+   "detection",
+   "scanned",
+   "found",
+   "strength",
+   "strong",
+   "tough",
+   "invincible",
+   "invincibility",
+   "invulnerable",
+   "undamaged",
+   "audited",
+   "admin",
+   "verification",
+   "certification",
+   "certified",
+   "tested",
+   "passed",
+   "qualified",
+   "cleared",
+   "cleaned",
+   "disinfected",
+   "uninfected",
+   "task",
+   "completed",
+   "todo",
+   "done",
+   "ticked",
+   "checked",
+   "crest",
+   "bravery"
+  ],
+  "groups": [
+   "account",
+   "security",
+   "development",
+   "gaming"
+  ]
+ },
+ "ship": {
+  "tags": [
+   "boat",
+   "vessel",
+   "sea",
+   "ocean",
+   "water",
+   "transport",
+   "knots",
+   "nautical mile",
+   "maritime",
+   "sailing",
+   "yacht",
+   "cruise",
+   "ocean liner",
+   "tanker",
+   "navy",
+   "trip",
+   "releases"
+  ],
+  "groups": [
+   "transportation",
+   "navigation",
+   "travel"
+  ]
+ },
+ "ship-wheel": {
+  "tags": [
+   "ship",
+   "wheel",
+   "navigation",
+   "transportation",
+   "steering",
+   "rudder",
+   "boat",
+   "knots",
+   "nautical mile",
+   "maritime",
+   "sailing",
+   "yacht",
+   "cruise",
+   "ocean liner",
+   "tanker",
+   "vessel",
+   "navy",
+   "trip"
+  ],
+  "groups": [
+   "transportation",
+   "navigation",
+   "travel"
+  ]
+ },
+ "shower-head": {
+  "tags": [
+   "shower",
+   "bath",
+   "bathroom",
+   "amenities",
+   "services"
+  ],
+  "groups": [
+   "home",
+   "travel"
+  ]
+ },
+ "shredder": {
+  "tags": [
+   "shredder",
+   "trash",
+   "garbage",
+   "waste",
+   "recycling",
+   "file",
+   "paper",
+   "tear",
+   "cut",
+   "delete",
+   "destroy",
+   "remove",
+   "erase",
+   "document",
+   "destruction",
+   "secure",
+   "security",
+   "confidential",
+   "data",
+   "dispose",
+   "disposal",
+   "information",
+   "permanent"
+  ],
+  "groups": [
+   "mail",
+   "files"
+  ]
+ },
+ "shrink": {
+  "tags": [
+   "shrink",
+   "contract",
+   "reduce",
+   "small",
+   "smaller",
+   "scale",
+   "fullscreen"
+  ],
+  "groups": [
+   "layout",
+   "arrows"
+  ]
+ },
+ "sliders-horizontal": {
+  "tags": [
+   "settings",
+   "filters",
+   "controls"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "smartphone-charging": {
+  "tags": [
+   "phone",
+   "cellphone",
+   "device",
+   "power",
+   "screen"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "smartphone-nfc": {
+  "tags": [
+   "phone",
+   "cellphone",
+   "device",
+   "nfc",
+   "screen",
+   "contactless",
+   "payment",
+   "near-field communication"
+  ],
+  "groups": [
+   "communication",
+   "finance",
+   "devices"
+  ]
+ },
+ "smile": {
+  "tags": [
+   "smile",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "smile-plus": {
+  "tags": [
+   "smile",
+   "plus",
+   "emotion",
+   "face"
+  ],
+  "groups": []
+ },
+ "snowflake": {
+  "tags": [
+   "snow",
+   "weather",
+   "cold",
+   "winter",
+   "flake",
+   "freeze"
+  ],
+  "groups": [
+   "weather",
+   "seasons"
+  ]
+ },
+ "soup": {
+  "tags": [
+   "soup",
+   "food",
+   "meal",
+   "bowl",
+   "hot",
+   "dish",
+   "restaurant",
+   "course",
+   "starter"
+  ],
+  "groups": [
+   "food-beverage"
+  ]
+ },
+ "spray-can": {
+  "tags": [
+   "spray",
+   "can",
+   "paint",
+   "color",
+   "art",
+   "graffiti",
+   "decoration",
+   "aerosol",
+   "deodorant",
+   "shaving foam",
+   "air freshener"
+  ],
+  "groups": [
+   "design",
+   "tools"
+  ]
+ },
+ "square-activity": {
+  "tags": [
+   "activity",
+   "pulse",
+   "action",
+   "motion",
+   "movement",
+   "exercise",
+   "fitness",
+   "healthcare",
+   "heart rate monitor",
+   "vital signs",
+   "vitals",
+   "emergency room",
+   "er",
+   "intensive care",
+   "hospital",
+   "defibrillator",
+   "earthquake",
+   "seismic",
+   "magnitude",
+   "richter scale",
+   "aftershock",
+   "tremor",
+   "shockwave",
+   "audio",
+   "waveform",
+   "synthesizer",
+   "synthesiser",
+   "music"
+  ],
+  "groups": [
+   "medical",
+   "social",
+   "science",
+   "multimedia"
+  ]
+ },
+ "square-arrow-down": {
+  "tags": [
+   "arrow",
+   "down",
+   "a",
+   "backwards",
+   "reverse",
+   "direction",
+   "south",
+   "sign",
+   "keyboard",
+   "button"
+  ],
+  "groups": [
+   "arrows",
+   "gaming"
+  ]
+ },
+ "square-arrow-left": {
+  "tags": [
+   "arrow",
+   "left",
+   "a",
+   "previous",
+   "back",
+   "direction",
+   "west",
+   "sign",
+   "keyboard",
+   "button",
+   "<-"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "square-arrow-right": {
+  "tags": [
+   "arrow",
+   "right",
+   "a",
+   "next",
+   "forward",
+   "direction",
+   "west",
+   "sign",
+   "keyboard",
+   "button",
+   "->"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "square-arrow-up": {
+  "tags": [
+   "arrow",
+   "up",
+   "a",
+   "forward",
+   "direction",
+   "north",
+   "sign",
+   "keyboard",
+   "button"
+  ],
+  "groups": [
+   "arrows"
+  ]
+ },
+ "square-chevron-down": {
+  "tags": [
+   "chevron",
+   "down",
+   "expand",
+   "back",
+   "menu",
+   "panel"
+  ],
+  "groups": [
+   "arrows",
+   "navigation"
+  ]
+ },
+ "square-chevron-left": {
+  "tags": [
+   "chevron",
+   "left",
+   "previous",
+   "back",
+   "less than",
+   "fewer",
+   "menu",
+   "panel",
+   "button",
+   "keyboard",
+   "<"
+  ],
+  "groups": [
+   "arrows",
+   "navigation"
+  ]
+ },
+ "square-chevron-right": {
+  "tags": [
+   "chevron",
+   "right",
+   "next",
+   "forward",
+   "more than",
+   "greater",
+   "menu",
+   "panel",
+   "code",
+   "coding",
+   "command line",
+   "terminal",
+   "prompt",
+   "shell",
+   "console",
+   ">"
+  ],
+  "groups": [
+   "arrows",
+   "navigation",
+   "development"
+  ]
+ },
+ "square-chevron-up": {
+  "tags": [
+   "chevron",
+   "up",
+   "collapse",
+   "caret",
+   "keyboard",
+   "button",
+   "mac",
+   "control",
+   "ctrl",
+   "superscript",
+   "exponential",
+   "power",
+   "ahead",
+   "menu",
+   "panel",
+   "^"
+  ],
+  "groups": [
+   "arrows",
+   "navigation",
+   "math"
+  ]
+ },
+ "square-pen": {
+  "tags": [
+   "pencil",
+   "change",
+   "create",
+   "draw",
+   "sketch",
+   "draft",
+   "writer",
+   "writing",
+   "biro",
+   "ink",
+   "marker",
+   "felt tip",
+   "stationery",
+   "artist",
+   "edit"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "square-stack": {
+  "tags": [
+   "versions",
+   "clone",
+   "copy",
+   "duplicate",
+   "multiple",
+   "revisions",
+   "version control",
+   "backup",
+   "history"
+  ],
+  "groups": [
+   "text",
+   "files",
+   "development"
+  ]
+ },
+ "stamp": {
+  "tags": [
+   "stamp",
+   "seal",
+   "postage",
+   "letter",
+   "mail",
+   "mark",
+   "official",
+   "document",
+   "print",
+   "clone",
+   "loyalty",
+   "library"
+  ],
+  "groups": [
+   "design",
+   "cursors",
+   "tools"
+  ]
+ },
+ "stethoscope": {
+  "tags": [
+   "phonendoscope",
+   "medical",
+   "heart",
+   "lungs",
+   "sound"
+  ],
+  "groups": [
+   "science",
+   "medical"
+  ]
+ },
+ "sun": {
+  "tags": [
+   "brightness",
+   "weather",
+   "light",
+   "summer"
+  ],
+  "groups": [
+   "accessibility",
+   "weather",
+   "seasons",
+   "sustainability"
+  ]
+ },
+ "sun-dim": {
+  "tags": [
+   "sun",
+   "dim",
+   "weather",
+   "light",
+   "day",
+   "brightness",
+   "low",
+   "brightness low"
+  ],
+  "groups": [
+   "accessibility",
+   "weather"
+  ]
+ },
+ "sun-medium": {
+  "tags": [
+   "sun",
+   "medium",
+   "weather",
+   "light",
+   "day",
+   "brightness"
+  ],
+  "groups": [
+   "accessibility",
+   "weather"
+  ]
+ },
+ "sun-moon": {
+  "tags": [
+   "sun",
+   "moon",
+   "day",
+   "night",
+   "evening",
+   "dark",
+   "light",
+   "brightness",
+   "theme",
+   "auto theme",
+   "system theme",
+   "appearance"
+  ],
+  "groups": [
+   "accessibility"
+  ]
+ },
+ "sunset": {
+  "tags": [
+   "sun",
+   "sunset",
+   "weather",
+   "bright",
+   "dawn",
+   "evening",
+   "time",
+   "night"
+  ],
+  "groups": [
+   "arrows",
+   "weather"
+  ]
+ },
+ "swiss-franc": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "switch-camera": {
+  "tags": [
+   "switch",
+   "camera",
+   "video",
+   "photo",
+   "capture",
+   "selfie",
+   "front",
+   "back"
+  ],
+  "groups": [
+   "communication",
+   "devices"
+  ]
+ },
+ "syringe": {
+  "tags": [
+   "medicine",
+   "medical",
+   "needle",
+   "pump",
+   "plunger",
+   "nozzle",
+   "blood"
+  ],
+  "groups": [
+   "science",
+   "medical"
+  ]
+ },
+ "telescope": {
+  "tags": [
+   "telescope",
+   "astronomy",
+   "space",
+   "discovery",
+   "exploration",
+   "explore",
+   "vision",
+   "perspective",
+   "focus",
+   "stargazing",
+   "observe",
+   "view"
+  ],
+  "groups": [
+   "science",
+   "development",
+   "tools"
+  ]
+ },
+ "terminal": {
+  "tags": [
+   "terminal",
+   "console",
+   "command line",
+   "shell",
+   "prompt",
+   "code"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "thermometer": {
+  "tags": [
+   "temperature",
+   "celsius",
+   "fahrenheit",
+   "weather"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "ticket": {
+  "tags": [
+   "voucher",
+   "event",
+   "admission",
+   "coupon",
+   "entry",
+   "pass",
+   "concert",
+   "show",
+   "perforated",
+   "dashed"
+  ],
+  "groups": [
+   "account",
+   "transportation"
+  ]
+ },
+ "timer": {
+  "tags": [
+   "time",
+   "watch",
+   "alarm",
+   "stopwatch",
+   "timer"
+  ],
+  "groups": [
+   "time"
+  ]
+ },
+ "tornado": {
+  "tags": [
+   "tornado",
+   "wind",
+   "weather",
+   "spin",
+   "twister",
+   "whirlwind",
+   "storm",
+   "hurricane"
+  ],
+  "groups": [
+   "weather"
+  ]
+ },
+ "train-track": {
+  "tags": [
+   "railway",
+   "track",
+   "train",
+   "transport",
+   "travel",
+   "line"
+  ],
+  "groups": [
+   "transportation",
+   "navigation"
+  ]
+ },
+ "tree-deciduous": {
+  "tags": [
+   "tree",
+   "deciduous",
+   "forest",
+   "nature",
+   "green",
+   "park"
+  ],
+  "groups": [
+   "nature",
+   "sustainability"
+  ]
+ },
+ "tree-pine": {
+  "tags": [
+   "tree",
+   "pine",
+   "forest",
+   "nature",
+   "green",
+   "park"
+  ],
+  "groups": [
+   "nature",
+   "sustainability"
+  ]
+ },
+ "trending-down": {
+  "tags": [
+   "down",
+   "trend",
+   "graph",
+   "downward",
+   "decrease",
+   "statistics"
+  ],
+  "groups": [
+   "charts",
+   "arrows"
+  ]
+ },
+ "trending-up": {
+  "tags": [
+   "up",
+   "trend",
+   "graph",
+   "upward",
+   "increase",
+   "statistics"
+  ],
+  "groups": [
+   "charts",
+   "arrows"
+  ]
+ },
+ "trending-up-down": {
+  "tags": [
+   "up",
+   "trend",
+   "graph",
+   "upward",
+   "increase",
+   "statistics",
+   "down",
+   "downward",
+   "decrease",
+   "arrows",
+   "estimated",
+   "indeterminate",
+   "data fluctuation",
+   "uncertain",
+   "forecast",
+   "variable",
+   "prediction",
+   "dynamic",
+   "volatile"
+  ],
+  "groups": [
+   "charts",
+   "arrows"
+  ]
+ },
+ "truck": {
+  "tags": [
+   "delivery",
+   "van",
+   "shipping",
+   "haulage",
+   "lorry",
+   "transportation"
+  ],
+  "groups": [
+   "transportation"
+  ]
+ },
+ "turkish-lira": {
+  "tags": [
+   "monetization",
+   "marketing",
+   "currency",
+   "money",
+   "payment"
+  ],
+  "groups": [
+   "finance"
+  ]
+ },
+ "twitch": {
+  "tags": [
+   "social",
+   "network",
+   "twitch"
+  ],
+  "groups": []
+ },
+ "twitter": {
+  "tags": [
+   "social",
+   "network",
+   "twitter",
+   "X"
+  ],
+  "groups": []
+ },
+ "underline": {
+  "tags": [
+   "text",
+   "format"
+  ],
+  "groups": [
+   "text"
+  ]
+ },
+ "undo": {
+  "tags": [
+   "redo",
+   "rerun",
+   "history"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "undo-dot": {
+  "tags": [
+   "undo",
+   "repeat",
+   "back",
+   "previous",
+   "arrow",
+   "redo",
+   "history",
+   "step"
+  ],
+  "groups": [
+   "text",
+   "arrows"
+  ]
+ },
+ "upload": {
+  "tags": [
+   "upload",
+   "send",
+   "share",
+   "file"
+  ],
+  "groups": [
+   "arrows",
+   "files"
+  ]
+ },
+ "upvote": {
+  "tags": [
+   "like",
+   "good",
+   "emotion"
+  ],
+  "groups": []
+ },
+ "user": {
+  "tags": [
+   "person",
+   "account",
+   "contact"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "user-check": {
+  "tags": [
+   "user",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "followed",
+   "subscribed",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "user-plus": {
+  "tags": [
+   "user",
+   "plus",
+   "add",
+   "new",
+   "person",
+   "account",
+   "signup",
+   "create",
+   "follow",
+   "subscribe"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "user-round-check": {
+  "tags": [
+   "user",
+   "check",
+   "checkmark",
+   "tick",
+   "done",
+   "confirm",
+   "complete",
+   "followed",
+   "subscribed",
+   "todo",
+   "task"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "user-round-cog": {
+  "tags": [
+   "user",
+   "cog",
+   "settings",
+   "configuration",
+   "edit",
+   "gear"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "user-round-plus": {
+  "tags": [
+   "user",
+   "plus",
+   "add",
+   "create",
+   "new",
+   "follow",
+   "subscribe"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "users": {
+  "tags": [
+   "group",
+   "people"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "users-round": {
+  "tags": [
+   "users",
+   "group",
+   "team",
+   "people"
+  ],
+  "groups": [
+   "account"
+  ]
+ },
+ "vibrate": {
+  "tags": [
+   "smartphone",
+   "notification",
+   "rumble",
+   "haptic feedback",
+   "screen"
+  ],
+  "groups": [
+   "devices",
+   "connectivity",
+   "account",
+   "notifications"
+  ]
+ },
+ "wallet": {
+  "tags": [
+   "wallet",
+   "money",
+   "purse",
+   "billfold",
+   "cash",
+   "finance",
+   "payment",
+   "pocket"
+  ],
+  "groups": [
+   "account",
+   "finance"
+  ]
+ },
+ "washing-machine": {
+  "tags": [
+   "washing machine",
+   "tumble dryer",
+   "electronics",
+   "cycle",
+   "clothes",
+   "rinse",
+   "spin",
+   "drum",
+   "amenities"
+  ],
+  "groups": [
+   "home",
+   "devices",
+   "travel"
+  ]
+ },
+ "waves": {
+  "tags": [
+   "waves",
+   "water",
+   "ocean",
+   "sea",
+   "wave",
+   "sea wave"
+  ],
+  "groups": []
+ },
+ "waves-arrow-down": {
+  "tags": [
+   "waves",
+   "arrow",
+   "down",
+   "navigation",
+   "scroll",
+   "water",
+   "sea",
+   "level",
+   "sound",
+   "hertz",
+   "wavelength",
+   "vibrate",
+   "low",
+   "tide",
+   "ocean",
+   "rising",
+   "falling"
+  ],
+  "groups": [
+   "weather",
+   "sustainability"
+  ]
+ },
+ "waves-arrow-up": {
+  "tags": [
+   "waves",
+   "arrow",
+   "up",
+   "navigation",
+   "scroll",
+   "water",
+   "sea",
+   "level",
+   "sound",
+   "hertz",
+   "wavelength",
+   "vibrate",
+   "high",
+   "tide",
+   "ocean",
+   "rising"
+  ],
+  "groups": [
+   "weather",
+   "sustainability"
+  ]
+ },
+ "waves-ladder": {
+  "tags": [
+   "waves",
+   "ladder",
+   "water",
+   "ocean",
+   "sea",
+   "swimming",
+   "pool",
+   "lifeguard",
+   "🌊",
+   "🏊‍♂️",
+   "🏊‍♀️",
+   "🏊",
+   "🥽"
+  ],
+  "groups": [
+   "sports",
+   "home"
+  ]
+ },
+ "waypoints": {
+  "tags": [
+   "indirection",
+   "vpn",
+   "virtual private network",
+   "proxy",
+   "connections",
+   "bounce",
+   "reroute",
+   "path",
+   "journey",
+   "planner",
+   "stops",
+   "stations",
+   "shared",
+   "spread",
+   "vira",
+   "viral"
+  ],
+  "groups": [
+   "security",
+   "account",
+   "navigation",
+   "development",
+   "social"
+  ]
+ },
+ "webhook": {
+  "tags": [
+   "api",
+   "integration",
+   "web",
+   "hook",
+   "connect",
+   "link",
+   "push api",
+   "callback",
+   "interface"
+  ],
+  "groups": [
+   "development",
+   "social",
+   "account"
+  ]
+ },
+ "wifi": {
+  "tags": [
+   "internet",
+   "electronic",
+   "connection",
+   "data",
+   "signal",
+   "wireless"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "wifi-cog": {
+  "tags": [
+   "wifi",
+   "cog",
+   "settings",
+   "configuration",
+   "connection",
+   "signal",
+   "wireless",
+   "directory",
+   "control",
+   "preferences",
+   "edit",
+   "gear"
+  ],
+  "groups": [
+   "connectivity",
+   "devices",
+   "files"
+  ]
+ },
+ "wifi-pen": {
+  "tags": [
+   "wifi",
+   "pen",
+   "edit",
+   "write",
+   "change",
+   "network"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "wifi-sync": {
+  "tags": [
+   "wifi",
+   "sync",
+   "synchronize",
+   "update",
+   "connection",
+   "signal",
+   "wireless",
+   "reconnect",
+   "reset",
+   "restart"
+  ],
+  "groups": [
+   "connectivity",
+   "devices"
+  ]
+ },
+ "wind": {
+  "tags": [
+   "wind",
+   "weather",
+   "air",
+   "blow"
+  ],
+  "groups": [
+   "weather",
+   "sustainability"
+  ]
+ },
+ "wind-arrow-down": {
+  "tags": [
+   "wind",
+   "arrow",
+   "down",
+   "wind arrow down",
+   "weather",
+   "air",
+   "pressure",
+   "blow"
+  ],
+  "groups": [
+   "weather",
+   "sustainability"
+  ]
+ },
+ "workflow": {
+  "tags": [
+   "action",
+   "continuous integration",
+   "ci",
+   "automation",
+   "devops",
+   "network",
+   "node",
+   "connection"
+  ],
+  "groups": [
+   "development"
+  ]
+ },
+ "wrench": {
+  "tags": [
+   "account",
+   "settings",
+   "spanner",
+   "diy",
+   "toolbox",
+   "build",
+   "construction"
+  ],
+  "groups": [
+   "account",
+   "development",
+   "tools"
+  ]
+ },
+ "x": {
+  "tags": [
+   "x",
+   "close",
+   "delete",
+   "remove",
+   "cancel",
+   "exit",
+   "stop",
+   "cross",
+   "ex",
+   "times",
+   "clear",
+   "math",
+   "multiply",
+   "multiplication"
+  ],
+  "groups": [
+   "notifications",
+   "math"
+  ]
+ },
+ "youtube": {
+  "tags": [
+   "social",
+   "network",
+   "youtube"
+  ],
+  "groups": []
+ },
+ "zap": {
+  "tags": [
+   "electricity",
+   "energy",
+   "power",
+   "lightning",
+   "bolt",
+   "flash",
+   "camera",
+   "quick"
+  ],
+  "groups": [
+   "connectivity",
+   "devices",
+   "photography",
+   "weather"
+  ]
+ },
+ "zap-off": {
+  "tags": [
+   "electricity",
+   "energy",
+   "power",
+   "lightning",
+   "bolt",
+   "off",
+   "flash",
+   "camera"
+  ],
+  "groups": [
+   "connectivity",
+   "devices",
+   "photography",
+   "weather"
+  ]
+ }
+}

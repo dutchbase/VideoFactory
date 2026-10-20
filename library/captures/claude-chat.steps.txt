@@ -1,0 +1,17 @@
+# Claude: type one prompt and record the answer. Copy this file next to your video and change the prompt line only.
+# Log in once, by hand: anim.py login claude https://claude.ai --expect "div[contenteditable=true]"
+# Record: anim.py record <slug> chat <copy of this file>   (frames go through the privacy scan; crop keeps the sidebar out)
+url: https://claude.ai/new
+auth: claude
+breakpoints: mobile
+scheme: light
+expect: div[contenteditable=true]
+---
+# keep only the conversation column: chat history, account menu and sidebar never enter the recording
+crop main
+click div[contenteditable=true]
+# the prompt: one neutral sentence, no names or personal data
+type div[contenteditable=true] "Write a short, friendly email to my customer."
+wait 0.5
+press Enter
+wait 12

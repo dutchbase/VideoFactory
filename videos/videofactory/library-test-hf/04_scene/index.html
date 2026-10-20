@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>Library Test HF</title>
+<link href="runtime/fonts/fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="blocks/core.css">
+<link rel="stylesheet" href="fx/mesh-gradient.css">
+<link rel="stylesheet" href="fx/tracking-in.css">
+<link rel="stylesheet" href="fx/marker-highlight.css">
+<link rel="stylesheet" href="fx/whip-pan.css">
+<link rel="stylesheet" href="fx/spring-in.css">
+<link rel="stylesheet" href="fx/progress-bar.css">
+<style>
+  /* Library test: fx parts, an animated icon and a Lottie clip in one HyperFrames scene. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--cream); }
+  #stage { position: relative; width: 100%; height: 100%; overflow: hidden; color: var(--ink); font-family: var(--font); }
+  .lt-shot { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 36px; visibility: hidden; }
+  .lt-title { font: 700 150px/1 var(--head); }
+  .lt-sub { font: 500 56px/1.2 var(--font); color: var(--ink); }
+  .lt-tile { width: 240px; height: 240px; border-radius: 48px; display: grid; place-items: center; color: var(--accent);
+             background: color-mix(in srgb, var(--accent) 12%, var(--cream)); }
+  .lt-tile svg { width: 150px; height: 150px; }
+  .lt-h2 { font: 700 88px/1.1 var(--head); }
+  .lt-cards { display: flex; gap: 48px; }
+  .lt-card { width: 420px; padding: 64px 32px; border-radius: 32px; text-align: center; font: 700 64px/1.1 var(--head);
+             background: var(--cream); border: 3px solid var(--line); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08); }
+  .lt-card.hot { border-color: var(--accent); color: var(--accent); }
+  .lt-lottie { position: absolute; right: 150px; bottom: 120px; width: 280px; height: 280px; }
+  .lt-file { font: 700 64px/1 var(--mono, var(--font)); color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="stage" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-fps="30">
+  <div id="bg" class="lt-bg clip" data-start="0" data-duration="16.6" data-track-index="0"></div>
+
+  <section id="shot-intro" class="lt-shot lt-a clip" data-start="0" data-duration="16.6" data-track-index="1">
+    <h1 class="lt-title">VideoFactory</h1>
+    <p class="lt-sub">turns a script into a finished video</p>
+  </section>
+  <section id="shot-voice" class="lt-shot lt-b clip" data-start="0" data-duration="16.6" data-track-index="2">
+    <div class="lt-tile"><i class="lt-icon"></i></div>
+    <h2 class="lt-h2">Every word gets a time.</h2>
+  </section>
+  <section id="shot-scene" class="lt-shot lt-c clip" data-start="0" data-duration="16.6" data-track-index="3">
+    <div class="lt-cards">
+      <div class="lt-card">Script</div>
+      <div class="lt-card hot">Voice</div>
+      <div class="lt-card">Picture</div>
+    </div>
+    <canvas class="lt-lottie" width="560" height="560"></canvas>
+  </section>
+  <section id="shot-render" class="lt-shot lt-d clip" data-start="0" data-duration="16.6" data-track-index="4">
+    <div class="lt-bar"></div>
+    <p class="lt-file">library-test-hf.mp4</p>
+  </section>
+
+  <audio id="voice" class="clip" data-start="0" data-track-index="5" src="voice/voice.wav"></audio>
+</div>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="cues/cues.js"></script>
+<script src="runtime/hf-bridge.js"></script>
+<script src="runtime/lib.js"></script>
+<script src="runtime/animicon.js"></script>
+<script src="assets/icons-animated/lucide-animated/audio-lines.js"></script>
+<script src="blocks/core.js"></script>
+<script src="fx/kit.js"></script>
+<script src="fx/mesh-gradient.js"></script>
+<script src="fx/tracking-in.js"></script>
+<script src="fx/marker-highlight.js"></script>
+<script src="fx/whip-pan.js"></script>
+<script src="fx/spring-in.js"></script>
+<script src="fx/progress-bar.js"></script>
+<script>
+  // Scene: one paused timeline. Every time comes from a cue or a spoken word. Colors only via brand CSS vars.
+  // Keep this script inline: `hyperframes lint` only sees the timeline registration in inline scripts.
+  const tl = gsap.timeline({ paused: true });
+  const H = Blocks.core(tl);
+  const $ = (s) => document.querySelector(s);
+  const end = window.ANIM.meta.duration;
+
+  FX.meshGradient(H, $('.lt-bg'), { to: end, colors: ['accent', 'line', 'dim'], opacity: 0.35 });
+
+  // intro: the name lands, then the marker stresses the last two words
+  H.show($('.lt-a'), 0);
+  FX.trackingIn(H, $('.lt-title'), { at: H.at('intro') - 0.3 });
+  FX.springIn(H, $('.lt-sub'), { at: H.at('@turns'), config: 'smooth' });
+  FX.markerHighlight(H, $('.lt-sub'), { at: H.at('@finished'), phrase: 'finished video' });
+
+  // voice: both shots share the gradient ground, so a whip pan carries the eye (cut K7)
+  const pan = FX.whipPan(H, $('.lt-a'), $('.lt-b'), { at: H.at('voice') - 0.2, dir: 'left' });
+  AnimIcon.mount($('.lt-icon'), 'lucide-animated/audio-lines');
+  AnimIcon.play(tl, $('.lt-icon'), 'lucide-animated/audio-lines', H.at('@record'), { loop: true, until: H.at('scene') });
+  FX.springIn(H, $('.lt-h2'), { at: H.at('@every') });
+
+  // scene: the three cards spring in on the words that name them, the tick lands on "lands"
+  H.hide($('.lt-b'), H.at('scene'));
+  H.show($('.lt-c'), H.at('scene'));
+  const cards = document.querySelectorAll('.lt-card');
+  ['@scene', '@follows', '@words'].forEach((w, i) => FX.springIn(H, cards[i], { at: H.at(w), config: 'bouncy' }));
+  const tick = Lib.lottie('check-mark', { colors: 'brand' });
+  const cv = $('.lt-lottie'), ctx = cv.getContext('2d'), tickAt = H.at('@lands');
+  H.drive((p, t) => {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    if (t >= tickAt) tick.at(ctx, t - tickAt, 280, 280, 560, 560);
+  }, H.at('scene'), H.at('render'));
+
+  // render: a hard cut, the bar fills while the voice says it, then the file name
+  H.hide($('.lt-c'), H.at('render'));
+  H.show($('.lt-d'), H.at('render'));
+  FX.progressBar(H, $('.lt-bar'), { at: H.at('@renders'), dur: 1.6, value: 100, label: 'renders the video' });
+  FX.springIn(H, $('.lt-file'), { at: H.at('@MP4') });
+
+  tl.set({}, {}, end);
+  window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

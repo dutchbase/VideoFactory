@@ -1,0 +1,3 @@
+/* spotlight: a veil over the whole element with a hole cut by clip-path, and an optional ring on the hole. */
+.fx-spotlight { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; opacity: 0; }
+.fx-spotlight-ring { position: absolute; box-sizing: border-box; border: 4px solid var(--accent); pointer-events: none; z-index: 6; opacity: 0; }

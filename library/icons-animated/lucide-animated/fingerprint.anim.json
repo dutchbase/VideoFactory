@@ -1,0 +1,386 @@
+{
+ "v": 1,
+ "name": "fingerprint",
+ "dur": 2,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 2,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 4,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 6,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 8,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 10,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 12,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 14,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 16,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  },
+  {
+   "i": 18,
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "opacity": [
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "pre": {
+      "opacity": 1
+     }
+    },
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 2,
+     "ease": "easeInOut",
+     "props": {
+      "pathLength": [
+       0.1,
+       0.3,
+       0.5,
+       0.7,
+       0.9,
+       1
+      ]
+     },
+     "pre": {
+      "pathLength": 1
+     }
+    }
+   ]
+  }
+ ]
+}

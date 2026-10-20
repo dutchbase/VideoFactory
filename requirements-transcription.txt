@@ -1,0 +1,2 @@
+# Optional; unnecessary for the silent starter.
+openai-whisper

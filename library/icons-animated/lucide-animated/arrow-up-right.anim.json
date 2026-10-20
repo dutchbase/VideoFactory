@@ -1,0 +1,41 @@
+{
+ "v": 1,
+ "name": "arrow-up-right",
+ "dur": 0.5,
+ "rdur": 0,
+ "els": [
+  {
+   "i": 1,
+   "origin": {
+    "x": "100%",
+    "y": "0%",
+    "box": "fill"
+   },
+   "start": [
+    {
+     "at": 0,
+     "delay": 0,
+     "duration": 0.5,
+     "ease": "easeInOut",
+     "props": {
+      "scale": [
+       1,
+       0.85,
+       1
+      ],
+      "x": [
+       0,
+       -4,
+       0
+      ],
+      "y": [
+       0,
+       4,
+       0
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,291 @@
+[
+ {
+  "name": "bulb-bg",
+  "title": "BulbBg",
+  "description": "Rising dome with a soft blurred halo over a warm dark canvas. Loops continuously or sinks down / grows up as an exit beat.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "bulb"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 256,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/bulb-bg.tsx",
+  "file": "src/components/bulb-bg.tsx",
+  "status": "available"
+ },
+ {
+  "name": "cascading-text",
+  "title": "Cascading text",
+  "description": "Words enter from the right with a slow fast slow ease, drift left continuously, and the camera zooms out in distinct beats so longer sentences stay readable.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "cascading",
+   "text"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 305,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/cascading-text.tsx",
+  "file": "src/components/cascading-text.tsx",
+  "status": "available"
+ },
+ {
+  "name": "curvable-types",
+  "title": "CurvableTypes",
+  "description": "The first word zooms in from huge and blurred, settles at canvas center, and slides right while trailing words slide in. Per letter cascade or per word reveal.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "curvable",
+   "types"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 231,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/curvable-types.tsx",
+  "file": "src/components/curvable-types.tsx",
+  "status": "available"
+ },
+ {
+  "name": "ellipse-bloom",
+  "title": "EllipseBloom",
+  "description": "A two layer ellipse blooms from a pinhead to fill the frame in well under a second. Inner highlight is the primary, outer ring is a derived darker shade.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "bloom",
+   "ellipse"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 164,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/ellipse-bloom.tsx",
+  "file": "src/components/ellipse-bloom.tsx",
+  "status": "available"
+ },
+ {
+  "name": "floating-stack",
+  "title": "FloatingStack",
+  "description": "Three 3D slabs floating in an accordion wave, drifting at their own beat, with a cursor that pauses on each slab. Backdrop Grainient plus three slab glow shades all derived from one brand color.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "floating",
+   "stack"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "ogl"
+  ],
+  "lines": 227,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/floating-stack.tsx",
+  "file": "src/components/floating-stack.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (ogl)"
+ },
+ {
+  "name": "grainient-bg",
+  "title": "GrainientBg",
+  "description": "A warped three color gradient that drifts continuously, painterly background that warps without animating any focal element. Requires the optional ogl peer dependency.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "grainient"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "ogl"
+  ],
+  "lines": 391,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/grainient-bg.tsx",
+  "file": "src/components/grainient-bg.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (ogl)"
+ },
+ {
+  "name": "paste-pill",
+  "title": "PastePill",
+  "description": "Word spring sentence reveal with a shining gradient pill on the matched word. A 3D cursor flies up from below, dips on click, and the pill swaps to a grey active label.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "paste",
+   "pill"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 575,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/paste-pill.tsx",
+  "file": "src/components/paste-pill.tsx",
+  "status": "available"
+ },
+ {
+  "name": "prompt-input",
+  "title": "PromptInput",
+  "description": "A 3D tilted dashboard sits over a coloured bulb halo and a drifting Grainient. A cursor flies in from below, types into the composer, clicks Send, and flies out. Backdrop, bulb halo, cursor and dashboard accents all derive from one brand color.",
+  "category": "interface",
+  "upstream_category": null,
+  "tags": [
+   "input",
+   "prompt"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "ogl"
+  ],
+  "lines": 210,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/prompt-input.tsx",
+  "file": "src/components/prompt-input.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (ogl)"
+ },
+ {
+  "name": "slide-reveal",
+  "title": "Slide reveal",
+  "description": "Sentence slides off screen left while each word lifts in from below. Words appear in the accent color and ease to the text color.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "reveal",
+   "slide"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 318,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/slide-reveal.tsx",
+  "file": "src/components/slide-reveal.tsx",
+  "status": "available"
+ },
+ {
+  "name": "stats-grid",
+  "title": "StatsGrid",
+  "description": "A hero metric morphs into a 2x2 of frosted cards on a tilted plane, each chart and counter bobbing on its own beat. Backdrop and card highlights all derive from one brand color.",
+  "category": "data",
+  "upstream_category": null,
+  "tags": [
+   "grid",
+   "stats"
+  ],
+  "difficulty": "hard",
+  "deps": [
+   "ogl"
+  ],
+  "lines": 163,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/stats-grid.tsx",
+  "file": "src/components/stats-grid.tsx",
+  "status": "skip",
+  "reason": "needs WebGL (ogl)"
+ },
+ {
+  "name": "text-hover",
+  "title": "TextHover",
+  "description": "Feathered light bar sweeps across bold outline text, revealing a gradient fill as it passes. Always rainbow or sweep to mono, with 2 to 5 color stops.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "hover",
+   "text"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 439,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/text-hover.tsx",
+  "file": "src/components/text-hover.tsx",
+  "status": "available"
+ },
+ {
+  "name": "text-swap",
+  "title": "Text swap",
+  "description": "Two word swap. Letters from word 1 flash in the brand primary then disappear in random pairs while word 2 settles in their place. Letters never collide.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "swap",
+   "text"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 378,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/text-swap.tsx",
+  "file": "src/components/text-swap.tsx",
+  "status": "available"
+ },
+ {
+  "name": "two-drops-bg",
+  "title": "TwoDropsBg",
+  "description": "Two teardrops glide on opposite sides of a rounded perimeter, glow spilling into the corners. Five derived shades from one primary color.",
+  "category": "backgrounds",
+  "upstream_category": null,
+  "tags": [
+   "drops",
+   "two"
+  ],
+  "difficulty": "medium",
+  "deps": [],
+  "lines": 337,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/two-drops-bg.tsx",
+  "file": "src/components/two-drops-bg.tsx",
+  "status": "available"
+ },
+ {
+  "name": "typewriter",
+  "title": "Typewriter",
+  "description": "Each character is born in the accent color and fades to the resting color, with a caret that stays flush against the latest glyph. Bar or block caret. Smooth or hard fade.",
+  "category": "text",
+  "upstream_category": null,
+  "tags": [
+   "typewriter"
+  ],
+  "difficulty": "easy",
+  "deps": [],
+  "lines": 257,
+  "featured": false,
+  "license": "MIT",
+  "docs": "https://www.curvable.ai/library",
+  "source_file": "https://github.com/Curvable/motion/blob/48aa412b5f4a15d5a31fe02f6e7e43e654ca091a/src/components/typewriter.tsx",
+  "file": "src/components/typewriter.tsx",
+  "status": "available"
+ }
+]

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(**/_auth/**)",
+      "Edit(**/_auth/**)",
+      "Write(**/_auth/**)"
+    ]
+  }
+}

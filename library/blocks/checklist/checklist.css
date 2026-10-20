@@ -1,0 +1,4 @@
+.b-ticks { display: flex; flex-wrap: wrap; gap: 10px; }
+.b-tick { display: flex; align-items: center; gap: 8px; background: var(--accent); color: var(--ink); font-family: var(--font);
+          font-size: 27px; font-weight: 800; padding: 8px 14px; }
+.b-tick svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 4; }
