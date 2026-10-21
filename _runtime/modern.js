@@ -176,6 +176,7 @@
 
   // A recorded browser clip (`anim.py record`): frames assets/<name>/f001.jpg … played on the clock.
   // The frames are preloaded and drawn on a canvas, so every rendered frame shows the right picture.
+  // o.speed plays faster or slower; o.from starts that many seconds into the clip (skip an empty intro).
   function clip(target, name, when, o = {}) {
     const meta = window.REAL && window.REAL.clips && window.REAL.clips[name];
     if (!meta) throw new Error(`modern.js: no clip "${name}" in assets/real.js. Run: python anim.py record <slug> ${name} <steps-file>`);
@@ -189,7 +190,7 @@
       c.style.display = 'block'; c.style.width = '100%';
       const ctx = c.getContext('2d');
       P.onFrame((t) => {
-        const im = frames[Math.max(0, Math.min(meta.n - 1, Math.floor((t - at(when)) * meta.fps * (o.speed ?? 1))))];
+        const im = frames[Math.max(0, Math.min(meta.n - 1, Math.floor(((t - at(when)) * (o.speed ?? 1) + (o.from ?? 0)) * meta.fps)))];
         if (!im.naturalWidth) return;
         if (c.width !== im.naturalWidth) { c.width = im.naturalWidth; c.height = im.naturalHeight; }
         ctx.drawImage(im, 0, 0);

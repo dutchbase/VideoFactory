@@ -77,6 +77,7 @@ Modern.type('#prompt', 'demo+0.5', { cps: 30 });           // typewriter
 Modern.draw('#path', 'map', { dur: 1.4 });                 // draw an SVG
 Modern.push('#hero', 'hook');                              // slow camera push over the cue
 Modern.clip('#screen', 'signup', 'demo');                  // play a clip: anim.py record, or use with stock: / motion:
+Modern.clip('#screen', 'signup', 'demo', { from: 1.2, speed: 1.4 }); // skip 1.2 s of empty intro, play faster
 P.onFrame((t) => { el.style.opacity = P.fade('aside'); }); // anything else: a pure function of t
 ```
 - Eases: `P.ease.enter` (fast in, soft landing), `exit`, `move`, `pop`, `out`, `inOut`, `outExpo`, `back`, `sine`,
