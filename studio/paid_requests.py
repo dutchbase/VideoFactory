@@ -2,6 +2,7 @@
 from contextlib import contextmanager
 from decimal import Decimal, InvalidOperation
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -39,6 +40,76 @@ def _key(value):
     if not isinstance(value, str) or not re.fullmatch(r'[a-zA-Z0-9_-]{1,100}', value):
         raise BudgetError('Invalid run or request ID.')
     return value
+
+
+def _run_scope(root, run_id):
+    from studio.project_paths import resolve_project, project_id
+    run = json.loads((Path(root) / '.studio/runs' / (_key(run_id) + '.json')).read_text())
+    if isinstance(run.get('scope'), str):
+        return run['scope']
+    video_id = run.get('video_id')
+    if not isinstance(video_id, str) or project_id(root, resolve_project(root, video_id)) != video_id:
+        raise BudgetError('The paid run needs its exact canonical project identity.')
+    return 'video:' + video_id
+
+
+def quote_digest(quote):
+    """Fingerprint the exact attempt, upper cost, and provider evidence."""
+    fields = {key: quote[key] for key in ('request_id', 'logical_request_id', 'max_cost', 'evidence')}
+    return hashlib.sha256(json.dumps(fields, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+
+
+def _quote_paths(root, run_id):
+    base = Path(root) / '.studio/paid' / _key(run_id)
+    return base.with_suffix('.quotes.json'), base.with_suffix('.approvals.json')
+
+
+def inspect_quote(root, run_id, request_id):
+    quote_path, _ = _quote_paths(root, run_id)
+    quotes = json.loads(quote_path.read_text()) if quote_path.exists() else {}
+    quote = quotes.get(_key(request_id))
+    if quote is None:
+        quote = next((item for item in quotes.values() if isinstance(item, dict) and item.get('request_id') == request_id), None)
+    if not isinstance(quote, dict): raise BudgetError('The exact paid request has no verified quote.')
+    return dict(quote, fingerprint=quote_digest(quote))
+
+
+def approve_quote(root, run_id, request_id, expected_quote, reviewer='human'):
+    """Record a human decision for one quoted purchase attempt in this session."""
+    from studio.permissions import current_session, require_permission
+    if os.environ.get('VF_PERMISSION_WORKER') == '1':
+        raise BudgetError('A worker cannot approve a purchase.')
+    scope = _run_scope(root, run_id)
+    permission = require_permission(root, scope)
+    if not isinstance(reviewer, str) or not reviewer.strip(): raise BudgetError('A human reviewer is required.')
+    _, path = _quote_paths(root, run_id)
+    with _ledger(root, run_id):
+        quote = inspect_quote(root, run_id, request_id)
+        if expected_quote != quote['fingerprint']:
+            raise BudgetError('The quote changed. Review the current cost and approve it again.')
+        approvals = json.loads(path.read_text()) if path.exists() else {}
+        approval = dict(request_id=quote['request_id'], quote_fingerprint=expected_quote,
+                        session_id=current_session(root), grant_id=permission['grant_id'], reviewer=reviewer)
+        approvals[quote['request_id']] = approval
+        atomic_json(path, approvals)
+        _mirror_paid(root, run_id, 'approvals.json', approvals)
+    return approval
+
+
+def _require_quote_approval(root, run_id, request_id, maximum):
+    from studio.permissions import current_session, require_permission
+    permission = require_permission(root, _run_scope(root, run_id))
+    quote = inspect_quote(root, run_id, request_id)
+    if money(quote['max_cost']) != maximum or quote['request_id'] != request_id:
+        raise BudgetError('Purchase differs from the approved quoted attempt.')
+    _, path = _quote_paths(root, run_id)
+    approvals = json.loads(path.read_text()) if path.exists() else {}
+    approval = approvals.get(request_id)
+    if (not isinstance(approval, dict) or approval.get('quote_fingerprint') != quote['fingerprint']
+            or approval.get('session_id') != current_session(root)
+            or approval.get('grant_id') != permission['grant_id']):
+        raise BudgetError('This exact paid request needs human approval of its known maximum cost in this session.')
+    return quote
 
 
 def _mirror_paid(root, run_id, name, value):
@@ -80,6 +151,7 @@ def reserve(root, run_id, request_id, max_cost, *, provider='', purpose=''):
     run = json.loads((Path(root) / '.studio/runs' / (_key(run_id) + '.json')).read_text())
     limit = money(run['settings']['max_paid_spend'])
     with _ledger(root, run_id) as ledger:
+        _require_quote_approval(root, run_id, request_id, maximum)
         requests = ledger['requests']
         if request_id in requests:
             raise BudgetError('This request already exists. Reconcile it before a retry.')
@@ -109,6 +181,8 @@ def settle(root, run_id, request_id, actual_cost, provider_request_id='', *, est
 
 
 def reconcile(root, run_id, request_id, actual_cost, provider_request_id='', *, evidence=''):
+    from studio.permissions import require_permission
+    require_permission(root, _run_scope(root, run_id))
     actual = money(actual_cost)
     with _ledger(root, run_id) as ledger:
         record = ledger['requests'][_key(request_id)]
@@ -141,6 +215,11 @@ def record_quote(root, run_id, request_id, max_cost, evidence, *, retry=False):
         quote = dict(request_id=attempted, logical_request_id=request_id, max_cost=str(maximum), evidence=evidence)
         quotes[request_id] = quote
         atomic_json(path, quotes)
+        _, approval_path = _quote_paths(root, run_id)
+        if approval_path.exists():
+            approvals = json.loads(approval_path.read_text())
+            approvals.pop(attempted, None)
+            atomic_json(approval_path, approvals)
         _mirror_paid(root, run_id, 'quotes.json', dict(run.get('settings', {}).get('paid_quotes', {}), **quotes))
     return quote
 
@@ -175,12 +254,14 @@ def guarded_call(root, run_id, request_id, max_cost, call, *, provider='', purpo
     return result
 
 
-def managed_quote(root, request_id, *, purpose='', metadata=None):
+def managed_quote(root, request_id, *, purpose='', metadata=None, run_id=None):
     """Return a saved, evidenced upper-bound quote for one exact request."""
-    if os.environ.get('VF_PAID_GUARD') != '1': return None
-    if Path(os.environ.get('VF_RUN_ROOT', '')).resolve() != Path(root).resolve():
-        raise BudgetError('Paid request root differs from its saved run.')
-    run_id = _key(os.environ.get('VF_RUN_ID'))
+    if run_id is None:
+        if os.environ.get('VF_PAID_GUARD') != '1': return None
+        if Path(os.environ.get('VF_RUN_ROOT', '')).resolve() != Path(root).resolve():
+            raise BudgetError('Paid request root differs from its saved run.')
+        run_id = os.environ.get('VF_RUN_ID')
+    run_id = _key(run_id)
     run = json.loads((Path(root) / '.studio/runs' / (run_id + '.json')).read_text())
     request_id = _key(request_id)
     quote_path = Path(root) / '.studio/paid' / (run_id + '.quotes.json')
@@ -193,5 +274,6 @@ def managed_quote(root, request_id, *, purpose='', metadata=None):
         _mirror_paid(root, run_id, request_id + '.pending.json', pending)
         raise BudgetError(f'Paid {purpose or "request"} needs a verified maximum-cost quote: run {run_id}, request {request_id}. Details: {metadata or {}}')
     money(quote.get('max_cost'))
+    _require_quote_approval(root, run_id, quote.get('request_id', request_id), money(quote['max_cost']))
     _mirror_paid(root, run_id, 'quotes.json', dict(run.get('settings', {}).get('paid_quotes', {}), **quotes))
     return run_id, dict(quote, request_id=quote.get('request_id', request_id))

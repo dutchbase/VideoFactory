@@ -5,14 +5,15 @@ description: Build the animated scene (stage 04). Use when the user says "scene"
 # /vf-scene — build the animation
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `stages/04_scene/CONTEXT.md`, `_shared/modern.md`, `_shared/motion.md`, `brands/<brand>/brand.md`,
 `brands/<brand>/tokens.js`, `videos/<id>/03_cues/cues.md`.
 What the library holds, by category: `library/CATALOG.md` (read it before the shot plan). Icons, graphics and stock clips: `_shared/library.md`.
 A look the library does not have: `_shared/porting.md` (the new part joins the library as a draft). Screenshots of web pages: `_shared/capture.md`.
 Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` and ask which video.
 
-1. Check that the cues are compiled and the user approved them.
-2. Plan one shot for each cue. Show a table: cue, what the viewer sees, the motion, the library part (`fx:`, `block:`, `motion:`, `animicon:`, `lottie:`, or `upstream:` to rewrite). Ask "Build this?" and wait.
+1. Check that the cues are compiled. Pause for cue review only when this session permission requires it.
+2. Plan one shot for each cue. Show a table: cue, what the viewer sees, the motion, the library part (`fx:`, `block:`, `motion:`, `animicon:`, `lottie:`, or `upstream:` to rewrite). Ask "Build this?" only when the user must choose or this session permission requires review.
 3. Write `videos/<id>/04_scene/index.html` and `videos/<id>/04_scene/scene.js` with the Modern kit, as
    `_shared/modern.md` says. Take colours and fonts from the brand tokens. Remove the `TEMPLATE` marker from `scene.js`.
    Follow the sound pass that `stages/04_scene/CONTEXT.md` names.
@@ -23,5 +24,5 @@ Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` a
 7. For a live review run `python anim.py preview <id>`. Tell the user to open the address it prints.
    Stop the preview when the user is done.
 
-Gate: the user approves the stills and the preview.
+Gate: pause for human review when this session permission requires it.
 Next: `/vf-render`.

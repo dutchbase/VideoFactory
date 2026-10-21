@@ -10,6 +10,7 @@ from unittest.mock import patch
 from studio import agent_runs
 from studio.jobs import create_request
 from studio.workspace import WorkspaceError
+from studio.permissions import grant
 
 
 def _alive(pid):
@@ -25,6 +26,7 @@ class AgentRunTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         (self.root / "videos/demo").mkdir(parents=True)
         (self.root / "videos/demo/project.json").write_text(json.dumps({"brand": "videofactory"}))
+        grant(self.root, 'video:videofactory/demo', 'full')
         create_request(self.root, "demo", "script", "Write the script.", "", "req-one")
 
     def tearDown(self):

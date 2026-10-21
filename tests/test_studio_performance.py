@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from studio import creative, jobs, readcache, workspace as ws
+from studio.permissions import grant
 from tests import test_studio_http as http_fixture
 
 
@@ -20,7 +21,7 @@ class OverviewHttpTests(unittest.TestCase):
              patch.object(ws, 'list_materials', side_effect=AssertionError('library')), \
              patch.object(ws, 'list_styles', side_effect=AssertionError('styles')):
             with self.request('/api/bootstrap?view=shell') as response:
-                self.assertEqual(set(json.load(response)), {'token', 'jobs', 'requests', 'brands'})
+                self.assertEqual(set(json.load(response)), {'token', 'session_nonce', 'jobs', 'requests', 'brands'})
         with patch.object(ws, 'review_state', side_effect=AssertionError('review')), \
              patch.object(ws, '_own_paths', side_effect=AssertionError('evidence scan')):
             with self.request('/api/videos?view=summary') as response:
@@ -144,17 +145,24 @@ class OverviewTests(unittest.TestCase):
         self.assertEqual(readcache.cached(self.root, 'test', lambda: 'new'), 'new')
 
     def test_cached_overview_cannot_authorize_changed_revision(self):
-        fingerprint = ws.gate_fingerprint(self.root, 'demo', 'script')
-        ws._write_event(self.root, 'demo', {'gate': 'script', 'kind': 'ready', 'fingerprint': fingerprint, 'at': ws._now()})
+        canonical = self.root / 'videos/videofactory/demo'
+        canonical.parent.mkdir(parents=True)
+        self.script.parent.parent.rename(canonical)
+        self.script = canonical / '01_voice/script.md'
+        slug = 'videofactory/demo'
+        fingerprint = ws.gate_fingerprint(self.root, slug, 'script')
+        ws._write_event(self.root, slug, {'gate': 'script', 'kind': 'ready', 'fingerprint': fingerprint, 'at': ws._now()})
         summary = ws.list_videos(self.root, summary=True)
         self.assertEqual(summary[0]['reviews']['script']['recorded_state'], 'awaiting-review')
         self.script.write_text('Changed outside Studio')
+        self.assertNotEqual(fingerprint, ws.gate_fingerprint(self.root, slug, 'script'))
         self.assertIs(summary, ws.list_videos(self.root, summary=True))
         with self.assertRaises(ws.WorkspaceError) as error:
-            ws.decide_review(self.root, 'demo', 'script', 'approved', 'Reviewer', '', fingerprint)
+            ws.decide_review(self.root, slug, 'script', 'approved', 'Reviewer', '', fingerprint)
         self.assertEqual(error.exception.code, 'conflict')
-        with self.assertRaisesRegex(ws.WorkspaceError, 'current script'):
-            jobs.start_job(self.root, 'voice-test', 'demo', {'confirmation_fingerprint': fingerprint}, fingerprint, 'stale-voice')
+        grant(self.root, 'video:' + slug, 'full')
+        with self.assertRaisesRegex(ws.WorkspaceError, 'separate approval'):
+            jobs.start_job(self.root, 'voice-test', slug, {'confirmation_fingerprint': fingerprint}, fingerprint, 'stale-voice')
 
     def test_inventory_expiry_shares_files_and_observes_external_additions(self):
         with patch.object(readcache, 'monotonic', return_value=10), patch.object(ws, '_inventory', wraps=ws._inventory) as scan:

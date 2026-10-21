@@ -9,7 +9,9 @@ from studio import generation, jobs, workspace as ws
 from studio.characters import (prepare_character_identity, prepare_character_variant, register_character_candidates,
                                register_character_identity, register_character_variant, select_character_candidate)
 from studio.creative import (create_creative, creative_detail, creative_fingerprint,
-                             decide_creative, mark_creative_ready, save_workshop_answers)
+                             decide_creative, mark_creative_ready, save_workshop_answers,
+                             accept_creative_under_permission, creative_review_state)
+from studio.permissions import grant
 
 
 class CreativeWorkshopTests(unittest.TestCase):
@@ -17,6 +19,23 @@ class CreativeWorkshopTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
         self.addCleanup(self.temp.cleanup)
+
+    def test_session_acceptance_unlocks_creative_stage_only_in_same_session(self):
+        with patch.dict('os.environ', {'VF_SESSION_ID': 'creative-chat'}):
+            detail = create_creative(self.root, 'style', 'warm-line', 'Warm scenes', {'title': 'Warm Line'})
+            saved = save_workshop_answers(self.root, 'style', 'warm-line', {'look': 'Warm line art'},
+                                          brief='Warm line art with restrained motion.', expected_revision=detail['revision'])
+            fingerprint = saved['reviews']['brief']['fingerprint']
+            mark_creative_ready(self.root, 'style', 'warm-line', 'brief', fingerprint)
+            grant(self.root, 'style:warm-line', 'full')
+            accepted = accept_creative_under_permission(self.root, 'style', 'warm-line', 'brief', fingerprint)
+            self.assertEqual(accepted['state'], 'accepted')
+            self.assertEqual(accepted['history'][-1]['kind'], 'acceptance')
+            (self.root / 'styles/warm-line/materials.md').write_text('# Materials\n\nA classroom scene for this style.\n')
+            material_revision = creative_fingerprint(self.root, 'style', 'warm-line', 'materials')
+            self.assertEqual(mark_creative_ready(self.root, 'style', 'warm-line', 'materials', material_revision)['state'], 'awaiting-review')
+        with patch.dict('os.environ', {'VF_SESSION_ID': 'next-chat'}):
+            self.assertEqual(creative_review_state(self.root, 'style', 'warm-line', 'brief')['state'], 'awaiting-review')
 
     def test_prompt_creates_honest_question_wait_and_legacy_requests_survive(self):
         detail = create_creative(self.root, 'style', 'warm-line', 'Warm, clear tutor scenes',
@@ -121,6 +140,7 @@ class CreativeWorkshopTests(unittest.TestCase):
 
     def test_typed_request_rechecks_its_input_before_claim(self):
         create_creative(self.root, 'character', 'tutor', 'A tutor', {'title': 'Teacher'})
+        grant(self.root, 'character:tutor', 'full')
         revision = creative_fingerprint(self.root, 'character', 'tutor', 'brief')
         request = jobs.create_request(self.root, None, 'creative-material', 'Describe the tutor props', None,
                                       'material-1', subject={'type': 'character', 'id': 'tutor'}, input_revision=revision)
@@ -189,6 +209,7 @@ class CreativeWorkshopTests(unittest.TestCase):
 
     def test_unregistered_character_art_and_fake_frames_cannot_be_approved(self):
         create_creative(self.root, 'character', 'tutor', 'A tutor', {'title': 'Teacher'})
+        grant(self.root, 'character:tutor', 'full')
         detail = creative_detail(self.root, 'character', 'tutor')
         save_workshop_answers(self.root, 'character', 'tutor', {'goal': 'Teach new VAs'}, brief='Teacher in a course.', expected_revision=detail['revision'])
         folder = self.root / 'characters/tutor'

@@ -1,5 +1,7 @@
 # 04 Scene and preview
 
+Read `_shared/permissions.md` before production. Pause for human review when the active session permission requires it.
+
 Engine: `project.json` `engine` is `canvas` (the built-in Modern kit; a missing key means the same) or `hyperframes`. For hyperframes write `index.html` per `_shared/hyperframes.md`, not the Modern steps below. A long video may split its chapters into sub-compositions (`04_scene/compositions/*.html`, mounted with `data-composition-src`). `anim.py check`, the tone gate and the audio guard read those too. `check`, `stills` and `render` apply to both engines.
 
 Read `_shared/modern.md`: how to write a scene in the Modern kit. Start from the files `anim.py new` copied into `04_scene/`. Colours and fonts come from the brand's `tokens.js`. Plan one shot per cue before you build.
@@ -16,6 +18,6 @@ Before the shot plan, read `library/CATALOG.md`: the ready parts (fx for both en
 
 Sound: pick the music bed and place effects on cuts and reveals (`_shared/sound.md`). Record each music and effect file with its source and licence in `04_scene/assets/sound.md`. Library sounds: `library/audio/INDEX.md`; `anim.py use <slug> audio:<id>` copies one and writes its licence line.
 
-Handoff: after zero counters, stills and a moving preview, run the `frame-critic` judge on fresh stills. Fix until every score is 8 or higher. Judge before the gate, not only after a render. Then mark the current `scene` gate ready and open its exact Studio review link (`_shared/dashboard-review.md`). Review the saved scene, the selected style snapshot and the referenced assets together. You watch the preview before export.
+Handoff: after zero counters, stills and a moving preview, run the `frame-critic` judge on fresh stills. Fix until every score is 8 or higher. Judge before the gate, not only after a render. When this session requires scene review, mark the current gate ready and open its exact Studio review link (`_shared/dashboard-review.md`). Review the saved scene, the selected style snapshot and the referenced assets together. Otherwise continue to the next permitted stage.
 
 Guided command: `/vf-scene`. Next: `/vf-render`.

@@ -19,6 +19,7 @@ from studio.characters import (character_detail, create_character, list_characte
 from studio.creative import creative_fingerprint, creative_review_state, decide_creative, mark_creative_ready, save_workshop_answers
 from studio.generation import prepare_generation, generation_detail
 from studio.server import make_server
+from studio.permissions import grant
 
 
 class CharacterTests(unittest.TestCase):
@@ -40,6 +41,7 @@ class CharacterTests(unittest.TestCase):
 
     def created(self):
         create_character(self.root, 'tutor', 'A cheerful tutor', {'title': 'Tutor'})
+        grant(self.root, 'character:tutor', 'full')
         detail = character_detail(self.root, 'tutor')
         save_workshop_answers(self.root, 'character', 'tutor', {'subject': 'Cheerful professional woman tutor'},
                               brief='Stylized realistic, professionally dressed, not fully human-looking.', expected_revision=detail['revision'])
@@ -390,7 +392,7 @@ class CharacterTests(unittest.TestCase):
         self.assertEqual(len(animation['resolved_references']), 3)
         self.assertEqual(animation['context']['variant_id'], 'ink')
         api_variant = prepare_character_variant(self.root, 'tutor', 'api-ink', 'ink',
-            'Transparent two-view art', transport='openai-api', image_model='gpt-image-1.5')
+            'Transparent two-view art', transport='openai-api', image_model='gpt-image-1.5', max_paid_spend='1.00')
         self.assertEqual((api_variant['transport'], api_variant['requested_image_model'], api_variant['transparent']),
                          ('openai-api', 'gpt-image-1.5', True))
         with self.assertRaises(ws.WorkspaceError):
@@ -422,7 +424,9 @@ class CharacterHttpTests(unittest.TestCase):
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
         self.base = f'http://127.0.0.1:{self.server.server_port}'
-        self.token = json.load(urlopen(self.base + '/api/bootstrap'))['token']
+        bootstrap = json.load(urlopen(self.base + '/api/bootstrap'))
+        self.token = bootstrap['token']
+        self.session = 'b' * 32 + '.' + bootstrap['session_nonce']
 
     def tearDown(self):
         self.server.shutdown()
@@ -431,9 +435,16 @@ class CharacterHttpTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def call(self, path, method='GET', body=None, token=True):
+        if token and method != 'GET':
+            from studio.permissions import grant
+            if path == '/api/characters': scope = 'character:' + str((body or {}).get('id', ''))
+            elif path.startswith('/api/characters/'):
+                scope = 'character:' + path.split('/')[3]
+            else: scope = None
+            if scope: grant(self.root, scope, 'each-stage', session_id=self.session)
         return urlopen(Request(self.base + path, method=method,
             data=json.dumps(body).encode() if body is not None else None,
-            headers={'Content-Type': 'application/json', 'X-Studio-Token': self.token if token else ''}))
+            headers={'Content-Type': 'application/json', 'X-Studio-Token': self.token if token else '', 'X-VF-Session-ID': self.session}))
 
     def test_character_routes_keep_drafts_and_require_revision_on_selection(self):
         with self.call('/api/characters') as response:

@@ -5,6 +5,7 @@ description: Make a new look (style) on the Modern kit. Use when the user says "
 # /vf-new-style — make a style
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `styles/CONTEXT.md`, `_shared/style-workshop.md`, `_shared/modern.md`, `styles/modern/` (the base style).
 
 1. Ask in one batch. If `mcp__brainstormform__ask_questions` exists, offer one form for the batch.
@@ -20,5 +21,5 @@ Read: `styles/CONTEXT.md`, `_shared/style-workshop.md`, `_shared/modern.md`, `st
 4. Render the 12 second sample as `_shared/style-workshop.md` says. Show the MP4 path and a still.
 5. Fix what the user names. Show the sample again.
 
-Gate: the user approves the sample.
+Gate: pause for human review when this session permission requires it.
 Next: `/vf-new-video`. The user picks the style there, or you run `python anim.py new <slug> --brand <brand> --style <style>`.

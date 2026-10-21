@@ -5,6 +5,7 @@ description: Research a topic from public web pages for a video (stage 00). Use 
 # /vf-research — facts with sources
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `stages/00_research/CONTEXT.md`, `_shared/research.md`, `videos/<id>/01_voice/brief.md`.
 Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` and ask which video.
 
@@ -19,5 +20,5 @@ Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` a
    Each fact ends with a source number. Write only what a source says.
 4. Show the findings, the conflicts and the open points in plain words. Name the weakest source.
 
-Gate: the user checks the facts and the sources, removes weak sources and decides each conflict.
+Gate: pause for human review only when this session permission requires it. Stop if facts or evidence are missing.
 Next: `/vf-script`.

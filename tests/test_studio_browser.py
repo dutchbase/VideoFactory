@@ -22,7 +22,7 @@ class StudioBrowserTests(unittest.IsolatedAsyncioTestCase):
         self.script = self.root / 'videos/demo/01_voice/script.md'
         self.script.parent.mkdir(parents=True)
         self.script.write_text('Original script')
-        (self.script.parent.parent / 'project.json').write_text(json.dumps({'title': '<script>Demo</script>'}))
+        (self.script.parent.parent / 'project.json').write_text(json.dumps({'brand': 'demo', 'title': '<script>Demo</script>'}))
         self.material = ws.create_material(self.root, {'id': 'source', 'title': 'Source', 'description': 'Evidence', 'kind': 'reference', 'source': 'https://example.org', 'rights': 'owned'})
         ws.link_material(self.root, 'video', 'demo', self.material['id'])
         self.server = make_server(self.root, 0)
@@ -44,6 +44,13 @@ class StudioBrowserTests(unittest.IsolatedAsyncioTestCase):
         self.thread.join()
         self.temp.cleanup()
         self.assertEqual(self.errors, [])
+
+    async def grant_review_permission(self):
+        dialog = self.page.get_by_role('dialog')
+        await expect(dialog.get_by_text('Do I have full permission for this session?')).to_be_visible()
+        await dialog.get_by_label('Review each stage').check()
+        await dialog.get_by_role('button', name='Save permission').click()
+        await expect(dialog).to_be_hidden()
 
     async def test_settings_is_shell_only_and_navigation_ignores_old_reads(self):
         urls = []
@@ -84,6 +91,7 @@ class StudioBrowserTests(unittest.IsolatedAsyncioTestCase):
         await self.page.route('**/api/bootstrap?view=shell', bootstrap)
         await self.page.route('**/api/requests/req-test/log', agent_log)
         await self.page.goto(self.base + '/videos/demo/review/script')
+        await self.grant_review_permission()
         editor = self.page.get_by_role('textbox', name='Script source', exact=True)
         await expect(editor).to_have_value('Original script')
         await expect(self.page.locator('#review-count')).to_be_hidden()
@@ -114,6 +122,7 @@ class StudioBrowserTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_write_completes_after_navigation_and_draft_is_preserved(self):
         await self.page.goto(self.base + '/videos/demo/review/script')
+        await self.grant_review_permission()
         editor = self.page.get_by_role('textbox', name='Script source', exact=True)
         await expect(editor).to_have_value('Original script')
         self.script.write_text('Fresh content')
@@ -169,4 +178,5 @@ class StudioBrowserTests(unittest.IsolatedAsyncioTestCase):
     async def test_brief_keeps_approve_and_run_agent_for_unwritten_script(self):
         self.script.write_text('')
         await self.page.goto(self.base + '/videos/demo/review/brief')
+        await self.grant_review_permission()
         await expect(self.page.get_by_role('button', name='Approve & run agent', exact=True)).to_be_disabled()

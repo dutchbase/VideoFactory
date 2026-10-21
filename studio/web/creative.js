@@ -13,6 +13,7 @@ window.CreativeStudio = (() => {
   const actionsRow = (h, ...items) => h.make("div", { className: "form-actions" }, items);
   const text = (h, label, value = "") => h.make("p", {}, [h.make("strong", {}, `${label}: `), String(value || "—")]);
   const apiPath = (type, id) => `/api/creative/${type}/${encodeURIComponent(id)}`;
+  const passed = value => value === "approved" || value === "accepted";
   const refresh = async (h) => { if (h.version !== h.state.routeVersion) return; await h.refreshRequests(); await h.renderRoute({ focus: false }); };
   function message(h) { return h.make("div", { className: "flash-message", hidden: true, role: "status" }); }
   function imageRoute(h, transparent) {
@@ -26,14 +27,16 @@ window.CreativeStudio = (() => {
       { value: "gpt-image-2", label: "gpt-image-2 · opaque output" },
       { value: "gpt-image-1.5", label: "gpt-image-1.5 · supports transparency" },
     ], {});
-    const sync = () => { model.wrapper.hidden = route.control.value !== "openai-api"; };
+    const spend = h.textInput("Maximum paid image spend", { type: "number", min: "0.01", step: "0.01", placeholder: "Amount", help: "Choose a maximum. Each exact paid request still needs your approval." });
+    const sync = () => { model.wrapper.hidden = route.control.value !== "openai-api"; spend.wrapper.hidden = route.control.value !== "openai-api"; };
     route.control.addEventListener("change", sync); sync();
-    return { wrappers: [route.wrapper, model.wrapper], selected() {
+    return { wrappers: [route.wrapper, model.wrapper, spend.wrapper], selected() {
       if (route.control.value !== "openai-api") return { transport: route.control.value };
       if (!model.control.value) throw new Error("Choose an exact OpenAI API image model for this batch.");
+      if (!Number.isFinite(Number(spend.control.value)) || Number(spend.control.value) <= 0) throw new Error("Choose a positive maximum image spend.");
       if (transparent && model.control.value !== "gpt-image-1.5")
         throw new Error("Transparent character art needs the explicitly selected gpt-image-1.5 API model.");
-      return { transport: route.control.value, image_model: model.control.value };
+      return { transport: route.control.value, image_model: model.control.value, max_paid_spend: spend.control.value };
     } };
   }
   function task(h, label, call, host, after = null) {
@@ -53,7 +56,7 @@ window.CreativeStudio = (() => {
   }
   function workshopPreview(h, row) {
     if (row.error) return h.notice("Character record unavailable", row.error, "error-banner");
-    const next = row.brief_state === "approved" ? ["Prepare three concepts", `/characters/${encodeURIComponent(row.id)}#three-concepts`]
+    const next = passed(row.brief_state) ? ["Prepare three concepts", `/characters/${encodeURIComponent(row.id)}#three-concepts`]
       : row.brief_state === "awaiting-review" ? ["Review character brief", reviewUrl("character", row.id, "brief")]
       : ["Resume character brief", `/characters/${encodeURIComponent(row.id)}#brief`];
     if (!row.preview) return h.make("div", { className: "character-no-art" }, [
@@ -91,7 +94,7 @@ window.CreativeStudio = (() => {
     }
   }
   function guidedStages(main, h, type, id, detail, stages, selected = "") {
-    const current = stages.find(stage => detail.reviews[stage.gate]?.state !== "approved") || stages.at(-1);
+    const current = stages.find(stage => !passed(detail.reviews[stage.gate]?.state)) || stages.at(-1);
     const available = stages.find(stage => stage.id === selected)?.id || stages.find(stage => `#${stage.id}` === location.hash)?.id || current.id;
     const nav = h.make("nav", { className: "creative-progress", "aria-label": `${type} workshop stages` });
     const buttons = new Map();
@@ -127,7 +130,7 @@ window.CreativeStudio = (() => {
       action ? actionsRow(h, action) : null]);
   }
   function briefInstruction(h, type, id, detail) {
-    if (detail.reviews.brief.state === "approved") return "The saved brief is approved. Continue to the next stage.";
+    if (passed(detail.reviews.brief.state)) return "The saved brief is complete. Continue to the next stage.";
     if (detail.reviews.brief.state === "awaiting-review" || detail.reviews.brief.ready) return "Check the saved brief and make the human review decision.";
     if (detail.workshop?.form_url) return "Open the questions, then review the saved brief when the agent marks it ready.";
     const request = h.state.requests.find(item => item.subject?.type === type && item.subject?.id === id);
@@ -136,7 +139,7 @@ window.CreativeStudio = (() => {
   }
   function briefAction(h, type, id, detail) {
     if (detail.reviews.brief.state === "awaiting-review") return h.link("Review saved brief", reviewUrl(type, id, "brief"), "button button-primary");
-    if (detail.reviews.brief.state === "approved") return h.link("View approved brief", reviewUrl(type, id, "brief"), "button button-primary");
+    if (passed(detail.reviews.brief.state)) return h.link("View completed brief", reviewUrl(type, id, "brief"), "button button-primary");
     if (detail.reviews.brief.ready) return h.link("Check saved brief", reviewUrl(type, id, "brief"), "button button-primary");
     if (detail.workshop?.form_url) return h.make("a", { href: detail.workshop.form_url, target: "_blank", rel: "noopener noreferrer", className: "button button-primary" }, "Open questions");
     const request = h.state.requests.find(item => item.subject?.type === type && item.subject?.id === id);
@@ -151,7 +154,7 @@ window.CreativeStudio = (() => {
     return h.make("div", { className: "creative-copy" }, [copy, fallback]);
   }
   function briefHandoff(h, type, id, detail) {
-    if (detail.workshop?.form_url || detail.reviews.brief.ready || ["awaiting-review", "approved"].includes(detail.reviews.brief.state)) return null;
+    if (detail.workshop?.form_url || detail.reviews.brief.ready || ["awaiting-review", "approved", "accepted"].includes(detail.reviews.brief.state)) return null;
     const request = h.state.requests.find(item => item.subject?.type === type && item.subject?.id === id);
     if (!request) return h.make("p", { className: "creative-handoff" }, "No current agent request appears in Studio. Copy the message above into your agent chat to recover this workshop.");
     return request.state === "waiting-for-agent" ? h.make("p", { className: "creative-handoff" }, `Request ${request.id} · waiting for an agent. Paste the copied request into your agent chat.`) : null;
@@ -262,7 +265,7 @@ window.CreativeStudio = (() => {
     if (styleHandoff) briefPanel.append(styleHandoff);
     await workshopForm(briefPanel, "style", id, detail, h);
     const materialPanel = h.make("section");
-    materialPanel.append(stageLead(h, "Materials and references", detail.reviews.brief.state === "approved" ? "Describe the source material and inspect its rights before review." : "Approve the brief before preparing materials.",
+    materialPanel.append(stageLead(h, "Materials and references", passed(detail.reviews.brief.state) ? "Describe the source material and inspect its rights before review." : "Complete the brief before preparing materials.",
       "review source choices", "save material evidence", detail.reviews.materials.state === "awaiting-review" ? h.link("Review materials", reviewUrl("style", id, "materials"), "button button-primary") : null));
     for (const reference of style.references || [])
       materialPanel.append(fileLink(h, reference, `Source · ${reference.split("/").at(-1)}`));
@@ -271,7 +274,7 @@ window.CreativeStudio = (() => {
     const batchHost = h.make("div"); await batches(batchHost, "style", id, h);
     materialPanel.append(advanced(h, "image batches and source registration", batchHost));
     const samplePanel = h.make("section");
-    samplePanel.append(stageLead(h, "Samples", detail.reviews.materials.state === "approved" ? "Review each claimed format as a real 12-second motion sample." : "Approve materials before rendering samples.",
+    samplePanel.append(stageLead(h, "Samples", passed(detail.reviews.materials.state) ? "Review each claimed format as a real 12-second motion sample." : "Complete materials before rendering samples.",
       "check motion and decide", "render each claimed sample", detail.reviews.sample.state === "awaiting-review" ? h.link("Review samples", reviewUrl("style", id, "sample"), "button button-primary") : null));
     await samples(samplePanel, id, detail, h);
     guidedStages(main, h, "style", id, detail, [
@@ -358,7 +361,7 @@ window.CreativeStudio = (() => {
         expected_revision: plan.input_revision })); h.state.drafts.delete(`creative:fields:style/${id}/materials`); await refresh(h);
       } catch (error) { h.showFormError(note, error); } finally { submit.disabled = false; }
     });
-    submit.disabled = detail.reviews.brief.state !== "approved";
+    submit.disabled = !passed(detail.reviews.brief.state);
     block.append(form);
     block.append(h.link("Browse or add source material", "/library#library-add", "quiet-link"));
     main.append(block);
@@ -380,7 +383,7 @@ window.CreativeStudio = (() => {
         badge.replaceWith(nextBadge); badge = nextBadge;
         stateText.textContent = status.error || (status.state === "missing" ? "Sample missing. Prepare it again to retry." : "");
         stateText.hidden = !stateText.textContent;
-        prepare.disabled = inFlight || !detail.reviews.materials.ready || detail.reviews.materials.state !== "approved" || status.state === "rendering";
+        prepare.disabled = inFlight || !detail.reviews.materials.ready || !passed(detail.reviews.materials.state) || status.state === "rendering";
       };
       const showSample = () => {
         const file = `styles/${id}/03_sample/${format}/sample.mp4`;
@@ -444,7 +447,7 @@ window.CreativeStudio = (() => {
     main.append(h.pageIntro(detail.profile.title || id, detail.profile.description || "Character workshop", [h.link("New character", "/characters/new", "button")]));
     const catalogRow = workshop;
     const preview = catalogRow?.preview ? workshopPreview(h, catalogRow) : h.notice("No saved artwork yet",
-      detail.reviews.brief.state === "approved" ? "The brief is approved. Prepare three concepts next." : "Review the saved brief before preparing concepts.");
+      passed(detail.reviews.brief.state) ? "The brief is complete. Prepare three concepts next." : "Review the saved brief before preparing concepts.");
     const briefPanel = h.make("section");
     briefPanel.append(stageLead(h, "Brief", briefInstruction(h, type, id, detail),
       "answer questions and review the exact brief", "claim the request and save answers", briefAction(h, type, id, detail)));
@@ -455,7 +458,7 @@ window.CreativeStudio = (() => {
     if (detail.workshop?.state) await workshopForm(briefPanel, type, id, detail, h);
     briefPanel.append(advanced(h, "character profile source", await dirtyFile(h, `characters/${id}/character.md`, "Character profile")));
     const conceptPanel = h.make("section");
-    conceptPanel.append(stageLead(h, "Three concepts", detail.reviews.brief.state === "approved" ? "Prepare three real concepts, then select one for review." : "Approve the saved brief before preparing concepts.",
+    conceptPanel.append(stageLead(h, "Three concepts", passed(detail.reviews.brief.state) ? "Prepare three real concepts, then select one for review." : "Complete the saved brief before preparing concepts.",
       "compare and select artwork", "prepare and register the image batch"));
     conceptPanel.append(preview);
     const concepts = section(h, "Three concepts", "A completed OpenAI batch supplies three real candidates. Select one before design review.");
@@ -474,7 +477,7 @@ window.CreativeStudio = (() => {
       h.state.drafts.delete(`creative:fields:character/${id}/concept`);
       await h.navigate(`/generations/${batch.id}`);
     }, conceptNote)), conceptNote);
-    concepts.querySelector(".button-primary").disabled = detail.reviews.brief.state !== "approved";
+    concepts.querySelector(".button-primary").disabled = !passed(detail.reviews.brief.state);
     const cards = h.make("div", { className: "creative-catalog" });
     for (const candidate of detail.candidates || []) {
       const card = h.make("article", { className: "creative-family" }, [image(h, candidate.path, `Candidate ${candidate.id}`),
@@ -488,7 +491,7 @@ window.CreativeStudio = (() => {
       generation_id: conceptBatch.control.value.trim(), expected_revision: detail.reviews.brief.fingerprint,
       replace_revision: detail.candidate_revision, confirm_replace: replaceConcepts?.control.checked === true,
     })), conceptNote)));
-    concepts.querySelector("details .button-primary").disabled = detail.reviews.brief.state !== "approved";
+    concepts.querySelector("details .button-primary").disabled = !passed(detail.reviews.brief.state);
     conceptPanel.append(concepts, h.link("Review selected concept", reviewUrl(type, id, "design"), "quiet-link"));
     const identity = section(h, "Canonical identity", "The selected concept leads to a sheet and in-scene reference. Save exact appearance locks with the completed two-image batch.");
     if (detail.reference_set) {
@@ -502,7 +505,7 @@ window.CreativeStudio = (() => {
       const batch = await read(h, `/api/characters/${id}/identity/generation`, h.jsonOptions("POST", identityRoute.selected()));
       await h.navigate(`/generations/${batch.id}`);
     }, identityNote), identityNote);
-    identity.querySelector(".button-primary").disabled = detail.reviews.design.state !== "approved";
+    identity.querySelector(".button-primary").disabled = !passed(detail.reviews.design.state);
     const form = h.make("form", { className: "form-shell" });
     const batchId = h.textInput("Completed identity batch ID", { required: true });
     const locks = Object.fromEntries(["hair", "eyes", "face", "proportions", "clothing"].map(name => [name, h.textInput(`${name[0].toUpperCase()}${name.slice(1)} lock`, { required: true, value: detail.reference_set?.appearance?.[name] || "" })]));
@@ -518,13 +521,13 @@ window.CreativeStudio = (() => {
         replace_revision: detail.reference_revision, confirm_replace: replaceIdentity?.control.checked === true,
       })); h.state.drafts.delete(`creative:fields:character/${id}/identity`); await refresh(h); } catch (error) { h.showFormError(identityNote, error); } finally { save.disabled = false; }
     });
-    save.disabled = detail.reviews.design.state !== "approved";
+    save.disabled = !passed(detail.reviews.design.state);
     identity.append(advanced(h, "register identity and appearance locks", form));
     const identityPanel = h.make("section");
-    identityPanel.append(stageLead(h, "Identity", detail.reviews.design.state === "approved" ? "Check the real sheet and in-scene image together." : "Approve a selected concept before identity images are prepared.",
+    identityPanel.append(stageLead(h, "Identity", passed(detail.reviews.design.state) ? "Check the real sheet and in-scene image together." : "Complete a selected concept before identity images are prepared.",
       "review consistency", "prepare and register both images"), identity, h.link("Review identity", reviewUrl(type, id, "identity"), "quiet-link"));
     const variantPanel = h.make("section");
-    variantPanel.append(stageLead(h, "Variants and actions", detail.reviews.identity.state === "approved" ? "Choose a reviewed style, then inspect each saved action." : "Approve the identity pair before making style variants.",
+    variantPanel.append(stageLead(h, "Variants and actions", passed(detail.reviews.identity.state) ? "Choose a reviewed style, then inspect each saved action." : "Complete the identity pair before making style variants.",
       "review each action", "prepare variant art and exports"));
     await variants(variantPanel, id, detail, h);
     const batchHost = h.make("div"); await batches(batchHost, "character", id, h);
@@ -533,7 +536,7 @@ window.CreativeStudio = (() => {
       { id: "brief", label: "Brief", gate: "brief", panel: briefPanel },
       { id: "three-concepts", label: "Three concepts", gate: "design", panel: conceptPanel },
       { id: "identity", label: "Identity", gate: "identity", panel: identityPanel },
-      { id: "variants", label: "Variants and actions", gate: "identity", status: detail.variants?.length && detail.variants.every(item => item.state === "approved") ? "approved" : "draft", panel: variantPanel },
+      { id: "variants", label: "Variants and actions", gate: "identity", status: detail.variants?.length && detail.variants.every(item => passed(item.state)) ? "accepted" : "draft", panel: variantPanel },
     ], new URLSearchParams(location.search).has("variant") ? "variants" : "");
   }
   async function variants(main, id, detail, h) {
@@ -561,7 +564,7 @@ window.CreativeStudio = (() => {
       } catch (error) { h.showFormError(note, error); } finally { create.disabled = false; }
     });
     block.append(form);
-    create.disabled = detail.reviews.identity.state !== "approved";
+    create.disabled = !passed(detail.reviews.identity.state);
     const register = h.make("form", { className: "form-shell" });
     const target = h.textInput("Variant ID to register", { required: true });
     const batch = h.textInput("Completed variant batch ID", { required: true });
@@ -580,7 +583,7 @@ window.CreativeStudio = (() => {
         confirm_replace: replaceVariant.control.checked,
       })); await refresh(h); } catch (error) { h.showFormError(note, error); } finally { registerButton.disabled = false; }
     });
-    registerButton.disabled = detail.reviews.identity.state !== "approved" || !detail.reference_set;
+    registerButton.disabled = !passed(detail.reviews.identity.state) || !detail.reference_set;
     block.append(advanced(h, "register completed variant art", register), note); main.append(block);
     const selected = new URLSearchParams(location.search).get("variant");
     if (selected && detail.variants?.some(item => item.id === selected)) await playground(main, id, selected, detail, h);
@@ -616,7 +619,7 @@ window.CreativeStudio = (() => {
           }));
           await h.navigate(`/jobs/${encodeURIComponent(job.id)}`);
         }, note);
-        run.disabled = !native.available || native.review !== "approved" || !!binding.render?.error;
+        run.disabled = !native.available || !passed(native.review) || !!binding.render?.error;
         row.append(actionsRow(h, run), note);
         nativePanel.append(row);
       }
@@ -625,7 +628,7 @@ window.CreativeStudio = (() => {
       const note = message(h);
       const activate = task(h, "Activate approved native rig", () => h.api(`/api/characters/${id}/variants/${variant}/native/activate`,
         h.jsonOptions("POST", { expected_fingerprint: detail.reviews[`rig:${variant}`]?.fingerprint })), note);
-      activate.disabled = native.review !== "approved";
+      activate.disabled = !passed(native.review);
       nativePanel.append(actionsRow(h, activate), note);
     }
     main.append(nativePanel);
@@ -844,8 +847,8 @@ window.CreativeStudio = (() => {
     const bar = h.decisionBar({
       state: state.state, missing: state.ready ? "" : (state.missing || []).join(", "),
       showReady: ["draft", "stale"].includes(state.state), canReady: Boolean(state.ready),
-      canDecide: Boolean(state.ready) && ["awaiting-review", "changes-requested"].includes(state.state),
-      canChange: Boolean(state.ready) && ["awaiting-review", "approved", "changes-requested"].includes(state.state),
+      canDecide: Boolean(state.ready) && ["awaiting-review", "accepted", "changes-requested"].includes(state.state),
+      canChange: Boolean(state.ready) && ["awaiting-review", "approved", "accepted", "changes-requested"].includes(state.state),
       onReady: () => call("ready", { expected_revision: state.fingerprint }),
       onApprove: () => decide("approved"), onRequestChanges: note => decide("changes-requested", note),
     });
@@ -905,6 +908,8 @@ window.CreativeStudio = (() => {
     const errorHost = h.make("div"); detail.append(errorHost);
     const receipt = h.make("p"); detail.append(receipt);
     main.append(detail);
+    if (record.transport === "openai-api") main.append(h.paidPanel(id, `${record.subject_type}:${record.subject_id}`));
+    else main.append(h.notice("Known cost required", "This image route cannot run until its exact paid cost and provider evidence are known. Choose the quoted OpenAI API route for paid generation.", "inline-notice"));
     const controls = section(h, "Batch review and execution", "This batch's saved authorization and execution state.");
     const stateMessage = h.make("p"); controls.append(stateMessage);
     let timer = 0;

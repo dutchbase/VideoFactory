@@ -16,6 +16,7 @@ from unittest.mock import patch
 from PIL import Image
 
 from studio import workspace as ws
+from studio.permissions import grant
 
 
 class SnapshotTests(unittest.TestCase):
@@ -269,10 +270,14 @@ class SnapshotTests(unittest.TestCase):
         try:
             base = f'http://127.0.0.1:{server.server_port}'
             with urlopen(base + '/api/bootstrap') as response:
-                token = json.load(response)['token']
+                bootstrap = json.load(response)
+            token = bootstrap['token']
+            session_id = 'd' * 32 + '.' + bootstrap['session_nonce']
+            grant(self.root, 'video:videofactory/demo', 'full', session_id=session_id)
             def post(body):
                 request = Request(base + '/api/videos/demo/creative', data=json.dumps(body).encode(),
-                    headers={'Content-Type': 'application/json', 'X-Studio-Token': token}, method='POST')
+                    headers={'Content-Type': 'application/json', 'X-Studio-Token': token,
+                             'X-VF-Session-ID': session_id}, method='POST')
                 with urlopen(request) as response: return json.load(response)
             proposal = post({'style_id': 'ink', 'characters': []})
             self.assertFalse(proposal['applied'])

@@ -19,6 +19,8 @@ from PIL import Image
 from studio import workspace as ws
 from studio.creative import creative_fingerprint, creative_review_state
 from studio.production import production_lock, lease_fds, child_environment
+from studio.permissions import require_permission, child_environment as permission_environment
+from studio.paid_requests import atomic_json, money
 
 _ROUTES = {"native", "codex-cli", "openai-api"}
 _PURPOSES = {"character-concepts": ("character", "brief", 3),
@@ -113,7 +115,7 @@ def _current(root, record):
     subject_type, subject_id = record["subject_type"], record["subject_id"]
     gate = _PURPOSES[record["purpose"]][1]
     state = creative_review_state(root, subject_type, subject_id, gate)
-    if state["state"] != "approved" or not state["ready"] or state["fingerprint"] != record["input_revision"]:
+    if state["state"] not in {"approved", "accepted"} or not state["ready"] or state["fingerprint"] != record["input_revision"]:
         raise ws.WorkspaceError("conflict", "Approved creative inputs changed.")
     if _references(root, record["references"]) != record["resolved_references"]:
         raise ws.WorkspaceError("conflict", "Generation reference files changed.")
@@ -138,19 +140,27 @@ def _check_animation_variant(root, subject_id, context, resolved):
 
 def prepare_generation(root, request):
     root = Path(root).resolve()
-    if not isinstance(request, dict) or set(request) - {"id", "subject_type", "subject_id", "purpose", "prompt", "references", "transparent", "image_count", "input_revision", "provider", "transport", "image_model", "context"}:
+    if not isinstance(request, dict) or set(request) - {"id", "subject_type", "subject_id", "purpose", "prompt", "references", "transparent", "image_count", "input_revision", "provider", "transport", "image_model", "context", "max_paid_spend"}:
         raise ws.WorkspaceError("invalid", "Malformed generation request.")
     ident = ws._id(request.get("id"))
     purpose = request.get("purpose")
     if purpose not in _PURPOSES or request.get("subject_type") != _PURPOSES[purpose][0]:
         raise ws.WorkspaceError("invalid", "Unsupported generation purpose or subject.")
     subject_id = ws._id(request.get("subject_id"))
+    scope = request["subject_type"] + ":" + subject_id
+    try: require_permission(root, scope)
+    except ValueError as exc: raise ws.WorkspaceError("blocked", str(exc)) from None
     if request.get("provider", "openai") != "openai" or request.get("transport", "codex-cli") not in _ROUTES:
         raise ws.WorkspaceError("invalid", "Only the selected OpenAI route is supported.")
     if request.get("image_model") is not None and (request.get("transport") != "openai-api" or request["image_model"] not in {"gpt-image-2", "gpt-image-1.5"}):
         raise ws.WorkspaceError("invalid", "Explicit image model selection is only for the OpenAI API route.")
     if request.get("transport") == "openai-api" and request.get("transparent") is True and request.get("image_model") != "gpt-image-1.5":
         raise ws.WorkspaceError("invalid", "Transparent OpenAI API art requires an explicit gpt-image-1.5 choice.")
+    if request.get("transport") == "openai-api":
+        maximum = money(request.get("max_paid_spend"))
+        if maximum <= 0: raise ws.WorkspaceError("invalid", "Choose a positive maximum image spend.")
+    elif request.get("max_paid_spend") is not None:
+        raise ws.WorkspaceError("invalid", "Maximum paid spend applies to the API route.")
     if not isinstance(request.get("prompt"), str) or not request["prompt"].strip() or len(request["prompt"]) > 20000:
         raise ws.WorkspaceError("invalid", "A generation prompt is required.")
     if not isinstance(request.get("transparent"), bool) or type(request.get("image_count")) is not int or request["image_count"] not in range(1, 4):
@@ -172,7 +182,7 @@ def prepare_generation(root, request):
         raise ws.WorkspaceError("invalid", "This generation purpose does not accept variant context.")
     gate = _PURPOSES[purpose][1]
     state = creative_review_state(root, request["subject_type"], subject_id, gate)
-    if state["state"] != "approved" or not state["ready"] or request.get("input_revision") != state["fingerprint"]:
+    if state["state"] not in {"approved", "accepted"} or not state["ready"] or request.get("input_revision") != state["fingerprint"]:
         raise ws.WorkspaceError("blocked", "Current upstream approval is required.")
     references = request.get("references", [])
     resolved = _references(root, references)
@@ -189,20 +199,28 @@ def prepare_generation(root, request):
               "provider": "openai", "transport": request.get("transport", "codex-cli"),
               "output_dir": output_dir, "state": "awaiting-batch-approval", "created_at": ws._now(),
               "outputs": [], "image_model": "unknown", "requested_image_model": request.get("image_model"), "coordinator": None,
+              "max_paid_spend": str(maximum) if request.get("transport") == "openai-api" else None,
               "review": {"purpose": purpose, "image_count": request["image_count"], "context": context,
                          "route": request.get("transport", "codex-cli"), "prompt": request["prompt"].strip()}}
     with ws.workspace_lock(root):
         if _record_path(root, ident).exists():
             raise ws.WorkspaceError("conflict", "Generation request ID already exists.")
         _save(root, record)
+        if record["transport"] == "openai-api":
+            atomic_json(root / '.studio/runs' / (ident + '.json'),
+                        dict(id=ident, scope=scope, settings=dict(max_paid_spend=str(maximum))))
     return record
 
 
 def approve_generation(root, request_id, reviewer, *, billing_acknowledged=False):
+    if os.environ.get("VF_PERMISSION_WORKER") == "1":
+        raise ws.WorkspaceError("blocked", "A worker cannot approve a paid image batch.")
     if not isinstance(reviewer, str) or not reviewer.strip():
         raise ws.WorkspaceError("invalid", "Batch reviewer is required.")
     with ws.workspace_lock(root):
         record = generation_detail(root, request_id)
+        try: require_permission(root, record['subject_type'] + ':' + record['subject_id'])
+        except ValueError as exc: raise ws.WorkspaceError("blocked", str(exc)) from None
         if record["state"] != "awaiting-batch-approval":
             raise ws.WorkspaceError("conflict", "Batch is no longer awaiting approval.")
         if record["transport"] == "openai-api" and billing_acknowledged is not True:
@@ -258,7 +276,7 @@ def _run_codex(root, record, cli):
     cmd += [prompt]
     try:
         result = subprocess.run(cmd, cwd=root, capture_output=True, text=True, timeout=900,
-                                pass_fds=lease_fds(), env=os.environ | child_environment(root), start_new_session=True)
+           pass_fds=lease_fds(), env=os.environ | child_environment(root) | permission_environment(root, record['subject_type'] + ':' + record['subject_id']), start_new_session=True)
     except (OSError, subprocess.TimeoutExpired):
         raise ws.WorkspaceError("blocked", "Codex image generation did not complete.") from None
     events = []
@@ -308,17 +326,18 @@ def _run_api(root, record):
         if record["transparent"]: args += ["--background", "transparent"]
         from studio.paid_requests import managed_quote, reserve, settle
         request_id = image_request_id(record, index, model)
-        quoted = managed_quote(root, request_id, purpose='image', metadata=dict(model=model,index=index))
-        if quoted:
-            managed_run, quote = quoted
-            request_id = quote['request_id']
-            reserve(root, managed_run, request_id, quote['max_cost'], provider='openai', purpose='image')
+        purchase = dict(model=model, index=index, image_count=record['image_count'],
+                        subject=f"{record['subject_type']}:{record['subject_id']}", purpose=record['purpose'],
+                        prompt=record['prompt'], size='auto', quality='medium',
+                        transparent=record['transparent'], references=record['resolved_references'])
+        managed_run, quote = managed_quote(root, request_id, purpose='image', metadata=purchase, run_id=record['id'])
+        request_id = quote['request_id']
+        reserve(root, managed_run, request_id, quote['max_cost'], provider='openai', purpose='image')
         try: result = subprocess.run(args, cwd=root, capture_output=True, text=True, timeout=900,
-                                     pass_fds=lease_fds(), env=os.environ | child_environment(root), start_new_session=True)
+                                     pass_fds=lease_fds(), env=os.environ | child_environment(root) | permission_environment(root, record['subject_type'] + ':' + record['subject_id']), start_new_session=True)
         except (OSError, subprocess.TimeoutExpired): break
         if result.returncode: break
-        if quoted:
-            settle(root, managed_run, request_id, quote['max_cost'], estimated_upper_bound=True)
+        settle(root, managed_run, request_id, quote['max_cost'], estimated_upper_bound=True)
         outputs.append(path.relative_to(root).as_posix())
     return {"outputs": outputs, "image_tool_used": bool(outputs), "image_model": model}
 
@@ -330,11 +349,12 @@ def run_generation(root, request_id, transport="codex-cli"):
 
 def _run_generation(root, request_id, transport="codex-cli"):
     root = Path(root).resolve()
-    if os.environ.get("VF_PAID_GUARD") == "1" and transport != "openai-api":
-        from studio.paid_requests import BudgetError
-        raise BudgetError("Managed image generation requires the quoted OpenAI API route; agent/native transports have no verified request cost bound.")
+    if transport != "openai-api":
+        raise ws.WorkspaceError("blocked", "Image generation needs a verified maximum-cost quote and separate purchase approval. Use the quoted OpenAI API route.")
     with ws.workspace_lock(root):
         record = generation_detail(root, request_id)
+        try: require_permission(root, record['subject_type'] + ':' + record['subject_id'])
+        except ValueError as exc: raise ws.WorkspaceError("blocked", str(exc)) from None
         if transport not in _ROUTES or transport != record["transport"]:
             raise ws.WorkspaceError("invalid", "Generation route differs from approved batch.")
         if record["state"] not in {"approved", "partial"}:

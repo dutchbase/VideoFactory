@@ -270,13 +270,13 @@ def compile_character_pack(root, id, variant, *, action=None, view=None):
             "source_revision": _source_revision(root, id, variant, action) if action else None}
 
 
-def prepare_animation(root, id, variant, action, *, transport="codex-cli", image_model=None):
+def prepare_animation(root, id, variant, action, *, transport="codex-cli", image_model=None, max_paid_spend=None):
     from studio.characters import _material
     import uuid
     if action not in ACTIONS: raise ws.WorkspaceError("invalid", "Unknown controlled character action.")
     data = _registered_variant(root, id, variant)
     state = creative_review_state(root, "character", id, "identity")
-    if state["state"] != "approved" or data["identity_revision"] != state["fingerprint"]:
+    if state["state"] not in {"approved", "accepted"} or data["identity_revision"] != state["fingerprint"]:
         raise ws.WorkspaceError("blocked", "Current character identity approval is required.")
     reference = _registered_reference(root, id)
     material_id = f"{id}-{data['generation_id']}-variant"
@@ -299,7 +299,7 @@ def prepare_animation(root, id, variant, action, *, transport="codex-cli", image
                        {"material_id": reference["material_ids"]["in-scene"], "role": "canonical in-scene identity"},
                        {"material_id": material_id, "role": "approved style variant two-view sheet"}],
         "transparent": True, "image_count": 1, "input_revision": state["fingerprint"],
-        "transport": transport, "image_model": image_model})
+        "transport": transport, "image_model": image_model, "max_paid_spend": max_paid_spend})
     return {**batch, "motion_template": motion_template(action)}
 
 
@@ -408,7 +408,7 @@ def export_character_frames(root, id, variant, action, view, fps=30, *, prop=Non
     if action not in ACTIONS or view not in VIEWS:
         raise ws.WorkspaceError("unavailable", "Character action or view is unavailable.")
     state = creative_review_state(root, "character", id, "identity")
-    if state["state"] != "approved": raise ws.WorkspaceError("blocked", "Current identity approval is required.")
+    if state["state"] not in {"approved", "accepted"}: raise ws.WorkspaceError("blocked", "Current identity approval is required.")
     manifest = compile_character_pack(root, id, variant, action=action, view=view)
     if (manifest["actions"][action]["requires_prop"] and prop is None) or (prop is not None and
             (not isinstance(prop, str) or any(prop not in perspective["rig"]["props"] for perspective in manifest["views"].values()))):

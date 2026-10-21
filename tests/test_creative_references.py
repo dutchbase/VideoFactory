@@ -2,6 +2,7 @@ import hashlib
 import fcntl
 import json
 import os
+import socket
 import shutil
 import tempfile
 import unittest
@@ -62,9 +63,11 @@ class ReferenceTests(unittest.TestCase):
                     'components': [{'name': 'primary button', 'description': 'round green button'}],
                     'logo_candidates': [{'url': 'https://example.org/logo.svg', 'rights': 'unknown'}]}
         bad = {**evidence, 'screenshot': '../_auth/secret.png'}
-        with self.assertRaises(ws.WorkspaceError):
-            save_website_reference(self.root, 'classroom', bad, creative_fingerprint(self.root, 'style', 'classroom', 'materials'))
-        result = save_website_reference(self.root, 'classroom', evidence, creative_fingerprint(self.root, 'style', 'classroom', 'materials'))
+        with patch('studio.references.socket.getaddrinfo', return_value=[
+            (socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_TCP, '', ('93.184.215.14', 443))]):
+            with self.assertRaises(ws.WorkspaceError):
+                save_website_reference(self.root, 'classroom', bad, creative_fingerprint(self.root, 'style', 'classroom', 'materials'))
+            result = save_website_reference(self.root, 'classroom', evidence, creative_fingerprint(self.root, 'style', 'classroom', 'materials'))
         self.assertEqual(result['evidence']['logo_candidates'][0]['rights'], 'unknown')
         before = creative_fingerprint(self.root, 'style', 'classroom', 'materials')
         screenshot.write_bytes(b'changed')

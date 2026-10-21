@@ -313,15 +313,17 @@ def eleven(path: str, key: str, body: dict | None = None) -> bytes:
     import urllib.error
     import urllib.request
     data = json.dumps(body).encode("utf-8") if isinstance(body, dict) and body else None
-    guarded = bool(body) and os.environ.get("VF_PAID_GUARD") == "1"
+    guarded = bool(body)
     if guarded:
         from studio import paid_requests
+        if os.environ.get("VF_PAID_GUARD") != "1":
+            raise paid_requests.BudgetError("Paid voice needs a managed run and approval of its exact cost.")
         run_root, run_id = os.environ.get("VF_RUN_ROOT"), os.environ.get("VF_RUN_ID")
-        if not run_root or not run_id:
+        if not run_root or not run_id or Path(run_root).resolve() != ROOT.resolve():
             raise paid_requests.BudgetError("Managed paid voice needs a saved run and verified request cost.")
         request_id = hashlib.sha256(json.dumps({"path": path, "body": body}, sort_keys=True).encode("utf-8")).hexdigest()
         run_id, quote = paid_requests.managed_quote(run_root, request_id, purpose="voice",
-                                                    metadata={"model": body.get("model_id"), "characters": len(body.get("text", ""))})
+                                                    metadata={"path": path, "body": body})
         request_id = quote["request_id"]
         paid_requests.reserve(run_root, run_id, request_id, quote["max_cost"], provider="elevenlabs", purpose="voice")
     request = urllib.request.Request(ELEVEN + path, data=data, method="POST" if data else "GET",
@@ -2635,20 +2637,53 @@ def crop_video(src: Path, box: dict, out: Path) -> Path:
 
 
 def cmd_review(a) -> None:
-    from studio.workspace import mark_ready, review_state
+    from studio.workspace import GATES, WorkspaceError, accept_under_permission, decide_review, mark_ready, review_state
+    gate = a.gate
+    if gate is None:
+        pending = [name for name in GATES if review_state(ROOT, a.slug, name)["state"] == "awaiting-review"]
+        if len(pending) != 1:
+            raise WorkspaceError("invalid", "Give a gate; exactly one stage must await review to omit it.")
+        gate = pending[0]
+    action = a.ready or a.approve or a.changes or a.accept
+    if action and not a.expected:
+        die("A review action requires --expected <fingerprint>.")
     if a.ready:
-        if not a.expected:
-            die("--ready requires --expected <fingerprint>")
-        state = mark_ready(ROOT, a.slug, a.gate, a.expected)
+        state = mark_ready(ROOT, a.slug, gate, a.expected)
+    elif a.accept:
+        state = accept_under_permission(ROOT, a.slug, gate, a.expected)
+    elif a.approve or a.changes:
+        if os.environ.get("VF_PERMISSION_WORKER") == "1":
+            raise WorkspaceError("blocked", "A worker cannot make a human review decision.")
+        if not a.reviewer:
+            die("A human decision requires --reviewer NAME.")
+        state = decide_review(ROOT, a.slug, gate, "approved" if a.approve else "changes-requested",
+                              a.reviewer, a.note or "", a.expected)
     else:
-        state = review_state(ROOT, a.slug, a.gate)
-    print(f"{a.gate}: {state['state']}")
+        state = review_state(ROOT, a.slug, gate)
+    print(f"{gate}: {state['state']}")
     print(f"fingerprint: {state['fingerprint']}")
-    print(f"http://127.0.0.1:{a.port}/videos/{a.slug}/review/{a.gate}")
+    print(f"http://127.0.0.1:{a.port}/videos/{a.slug}/review/{gate}")
+
+
+def cmd_permission(a) -> None:
+    from studio.permissions import SESSION_CHOICES, SESSION_QUESTION, grant, revoke, session_state
+    if a.grant:
+        state = grant(ROOT, a.scope, a.grant, a.stages or (), session_id=a.session, reviewer=a.reviewer)
+    elif a.revoke:
+        state = revoke(ROOT, a.scope, session_id=a.session, reviewer=a.reviewer)
+    else:
+        state = session_state(ROOT, a.scope, session_id=a.session)
+    print(SESSION_QUESTION)
+    print("choices: " + ", ".join(SESSION_CHOICES))
+    print(json.dumps(state, ensure_ascii=False))
 
 
 def cmd_catalog_import(a) -> None:
-    from studio.workspace import import_existing_styles
+    from studio.permissions import require_permission
+    from studio.workspace import import_existing_styles, list_style_families
+    # Check every target before import_existing_styles writes the first style.
+    for family in list_style_families(ROOT):
+        require_permission(ROOT, "style:" + family["default_variant"])
     styles = import_existing_styles(ROOT)
     print(json.dumps({"imported": len(styles), "styles": [style.get("id") for style in styles]}, ensure_ascii=False))
 
@@ -2702,8 +2737,14 @@ def cmd_run(a) -> None:
 
 
 def cmd_run_quote(a) -> None:
-    from studio.paid_requests import record_quote
-    print(json.dumps(record_quote(ROOT, a.run_id, a.request_id, a.max_cost, a.evidence, retry=a.retry), indent=2))
+    from studio.paid_requests import inspect_quote, record_quote
+    record_quote(ROOT, a.run_id, a.request_id, a.max_cost, a.evidence, retry=a.retry)
+    print(json.dumps(inspect_quote(ROOT, a.run_id, a.request_id), indent=2))
+
+
+def cmd_run_approve(a) -> None:
+    from studio.paid_requests import approve_quote
+    print(json.dumps(approve_quote(ROOT, a.run_id, a.request_id, a.expected, a.reviewer), indent=2))
 
 
 def cmd_run_reconcile(a) -> None:
@@ -2713,16 +2754,66 @@ def cmd_run_reconcile(a) -> None:
 
 def _dispatch(a) -> None:
     """Keep direct CLI writers in the same lease as Studio and managed runs."""
-    read_only = a.cmd in {"studio", "studio-job", "studio-request", "status", "preview", "run"}
-    read_only = read_only or (a.cmd == "review" and not a.ready)
+    read_only = a.cmd in {"studio", "studio-job", "studio-request", "status", "preview", "run", "chapters"}
+    read_only = read_only or (a.cmd == "review" and not (a.ready or a.approve or a.changes or a.accept))
+    read_only = read_only or (a.cmd == "permission" and not (a.grant or a.revoke))
     read_only = read_only or (a.cmd == "queue")  # the queue leases each render itself
     read_only = read_only or (a.cmd == "lib" and (a.kind in ("find", "fx") or getattr(a, "act", None) == "search"))  # fx: generated files only
     read_only = read_only or (a.cmd == "stock" and a.act == "search")
-    read_only = read_only or a.cmd == "audio"  # writes only library/audio/, never a video
+    read_only = read_only or (a.cmd == "speak" and (a.dry_run or a.check))
+    read_only = read_only or (a.cmd == "audio" and a.act == "find")
     if read_only:
         return a.fn(a)
     from studio.production import production_lock
     with production_lock(ROOT, "cli:" + a.cmd):
+        from studio.permissions import require_permission
+        from studio.project_paths import project_id, resolve_project
+        if a.cmd == "new":
+            require_permission(ROOT, f"video:{a.brand}/{a.slug}")
+        elif a.cmd in {"research", "speak", "transcribe", "cues", "stills", "check", "render", "thumbnail", "use", "listen", "grab", "record"}:
+            if a.cmd == "speak" and (a.dry_run or a.check):
+                pass
+            else:
+                slug = getattr(a, "slug", None)
+                if not slug:
+                    raise ValueError("Give a video ID for this write.")
+                video_id = project_id(ROOT, resolve_project(ROOT, slug))
+                require_permission(ROOT, "video:" + video_id)
+                from studio.workspace import review_state
+                previous = {"speak": "script", "transcribe": "voice", "cues": "transcript",
+                            "stills": "cues", "check": "cues", "render": "cues",
+                            "thumbnail": "cues"}.get(a.cmd)
+                if previous and review_state(ROOT, video_id, previous)["state"] not in {"approved", "accepted", "skipped", "not-applicable"}:
+                    raise ValueError(f"Complete the current {previous} review before {a.cmd}.")
+                if a.cmd == "use":
+                    brand_scope = "brand:" + video_id.split("/", 1)[0]
+                    if a.ref.startswith("stock:"):
+                        import stock
+                        item = stock.load_item(a.ref)
+                        media, _ = stock._paths(item["provider"], item["kind"], item["id"])
+                        if not media.is_file():
+                            require_permission(ROOT, brand_scope)
+                    elif a.ref.startswith("audio:"):
+                        import audio
+                        aid = a.ref.removeprefix("audio:")
+                        local = {r["id"]: r for r in audio._jsonl(audio._state() / "local.jsonl")}
+                        if aid not in local or not (audio.AUDIO / local[aid]["path"]).is_file():
+                            require_permission(ROOT, brand_scope)
+        elif a.cmd == "lib" and getattr(a, "kind", None) == "adapt":
+            require_permission(ROOT, "brand:" + a.brand)
+        elif a.cmd == "lib" and getattr(a, "kind", None) not in {"find", "fx"}:
+            scope = getattr(a, "permission_scope", None)
+            if not scope or scope.split(":", 1)[0] not in {"brand", "style", "character"}:
+                raise ValueError("Give --permission-scope brand:ID, style:ID, or character:ID for this shared change.")
+            require_permission(ROOT, scope)
+        elif a.cmd in {"stock", "audio", "sounds", "login"}:
+            scope = getattr(a, "permission_scope", None)
+            if not scope or scope.split(":", 1)[0] not in {"brand", "style", "character"}:
+                raise ValueError("Give --permission-scope brand:ID, style:ID, or character:ID for this shared change.")
+            require_permission(ROOT, scope)
+        elif a.cmd == "run-quote":
+            from studio.paid_requests import _run_scope
+            require_permission(ROOT, _run_scope(ROOT, a.run_id))
         return a.fn(a)
 
 
@@ -2857,10 +2948,25 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = command("review", cmd_review, "Print a gate's review state and the exact studio address.")
     p.add_argument("slug")
-    p.add_argument("gate", choices=["research", "brief", "script", "voice-test", "voice", "transcript", "cues", "scene", "render"])
-    p.add_argument("--ready", action="store_true", help="mark the gate ready for review")
+    p.add_argument("gate", nargs="?", choices=["research", "brief", "script", "voice-test", "voice", "transcript", "cues", "scene", "render"])
+    actions = p.add_mutually_exclusive_group()
+    actions.add_argument("--ready", action="store_true", help="mark the gate ready for review")
+    actions.add_argument("--approve", action="store_true", help="human approves this revision")
+    actions.add_argument("--changes", action="store_true", help="human requests changes")
+    actions.add_argument("--accept", action="store_true", help="accept under this session's permission")
     p.add_argument("--expected", help="the current input fingerprint")
+    p.add_argument("--reviewer", help="name of the human reviewer")
+    p.add_argument("--note", help="short review note")
     p.add_argument("--port", type=int, default=8765, help="studio port (default 8765)")
+
+    p = command("permission", cmd_permission, "Inspect or change this session's permission for one named item.")
+    p.add_argument("--scope", required=True, help="video:brand/slug, brand:id, style:id or character:id")
+    actions = p.add_mutually_exclusive_group()
+    actions.add_argument("--grant", choices=["full", "each-stage", "selected-stages"])
+    actions.add_argument("--revoke", action="store_true")
+    p.add_argument("--stages", nargs="+", help="stages that need review when --grant selected-stages")
+    p.add_argument("--session", help="explicit chat session ID; use VF_SESSION_ID for following commands")
+    p.add_argument("--reviewer", default="human", help="name of the person granting or revoking permission")
 
     p = command("studio-job", cmd_studio_job, "Start a validated production job.")
     p.add_argument("action")
@@ -2899,6 +3005,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = command("login", cmd_login, "Log in once by hand and save the session for grab and record.")
     p.add_argument("site")
     p.add_argument("url")
+    p.add_argument("--permission-scope", help="named brand, style, or character grant for shared login data")
     p.add_argument("--expect", help="text or selector that shows when logged in; the session is saved then, no Enter needed")
     p.add_argument("--timeout", type=float, default=600, help="seconds to wait for --expect (default 600)")
 
@@ -2919,6 +3026,7 @@ def build_parser() -> argparse.ArgumentParser:
     q.add_argument("--limit", type=int, default=20, help="most results (default 20)")
     q = command("add", cmd_lib, "Add icons to the library.", parent=icon)
     q.add_argument("refs", nargs="+", help="icon references like lucide/rocket")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     lottie = command("lottie", cmd_lib, "Add a Lottie animation.", parent=lib).add_subparsers(dest="act", required=True, metavar="action")
     q = command("add", cmd_lib, "Add a Lottie file.", parent=lottie)
     q.add_argument("url", help="direct link to a .json Lottie file")
@@ -2930,22 +3038,26 @@ def build_parser() -> argparse.ArgumentParser:
     q.add_argument("--title", help="a short title for the catalog")
     q.add_argument("--group", help="a group such as loading, success, arrows (see library/lottie/GALLERY.html)")
     q.add_argument("--tags", help="search words, comma separated")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     graphic = command("graphic", cmd_lib, "Add a graphic.", parent=lib).add_subparsers(dest="act", required=True, metavar="action")
     q = command("add", cmd_lib, "Add an SVG graphic.", parent=graphic)
     q.add_argument("url", help="direct link to an .svg file")
     q.add_argument("set")
     q.add_argument("name")
     q.add_argument("--license", required=True, help="an SPDX id from the allow list")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     q = command("find", cmd_lib, "Search the library by words, kind and category (map: library/CATALOG.md).", parent=lib)
     q.add_argument("query", nargs="?", default="", help="words that must all match (empty: everything)")
     q.add_argument("--brand", required=True)
     q.add_argument("--kind", dest="only_kind", help="fx, block, motion, animicon, icon, graphic, lottie, capture or upstream")
     q.add_argument("--category", help="a category from library/categories.json, for example text or transitions")
     q = command("upstream", cmd_lib, "Rebuild the catalog of components we can rewrite (library/upstream/*.json).", parent=lib)
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     q = command("port", cmd_lib, "Start a new fx part from an upstream component (draft; guide: _shared/porting.md).", parent=lib)
     q.add_argument("ref", help="upstream:<source>/<name>, from lib find --kind upstream")
     q.add_argument("--id", help="the fx id (default: the upstream name)")
     q.add_argument("--slug", help="the video it is made for, <brand>/<slug>")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     fx = command("fx", cmd_lib, "Check or look at one fx part.", parent=lib).add_subparsers(dest="act", required=True, metavar="action")
     q = command("check", cmd_lib, "Rules and a demo run in both engines; prints OK or the problems.", parent=fx)
     q.add_argument("id")
@@ -2963,8 +3075,10 @@ def build_parser() -> argparse.ArgumentParser:
     q.add_argument("--tokens", help="JSON file with target token values")
     q.add_argument("--replacement")
     q.add_argument("--validation", help="JSON file with target-brand evidence")
-    command("index", cmd_lib, "Rebuild library/INDEX.json.", parent=lib)
-    command("gallery", cmd_lib, "PNG contact sheets of every icon and graphic.", parent=lib)
+    q = command("index", cmd_lib, "Rebuild library/INDEX.json.", parent=lib)
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
+    q = command("gallery", cmd_lib, "PNG contact sheets of every icon and graphic.", parent=lib)
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
 
     p = command("stock", cmd_stock, "Search and download stock video, photo and audio.")
     stock = p.add_subparsers(dest="act", required=True, metavar="action")
@@ -2977,18 +3091,23 @@ def build_parser() -> argparse.ArgumentParser:
     q.add_argument("--limit", type=int, default=12)
     q = command("get", cmd_stock, "Download stock items.", parent=stock)
     q.add_argument("refs", nargs="+", help="references like stock:pexels/video/123")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
 
     p = command("audio", cmd_audio, "Sound library: download packs, list remote collections, find and get sounds.")
     audio = p.add_subparsers(dest="act", required=True, metavar="action")
     q = command("fetch", cmd_audio, "Download the small packs and sort library/audio/inbox/ into the library.", parent=audio)
     q.add_argument("ids", nargs="*", help="source ids from library/audio/sources.json (default: all)")
     q.add_argument("--force", action="store_true", help="download a source again")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     q = command("catalog", cmd_audio, "List every file of the remote collections (Sonniss, SSE) without downloading audio.", parent=audio)
     q.add_argument("ids", nargs="*", help="remote source ids (default: all)")
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     q = command("get", cmd_audio, "Download remote sounds to the library.", parent=audio)
     q.add_argument("ids", nargs="*", help="ids from the index, like sonniss-2024:3fa9c1d2")
     q.add_argument("--pack", help="every file of one pack: <source-id>/<pack name>")
-    command("index", cmd_audio, "Rebuild library/audio/INDEX.md and index/*.tsv.", parent=audio)
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
+    q = command("index", cmd_audio, "Rebuild library/audio/INDEX.md and index/*.tsv.", parent=audio)
+    q.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
     q = command("find", cmd_audio, "Search the sound index (every word must match).", parent=audio)
     q.add_argument("query")
     q.add_argument("--kind", choices=["sfx", "music"])
@@ -3004,7 +3123,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--start", help="clip or sound range start (seconds or m:ss)")
     p.add_argument("--end", help="clip or sound range end (seconds or m:ss)")
 
-    command("sounds", cmd_sounds, "Write the built-in sound effects and songs as WAV files to listen to.")
+    p = command("sounds", cmd_sounds, "Write the built-in sound effects and songs as WAV files to listen to.")
+    p.add_argument("--permission-scope", help="named brand, style, or character grant for shared assets")
 
     p = command("listen", cmd_listen, "Earshot listening report for the render, written to 05_render/listen.md.")
     p.add_argument("slug")
@@ -3019,6 +3139,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-cost", required=True, help="the maximum cost, as text")
     p.add_argument("--evidence", required=True)
     p.add_argument("--retry", action="store_true")
+
+    p = command("run-approve", cmd_run_approve, "Human approval of one exact priced request in this session.")
+    p.add_argument("run_id")
+    p.add_argument("request_id")
+    p.add_argument("--expected", required=True, help="quote fingerprint printed by run-quote")
+    p.add_argument("--reviewer", required=True, help="name of the human reviewer")
 
     p = command("run-reconcile", cmd_run_reconcile, "Record the verified cost of an uncertain paid request.")
     p.add_argument("run_id")
@@ -3035,7 +3161,7 @@ def main() -> None:
     from studio.workspace import WorkspaceError
     try:
         _dispatch(args)
-    except (WorkspaceError, ProductionBusy) as error:
+    except (WorkspaceError, ProductionBusy, ValueError) as error:
         die(str(error))
 
 

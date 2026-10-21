@@ -1,4 +1,5 @@
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -9,10 +10,26 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import check  # noqa: E402
+from studio.permissions import grant  # noqa: E402
 
 
 def new(slug, *extra):
-    return subprocess.run([sys.executable, "anim.py", "new", slug, *extra], cwd=ROOT, capture_output=True, text=True)
+    brand = extra[extra.index("--brand") + 1] if "--brand" in extra else None
+    session_id = "brand-test-" + uuid.uuid4().hex
+    permission_file = None
+    if brand in {"_test", "nope"}:
+        grant(ROOT, f"video:{brand}/{slug}", "full", session_id=session_id)
+        permission_file = ROOT / "videos" / brand / ".permissions" / (slug + ".json")
+    try:
+        return subprocess.run([sys.executable, "anim.py", "new", slug, *extra], cwd=ROOT,
+                              capture_output=True, text=True, env={**os.environ, "VF_SESSION_ID": session_id})
+    finally:
+        if permission_file:
+            permission_file.unlink(missing_ok=True)
+            permission_file.with_suffix(".lock").unlink(missing_ok=True)
+            for folder in (permission_file.parent, permission_file.parent.parent):
+                try: folder.rmdir()
+                except OSError: pass
 
 
 class NewBrandTests(unittest.TestCase):

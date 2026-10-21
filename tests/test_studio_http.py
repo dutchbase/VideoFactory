@@ -8,6 +8,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import quote
 
 from studio.server import make_server
+from studio.permissions import grant
 
 
 class HttpTests(unittest.TestCase):
@@ -32,6 +33,10 @@ class HttpTests(unittest.TestCase):
         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
         self.thread.start()
         self.base = f'http://127.0.0.1:{self.server.server_port}'
+        with self.request('/api/bootstrap') as response:
+            bootstrap = json.load(response)
+        self.session = 'c' * 32 + '.' + bootstrap['session_nonce']
+        grant(self.root, 'video:videofactory/demo', 'each-stage', session_id=self.session)
 
     def tearDown(self):
         self.server.shutdown()
@@ -40,8 +45,11 @@ class HttpTests(unittest.TestCase):
         self.temp.cleanup()
 
     def request(self, path, method='GET', data=None, headers=None):
+        headers = dict(headers or {})
+        if method != 'GET' and headers.get('X-Studio-Token'):
+            headers['X-VF-Session-ID'] = self.session
         request = Request(self.base + path, data=json.dumps(data).encode() if data is not None else None,
-                          headers=headers or {}, method=method)
+                          headers=headers, method=method)
         return urlopen(request)
 
     def test_unread_body_does_not_corrupt_next_request(self):
@@ -50,6 +58,7 @@ class HttpTests(unittest.TestCase):
             token = json.load(response)['token']
         connection = http.client.HTTPConnection('127.0.0.1', self.server.server_port)
         headers = {'X-Studio-Token': token, 'Content-Type': 'application/json'}
+        headers['X-VF-Session-ID'] = self.session
         connection.request('POST', '/api/jobs/no-such-job/cancel', body='{}', headers=headers)
         connection.getresponse().read()
         connection.request('GET', '/api/videos')
@@ -68,6 +77,7 @@ class HttpTests(unittest.TestCase):
         with self.request('/api/bootstrap') as response:
             token = json.load(response)['token']
         headers = {'X-Studio-Token': token, 'Content-Type': 'application/json'}
+        headers['X-VF-Session-ID'] = self.session
         self.request('/api/requests', 'POST', {'slug': 'demo', 'kind': 'script', 'instructions': 'Write it.', 'fingerprint': '', 'request_id': 'req-one'}, headers).close()
         with patch.object(agent_runs, 'agent_argv', return_value=[sys.executable, '-c', 'print(1)']):
             with self.request('/api/requests/req-one/run', 'POST', {'mode': 'auto'}, headers) as response:
@@ -152,7 +162,7 @@ class HttpTests(unittest.TestCase):
         self.assertEqual(error.exception.code, 403)
         self.assertFalse((self.root / 'library/materials').exists())
 
-    def test_unicode_upload_filename_and_download_header(self):
+    def test_unscoped_upload_is_blocked(self):
         with self.request('/api/bootstrap') as response:
             token = json.load(response)['token']
         filename = 'scène-€.png'
@@ -161,23 +171,19 @@ class HttpTests(unittest.TestCase):
         headers = {'X-Studio-Token': token, 'X-Material-Filename': quote(filename, safe=''),
                    'X-Material-Filename-Encoding': 'uri',
                    'X-Material-Metadata': json.dumps(metadata, ensure_ascii=True)}
+        headers['X-VF-Session-ID'] = self.session
         request = Request(self.base + '/api/materials/upload', data=b'image', method='POST', headers=headers)
-        with urlopen(request) as response:
-            record = json.load(response)
-        self.assertEqual(record['description'], 'Café 😀')
-        path = 'library/materials/unicode-source/' + filename
-        self.assertEqual((self.root / path).read_bytes(), b'image')
-        with self.request('/download/' + quote(path, safe='/')) as response:
-            disposition = response.headers['Content-Disposition']
-            self.assertIn("filename*=UTF-8''" + quote(filename, safe=''), disposition)
-            self.assertEqual(response.read(), b'image')
+        with self.assertRaises(HTTPError) as blocked:
+            urlopen(request)
+        self.assertEqual(blocked.exception.code, 403)
+        self.assertFalse((self.root / 'library/materials/unicode-source').exists())
         for encoded, encoding in (('bad%ZZ.png', 'uri'), ('asset.png', 'unknown')):
             with self.subTest(encoded=encoded), self.assertRaises(HTTPError) as error:
                 req = Request(self.base + '/api/materials/upload', data=b'image', method='POST',
                               headers={**headers, 'X-Material-Filename': encoded,
                                        'X-Material-Filename-Encoding': encoding})
                 urlopen(req)
-            self.assertEqual(error.exception.code, 400)
+            self.assertEqual(error.exception.code, 403)
 
     def test_sandboxed_preview_can_load_cues_and_fonts_but_not_api(self):
         headers = {'Origin': 'null'}

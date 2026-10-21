@@ -31,7 +31,7 @@ SHELVES = {"brands", "videos", "_shared", "_runtime", "library", "styles", "char
 GATES = ("research", "brief", "script", "voice-test", "voice", "transcript", "cues", "scene", "render")
 SILENT_UNUSED_GATES = {"brief", "script", "voice-test", "voice", "transcript"}
 BASE_KITS = {"modern"}  # the one built-in kit a style recipe can sit on
-PASSED = {"approved", "skipped", "not-applicable"}  # upstream states that let the next gate run
+PASSED = {"approved", "accepted", "skipped", "not-applicable"}  # upstream states that let the next gate run
 TEXT_LIMIT = 2 * 1024 * 1024
 MEDIA_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".mp4", ".mov", ".webm", ".mp3", ".wav", ".m4a", ".ogg", ".pdf", ".txt", ".md", ".docx"}
 VIDEO_EXTENSIONS = {".mp4", ".mov", ".webm", ".mp3", ".wav", ".m4a", ".ogg"}
@@ -309,12 +309,14 @@ def _review_summary(gate, events, *, applicable=True):
 
 
 def video_detail(root: Path, slug: str, *, summary=False) -> dict:
-    slug = _video_id(root, slug)
     folder = _slug_path(root, slug)
+    from studio.project_paths import project_id
+    slug = project_id(root, folder)
+    physical = folder.relative_to(Path(root).resolve()).as_posix()
     if not folder.is_dir():
         raise WorkspaceError("missing", "Video does not exist.")
     metadata = {}
-    meta = safe_path(root, f"videos/{slug}/project.json")
+    meta = safe_path(root, f"{physical}/project.json")
     if meta.exists():
         try:
             metadata = json.loads(_read_bytes(meta))
@@ -322,7 +324,7 @@ def video_detail(root: Path, slug: str, *, summary=False) -> dict:
                 raise ValueError
         except (ValueError, UnicodeDecodeError):
             metadata = {"error": "Malformed project metadata"}
-    creative = safe_path(root, f"videos/{slug}/creative/snapshot.json")
+    creative = safe_path(root, f"{physical}/creative/snapshot.json")
     if creative.is_file():
         try:
             selected_style = json.loads(_read_bytes(creative))["style_id"]
@@ -333,7 +335,7 @@ def video_detail(root: Path, slug: str, *, summary=False) -> dict:
         selected_style = None
     files = {}
     for gate, names in _GATE_FILES.items():
-        files[gate] = [f"videos/{slug}/{name}" for name in names if (folder / name).is_file()]
+        files[gate] = [f"{physical}/{name}" for name in names if (folder / name).is_file()]
     exports = sorted((folder / "05_render").glob("*.mp4")) if (folder / "05_render").is_dir() else []
     thumbnail = next((p for p in (folder / "05_render/thumbnail.png", folder / "05_render/contact.png") if p.is_file()), None)
     with read_scope():
@@ -346,11 +348,11 @@ def video_detail(root: Path, slug: str, *, summary=False) -> dict:
             "label": "Setup fixture" if _slug_path(root, slug).name == "silent-first-scene" else ("Demo" if "demo" in slug else "Video"),
             "format": metadata.get("format", "wide"), "style": selected_style or metadata.get("style"),
             "creative_style": selected_style, "legacy_style": metadata.get("style"),
-            "preview": f"videos/{slug}/04_scene/index.html" if (folder / "04_scene/index.html").is_file() else None,
+            "preview": f"{physical}/04_scene/index.html" if (folder / "04_scene/index.html").is_file() else None,
             "thumbnail": thumbnail.relative_to(root).as_posix() if thumbnail else None,
             "exports": [p.relative_to(root).as_posix() for p in exports], "files": files,
             "reviews": reviews, "metadata": metadata,
-            "materials": _read_links(safe_path(root, f"videos/{slug}/materials.md"))}
+            "materials": _read_links(safe_path(root, f"{physical}/materials.md"))}
 
 
 _GATE_FILES = {
@@ -368,7 +370,7 @@ def _review_path(root: Path, slug: str) -> Path:
     folder = _slug_path(root, slug)
     if not folder.is_dir():
         raise WorkspaceError("missing", "Video does not exist.")
-    return safe_path(root, f"videos/{slug}/REVIEW.md")
+    return safe_path(root, (folder / "REVIEW.md").relative_to(Path(root).resolve()).as_posix())
 
 
 _REVIEW_HEADING = "## Studio review events"
@@ -389,7 +391,7 @@ def _events(root: Path, slug: str) -> tuple[str, list[dict]]:
     except ValueError:
         raise WorkspaceError("invalid", "Studio review events are malformed; repair REVIEW.md before continuing.") from None
     if not isinstance(events, list) or any(not isinstance(e, dict) or not {"gate", "kind", "fingerprint", "at"} <= e.keys() or
-                                           e["gate"] not in GATES or e["kind"] not in {"ready", "decision", "skip"} or
+                                           e["gate"] not in GATES or e["kind"] not in {"ready", "decision", "skip", "acceptance"} or
                                            not isinstance(e["fingerprint"], str) or not isinstance(e["at"], str) for e in events):
         raise WorkspaceError("invalid", "Studio review events are malformed; repair REVIEW.md before continuing.")
     return prose.split(_REVIEW_HEADING, 1)[0].rstrip() + "\n", events
@@ -767,6 +769,15 @@ def review_state(root: Path, slug: str, gate: str) -> dict:
                 state = "skipped"
             elif latest["kind"] == "decision":
                 state = latest.get("decision", "draft")
+            elif latest["kind"] == "acceptance":
+                from studio.permissions import session_state, needs_review
+                permission = session_state(root, "video:" + _video_id(root, slug))
+                if (permission["active"] and latest.get("grant_id") == permission["grant_id"] and
+                    latest.get("session_id") == permission["session_id"] and
+                    latest.get("scope") == permission["scope"] and not needs_review(permission, gate)):
+                    state = "accepted"
+                else:
+                    state = "awaiting-review"
             elif latest["kind"] == "ready":
                 state = "awaiting-review"
     result = {"gate": gate, "state": state, "fingerprint": fingerprint, "ready": ready,
@@ -792,20 +803,50 @@ def mark_ready(root: Path, slug: str, gate: str, expected_fingerprint: str) -> d
             raise WorkspaceError("conflict", "Review inputs changed since you opened them.")
         if not state["ready"]:
             raise WorkspaceError("blocked", "Review is incomplete: " + ", ".join(state["missing"]))
+        if state["state"] in PASSED or state["state"] == "awaiting-review":
+            return state
         _write_event(root, slug, {"gate": gate, "kind": "ready", "decision": None, "reviewer": None, "note": "", "fingerprint": expected_fingerprint, "at": _now()})
     return review_state(root, slug, gate)
 
 
 def decide_review(root: Path, slug: str, gate: str, decision: str, reviewer: str, note: str, expected_fingerprint: str) -> dict:
+    if os.environ.get("VF_PERMISSION_WORKER") == "1":
+        raise WorkspaceError("blocked", "A worker cannot make a human review decision.")
     if decision not in {"approved", "changes-requested"} or not isinstance(reviewer, str) or not reviewer.strip():
         raise WorkspaceError("invalid", "Provide a reviewer and an approval or changes-requested decision.")
     with workspace_lock(root):
         state = review_state(root, slug, gate)
         if expected_fingerprint != state["fingerprint"]:
             raise WorkspaceError("conflict", "Review inputs changed since you opened them.")
-        if state["state"] not in {"awaiting-review", "approved", "changes-requested"}:
+        if state["state"] not in {"awaiting-review", "approved", "accepted", "changes-requested"}:
             raise WorkspaceError("blocked", "Mark this complete revision ready before deciding.")
         _write_event(root, slug, {"gate": gate, "kind": "decision", "decision": decision, "reviewer": reviewer.strip(), "note": note or "", "fingerprint": expected_fingerprint, "at": _now()})
+    return review_state(root, slug, gate)
+
+
+def accept_under_permission(root: Path, slug: str, gate: str, expected_fingerprint: str) -> dict:
+    """Accept a ready revision under this session's grant, without a human decision."""
+    from studio.permissions import needs_review, require_permission
+    scope = "video:" + _video_id(root, slug)
+    permission = require_permission(root, scope, gate)
+    if needs_review(permission, gate):
+        raise WorkspaceError("blocked", "This stage needs a human review.")
+    with workspace_lock(root):
+        state = review_state(root, slug, gate)
+        if expected_fingerprint != state["fingerprint"]:
+            raise WorkspaceError("conflict", "Review inputs changed since you opened them.")
+        if not state["ready"]:
+            raise WorkspaceError("blocked", "Review is incomplete: " + ", ".join(state["missing"]))
+        if state["state"] == "changes-requested":
+            raise WorkspaceError("blocked", "Make a new revision after the requested changes.")
+        if state["state"] in PASSED:
+            return state
+        if state["state"] != "awaiting-review":
+            raise WorkspaceError("blocked", "Mark this complete revision ready before acceptance.")
+        _write_event(root, slug, {"gate": gate, "kind": "acceptance", "decision": "accepted",
+                                  "reviewer": None, "note": "", "fingerprint": expected_fingerprint,
+                                  "session_id": permission["session_id"], "scope": scope,
+                                  "grant_id": permission["grant_id"], "at": _now()})
     return review_state(root, slug, gate)
 
 
@@ -1457,7 +1498,7 @@ def _creative_source(root: Path, style_id: str, characters: list[dict]) -> tuple
     if style["origin"] == "existing-reference":
         raise WorkspaceError("blocked", "Imported reference styles need an authored approved variant.")
     review = creative_review_state(root, "style", style_id, "sample")
-    if review["state"] != "approved" or not review["ready"]:
+    if review["state"] not in {"approved", "accepted"} or not review["ready"]:
         raise WorkspaceError("blocked", "Current approved style samples are required.")
     if not isinstance(characters, list):
         raise WorkspaceError("invalid", "Characters must be a list of selected variants and actions.")
@@ -1517,12 +1558,12 @@ def _creative_source(root: Path, style_id: str, characters: list[dict]) -> tuple
             raise WorkspaceError("invalid", "Character variant was selected twice.")
         seen.add((ident, variant))
         identity = creative_review_state(root, "character", ident, "identity")
-        if identity["state"] != "approved" or not identity["ready"]:
+        if identity["state"] not in {"approved", "accepted"} or not identity["ready"]:
             raise WorkspaceError("blocked", "Current approved character identity is required.")
         snapshot_variant_for_style(root, ident, variant, style_id)
         for action in actions:
             gate = creative_review_state(root, "character", ident, f"animation:{variant}:{action}")
-            if gate["state"] != "approved" or not gate["ready"]:
+            if gate["state"] not in {"approved", "accepted"} or not gate["ready"]:
                 raise WorkspaceError("blocked", f"Current approved {ident} {action} action is required.")
         compiled = compile_character_pack(root, ident, variant)
         if set(actions) - set(compiled["actions"]):

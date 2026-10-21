@@ -2,10 +2,28 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from studio.workspace import WorkspaceError, gate_fingerprint, mark_ready, decide_review, review_state, skip_research, set_voice_selection, create_material, link_material
+from studio.workspace import WorkspaceError, gate_fingerprint, mark_ready, decide_review, review_state, skip_research, set_voice_selection, create_material, link_material, video_detail
 
 
 class ReviewTests(unittest.TestCase):
+    def test_flat_video_details_keep_canonical_id_and_physical_files(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            project = root / 'videos/demo'
+            (project / '01_voice').mkdir(parents=True)
+            (project / '04_scene').mkdir()
+            (project / 'project.json').write_text('{"brand": "videofactory", "title": "Flat demo"}')
+            (project / '01_voice/brief.md').write_text('A brief')
+            (project / '04_scene/index.html').write_text('<html></html>')
+            (project / 'materials.md').write_text('')
+            detail = video_detail(root, 'demo')
+            self.assertEqual(detail['video_id'], 'videofactory/demo')
+            self.assertEqual(detail['slug'], 'videofactory/demo')
+            self.assertEqual(detail['brand'], 'videofactory')
+            self.assertEqual(detail['title'], 'Flat demo')
+            self.assertEqual(detail['files']['brief'], ['videos/demo/01_voice/brief.md'])
+            self.assertEqual(detail['preview'], 'videos/demo/04_scene/index.html')
+
     def _approve(self, root, gate):
         fingerprint = gate_fingerprint(root, 'demo', gate)
         mark_ready(root, 'demo', gate, fingerprint)

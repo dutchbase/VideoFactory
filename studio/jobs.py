@@ -18,8 +18,9 @@ from pathlib import Path
 from studio.production import production_lock, lease_fds, child_environment
 from studio.project_paths import resolve_project, project_id
 from studio.workspace import WorkspaceError, gate_fingerprint, review_state, mark_ready, workspace_lock, safe_path
+from studio.permissions import require_permission, current_session, session_context, child_environment as permission_environment
 
-GATE_PASSED = {"approved"}
+GATE_PASSED = {"approved", "accepted"}
 
 _ID = re.compile(r"[a-z0-9][a-z0-9-]*\Z")
 _KEY = re.compile(r"[A-Za-z0-9_-]{1,128}\Z")
@@ -29,6 +30,36 @@ _PROCESSES: dict[tuple[str, str], subprocess.Popen] = {}
 _THREADS: dict[tuple[str, str], threading.Thread] = {}
 _BOXES: dict[tuple[str, str], str] = {}
 _BROWSER_ACTIONS = {"check", "stills", "render", "thumbnail", "capture", "record"}
+
+_ACTION_STAGE = {"research-init": "research", "voice-check": "voice", "voice-test": "voice",
+                 "voice": "voice", "transcribe": "transcript", "cues": "cues", "check": "checks",
+                 "stills": "render", "render": "render", "thumbnail": "render",
+                 "capture": "scene", "record": "scene", "use": "scene", "stock-get": "scene",
+                 "stock-search": "scene", "native-render": "scene"}
+
+
+def _job_permission(root, action, slug, options):
+    if action not in ("new", "native-render") and "/" not in slug:
+        slug = project_id(root, _project(root, slug))
+    scope = ("video:" + options["brand"] + "/" + slug if action == "new" else
+             "character:" + slug if action == "native-render" else
+             "brand:" + slug.split("/", 1)[0] if action == "stock-get" else "video:" + slug)
+    try:
+        return scope, require_permission(root, scope, _ACTION_STAGE.get(action))
+    except ValueError as exc:
+        raise WorkspaceError("blocked", str(exc)) from None
+
+
+def _request_permission(root, record):
+    subject = record.get("subject")
+    scope = (subject["type"] + ":" + subject["id"] if subject else
+             "video:" + record["slug"])
+    stage = {"script": "script", "cues": "cues", "scene": "scene",
+             "research": "research", "review-checks": "checks"}.get(record["kind"])
+    try:
+        return scope, require_permission(root, scope, stage)
+    except ValueError as exc:
+        raise WorkspaceError("blocked", str(exc)) from None
 
 
 def _now():
@@ -135,7 +166,8 @@ def build_argv(root, action, slug, options):
         ref = options.get("ref", "")
         if not isinstance(ref, str) or not re.fullmatch(r"stock:(pexels|pixabay|unsplash|openverse)/(video|photo|audio)/[A-Za-z0-9_-]+", ref):
             raise WorkspaceError("invalid", "Invalid stock reference.")
-        return python + ["stock", "get", ref]
+        brand = slug.split("/", 1)[0]
+        return python + ["stock", "get", ref, "--permission-scope", "brand:" + brand]
     if action == "use":
         _options(options, {"ref", "name", "start", "end"})
         ref = options.get("ref", "")
@@ -272,7 +304,10 @@ def _stop_box(name):
 
 def _run_job(root, job_id):
     try:
-        with production_lock(root, "studio-job:" + job_id):
+        record = _read(_record_path(root, "jobs", job_id))
+        if not record.get("session_id"):
+            raise ValueError("Job has no originating permission session.")
+        with session_context(record["session_id"]), production_lock(root, "studio-job:" + job_id):
             return _run_job_locked(root, job_id)
     except ValueError as exc:
         path = _record_path(root, "jobs", job_id)
@@ -292,6 +327,7 @@ def _run_job_locked(root, job_id):
     box = None
     backup = None
     try:
+        scope, _ = _job_permission(root, action, slug, record["options"])
         if record.get("cancel_requested"):
             record.update(state="cancelled", error="Cancelled before start.")
             return
@@ -311,7 +347,7 @@ def _run_job_locked(root, job_id):
             if action == "native-render":
                 from studio.creative import creative_review_state
                 native_gate = creative_review_state(root, "character", slug, "rig:" + record["options"]["variant"])
-                if native_gate["state"] != "approved":
+                if native_gate["state"] not in GATE_PASSED or not native_gate.get("ready"):
                     raise WorkspaceError("blocked", "Current native rig review is not approved.")
                 if native_gate["fingerprint"] != record.get("expected_fingerprint"):
                     raise WorkspaceError("conflict", "Native rig inputs changed after this job was queued.")
@@ -336,7 +372,8 @@ def _run_job_locked(root, job_id):
                 if prior.is_file():
                     backup = path.with_suffix(".previous.mp4")
                     shutil.copy2(prior, backup)
-            env = os.environ | child_environment(root)
+            _job_permission(root, action, slug, record["options"])
+            env = os.environ | child_environment(root) | permission_environment(root, scope)
             if action in _BROWSER_ACTIONS:
                 box, endpoint = _contained_browser()
                 _BOXES[(str(root.resolve()), job_id)] = box
@@ -406,6 +443,11 @@ def _run_job_locked(root, job_id):
                 if ready_fingerprint is None:
                     ready_fingerprint = gate_fingerprint(root, slug, gate_to_ready)
                 mark_ready(root, slug, gate_to_ready, ready_fingerprint)
+                from studio.permissions import needs_review
+                from studio.workspace import accept_under_permission
+                permission = _job_permission(root, action, slug, record["options"])[1]
+                if not needs_review(permission, gate_to_ready):
+                    accept_under_permission(root, slug, gate_to_ready, ready_fingerprint)
             except WorkspaceError as error:
                 record.update(state="failed", error=f"Output needs review preparation: {error}")
     except WorkspaceError as error:
@@ -489,15 +531,20 @@ def start_job(root, action, slug, options, expected_fingerprint, request_id):
     path = _record_path(root, "jobs", request_id)
     if path.exists():
         old = _read(path)
+        if old.get("session_id") != current_session(root):
+            raise WorkspaceError("blocked", "This job belongs to another permission session.")
         if (old.get("action"), old.get("slug"), old.get("options"), old.get("expected_fingerprint")) != (action, slug, options, expected_fingerprint):
             raise WorkspaceError("conflict", "Request id was already used for another job.")
         return old
     build_argv(root, action, slug, options)
+    _job_permission(root, action, slug, options)
+    if action in ("voice", "voice-test"):
+        raise WorkspaceError("blocked", "Paid voice needs a separate approval for this exact request and known maximum cost.")
     if action == "native-render":
         from studio.creative import creative_review_state
         from studio.native_pipeline import render_status
         native_gate = creative_review_state(root, "character", slug, "rig:" + options["variant"])
-        if native_gate["state"] != "approved":
+        if native_gate["state"] not in GATE_PASSED or not native_gate.get("ready"):
             raise WorkspaceError("blocked", "Approve the current native rig before rendering actions.")
         if expected_fingerprint != native_gate["fingerprint"]:
             raise WorkspaceError("conflict", "Native rig revision changed; reload the page.")
@@ -548,6 +595,7 @@ def start_job(root, action, slug, options, expected_fingerprint, request_id):
             if any(r.get("state") == "running" for r in list_requests(root)):
                 raise WorkspaceError("busy", "An agent is already working on a video.")
             record = {"id": request_id, "slug": slug, "action": action, "options": options,
+                      "session_id": current_session(root),
                       "expected_fingerprint": expected_fingerprint,
                       "state": "queued", "created_at": _now(), "pid": None, "exit_code": None,
                       "outputs": [], "error": None, "progress": None}
@@ -662,6 +710,7 @@ def create_request(root, slug, kind, instructions, fingerprint, request_id, *, s
             raise WorkspaceError("conflict", "Request id was already used.")
         return old
     record = {"id": request_id, "kind": kind, "instructions": instructions,
+              "session_id": current_session(root),
               "state": "waiting-for-agent", "created_at": _now(),
               "handoff": "Waiting for a workspace agent to claim this request."}
     if subject is None: record.update(slug=slug, fingerprint=fingerprint)
@@ -682,6 +731,9 @@ def claim_request(root, request_id, agent):
     path = _record_path(root, "requests", request_id)
     if not path.exists(): raise WorkspaceError("missing", "Agent request not found.")
     record = _read(path)
+    if record.get("session_id") != current_session(root):
+        raise WorkspaceError("blocked", "This request belongs to another permission session.")
+    _request_permission(root, record)
     if record["state"] != "waiting-for-agent": raise WorkspaceError("conflict", "Request is already claimed or finished.")
     if not isinstance(agent, str) or not agent.strip(): raise WorkspaceError("invalid", "Agent name is required.")
     if record.get("subject"):
@@ -714,7 +766,7 @@ def validate_request_output(root, record):
         if record.get("fingerprint") != gate_fingerprint(root, record["slug"], input_gate):
             raise WorkspaceError("conflict", "Request inputs changed while the agent worked.")
         output = review_state(root, record["slug"], kind)
-        if not output.get("ready") or output.get("state") not in {"awaiting-review", "approved"}:
+        if not output.get("ready") or output.get("state") not in ({"awaiting-review"} | GATE_PASSED):
             raise WorkspaceError("blocked", "The current output must pass its checks and be marked ready.")
 
 
@@ -722,12 +774,39 @@ def finish_request(root, request_id, result):
     path = _record_path(root, "requests", request_id)
     if not path.exists(): raise WorkspaceError("missing", "Agent request not found.")
     record = _read(path)
+    if record.get("session_id") != current_session(root):
+        raise WorkspaceError("blocked", "This request belongs to another permission session.")
     if record["state"] != "running": raise WorkspaceError("conflict", "Request is not claimed.")
     if isinstance(result, str): result = {"state": result}
     if not isinstance(result, dict) or result.get("state") not in ("succeeded", "failed", "cancelled"):
         raise WorkspaceError("invalid", "Request result must be succeeded, failed or cancelled.")
     if result["state"] == "succeeded":
+        _request_permission(root, record)
         validate_request_output(root, record)
+        if not record.get("subject") and record["kind"] in {"script", "cues", "scene"}:
+            from studio.permissions import needs_review
+            from studio.workspace import accept_under_permission
+            gate = record["kind"]
+            permission = _request_permission(root, record)[1]
+            if not needs_review(permission, gate):
+                accept_under_permission(root, record["slug"], gate,
+                                        gate_fingerprint(root, record["slug"], gate))
+        elif record.get("subject"):
+            from studio.creative import (creative_review_state, mark_creative_ready,
+                                         accept_creative_under_permission)
+            from studio.permissions import needs_review
+            gate = {"style-discovery": "brief", "style-development": "materials",
+                    "website-reference": "materials", "character-discovery": "brief",
+                    "character-concepts": "design", "character-identity": "identity"}.get(record["kind"])
+            subject = record["subject"]
+            if gate:
+                state = creative_review_state(root, subject["type"], subject["id"], gate)
+                if state["ready"]:
+                    mark_creative_ready(root, subject["type"], subject["id"], gate, state["fingerprint"])
+                    permission = _request_permission(root, record)[1]
+                    if not needs_review(permission, gate):
+                        accept_creative_under_permission(root, subject["type"], subject["id"], gate,
+                                                         state["fingerprint"])
     outputs = result.get("outputs", [])
     if not isinstance(outputs, list) or len(outputs) > 100 or any(not isinstance(item, str) for item in outputs):
         raise WorkspaceError("invalid", "Request outputs must be workspace paths.")
@@ -757,6 +836,10 @@ def start_managed_run(root, video_id, settings=None, resume=None):
     project = _project(root, video_id)
     video_id = project_id(root, project)
     try:
+        require_permission(root, "video:" + video_id)
+    except ValueError as exc:
+        raise WorkspaceError("blocked", str(exc)) from None
+    try:
         if resume:
             _valid(resume, "run id", re.compile(r"[a-f0-9]{32}\Z"))
             prior = _read(root / ".studio/runs" / (resume + ".json"))
@@ -777,7 +860,7 @@ def start_managed_run(root, video_id, settings=None, resume=None):
         ready, result = threading.Event(), {}
         def worker():
             try:
-                with production_lock(root, "studio-managed:" + video_id):
+                with session_context(origin_session), production_lock(root, "studio-managed:" + video_id):
                     _save(project / "run_settings.json", saved)
                     ready.set()
                     result["run"] = run_video(root, video_id, settings=saved, resume=resume)
@@ -788,6 +871,7 @@ def start_managed_run(root, video_id, settings=None, resume=None):
                       "settings": saved, "status": "failed", "error": str(exc), "stages": {}, "builder_id": "builder-" + ident, "repair_rounds": 0, "created_at": _now()})
             finally:
                 ready.set()
+        origin_session = current_session(root)
         thread = threading.Thread(target=worker, daemon=True)
         _MANAGED[key] = thread
         thread.start()

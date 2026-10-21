@@ -267,7 +267,7 @@ def _events(folder, subject_type):
     except ValueError:
         events = None
     if not isinstance(events, list) or any(not isinstance(e, dict) or not {"gate", "kind", "fingerprint", "at"} <= e.keys() or
-                                           e["kind"] not in {"ready", "decision"} or not isinstance(e["fingerprint"], str) or
+                                           e["kind"] not in {"ready", "decision", "acceptance"} or not isinstance(e["fingerprint"], str) or
                                            not isinstance(e["at"], str) for e in events):
         raise ws.WorkspaceError("invalid", "Creative review events are malformed.")
     for event in events:
@@ -286,7 +286,7 @@ def _readiness(root, subject_type, id, gate):
     folder = _folder(root, subject_type, id)
     missing = []
     previous = _previous(subject_type, gate, folder)
-    if previous and creative_review_state(root, subject_type, id, previous)["state"] != "approved":
+    if previous and creative_review_state(root, subject_type, id, previous)["state"] not in {"approved", "accepted"}:
         missing.append(f"current {previous} approval")
     files = _files(folder, subject_type, gate)
     if gate == "brief":
@@ -394,8 +394,21 @@ def creative_review_state(root, subject_type, id, gate):
         state = "stale"
     elif current:
         latest = current[-1]
-        state = latest.get("decision", "draft") if latest["kind"] == "decision" else "awaiting-review"
-    if not ready and state in {"approved", "awaiting-review"}:
+        if latest["kind"] == "decision":
+            state = latest.get("decision", "draft")
+        elif latest["kind"] == "acceptance":
+            from studio.permissions import session_state, needs_review
+            permission = session_state(root, f"{subject_type}:{id}")
+            stage = gate.split(":", 1)[0]
+            if (permission["active"] and latest.get("grant_id") == permission["grant_id"] and
+                latest.get("session_id") == permission["session_id"] and
+                latest.get("scope") == permission["scope"] and not needs_review(permission, stage)):
+                state = "accepted"
+            else:
+                state = "awaiting-review"
+        else:
+            state = "awaiting-review"
+    if not ready and state in {"approved", "accepted", "awaiting-review"}:
         state = "stale"
     return {"gate": gate, "state": state, "fingerprint": fingerprint, "revision": fingerprint,
             "ready": ready, "missing": missing, "history": history, "legacy": prose.strip(),
@@ -533,20 +546,51 @@ def mark_creative_ready(root, subject_type, id, gate, expected_revision):
         state = creative_review_state(root, subject_type, id, gate)
         if expected_revision != state["fingerprint"]: raise ws.WorkspaceError("conflict", "Review inputs changed since you opened them.")
         if not state["ready"]: raise ws.WorkspaceError("blocked", "Review is incomplete: " + ", ".join(state["missing"]))
-        if state["state"] in {"awaiting-review", "approved", "changes-requested"}: return state
+        if state["state"] in {"awaiting-review", "approved", "accepted", "changes-requested"}: return state
         _write_event(folder, subject_type, {"gate": gate, "kind": "ready", "decision": None, "reviewer": None, "note": "", "fingerprint": expected_revision, "at": ws._now()})
     return creative_review_state(root, subject_type, id, gate)
 
 
 def decide_creative(root, subject_type, id, gate, decision, reviewer, note, expected_revision):
+    import os
+    if os.environ.get("VF_PERMISSION_WORKER") == "1":
+        raise ws.WorkspaceError("blocked", "A worker cannot make a human review decision.")
     folder = _folder(root, subject_type, id)
     if decision not in {"approved", "changes-requested"} or not isinstance(reviewer, str) or not reviewer.strip() or not isinstance(note, str):
         raise ws.WorkspaceError("invalid", "Provide a reviewer and an approval or changes-requested decision.")
     with ws.workspace_lock(root):
         state = creative_review_state(root, subject_type, id, gate)
         if expected_revision != state["fingerprint"]: raise ws.WorkspaceError("conflict", "Review inputs changed since you opened them.")
-        if state["state"] not in {"awaiting-review", "approved", "changes-requested"} or not state["ready"]:
+        if state["state"] not in {"awaiting-review", "approved", "accepted", "changes-requested"} or not state["ready"]:
             raise ws.WorkspaceError("blocked", "Mark this complete revision ready before deciding.")
         if state["state"] == "approved" and decision == "approved": return state
         _write_event(folder, subject_type, {"gate": gate, "kind": "decision", "decision": decision, "reviewer": reviewer.strip(), "note": note, "fingerprint": expected_revision, "at": ws._now()})
+    return creative_review_state(root, subject_type, id, gate)
+
+
+def accept_creative_under_permission(root, subject_type, id, gate, expected_revision):
+    """Accept a current creative revision under this session's named grant."""
+    from studio.permissions import needs_review, require_permission
+    folder = _folder(root, subject_type, id)
+    scope = f"{subject_type}:{id}"
+    permission = require_permission(root, scope, gate.split(":", 1)[0])
+    if needs_review(permission, gate.split(":", 1)[0]):
+        raise ws.WorkspaceError("blocked", "This stage needs a human review.")
+    with ws.workspace_lock(root):
+        state = creative_review_state(root, subject_type, id, gate)
+        if expected_revision != state["fingerprint"]:
+            raise ws.WorkspaceError("conflict", "Review inputs changed since you opened them.")
+        if not state["ready"]:
+            raise ws.WorkspaceError("blocked", "Review is incomplete: " + ", ".join(state["missing"]))
+        if state["state"] == "changes-requested":
+            raise ws.WorkspaceError("blocked", "Make a new revision after the requested changes.")
+        if state["state"] in {"approved", "accepted"}:
+            return state
+        if state["state"] != "awaiting-review":
+            raise ws.WorkspaceError("blocked", "Mark this complete revision ready before acceptance.")
+        _write_event(folder, subject_type, {"gate": gate, "kind": "acceptance", "decision": "accepted",
+                                            "reviewer": None, "note": "", "fingerprint": expected_revision,
+                                            "session_id": permission["session_id"], "scope": scope,
+                                            "grant_id": permission["grant_id"],
+                                            "at": ws._now()})
     return creative_review_state(root, subject_type, id, gate)

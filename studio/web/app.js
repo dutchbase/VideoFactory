@@ -24,6 +24,7 @@
   const IMAGE_EXT = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif"]);
   const state = {
     token: "", boot: null, videos: [], videosComplete: false, styles: [], requests: [], jobs: [], materials: [],
+    sessionId: "", permission: new Map(), promptedScopes: new Set(),
     drafts: new Map(), files: new Map(), routeVersion: 0, pollTimer: 0, pollBusy: false,
     videoQuery: "", videoStateFilter: "all", materialQuery: "", materialKindFilter: "all", renderedPathSearch: "",
   };
@@ -75,7 +76,7 @@
   function stateLabel(value) {
     const labels = {
       "not-started": "Not started", draft: "Draft", blocked: "Blocked", stale: "Stale",
-      "awaiting-review": "Awaiting review", approved: "Approved", "changes-requested": "Changes requested",
+      "awaiting-review": "Awaiting review", approved: "Approved", accepted: "Completed in this session", "changes-requested": "Changes requested",
       skipped: "Skipped by you", "not-applicable": "Not applicable", ready: "Ready for review",
       queued: "Queued", running: "Running", cancelling: "Cancelling", succeeded: "Succeeded",
       failed: "Failed", cancelled: "Cancelled", interrupted: "Interrupted", "waiting-for-agent": "Waiting for agent",
@@ -92,9 +93,143 @@
     return error;
   }
 
+  function sessionId() {
+    let id = sessionStorage.getItem("vf-session-id");
+    if (!/^[a-f0-9]{32}$/.test(id || "")) {
+      id = crypto.randomUUID().replaceAll("-", "");
+      sessionStorage.setItem("vf-session-id", id);
+    }
+    return state.boot?.session_nonce ? `${id}.${state.boot.session_nonce}` : "";
+  }
+
+  function writeScope(path, options) {
+    if (["/api/permission"].includes(path) || /\/(cancel|decision|approve)$/.test(path)) return null;
+    let body = {};
+    try { body = JSON.parse(options.body || "{}"); } catch { return null; }
+    if (path === "/api/jobs") return body.action === "new" ? `video:${body.options?.brand}/${body.slug}` : body.action === "native-render" ? `character:${body.slug}` : body.action === "stock-get" ? brandScope(body.slug) : videoScope(body.slug);
+    if (path === "/api/requests") return body.subject ? `${body.subject.type}:${body.subject.id}` : videoScope(body.slug);
+    if (path === "/api/styles") return `style:${body.id}`;
+    if (path === "/api/characters") return `character:${body.id}`;
+    if (path === "/api/creative") return `${body.type}:${body.id}`;
+    if (path === "/api/generations") return `${body.subject_type}:${body.subject_id}`;
+    if (path === "/api/materials") return body.permission_scope || null;
+    if (path === "/api/files") {
+      const parts = String(body.path || "").split("/");
+      if (parts[0] === "videos") return parts.length > 3 && state.videos.some(video => video.video_id === `${parts[1]}/${parts[2]}`) ? `video:${parts[1]}/${parts[2]}` : videoScope(parts[1]);
+      return ({ brands: "brand", styles: "style", characters: "character" })[parts[0]] + ":" + parts[1];
+    }
+    if (path === "/api/materials/link") return body.owner_kind === "video" ? videoScope(body.owner_id) : `${body.owner_kind}:${body.owner_id}`;
+    let parts = path.split("/").filter(Boolean).map(decodeURIComponent);
+    if (parts[1] === "videos") return videoScope(parts[3] && parts[3] !== "reviews" ? `${parts[2]}/${parts[3]}` : parts[2]);
+    if (parts[1] === "creative") return `${parts[2]}:${parts[3]}`;
+    if (parts[1] === "styles") return `style:${parts[2]}`;
+    if (parts[1] === "characters") return `character:${parts[2]}`;
+    return null;
+  }
+
+  function videoScope(slug) {
+    if (typeof slug !== "string") return null;
+    if (slug.includes("/")) return `video:${slug}`;
+    const video = state.videos.find(item => item.leaf_slug === slug || item.slug === slug);
+    return video?.video_id ? `video:${video.video_id}` : null;
+  }
+
+  function brandScope(slug) {
+    const video = videoScope(slug);
+    return video ? `brand:${video.slice(6).split("/")[0]}` : null;
+  }
+
+  async function permissionState(scope) {
+    const result = await api(`/api/permission?scope=${encodeURIComponent(scope)}`);
+    state.permission.set(scope, result);
+    return result;
+  }
+
+  function permissionChoice(scope) {
+    return new Promise(resolve => {
+      const dialog = make("dialog", { className: "permission-dialog", "aria-labelledby": "permission-question" });
+      const form = make("form", { method: "dialog" });
+      const fieldset = make("fieldset");
+      fieldset.append(make("legend", { id: "permission-question" }, "Do I have full permission for this session?"));
+      fieldset.append(make("p", {}, `Scope: ${scope}. This choice applies to this browser session only.`));
+      const choices = [["full", "Full permission — production, checks, repairs and export"], ["each-stage", "Review each stage"], ["selected-stages", "Review selected stages"]];
+      const stageSet = make("fieldset", { className: "permission-stages", hidden: true }, [make("legend", {}, "Choose stages for review")]);
+      const stages = scope.startsWith("video:") ? ["research", "brief", "script", "voice-test", "voice", "transcript", "cues", "scene", "render"]
+        : scope.startsWith("style:") ? ["brief", "materials", "sample"]
+        : scope.startsWith("character:") ? ["brief", "design", "identity", "rig", "animation"]
+        : ["brief", "design"];
+      for (const stage of stages) stageSet.append(make("label", {}, [make("input", { type: "checkbox", name: "stage", value: stage }), ` ${stage}`]));
+      for (const [value, label] of choices) fieldset.append(make("label", { className: "permission-choice" }, [make("input", { type: "radio", name: "mode", value, required: true, onChange: () => { stageSet.hidden = value !== "selected-stages"; } }), ` ${label}`]));
+      const error = make("p", { role: "alert", className: "form-error" });
+      form.append(fieldset, stageSet, error, make("div", { className: "form-actions" }, [button("Cancel", "button", () => dialog.close()), button("Save permission", "button button-primary", null, "submit")]));
+      form.addEventListener("submit", async event => {
+        event.preventDefault();
+        const data = new FormData(form);
+        const selected = data.getAll("stage");
+        if (data.get("mode") === "selected-stages" && !selected.length) { error.textContent = "Choose at least one stage."; return; }
+        try {
+          const result = await api("/api/permission", jsonOptions("POST", { action: "grant", scope, mode: data.get("mode"), selected_stages: data.get("mode") === "selected-stages" ? selected : [] }));
+          state.permission.set(scope, result);
+          dialog.close(); resolve(result);
+        } catch (failure) { error.textContent = failure.message; }
+      });
+      dialog.addEventListener("close", () => { dialog.remove(); resolve(null); }, { once: true });
+      dialog.append(form);
+      document.body.append(dialog); dialog.showModal();
+    });
+  }
+
+  async function ensurePermission(scope) {
+    if (!scope || scope.includes("undefined")) return;
+    const current = await permissionState(scope);
+    if (current.active) return;
+    if (!await permissionChoice(scope)) throw new Error("Permission was not granted for this session.");
+  }
+
+  function paidPanel(runId, scope) {
+    const host = make("section", { className: "section rule-section", "aria-label": "Paid requests" });
+    host.append(make("h2", {}, "Paid requests"));
+    api(`/api/paid/${encodeURIComponent(runId)}`).then(data => {
+      const pending = data.pending || [];
+      const quotes = data.quotes || [];
+      if (!pending.length && !quotes.length) { host.append(make("p", {}, "No exact paid request is waiting for approval.")); return; }
+      for (const item of pending) {
+        const existing = quotes.find(quote => quote.logical_request_id === item.request_id);
+        const row = make("div", { className: "evidence-block" }, [make("h3", {}, `Request ${item.request_id}`), make("p", {}, `${item.purpose || "Paid work"} · ${JSON.stringify(item.metadata || {})}`)]);
+        if (!existing) {
+          const form = make("form", { className: "form-shell" });
+          const cost = textInput("Verified maximum cost", { type: "number", min: "0", step: "0.01", required: true });
+          const evidence = textInput("Provider quote evidence", { required: true, help: "Paste the provider price source or quote reference." });
+          const status = make("p", { role: "status" });
+          form.append(cost.wrapper, evidence.wrapper, button("Save quote", "button button-primary", null, "submit"), status);
+          form.addEventListener("submit", async event => {
+            event.preventDefault();
+            try { await ensurePermission(scope); await api(`/api/paid/${runId}/${item.request_id}/quote`, jsonOptions("POST", { max_cost: cost.control.value, evidence: evidence.control.value })); await renderRoute({ focus: false }); }
+            catch (error) { status.textContent = error.message; }
+          });
+          row.append(form);
+        }
+        host.append(row);
+      }
+      for (const quote of quotes) {
+        const row = make("div", { className: "evidence-block" }, [make("h3", {}, `Quoted request ${quote.request_id}`), make("p", {}, `Known maximum cost: ${quote.max_cost}. Evidence: ${JSON.stringify(quote.evidence)}`)]);
+        const status = make("p", { role: "status" });
+        row.append(button("Approve this exact paid request", "button button-primary", async event => {
+          event.currentTarget.disabled = true;
+          try { await ensurePermission(scope); await api(`/api/paid/${runId}/${quote.request_id}/approve`, jsonOptions("POST", { expected_quote: quote.fingerprint })); status.textContent = "This exact quote is approved for this session."; }
+          catch (error) { status.textContent = error.message; event.currentTarget.disabled = false; }
+        }), status);
+        host.append(row);
+      }
+    }).catch(error => host.append(notice("Paid request unavailable", error.message, "error-banner")));
+    return host;
+  }
+
   async function api(path, options = {}) {
     const headers = new Headers(options.headers || {});
     const method = String(options.method || "GET").toUpperCase();
+    if (method !== "GET" && method !== "HEAD" && state.boot) await ensurePermission(writeScope(path, options));
+    if (sessionId()) headers.set("X-VF-Session-ID", sessionId());
     if (method !== "GET" && method !== "HEAD" && state.token) headers.set("X-Studio-Token", state.token);
     const version = state.routeVersion;
     const reading = method === "GET" || method === "HEAD";
@@ -183,7 +318,7 @@
     for (const stage of STAGES) {
       if (isSilent(video.slug) && SILENT_GATES.has(stage.gate)) continue;
       const review = reviewFor(video, stage.gate);
-      if (!["approved", "skipped", "not-applicable"].includes(review.recorded_state || review.state)) return { stage, review };
+      if (!["approved", "accepted", "skipped", "not-applicable"].includes(review.recorded_state || review.state)) return { stage, review };
     }
     return { stage: STAGES[STAGES.length - 1], review: reviewFor(video, "render") };
   }
@@ -258,10 +393,44 @@
     }
   }
 
+  function routeScope(current) {
+    if (["video", "review"].includes(current.kind)) return videoScope(current.slug);
+    if (["style"].includes(current.kind)) return `style:${current.id}`;
+    if (["character"].includes(current.kind)) return `character:${current.id}`;
+    if (current.kind === "creative-review") return `${current.type}:${current.id}`;
+    return null;
+  }
+
+  async function showPermissionBar(main, current) {
+    const scope = routeScope(current);
+    if (!scope) return;
+    const stateNow = await permissionState(scope);
+    if (!main.isConnected) return;
+    const bar = make("section", { className: "permission-bar", "aria-label": "Session permission" });
+    const label = stateNow.active ? `${scope} · ${stateNow.mode.replaceAll("-", " ")}${stateNow.selected_stages?.length ? ` · Review: ${stateNow.selected_stages.join(", ")}` : ""}` : `${scope} · No permission in this session`;
+    bar.append(make("p", {}, label));
+    bar.append(button(stateNow.active ? "Revoke permission" : "Choose permission", "button", async event => {
+      event.currentTarget.disabled = true;
+      try {
+        if (stateNow.active) {
+          const result = await api("/api/permission", jsonOptions("POST", { action: "revoke", scope }));
+          state.permission.set(scope, result);
+        } else await permissionChoice(scope);
+        await renderRoute({ focus: false });
+      } catch (error) { announce(error.message); event.currentTarget.disabled = false; }
+    }));
+    main.prepend(bar);
+    if (!stateNow.active && !state.promptedScopes.has(scope)) {
+      state.promptedScopes.add(scope);
+      permissionChoice(scope).then(granted => { if (granted && main.isConnected) renderRoute({ focus: false }); });
+    }
+  }
+
   async function loadBootstrap() {
     const data = await api("/api/bootstrap?view=shell");
     state.boot = data;
     state.token = data.token || state.token;
+    state.sessionId = sessionId();
     state.requests = Array.isArray(data.requests) ? data.requests : [];
     state.jobs = Array.isArray(data.jobs) ? data.jobs : [];
     updateNavigation();
@@ -635,8 +804,8 @@
   function launchJobForm(video) {
     const form = make("form", { className: "form-shell" });
     const actionChoices = [
-      ["research-init", "Initialize research"], ["voice-check", "Check voice provider"], ["voice-test", "Generate voice test take"],
-      ["voice", "Generate full voice"], ["transcribe", "Transcribe approved voice"], ["cues", "Compile storyboard cues"],
+      ["research-init", "Initialize research"], ["voice-check", "Check voice provider"],
+      ["transcribe", "Transcribe approved voice"], ["cues", "Compile storyboard cues"],
       ["check", "Check scene"], ["stills", "Render scene stills"], ["render", "Render video"], ["thumbnail", "Render thumbnail"],
       ["stock-search", "Search stock library"], ["stock-get", "Download stock result"], ["use", "Use library reference"],
       ["capture", "Capture website page"], ["record", "Record website flow"],
@@ -808,6 +977,7 @@
           catch (error) { showFormError(message, error); }
         }));
         form.append(row);
+        form.append(paidPanel(run.id, `video:${video.slug}`));
       }
     }).catch(error => showFormError(message, error));
     return form;
@@ -937,7 +1107,7 @@
     const stages = STAGES.filter(stage => !isSilent(video.slug) || !SILENT_GATES.has(stage.gate));
     for (const stage of stages) {
       const review = reviewFor(video, stage.gate);
-      const next = review.missing?.length ? `Needs ${review.missing.join(", ")}` : review.state === "awaiting-review" ? "Your decision is next" : review.state === "approved" ? "Current revision approved" : stage.optional ? "Optional research stage" : "Review the saved stage files";
+      const next = review.missing?.length ? `Needs ${review.missing.join(", ")}` : review.state === "awaiting-review" ? "Your decision is next" : review.state === "approved" ? "Current revision approved" : review.state === "accepted" ? "Completed under session permission" : stage.optional ? "Optional research stage" : "Review the saved stage files";
       host.append(make("li", { className: "stage-flow-row", dataset: { state: review.state } }, [
         make("span", { className: "stage-flow-index", "aria-hidden": "true" }, String(stages.indexOf(stage) + 1).padStart(2, "0")),
         make("span", { className: "stage-flow-main" }, [link(stage.label, reviewPath(video.slug, stage.gate)), make("small", {}, next)]),
@@ -955,7 +1125,7 @@
     if (review.state === "awaiting-review") message = "The current saved revision is waiting for your review.";
     else if (review.state === "stale") message = "An input changed since this stage was approved. Review the current version before continuing.";
     else if (review.missing?.length) message = `Blocked by: ${review.missing.join(", ")}.`;
-    else if (review.state === "approved") message = "All listed stages have a current approval.";
+    else if (review.state === "approved" || review.state === "accepted") message = "All listed stages are complete.";
     else if (review.state === "unchecked") message = "Check for changes · open the stage to check the saved revision and its decisions.";
     else message = "Open the stage to edit its authored inputs, review readiness, and available next action.";
     return make("div", { className: "workflow-next" }, [make("span", { className: "workflow-next-mark", "aria-hidden": "true" }), make("div", { className: "workflow-next-copy" }, [make("strong", {}, title), make("p", {}, message), link(`Open ${next.stage.label}`, reviewPath(video.slug, next.stage.gate), "quiet-link")])]);
@@ -1065,7 +1235,7 @@
     if (dirty) return "Save or resolve this video's draft first.";
     if (override) return override;
     if (missing && !["awaiting-review", "approved", "skipped"].includes(reviewState)) return `Not ready: ${missing}.`;
-    return { "awaiting-review": "Ready for your decision.", approved: "This saved revision is approved.", stale: "Changed since the last decision. Inspect it, then mark it ready.",
+    return { "awaiting-review": "Ready for your decision.", approved: "This saved revision is approved.", accepted: "Completed under this session's permission. You can still add a human decision.", stale: "Changed since the last decision. Inspect it, then mark it ready.",
       "changes-requested": "Changes requested.", skipped: "Skipped by you." }[reviewState] || "Not ready yet. Saving edits never approves.";
   }
 
@@ -1105,8 +1275,8 @@
     }
     if (onStop) { const stop = button("Stop agent", "button", () => withButton(stop, onStop, message)); actions.append(stop); }
     if (nextLink) actions.append(nextLink);
-    // Disabled decision buttons only say something when no other action is on offer.
-    else if (canDecide || canChange || (!agentModes && !onStop)) {
+    // A person may add a human decision after session completion.
+    if (canDecide || canChange || (!nextLink && !agentModes && !onStop)) {
       const changes = button("Request changes", "button", () => openPanel("What should change?", "Send request", onRequestChanges, "Add a note that explains the changes requested."));
       const approve = button(approveModes ? "Approve & run agent" : "Approve", "button button-primary", () => withButton(approve, () => onApprove(approveModes ? "auto" : null), message));
       changes.id = "review-changes-button"; approve.id = "review-approve-button";
@@ -1335,8 +1505,8 @@
       await api(`${apiVideoPath(slug)}/research/skip`, jsonOptions("POST", { reason, reviewer: reviewerName() }));
       if (version === state.routeVersion) await renderRoute({ focus: false }); announce("Research marked skipped.");
     } }] : [];
-    const canRunAgent = Boolean(inputGate && reviewFor(video, inputGate).state === "approved" && !activeRun && !["awaiting-review", "approved", "skipped"].includes(review.state));
-    const next = review.state === "approved" ? nextGate(video) : null;
+    const canRunAgent = Boolean(inputGate && ["approved", "accepted"].includes(reviewFor(video, inputGate).state) && !activeRun && !["awaiting-review", "approved", "accepted", "skipped"].includes(review.state));
+    const next = ["approved", "accepted"].includes(review.state) ? nextGate(video) : null;
     let line = "";
     if (activeRun) line = `Agent is writing the ${gateLabel(gate).toLowerCase()} · since ${formatTime(activeRun.run?.started_at || activeRun.claimed_at)}.`;
     else if (canRunAgent && lastRun?.state === "waiting-for-agent" && lastRun.run?.mode === "guided") line = "Waiting for the agent in your terminal.";
@@ -1357,9 +1527,9 @@
         await api(`/api/requests/${encodeURIComponent(activeRun.id)}/cancel`, jsonOptions("POST", {}));
         await renderRoute({ focus: false });
       } : null,
-      showReady: !["awaiting-review", "approved", "skipped"].includes(review.state) && (review.ready || !canRunAgent),
-      canReady: Boolean(review.ready && !["awaiting-review", "approved", "skipped"].includes(review.state)),
-      canDecide: review.state === "awaiting-review",
+      showReady: !["awaiting-review", "approved", "accepted", "skipped"].includes(review.state) && (review.ready || !canRunAgent),
+      canReady: Boolean(review.ready && !["awaiting-review", "approved", "accepted", "skipped"].includes(review.state)),
+      canDecide: ["awaiting-review", "accepted"].includes(review.state),
       onReady: () => decide("ready"), onRequestChanges: note => decide("changes-requested", note), extra,
       onApprove: async mode => {
         await decide("approved", "", !mode);
@@ -1540,8 +1710,8 @@
     return selectField(label, choices, { value: "" });
   }
 
-  async function saveMaterialRecord(metadata, targetValue = "") {
-    const response = await api("/api/materials", jsonOptions("POST", metadata));
+  async function saveMaterialRecord(metadata, permissionScope, targetValue = "") {
+    const response = await api("/api/materials", jsonOptions("POST", { ...metadata, permission_scope: permissionScope.trim() }));
     const material = unwrap(response, "material");
     if (targetValue) {
       const separator = targetValue.indexOf(":");
@@ -1671,6 +1841,11 @@
     return owner;
   }
 
+  function sharedMaterialOwner() {
+    return textInput("Shared project owner", { required: true, placeholder: "brand:videofactory",
+      help: "Enter a named brand, style, or character, such as brand:videofactory. A video grant does not cover shared materials." });
+  }
+
   function uploadMaterialForm() {
     const form = make("form", { className: "form-shell" });
     const inputId = `upload-file-${++fieldSequence}`;
@@ -1688,12 +1863,13 @@
     const description = textArea("Description", { required: true, rows: 3, maxlength: 2000 });
     const kind = selectField("Material type", kindChoices(), { required: true });
     const rights = textInput("Rights / permission you hold", { required: true, value: "unknown", help: "Unknown permissions block production reuse until clarified." });
+    const sharedOwner = sharedMaterialOwner();
     const target = materialTargetControls();
     const progress = make("progress", { className: "upload-progress", max: 100, value: 0, hidden: true, "aria-label": "Upload progress" });
     const progressText = make("span", { className: "field-help", "aria-live": "polite" });
     const message = make("div", { className: "flash-message", hidden: true, role: "status" });
     const submit = button("Upload and describe", "button button-primary", null, "submit");
-    add(form, drop, make("p", { className: "field-help" }, "Per-file limit: 20 MiB for images and documents; 500 MiB for audio and video."), make("div", { className: "form-grid" }, [title.wrapper, kind.wrapper, rights.wrapper, target.wrapper, description.wrapper]), progress, progressText, make("div", { className: "form-actions" }, submit), message);
+    add(form, drop, make("p", { className: "field-help" }, "Per-file limit: 20 MiB for images and documents; 500 MiB for audio and video."), make("div", { className: "form-grid" }, [title.wrapper, kind.wrapper, rights.wrapper, sharedOwner.wrapper, target.wrapper, description.wrapper]), progress, progressText, make("div", { className: "form-actions" }, submit), message);
     form.addEventListener("submit", async event => {
       event.preventDefault();
       const chosen = file.files?.[0];
@@ -1705,7 +1881,7 @@
       submit.disabled = true; progress.hidden = false; progress.value = 0; progressText.textContent = `Uploading ${formatBytes(chosen.size)}…`;
       let uploaded = null;
       try {
-        const metadata = { title: title.control.value.trim(), description: description.control.value.trim(), kind: kind.control.value, source: "upload", rights: rights.control.value.trim(), tags: [] };
+        const metadata = { title: title.control.value.trim(), description: description.control.value.trim(), kind: kind.control.value, source: "upload", rights: rights.control.value.trim(), tags: [], permission_scope: sharedOwner.control.value.trim() };
         const material = uploaded = await uploadMaterial(chosen, metadata, percentage => { progress.value = percentage; progressText.textContent = `Uploading · ${percentage}%`; });
         if (target.control.value) {
           const [owner_kind, owner_id] = target.control.value.split(":", 2);
@@ -1722,11 +1898,13 @@
     return form;
   }
 
-  function uploadMaterial(file, metadata, onProgress) {
+  async function uploadMaterial(file, metadata, onProgress) {
+    await ensurePermission(metadata.permission_scope);
     return new Promise((resolve, reject) => {
       const request = new XMLHttpRequest();
       request.open("POST", "/api/materials/upload");
       request.setRequestHeader("X-Studio-Token", state.token);
+      request.setRequestHeader("X-VF-Session-ID", sessionId());
       request.setRequestHeader("X-Material-Filename", encodeURIComponent(file.name));
       request.setRequestHeader("X-Material-Filename-Encoding", "uri");
       request.setRequestHeader("X-Material-Metadata", asciiJson(metadata));
@@ -1752,16 +1930,17 @@
     const title = textInput("Title", { required: true, maxlength: 200 });
     const description = textArea("Description", { required: true, rows: 3, maxlength: 2000 });
     const rights = textInput("Rights / permission you hold", { required: true, value: "unknown", help: "Unknown permissions block production reuse until clarified." });
+    const sharedOwner = sharedMaterialOwner();
     const target = materialTargetControls();
     const message = make("div", { className: "flash-message", hidden: true, role: "status" });
     const submit = button("Save link record", "button button-primary", null, "submit");
-    add(form, make("div", { className: "form-grid" }, [title.wrapper, url.wrapper, rights.wrapper, target.wrapper, description.wrapper]), make("div", { className: "form-actions" }, submit), message);
+    add(form, make("div", { className: "form-grid" }, [title.wrapper, url.wrapper, rights.wrapper, sharedOwner.wrapper, target.wrapper, description.wrapper]), make("div", { className: "form-actions" }, submit), message);
     form.addEventListener("submit", async event => {
       event.preventDefault(); submit.disabled = true;
       try {
         const parsed = new URL(url.control.value);
         if (!["http:", "https:"].includes(parsed.protocol)) throw new Error("Use an HTTP or HTTPS source URL.");
-        const material = await saveMaterialRecord({ title: title.control.value.trim(), description: description.control.value.trim(), kind: "reference", source: parsed.href, rights: rights.control.value.trim(), tags: [] }, target.control.value);
+        const material = await saveMaterialRecord({ title: title.control.value.trim(), description: description.control.value.trim(), kind: "reference", source: parsed.href, rights: rights.control.value.trim(), tags: [] }, sharedOwner.control.value, target.control.value);
         message.hidden = false; message.replaceChildren(notice("Link saved", `Material ${material.id} is available in Library. The source page was not fetched.`, "success-banner"));
         await refreshLibrary(); announce("Link record saved.");
       } catch (error) {
@@ -1783,10 +1962,11 @@
     const title = textInput("Title", { required: true, maxlength: 200 });
     const description = textArea("Description", { required: true, rows: 3, maxlength: 2000 });
     const rights = textInput("Rights / permission you hold", { required: true, value: "unknown" });
+    const sharedOwner = sharedMaterialOwner();
     const target = materialTargetControls();
     const message = make("div", { className: "flash-message", hidden: true, role: "status" });
     const submit = button("Describe existing file", "button button-primary", null, "submit");
-    add(form, fileSearch.wrapper, source.wrapper, fileCount, make("div", { className: "form-grid" }, [title.wrapper, rights.wrapper, target.wrapper, description.wrapper]), make("div", { className: "form-actions" }, submit), message);
+    add(form, fileSearch.wrapper, source.wrapper, fileCount, make("div", { className: "form-grid" }, [title.wrapper, rights.wrapper, sharedOwner.wrapper, target.wrapper, description.wrapper]), make("div", { className: "form-actions" }, submit), message);
     const kind = selectField("File type", [{ value: "all", label: "All types" }]);
     const next = button("Load next files", "button", () => updateFileOptions(true));
     const problem = make("div");
@@ -1823,7 +2003,7 @@
       event.preventDefault(); submit.disabled = true;
       try {
         const path = source.control.value;
-        const record = await saveMaterialRecord({ title: title.control.value.trim(), description: description.control.value.trim(), kind: kindFromPath(path), source: path, rights: rights.control.value.trim(), tags: [] }, target.control.value);
+        const record = await saveMaterialRecord({ title: title.control.value.trim(), description: description.control.value.trim(), kind: kindFromPath(path), source: path, rights: rights.control.value.trim(), tags: [] }, sharedOwner.control.value, target.control.value);
         message.hidden = false; message.replaceChildren(notice("File described", `Material ${record.id} now points to the existing workspace file.`, "success-banner"));
         await refreshLibrary(); announce("Existing file described.");
       } catch (error) {
@@ -2232,7 +2412,7 @@
     return { make, add, button, link, statusPill, api, jsonOptions, unwrap, pageIntro, sectionHeading,
       notice, emptyState, textInput, textArea, selectField, checkField, loadDraft, renderEditor,
       renderConflict, mediaElement, pathUrl, showFormError, withButton, announce, setBreadcrumb,
-      refreshRequests,
+      refreshRequests, paidPanel,
       navigate: (path, options = { focus: true }) => {
         if (version !== state.routeVersion) return Promise.resolve();
         history.pushState({}, "", path);
@@ -2300,6 +2480,7 @@
     }
     if (version !== state.routeVersion) return;
     main.querySelector(".loading-state")?.remove();
+    try { await showPermissionBar(main, current); } catch { /* Production still checks permission at the API. */ }
     updateNavigation();
     schedulePolling();
     if (location.hash) requestAnimationFrame(() => scrollToHash(location.hash));

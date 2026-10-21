@@ -48,14 +48,16 @@ Put your key in `.env` as `ELEVENLABS_API_KEY` (see `START-HERE.md`). A key star
 
 ## The review gate
 
-A paid voice needs a script you confirmed. Any edit to the script, and to the brief, changes its fingerprint (a short code for the exact text) and voids the confirmation.
+Follow the current session and named-scope rules in [`permissions.md`](permissions.md). Permission to complete the script stage is separate from a human review decision. Paid generation always needs separate approval for the exact managed request and known cost; see [`autonomous-runs.md`](autonomous-runs.md).
+
+A paid voice needs a current script fingerprint. Any edit to the script, and to the brief, changes its fingerprint (a short code for the exact text) and makes the prior readiness or review stale.
 
 1. `python anim.py speak <slug> --check`. Free. It tests the key, the model and the voice, and shows the characters left.
 2. `python anim.py speak <slug> --dry-run`. Free. It runs the tone check, then lists every chunk (its length and first words), the model, the voice and the script fingerprint. It contacts nothing and writes nothing. Chunks under 250 characters may come out uneven: merge short paragraphs.
-3. Read the chunks. The brief must be approved first. Then mark the script ready and approve it: `python anim.py review <slug> script --ready --expected <fingerprint>` prints the review link. Open it in Studio and press Approve (`dashboard-review.md`).
-4. `python anim.py speak <slug> --confirm-script <fingerprint>`. This is the paid call. It stops if the fingerprint is not the approved one.
+3. Read the chunks. Complete the brief and script gates under the current permission. If human review is required, mark the script ready with `python anim.py review <slug> script --ready --expected <fingerprint>`, then open the exact review link in Studio (`dashboard-review.md`).
+4. Direct paid `speak` is blocked. Use a managed run, inspect the exact request and known cost, then approve that quote for the request before it runs (`autonomous-runs.md`). Unknown cost or native unbounded billing must stop.
 
-Use `--skip-tone` only when you accept a tone finding on purpose. A saved autonomous run uses its own review mode (`autonomous-runs.md`).
+Use `--skip-tone` only when you accept a tone finding on purpose. A saved autonomous run still needs a fresh current-session permission (`autonomous-runs.md`).
 
 ## Takes
 
@@ -75,7 +77,7 @@ Listen to the whole file with the script in your hand. Check:
 - the pace fits the content;
 - the tone is right, and no breath or glitch is cut off.
 
-Redo a bad chunk with `speak --chunk N`. Then record your decision in Studio (the `voice` review) before you go on.
+Redo a bad chunk with `speak --chunk N`. Record a human decision in Studio (the `voice` review) when the current permission requires one or the user asks for it.
 
 After a render, `python anim.py listen <slug>` lets the agent hear the finished video and writes `05_render/listen.md`. It is optional evidence, not approval (`sound.md`, Listen).
 

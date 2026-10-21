@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 from studio import jobs, workspace
 from studio.production import production_lock
+from studio.permissions import grant
 from studio.server import _VIDEO, _APP
 
 
@@ -47,6 +48,7 @@ class MultiBrandStudio(unittest.TestCase):
             self.assertEqual(before, workspace.gate_fingerprint(self.root, "one/shared", "scene"))
 
     def test_request_rejects_stale_input_even_when_output_ready(self):
+        grant(self.root, "video:one/shared", "full")
         request = jobs.create_request(self.root, "one/shared", "script", "Write", "old", "stale")
         path = self.root / ".studio/requests/stale.json"
         request["state"] = "running"
@@ -74,6 +76,7 @@ class MultiBrandStudio(unittest.TestCase):
             workspace.video_detail(self.root, "one/shared")
 
     def test_start_failure_is_saved_for_the_run_controls(self):
+        grant(self.root, "video:one/shared", "full")
         settings = dict(brand="one", subject="A topic", intended_result="Understand", format="wide", language="en", review_mode="autonomous", selected_stages=[], max_paid_spend="0")
         with patch("studio.autonomous.run_video", side_effect=ValueError("engine unavailable")):
             try:
@@ -116,7 +119,13 @@ class MultiBrandStudio(unittest.TestCase):
         from unittest.mock import Mock
         quote = Mock(return_value={"request_id": "request"})
         reconcile = Mock(return_value={"state": "settled"})
-        with patch.object(anim, "ROOT", self.root), patch("studio.paid_requests.record_quote", quote, create=True), patch("studio.paid_requests.reconcile", reconcile), contextlib.redirect_stdout(io.StringIO()):
+        grant(self.root, "video:one/shared", "full")
+        run_dir = self.root / ".studio/runs"
+        run_dir.mkdir(parents=True)
+        (run_dir / "run.json").write_text(json.dumps({"id": "run", "video_id": "one/shared"}))
+        with patch.object(anim, "ROOT", self.root), patch("studio.paid_requests.record_quote", quote, create=True), \
+             patch("studio.paid_requests.inspect_quote", return_value={"request_id": "request"}), \
+             patch("studio.paid_requests.reconcile", reconcile), contextlib.redirect_stdout(io.StringIO()):
             with patch("sys.argv", ["anim.py", "run-quote", "run", "request", "--max-cost", "1", "--evidence", "receipt"]):
                 anim.main()
             with patch("sys.argv", ["anim.py", "run-reconcile", "run", "request", "--actual", "0.5", "--evidence", "receipt"]):

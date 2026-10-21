@@ -98,7 +98,7 @@ def request_style_materials(root, style_id, route, description, *, url=None, exp
     if url is not None: public_url(url)
     if route == "website" and url is None:
         raise ws.WorkspaceError("invalid", "Website inspection needs a public URL.")
-    if creative_review_state(root, "style", style_id, "brief")["state"] != "approved":
+    if creative_review_state(root, "style", style_id, "brief")["state"] not in {"approved", "accepted"}:
         raise ws.WorkspaceError("blocked", "Approve the current style brief first.")
     from studio import jobs
     plan = plan_style_materials(root, style_id)
@@ -499,7 +499,7 @@ def _prepare_style_sample(root, style_id, format, expected_revision):
     style = ws._style(root, style_id)
     if format not in style["supported_formats"]:
         raise ws.WorkspaceError("invalid", "Format is not claimed by this style.")
-    if creative_review_state(root, "style", style_id, "materials")["state"] != "approved":
+    if creative_review_state(root, "style", style_id, "materials")["state"] not in {"approved", "accepted"}:
         raise ws.WorkspaceError("blocked", "Approve current style materials before rendering a sample.")
     materials_revision = creative_fingerprint(root, "style", style_id, "materials")
     if expected_revision is not None and expected_revision != materials_revision:

@@ -1,5 +1,7 @@
 # 05 Export and review
 
+Read `_shared/permissions.md` before production. Full permission can complete export and required checks. A render review is a human decision only when a person reviews the exact current export.
+
 After preview approval, `python anim.py render <slug>` writes an H.264/AAC MP4. The render starts at once; there is no queue or time window. To test a segment use `--start 0 --end 5 --workers 1`. `--phone` also writes a smaller copy. Check its real size and readability.
 
 Make the thumbnail before the final render. `04_scene/thumbnail.*` are scene and audio inputs, so adding them afterwards makes the scene check and the audio check stale. The same holds for edits to `anim.py`. Edit `thumbnail.js`, then run `python anim.py thumbnail <slug>`. `python anim.py chapters <slug>` prints the top-level cue times as chapter lines. Write `DESCRIPTION.md` with accurate sources and the disclosures your platform needs.
@@ -10,12 +12,12 @@ Each export also writes `<slug>.render.json` with the Chromium version, connecti
 
 Watch the MP4 with sound. Check the first and last frames, captions, layout and timing. Export success is not content approval. This package does not upload, schedule or publish.
 
-Before the render review, save phone frames under `05_render/phone/` and an independent judge record at `05_render/frame-critic.md`. The record holds the reviewer, the date, scores for hook, 360 px readability, motion, variety, composition, accuracy and sound sync, and the three worst problems (or an explicit "none"). Studio can request `review-checks` agent work when these are missing. Then mark the `render` gate ready and open its exact Studio review link (`_shared/dashboard-review.md`). You watch the current export before you approve.
+Before final review, save phone frames under `05_render/phone/` and an independent judge record at `05_render/frame-critic.md`. The record holds the reviewer, the date, scores for hook, 360 px readability, motion, variety, composition, accuracy and sound sync, and the three worst problems (or an explicit "none"). Studio can request `review-checks` agent work when these are missing. If the active permission requires a render review, mark the `render` gate ready and open its exact Studio review link (`_shared/dashboard-review.md`). A person must inspect the current export before approving it.
 
 Audio input and balance follow `_shared/sound.md`. Effects need separate voice and effects tracks and corrected word timings. Render limits the summed effects and checks the written stem before it replaces the export. Each export writes `check-audio.md`. The Studio render review requires a current passing report (or an explicit no-effects result). Listen on headphones and on a phone speaker before you approve. A manual premix, or extra HyperFrames audio, cannot bypass this gate.
 
 For a brand with a quality bar, render runs the check, so a missing sound-design pass (`sound design missing`) or sparse cues (`too few beats`) stops it. Copy the music and effect credits from `04_scene/assets/sound.md` into `DESCRIPTION.md`.
 
-Managed runs may render when ready under their saved settings. They still need current checks and independent review evidence before completion. Managed review requires seven scores of at least 8, current artifact hashes, evidence from the actual rendered audio and no blocking issue. After three unsuccessful repair rounds, or when evidence is missing, the run needs attention (`_shared/autonomous-runs.md`).
+Managed runs may render when ready under their saved permission and settings. They need current checks and independent review evidence before reaching ready-for-final-review. Managed review requires seven scores of at least 8, current artifact hashes, evidence from the actual rendered audio and no blocking issue. After three unsuccessful repair rounds, or when evidence is missing, the run needs attention (`_shared/autonomous-runs.md`). A person still decides whether to approve the final video for publication.
 
 Guided command: `/vf-render`.

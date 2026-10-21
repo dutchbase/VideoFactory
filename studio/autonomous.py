@@ -15,6 +15,7 @@ import uuid
 from studio.paid_requests import atomic_json, money
 from studio.production import production_lock, lease_fds, child_environment
 from studio.learning import load_lessons, record_learning
+from studio.permissions import require_permission, needs_review, child_environment as permission_environment
 
 STAGES = ('research', 'brief', 'script', 'voice', 'transcript', 'cues', 'scene', 'checks', 'render', 'critic', 'package')
 SCORES = ('hook', 'readability', 'motion', 'variety', 'composition', 'accuracy', 'sound_sync')
@@ -173,6 +174,7 @@ def _command(root, argv, env):
 def _default_runner(root, project, stage, context):
     env = os.environ | {'VF_RUN_ID': context['run_id'], 'VF_RUN_ROOT': str(root), 'VF_PAID_GUARD': '1',
                         'DISPLAY': '', 'WAYLAND_DISPLAY': 'omabox-guard'}
+    env.update(permission_environment(root, 'video:' + context['video_id']))
     python = str(root / '.venv/bin/python') if (root / '.venv/bin/python').exists() else sys.executable
     cli = [python, 'anim.py']
     ident = context['video_id']
@@ -189,16 +191,20 @@ def _default_runner(root, project, stage, context):
                 _command(root, ['ffmpeg', '-y', '-ss', '0.8', '-i',
                          str(project / '05_render' / (project.name + '.mp4')),
                          '-frames:v', '1', str(project / '05_render' / (project.name + '-cover.jpg'))], env)
+                _command(root, ['ffmpeg', '-y', '-ss', '0.8', '-i',
+                         str(project / '05_render' / (project.name + '.mp4')),
+                         '-frames:v', '1', str(project / '05_render' / ('thumbnail-' + project.name + '.png'))], env)
         finally: _stop_box(name)
         return
     if stage == 'voice':
         if _valid(project, stage) and _approved(root, ident, 'voice'): return
-        _command(root, cli + ['speak', ident], env)
+        from studio.workspace import gate_fingerprint
+        _command(root, cli + ['speak', ident, '--confirm-script', gate_fingerprint(root, ident, 'script')], env)
         return
     if stage == 'package':
         if (project / '05_render/DESCRIPTION.md').is_file():
             _package(project, context); return
-    prompt = (f"Produce only stage {stage} for {project.relative_to(root)}. Read AGENTS.md and the stage contract. "
+    prompt = (f"Produce only stage {stage} for {project.relative_to(root)}. Read AGENTS.md, _shared/permissions.md and the stage contract. "
               f"Run settings and relevant lessons: {json.dumps(context, ensure_ascii=False)}. "
               "Do not approve gates. Do not publish. Do not call paid tools or APIs. Do not run a render now. "
               "Write real stage artifacts. Do not treat a successful process exit as validation. ")
@@ -206,6 +212,7 @@ def _default_runner(root, project, stage, context):
         prompt += ("You are an independent read-only critic; do not repair the video. Follow .claude/agents/frame-critic.md. "
                    "Save 05_render/critic.json with critic_id, scores (hook/readability/motion/variety/composition/accuracy/sound_sync), "
                    "blocking_issues, evidence, artifact_hashes and audio_review {listened,evidence,artifact_sha256}. "
+                   "Also save a substantive 05_render/frame-critic.md with your independent phone-frame findings. "
                    "Only claim listened after actual audio playback. If unavailable, record listened:false. "
                    f"Current hashes: {json.dumps(review_artifacts(project))}")
     if stage == 'package':
@@ -267,7 +274,7 @@ def _approved(root, video_id, stage):
     try:
         from studio.workspace import review_state
         state = review_state(root, video_id, stage)
-        return state.get('state') in ('approved',) and state.get('ready') is True
+        return state.get('state') in ('approved', 'accepted') and state.get('ready') is True
     except (ValueError, KeyError, WorkspaceError): return False
 
 
@@ -277,12 +284,34 @@ def _save_run(path, run):
     atomic_json(root / run['project_relative'] / 'runs' / run['id'] / 'run.json', run)
 
 
+def _accept_validated(root, video_id, stage):
+    """Record session acceptance only after the gate's own readiness checks pass."""
+    from studio.workspace import gate_fingerprint, mark_ready, accept_under_permission, review_state
+    fingerprint = gate_fingerprint(root, video_id, stage)
+    state = review_state(root, video_id, stage)
+    if state['state'] == 'changes-requested':
+        raise ValueError('Revise the current stage after requested changes before continuing.')
+    if state['state'] not in ('awaiting-review', 'approved', 'accepted'):
+        mark_ready(root, video_id, stage, fingerprint)
+    return accept_under_permission(root, video_id, stage, fingerprint)
+
+
+def _ready_for_human(root, video_id, stage):
+    from studio.workspace import gate_fingerprint, mark_ready, review_state
+    state = review_state(root, video_id, stage)
+    if state['state'] == 'changes-requested':
+        raise ValueError('Revise the current stage after requested changes before continuing.')
+    return mark_ready(root, video_id, stage, gate_fingerprint(root, video_id, stage))
+
+
 def run_video(root, video_id, settings=None, resume=None):
     from studio.project_paths import resolve_project, project_id
     from studio import workspace as ws
     root = Path(root).resolve()
     project = resolve_project(root, video_id)
     video_id = project_id(root, project)
+    scope = 'video:' + video_id
+    require_permission(root, scope)
     with production_lock(root, 'run:' + video_id):
         if resume:
             if not re.fullmatch(r'[a-f0-9]{32}', str(resume)): raise ValueError('Invalid run ID.')
@@ -301,6 +330,11 @@ def run_video(root, video_id, settings=None, resume=None):
             path = root / '.studio/runs' / (ident + '.json')
             run = dict(id=ident, video_id=video_id, settings=saved, stages={}, builder_id='builder-' + ident,
                        status='running', repair_rounds=0)
+        current_permission = require_permission(root, scope)
+        if set(current_permission.get('selected_stages', [])) - set(ws.GATES):
+            raise ValueError('Selected review stages must have a review gate.')
+        run['permission_session_id'] = current_permission['session_id']
+        run['permission_scope'] = scope
         run['project_relative'] = str(project.relative_to(root))
         manifest = json.loads((project / 'project.json').read_text())
         if manifest.get('brand', 'videofactory') != saved['brand']: raise ValueError('Run brand differs from project brand.')
@@ -312,6 +346,7 @@ def run_video(root, video_id, settings=None, resume=None):
         invalidated = False
         for stage in STAGES:
             if stage == 'research' and not saved['research']: continue
+            permission = require_permission(root, scope, stage)
             lessons = load_lessons(root, saved['brand'], stage)
             fingerprint = hashlib.sha256(json.dumps(dict(settings=saved, upstream=upstream, lessons=lessons,
                 dependencies=_dependencies(root, project, saved['brand']),
@@ -350,6 +385,7 @@ def run_video(root, video_id, settings=None, resume=None):
                 try:
                     if stage == 'critic':
                         while True:
+                            require_permission(root, scope, stage)
                             stage_runner(root, project, stage, context)
                             report = json.loads((project / '05_render/critic.json').read_text())
                             if critic_valid(project, report, run['builder_id']): break
@@ -357,12 +393,29 @@ def run_video(root, video_id, settings=None, resume=None):
                             if not report.get('audio_review', {}).get('listened'): raise ValueError('Actual audio review is missing.')
                             run['repair_rounds'] += 1
                             _save_run(path, run)
+                            require_permission(root, scope, 'scene')
                             stage_runner(root, project, 'scene', dict(context, repair=report))
+                            require_permission(root, scope, 'checks')
                             stage_runner(root, project, 'checks', context)
+                            require_permission(root, scope, 'render')
                             stage_runner(root, project, 'render', context)
                             if not all(_valid(project, repaired) for repaired in ('scene','checks','render')):
                                 raise ValueError('Repair produced invalid scene, check or render evidence.')
+                            for repaired in ('scene', 'checks', 'render'):
+                                run['stages'].setdefault(repaired, {}).update(status='validated',
+                                    artifacts=_artifacts(project, repaired))
+                            _save_run(path, run)
+                            repair_permission = require_permission(root, scope, 'scene')
+                            if needs_review(repair_permission, 'scene'):
+                                if not _approved(root, video_id, 'scene'):
+                                    _ready_for_human(root, video_id, 'scene')
+                                    run.update(status='waiting-for-review', review_stage='scene')
+                                    _save_run(path, run)
+                                    return run
+                            else:
+                                _accept_validated(root, video_id, 'scene')
                     else: stage_runner(root, project, stage, context)
+                    require_permission(root, scope, stage)
                     if not _valid(project, stage): raise ValueError('Required stage artifacts are missing or invalid.')
                     run['stages'][stage].update(status='validated', artifacts=_artifacts(project, stage))
                     record_learning(project, run['id'], stage)
@@ -374,9 +427,26 @@ def run_video(root, video_id, settings=None, resume=None):
                     return run
                 _save_run(path, run)
             upstream[stage] = _artifacts(project, stage)
-            if (saved['review_mode'] == 'selected-stages' and stage in saved['selected_stages'] and
-                    not _approved(root, video_id, stage)):
-                run.update(status='waiting-for-review', review_stage=stage)
+            review_gate = {'render': 'scene', 'package': 'render'}.get(stage, stage)
+            if review_gate in ('scene', 'render') and stage not in ('render', 'package'):
+                continue
+            if review_gate in ws.GATES and not needs_review(require_permission(root, scope, review_gate), review_gate):
+                try:
+                    _accept_validated(root, video_id, review_gate)
+                except Exception as error:
+                    run['stages'][stage].update(status='needs-attention', error=str(error))
+                    run['status'] = 'needs-attention'
+                    _save_run(path, run)
+                    return run
+            if review_gate in ws.GATES and needs_review(require_permission(root, scope, review_gate), review_gate) and not _approved(root, video_id, review_gate):
+                try:
+                    _ready_for_human(root, video_id, review_gate)
+                except Exception as error:
+                    run['stages'][stage].update(status='needs-attention', error=str(error))
+                    run['status'] = 'needs-attention'
+                    _save_run(path, run)
+                    return run
+                run.update(status='waiting-for-review', review_stage=review_gate)
                 _save_run(path, run)
                 return run
         run.update(status='ready-for-final-review', review_stage='render')

@@ -173,12 +173,15 @@ def character_detail(root, id):
             variant = _json(path)
             actions = [review for gate, review in detail["reviews"].items() if gate.startswith(f"animation:{path.parent.name}:")]
             try:
-                current = (detail["reviews"]["identity"]["state"] == "approved" and
+                current = (detail["reviews"]["identity"]["state"] in {"approved", "accepted"} and
                            variant["identity_revision"] == detail["reviews"]["identity"]["fingerprint"] and
                            _registered_variant(root, id, path.parent.name))
             except (KeyError, ws.WorkspaceError):
                 current = False
-            variant["state"] = "stale" if not current or any(action["state"] == "stale" for action in actions) else "approved" if actions and all(action["state"] == "approved" for action in actions) else "draft"
+            variant["state"] = ("stale" if not current or any(action["state"] == "stale" for action in actions)
+                                else "approved" if actions and all(action["state"] == "approved" for action in actions)
+                                else "accepted" if actions and all(action["state"] in {"approved", "accepted"} for action in actions)
+                                else "draft")
             variant["revision"] = ws._file_hash(path)
             detail["variants"].append(variant)
     return detail
@@ -339,7 +342,7 @@ def activate_native_candidate(root, id, variant, expected_fingerprint):
     active = pack / "native"
     with ws.workspace_lock(root):
         gate = creative_review_state(root, "character", id, f"rig:{variant}")
-        if gate["state"] != "approved" or gate["fingerprint"] != expected_fingerprint:
+        if gate["state"] not in {"approved", "accepted"} or gate["fingerprint"] != expected_fingerprint:
             raise ws.WorkspaceError("blocked", "The current native candidate needs rig approval.")
         if active.exists():
             if (active / "manifest.json").is_file() and source_tree_hash(active) == source_tree_hash(candidate):
@@ -489,7 +492,7 @@ def register_character_candidates(root, id, generation_id, expected_revision, *,
         folder = _folder(root, id)
         record = generation_detail(root, generation_id)
         state = creative_review_state(root, "character", id, "brief")
-        if state["state"] != "approved" or not state["ready"] or state["fingerprint"] != expected_revision or record["input_revision"] != expected_revision:
+        if state["state"] not in {"approved", "accepted"} or not state["ready"] or state["fingerprint"] != expected_revision or record["input_revision"] != expected_revision:
             raise ws.WorkspaceError("conflict", "Approved character brief changed.")
         if record["subject_id"] != id or record["purpose"] != "character-concepts" or record["state"] != "completed" or len(record["outputs"]) != 3 or record["provider"] != "openai":
             raise ws.WorkspaceError("blocked", "A completed OpenAI three-concept batch is required.")
@@ -532,11 +535,11 @@ def select_character_candidate(root, id, candidate_id, expected_revision):
     return character_detail(root, id)
 
 
-def prepare_character_identity(root, id, *, transport="codex-cli", image_model=None):
+def prepare_character_identity(root, id, *, transport="codex-cli", image_model=None, max_paid_spend=None):
     detail = character_detail(root, id)
     state = detail["reviews"]["design"]
     selected = [item for item in detail["candidates"] if item.get("selected") is True]
-    if state["state"] != "approved" or len(selected) != 1:
+    if state["state"] not in {"approved", "accepted"} or len(selected) != 1:
         raise ws.WorkspaceError("blocked", "An approved selected concept is required.")
     concept = selected[0]
     _art(root, concept["path"], concept["sha256"])
@@ -547,7 +550,7 @@ def prepare_character_identity(root, id, *, transport="codex-cli", image_model=N
     return prepare_generation(root, {"id": f"identity-{uuid.uuid4().hex[:12]}", "subject_type": "character", "subject_id": id,
         "purpose": "character-identity", "prompt": prompt, "references": [{"material_id": concept["material_id"], "role": "selected concept; preserve identity"}],
         "transparent": False, "image_count": 2, "input_revision": state["fingerprint"],
-        "transport": transport, "image_model": image_model})
+        "transport": transport, "image_model": image_model, "max_paid_spend": max_paid_spend})
 
 
 def register_character_identity(root, id, generation_id, constraints, expected_revision, *, replace_revision=None, confirm_replace=False):
@@ -559,7 +562,7 @@ def register_character_identity(root, id, generation_id, constraints, expected_r
         record = generation_detail(root, generation_id)
         candidates = _registered_candidates(root, id)
         selected = [item for item in candidates if item["selected"]]
-        if state["state"] != "approved" or not state["ready"] or state["fingerprint"] != expected_revision or record["input_revision"] != expected_revision:
+        if state["state"] not in {"approved", "accepted"} or not state["ready"] or state["fingerprint"] != expected_revision or record["input_revision"] != expected_revision:
             raise ws.WorkspaceError("conflict", "Approved design changed.")
         if len(selected) != 1 or record["subject_id"] != id or record["purpose"] != "character-identity" or record["state"] != "completed" or record["provider"] != "openai" or len(record["outputs"]) != 2:
             raise ws.WorkspaceError("blocked", "A completed OpenAI identity batch is required.")
@@ -598,7 +601,7 @@ def register_character_variant(root, id, variant, manifest, expected_revision, *
         folder = _folder(root, id)
         state = creative_review_state(root, "character", id, "identity")
         reference = _registered_reference(root, id)
-        if state["state"] != "approved" or not state["ready"] or state["fingerprint"] != expected_revision:
+        if state["state"] not in {"approved", "accepted"} or not state["ready"] or state["fingerprint"] != expected_revision:
             raise ws.WorkspaceError("conflict", "Approved canonical identity changed.")
         if not isinstance(manifest, dict) or set(manifest) != {"style_id", "views", "appearance", "monochrome_exception", "generation_id"} or not isinstance(manifest["style_id"], str) or not ws.ID.fullmatch(manifest["style_id"]) or manifest["views"] != _VIEWS or manifest["appearance"] != reference["appearance"] or not isinstance(manifest["monochrome_exception"], bool):
             raise ws.WorkspaceError("invalid", "Variant must retain exact master identity and both approved views.")
@@ -628,12 +631,12 @@ def register_character_variant(root, id, variant, manifest, expected_revision, *
     return result
 
 
-def prepare_character_variant(root, id, variant, style_id, prompt, monochrome_exception=False, *, transport="codex-cli", image_model=None):
+def prepare_character_variant(root, id, variant, style_id, prompt, monochrome_exception=False, *, transport="codex-cli", image_model=None, max_paid_spend=None):
     folder = _folder(root, id)
     ws._id(variant)
     ws._id(style_id)
     state = creative_review_state(root, "character", id, "identity")
-    if state["state"] != "approved":
+    if state["state"] not in {"approved", "accepted"}:
         raise ws.WorkspaceError("blocked", "Current canonical identity approval is required.")
     reference = _json(folder / "02_identity/reference-set.json")
     if not isinstance(prompt, str) or not prompt.strip():
@@ -651,4 +654,4 @@ def prepare_character_variant(root, id, variant, style_id, prompt, monochrome_ex
         "references": [{"material_id": reference["material_ids"]["sheet"], "role": "canonical character sheet"},
                        {"material_id": reference["material_ids"]["in-scene"], "role": "canonical in-scene identity"}],
         "transparent": True, "image_count": 1, "input_revision": state["fingerprint"],
-        "transport": transport, "image_model": image_model})
+        "transport": transport, "image_model": image_model, "max_paid_spend": max_paid_spend})

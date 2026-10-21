@@ -13,8 +13,8 @@ Read: `AGENTS.md` (the table "Guided commands").
    - Get ready: `/vf-setup`, `/vf-new-brand`, `/vf-new-style`, `/vf-new-character`, `/vf-new-video`.
    - Make a video, in this order: `/vf-research` (optional), `/vf-script`, `/vf-voice`, `/vf-transcript`, `/vf-cues`, `/vf-scene`, `/vf-render`.
    - See progress: `/vf-status`.
-2. Say that each command does one stage and then stops. The user checks the result before the next stage.
-3. Say that nothing is published or paid without a clear yes from the user.
+2. Say that a command may stop for review after each stage or at selected stages. Full permission lets work continue through required checks to final review.
+3. Say that paid requests always need separate approval for the exact request and known cost. A person must approve publication.
 4. Do not explain the commands in more detail unless the user asks about one.
 
 Gate: none.

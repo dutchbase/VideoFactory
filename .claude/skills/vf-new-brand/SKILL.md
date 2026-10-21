@@ -5,6 +5,7 @@ description: Make a new brand with colours, fonts, logo and voice. Use when the 
 # /vf-new-brand — make a brand
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `brands/CONTEXT.md`, `_templates/brand/`, `brands/videofactory/` (the example brand), `_shared/design-lookup.md`.
 
 1. Ask in one batch. If `mcp__brainstormform__ask_questions` exists, offer one form for the batch.
@@ -22,5 +23,5 @@ Read: `brands/CONTEXT.md`, `_templates/brand/`, `brands/videofactory/` (the exam
 5. Make a sample: `python anim.py new <brand>-sample --brand <brand>`.
    Then `python anim.py stills <brand>/<brand>-sample --at 1,4`. Show the stills.
 
-Gate: the user approves the colours and fonts on the stills.
+Gate: pause for human review when this session permission requires it.
 Next: `/vf-new-video`.

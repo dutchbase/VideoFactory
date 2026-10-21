@@ -12,7 +12,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, quote, unquote, urlsplit
 
-from studio import agent_runs, characters, creative, generation, jobs, references, workspace as ws
+from studio import agent_runs, characters, creative, generation, jobs, references, workspace as ws, permissions, paid_requests
+from studio.project_paths import project_id, resolve_project
 
 JSON_LIMIT = 2 * 1024 * 1024
 NATIVE_OUTPUT_LIMIT = generation.NATIVE_OUTPUT_LIMIT
@@ -25,6 +26,7 @@ _STYLE = re.compile(r"/api/styles/([a-z0-9][a-z0-9-]*)\Z")
 _CHARACTER = re.compile(r"/api/characters/([a-z0-9][a-z0-9-]*)(?:/(.*))?\Z")
 _CREATIVE = re.compile(r"/api/creative/(style|character)/([a-z0-9][a-z0-9-]*)(?:/(.*))?\Z")
 _GENERATION = re.compile(r"/api/generations/([a-z0-9][a-z0-9-]*)(?:/(approve|run|outputs))?\Z")
+_PAID = re.compile(r"/api/paid/([A-Za-z0-9_-]+)(?:/([A-Za-z0-9_-]+)(?:/(approve|quote))?)?\Z")
 _APP = re.compile(r"/(?:|videos|videos/new|videos/(?:[a-z0-9][a-z0-9_-]*/)?[a-z0-9][a-z0-9-]*|videos/(?:[a-z0-9][a-z0-9_-]*/)?[a-z0-9][a-z0-9-]*/review/[a-z-]+|jobs|jobs/[A-Za-z0-9_-]+|library|styles|styles/new|styles/[a-z0-9][a-z0-9-]*|characters|characters/new|characters/[a-z0-9][a-z0-9-]*|creative/(?:style|character)/[a-z0-9][a-z0-9-]*/review/[a-z0-9:-]+|generations/[a-z0-9][a-z0-9-]*|settings)\Z")
 _TRUSTED = re.compile(r"(?:videos/(?:[a-z0-9][a-z0-9_-]*/)?[a-z0-9][a-z0-9-]*/(?:04_scene/(?:index\.html|[A-Za-z0-9_./-]+\.(?:js|css|svg|png|jpg|jpeg|webp|gif|mp3|wav|m4a|ogg|mp4|webm))|creative/[A-Za-z0-9_./,\[\]-]+\.(?:js|css|html|json|png|jpg|jpeg|webp|gif|avif|svg|ttf|woff2?)|05_render/contact\.html|05_render/stills/[A-Za-z0-9_./-]+\.(?:png|jpg|jpeg))|styles/[a-z0-9][a-z0-9-]*/(?:template|03_sample/(?:wide|tall))/[A-Za-z0-9_./-]+\.(?:html|js|css|png|jpg|jpeg|webp|gif)|characters/[a-z0-9][a-z0-9-]*/03_animation/[a-z0-9][a-z0-9-]*/preview/[a-z0-9][a-z0-9-]*/[A-Za-z0-9_./-]+\.(?:html|js|css|png|jpg|jpeg|webp|gif)|_runtime/[A-Za-z0-9_./-]+\.(?:js|css|html|png|jpg|jpeg|webp|gif))\Z")
 _CUES = re.compile(r"videos/(?:[a-z0-9][a-z0-9_-]*/)?[a-z0-9][a-z0-9-]*/03_cues/cues\.js\Z")
@@ -68,6 +70,7 @@ def _range(value: str | None, size: int) -> tuple[int, int] | None:
 def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
     root = Path(root).resolve()
     token = secrets.token_urlsafe(32)
+    session_nonce = secrets.token_urlsafe(24)
     jobs.recover_jobs(root)
     agent_runs.recover(root)
 
@@ -109,6 +112,8 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
             return True
 
         def _body(self, limit=JSON_LIMIT):
+            if hasattr(self, "_cached_body"):
+                return self._cached_body
             try: size = int(self.headers.get("Content-Length", "-1"))
             except ValueError: size = -1
             if size < 0 or size > limit:
@@ -119,7 +124,80 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
             except (ValueError, UnicodeDecodeError):
                 raise ws.WorkspaceError("invalid", "Invalid JSON body.") from None
             if not isinstance(value, dict): raise ws.WorkspaceError("invalid", "Expected a JSON object.")
+            self._cached_body = value
             return value
+
+        def _session(self):
+            supplied = self.headers.get("X-VF-Session-ID", "")
+            if not re.fullmatch(r"[a-f0-9]{32}\.[A-Za-z0-9_-]{32}", supplied) or not supplied.endswith("." + session_nonce):
+                raise ws.WorkspaceError("forbidden", "This Studio session needs a fresh page. Reload and try again.")
+            return supplied
+
+        def _video_scope(self, slug):
+            try: return "video:" + project_id(root, resolve_project(root, slug))
+            except ValueError as exc: raise ws.WorkspaceError("invalid", str(exc)) from exc
+
+        def _write_scope(self, path):
+            """Return the exact named owner before any production body reaches a writer."""
+            method = self.command
+            if method not in ("POST", "PUT", "PATCH", "DELETE"):
+                return None
+            if path == "/api/permission" or path.endswith("/cancel") or path.endswith("/decision"):
+                return None
+            if paid := _PAID.fullmatch(path):
+                return None if paid[3] == "approve" else paid_requests._run_scope(root, paid[1])
+            body = self._body() if path in ("/api/files", "/api/jobs", "/api/requests", "/api/materials", "/api/materials/link", "/api/styles", "/api/characters", "/api/creative", "/api/generations") else None
+            if path == "/api/files":
+                relative = body.get("path")
+                if not isinstance(relative, str): raise ws.WorkspaceError("invalid", "A file path is required.")
+                ws.safe_path(root, relative)
+                parts = Path(relative).parts
+                if len(parts) >= 4 and parts[0] == "videos":
+                    return self._video_scope("/".join(parts[1:3])) if (root / "videos" / parts[1] / parts[2] / "project.json").is_file() else self._video_scope(parts[1])
+                if len(parts) >= 3 and parts[0] in ("brands", "styles", "characters"):
+                    return {"brands": "brand", "styles": "style", "characters": "character"}[parts[0]] + ":" + parts[1]
+                raise ws.WorkspaceError("forbidden", "This file has no named production owner.")
+            if path == "/api/materials" or path == "/api/materials/upload":
+                metadata = body if path == "/api/materials" else self._upload_metadata()
+                scope = metadata.get("permission_scope")
+                if not isinstance(scope, str) or scope.split(":", 1)[0] not in ("brand", "style", "character"):
+                    raise ws.WorkspaceError("forbidden", "Choose a named brand, style, or character owner for this shared material.")
+                return scope
+            if path == "/api/materials/link":
+                kind, ident = body.get("owner_kind"), body.get("owner_id")
+                return self._video_scope(ident) if kind == "video" else f"{kind}:{ident}"
+            if path == "/api/styles": return "style:" + str(body.get("id", ""))
+            if path == "/api/characters": return "character:" + str(body.get("id", ""))
+            if path == "/api/creative": return str(body.get("type", "")) + ":" + str(body.get("id", ""))
+            if path == "/api/generations": return str(body.get("subject_type", "")) + ":" + str(body.get("subject_id", ""))
+            if match := _GENERATION.fullmatch(path):
+                record = generation.generation_detail(root, match[1])
+                return record["subject_type"] + ":" + record["subject_id"]
+            if match := _CREATIVE.fullmatch(path): return match[1] + ":" + match[2]
+            if match := _CHARACTER.fullmatch(path): return "character:" + match[1]
+            if match := _STYLE.fullmatch(path): return "style:" + match[1]
+            if match := _VIDEO.fullmatch(path): return self._video_scope(match[1])
+            if path == "/api/jobs":
+                if body.get("action") in ("voice", "voice-test"): raise ws.WorkspaceError("forbidden", "Use a managed run for paid voice work.")
+                if body.get("action") == "new":
+                    return "video:" + str((body.get("options") or {}).get("brand", "")) + "/" + str(body.get("slug", ""))
+                if body.get("action") == "native-render": return "character:" + str(body.get("slug", ""))
+                if body.get("action") == "stock-get": return "brand:" + self._video_scope(body.get("slug")).split(":", 1)[1].split("/", 1)[0]
+                return self._video_scope(body.get("slug"))
+            if path == "/api/requests":
+                if isinstance(body.get("subject"), dict):
+                    return str(body["subject"].get("type", "")) + ":" + str(body["subject"].get("id", ""))
+                return self._video_scope(body.get("slug"))
+            if match := _REQUEST.fullmatch(path):
+                if match[2] == "run":
+                    request = next((item for item in jobs.list_requests(root) if item.get("id") == match[1]), None)
+                    if request is None: raise ws.WorkspaceError("missing", "Request not found.")
+                    if isinstance(request.get("subject"), dict):
+                        return str(request["subject"].get("type", "")) + ":" + str(request["subject"].get("id", ""))
+                    return self._video_scope(request.get("slug"))
+            if path.startswith("/api/"):
+                raise ws.WorkspaceError("forbidden", "This action has no named production owner.")
+            return None
 
         def _file(self, path: Path, *, attachment=False, public_asset=False):
             try:
@@ -211,12 +289,49 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
             public_asset = (path.startswith("/media/") or (path.startswith("/") and _trusted(path[1:]))) and self.command in ("GET", "HEAD")
             if not self._guard(write=self.command in ("POST", "PUT", "PATCH", "DELETE"), allow_opaque=public_asset): return
             try:
+                if path.startswith("/api/") and self.command in ("POST", "PUT", "PATCH", "DELETE"):
+                    self._session()
+                    if (scope := self._write_scope(path)):
+                        try: permissions.require_permission(root, scope)
+                        except ValueError as exc: raise ws.WorkspaceError("forbidden", str(exc)) from exc
                 if path == "/api/bootstrap" and self.command in ("GET", "HEAD"):
                     shell = parse_qs(raw.query).get("view") == ["shell"]
-                    data = {"brands": sorted(p.parent.name for p in (root / "brands").glob("*/tokens.js")), "token": token, "jobs": jobs.list_jobs(root), "requests": jobs.list_requests(root)}
+                    data = {"brands": sorted(p.parent.name for p in (root / "brands").glob("*/tokens.js")), "token": token, "session_nonce": session_nonce, "jobs": jobs.list_jobs(root), "requests": jobs.list_requests(root)}
                     if not shell:
                         data.update(videos=ws.list_videos(root), styles=ws.list_styles(root))
                     self._json(200, data)
+                elif path == "/api/permission" and self.command == "GET":
+                    scope = parse_qs(raw.query).get("scope", [""])[0]
+                    self._session()
+                    self._json(200, permissions.session_state(root, scope))
+                elif path == "/api/permission" and self.command == "POST":
+                    body = self._body()
+                    if body.get("action") == "grant":
+                        state = permissions.grant(root, body.get("scope"), body.get("mode"), body.get("selected_stages", ()), reviewer="human")
+                    elif body.get("action") == "revoke":
+                        state = permissions.revoke(root, body.get("scope"), reviewer="human")
+                    else: raise ws.WorkspaceError("invalid", "Choose grant or revoke.")
+                    self._json(200, state)
+                elif (paid := _PAID.fullmatch(path)):
+                    run_id, request_id, action = paid.groups()
+                    if request_id is None and self.command == "GET":
+                        base = root / ".studio/paid"
+                        pending = []
+                        for file in base.glob(run_id + "-*.pending.json"):
+                            try: pending.append(json.loads(file.read_text()))
+                            except (OSError, ValueError): continue
+                        quotes_file = base / (run_id + ".quotes.json")
+                        quotes = json.loads(quotes_file.read_text()) if quotes_file.exists() else {}
+                        self._json(200, {"pending": pending, "quotes": [dict(item, fingerprint=paid_requests.quote_digest(item)) for item in quotes.values()]})
+                    elif action is None and self.command == "GET":
+                        self._json(200, paid_requests.inspect_quote(root, run_id, request_id))
+                    elif action == "quote" and self.command == "POST":
+                        body = self._body()
+                        self._json(200, paid_requests.record_quote(root, run_id, request_id, body.get("max_cost"), body.get("evidence"), retry=body.get("retry") is True))
+                    elif action == "approve" and self.command == "POST":
+                        body = self._body()
+                        self._json(200, paid_requests.approve_quote(root, run_id, request_id, body.get("expected_quote"), reviewer="human"))
+                    else: self._error(404, "missing", "Route not found.")
                 elif path == "/api/videos" and self.command == "GET":
                     self._json(200, ws.list_videos(root, summary=parse_qs(raw.query).get("view") == ["summary"]))
                 elif path == "/api/files" and self.command == "GET":
@@ -247,7 +362,9 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                         self._json(200, ws.list_materials(root, filters))
                 elif path == "/api/materials/item" and self.command == "GET":
                     self._json(200, ws.material_detail(root, parse_qs(raw.query).get("id", [""])[0]))
-                elif path == "/api/materials" and self.command == "POST": self._json(201, ws.create_material(root, self._body()))
+                elif path == "/api/materials" and self.command == "POST":
+                    metadata = dict(self._body()); metadata.pop("permission_scope", None)
+                    self._json(201, ws.create_material(root, metadata))
                 elif path == "/api/materials/link" and self.command == "POST":
                     body = self._body()
                     self._json(200, ws.link_material(root, body.get("owner_kind"), body.get("owner_id"), body.get("material_id")))
@@ -272,9 +389,9 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                         self._json(200, characters.select_character_candidate(root, ident, body.get("candidate_id"), body.get("expected_revision")))
                     elif tail == "identity/generation" and self.command == "POST":
                         body = self._body()
-                        if set(body) - {"transport", "image_model"}: raise ws.WorkspaceError("invalid", "Unknown identity batch option.")
+                        if set(body) - {"transport", "image_model", "max_paid_spend"}: raise ws.WorkspaceError("invalid", "Unknown identity batch option.")
                         self._json(201, characters.prepare_character_identity(root, ident,
-                            transport=body.get("transport", "codex-cli"), image_model=body.get("image_model")))
+                            transport=body.get("transport", "codex-cli"), image_model=body.get("image_model"), max_paid_spend=body.get("max_paid_spend")))
                     elif tail == "identity/reference-set" and self.command == "PUT":
                         body = self._body()
                         self._json(200, characters.register_character_identity(root, ident, body.get("generation_id"),
@@ -310,11 +427,11 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                              "expression": body.get("expression")}, body.get("expected_fingerprint"), body.get("request_id")))
                     elif tail and re.fullmatch(r"variants/[a-z0-9][a-z0-9-]*/generation", tail) and self.command == "POST":
                         body = self._body()
-                        if set(body) - {"style_id", "prompt", "monochrome_exception", "transport", "image_model"}:
+                        if set(body) - {"style_id", "prompt", "monochrome_exception", "transport", "image_model", "max_paid_spend"}:
                             raise ws.WorkspaceError("invalid", "Unknown variant batch option.")
                         self._json(201, characters.prepare_character_variant(root, ident, tail.split("/")[1], body.get("style_id"),
                             body.get("prompt"), body.get("monochrome_exception", False),
-                            transport=body.get("transport", "codex-cli"), image_model=body.get("image_model")))
+                            transport=body.get("transport", "codex-cli"), image_model=body.get("image_model"), max_paid_spend=body.get("max_paid_spend")))
                     elif tail and re.fullmatch(r"variants/[a-z0-9][a-z0-9-]*/actions/[a-z0-9][a-z0-9-]*/(manifest|template|prepare|export)", tail):
                         from studio import character_motion
                         _, variant, _, action, operation = tail.split("/")
@@ -324,9 +441,9 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                             self._json(200, character_motion.motion_template(action))
                         elif operation == "prepare" and self.command == "POST":
                             body = self._body()
-                            if set(body) - {"transport", "image_model"}: raise ws.WorkspaceError("invalid", "Unknown animation art batch option.")
+                            if set(body) - {"transport", "image_model", "max_paid_spend"}: raise ws.WorkspaceError("invalid", "Unknown animation art batch option.")
                             self._json(201, character_motion.prepare_animation(root, ident, variant, action,
-                                transport=body.get("transport", "codex-cli"), image_model=body.get("image_model")))
+                                transport=body.get("transport", "codex-cli"), image_model=body.get("image_model"), max_paid_spend=body.get("max_paid_spend")))
                         elif operation == "export" and self.command == "POST":
                             body = self._body()
                             if set(body) - {"view", "fps", "prop"}: raise ws.WorkspaceError("invalid", "Unknown animation export option.")
@@ -401,7 +518,10 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                         elif len(bits) == 3 and self.command == "POST":
                             body = self._body()
                             if bits[2] == "ready":
+                                permission = permissions.session_state(root, f"{subject_type}:{ident}")
                                 state = creative.mark_creative_ready(root, subject_type, ident, gate, body.get("expected_revision"))
+                                if permission["active"] and gate.split(":", 1)[0] in permissions.STAGES and not permissions.needs_review(permission, gate.split(":", 1)[0]):
+                                    state = creative.accept_creative_under_permission(root, subject_type, ident, gate, body.get("expected_revision"))
                             elif bits[2] == "decision":
                                 state = creative.decide_creative(root, subject_type, ident, gate, body.get("decision"), body.get("reviewer"),
                                                                   body.get("note", ""), body.get("expected_revision"))
@@ -447,7 +567,12 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                         if len(bits) == 2 and self.command == "GET": self._json(200, ws.review_state(root, slug, gate))
                         elif len(bits) == 3 and self.command == "POST":
                             body = self._body()
-                            if bits[2] == "ready": self._json(200, ws.mark_ready(root, slug, gate, body.get("expected_fingerprint")))
+                            if bits[2] == "ready":
+                                permission = permissions.session_state(root, self._video_scope(slug))
+                                result = ws.mark_ready(root, slug, gate, body.get("expected_fingerprint"))
+                                if permission["active"] and gate in permissions.STAGES and not permissions.needs_review(permission, gate):
+                                    result = ws.accept_under_permission(root, slug, gate, body.get("expected_fingerprint"))
+                                self._json(200, result)
                             elif bits[2] == "decision": self._json(200, ws.decide_review(root, slug, gate, body.get("decision"), body.get("reviewer"), body.get("note", ""), body.get("expected_fingerprint")))
                             else: self._error(404, "missing", "Route not found.")
                         else: self._error(404, "missing", "Route not found.")
@@ -481,12 +606,22 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                     self._file(root / "studio/web/index.html")
                 else: self._error(404, "missing", "Route not found.")
             except ws.WorkspaceError as error:
-                status = {"invalid": 400, "missing": 404, "conflict": 409, "blocked": 409, "busy": 409, "io": 500}.get(error.code, 500)
+                status = {"invalid": 400, "missing": 404, "conflict": 409, "blocked": 409, "forbidden": 403, "busy": 409, "io": 500}.get(error.code, 500)
                 self._error(status, error.code, str(error))
             except (BrokenPipeError, ConnectionResetError):
                 return
+            except paid_requests.BudgetError as error:
+                self._error(409, "blocked", str(error))
             except (OSError, ValueError, TypeError):
                 self._error(500, "io", "Studio could not complete this request.")
+
+        def _upload_metadata(self):
+            metadata_header = self.headers.get("X-Material-Metadata", "{}")
+            if len(metadata_header) > 8192: raise ws.WorkspaceError("invalid", "Material metadata is too large.")
+            try: metadata = json.loads(metadata_header)
+            except ValueError: raise ws.WorkspaceError("invalid", "Invalid material metadata.") from None
+            if not isinstance(metadata, dict): raise ws.WorkspaceError("invalid", "Invalid material metadata.")
+            return metadata
 
         def _upload(self):
             try: size = int(self.headers.get("Content-Length", "-1"))
@@ -507,11 +642,7 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
                 raise ws.WorkspaceError("invalid", "Unknown upload filename encoding.")
             if not filename or "/" in filename or "\\" in filename or any(ord(c) < 32 or ord(c) == 127 for c in filename):
                 raise ws.WorkspaceError("invalid", "Invalid upload filename.")
-            metadata_header = self.headers.get("X-Material-Metadata", "{}")
-            if len(metadata_header) > 8192: raise ws.WorkspaceError("invalid", "Material metadata is too large.")
-            try: metadata = json.loads(metadata_header)
-            except ValueError: raise ws.WorkspaceError("invalid", "Invalid material metadata.") from None
-            if not isinstance(metadata, dict): raise ws.WorkspaceError("invalid", "Invalid material metadata.")
+            metadata = self._upload_metadata(); metadata.pop("permission_scope", None)
             import tempfile
             with tempfile.TemporaryFile() as stream:
                 remaining = size
@@ -524,8 +655,12 @@ def make_server(root: Path, port: int = 8765) -> ThreadingHTTPServer:
 
         def _handle_request(self):
             self._body_read = False
-            with ws.read_scope() if self.command in ("GET", "HEAD") else nullcontext():
-                self._handle()
+            self.__dict__.pop("_cached_body", None)
+            supplied = self.headers.get("X-VF-Session-ID", "")
+            context = permissions.session_context(supplied) if re.fullmatch(r"[a-f0-9]{32}\.[A-Za-z0-9_-]{32}", supplied) and supplied.endswith("." + session_nonce) else nullcontext()
+            with context:
+                with ws.read_scope() if self.command in ("GET", "HEAD") else nullcontext():
+                    self._handle()
             if self.command in ("POST", "PUT", "PATCH", "DELETE"):
                 ws.readcache.invalidate(root)
             # A body the route never read would be parsed as the next request on this connection.

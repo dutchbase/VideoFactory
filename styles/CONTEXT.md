@@ -1,5 +1,7 @@
 # Style recipes
 
+Read `_shared/permissions.md` before editing a shared style. You need `style:<id>` permission to change it. A video scope can use a style but cannot edit it. Pause for human review only at the style stages required by the active session permission.
+
 Style families live in `styles/_families/<id>/family.md`. A family record points to the real guide, runtime, template and any example video. The built-in family is Modern (`styles/_families/modern/family.md`, guide `_shared/modern.md`). No finished Modern sample video is registered yet. Start a family contract from `_templates/style-family/`.
 
 Run `.venv/bin/python anim.py catalog import` to add each family's default variant if it is missing. Import is idempotent and keeps existing style files. Imported variants have `origin: "existing-reference"` and `readiness: "needs-review"`. The import does not approve them or create rendered samples.

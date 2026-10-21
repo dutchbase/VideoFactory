@@ -5,6 +5,7 @@ description: Start a new video. Use when the user says "new video", "make a vide
 # /vf-new-video — start a video
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `_shared/audience.md`, `brands/CONTEXT.md`. List the brands: the folders in `brands/` (ignore names that start with `_`).
 
 1. Ask in one batch. If `mcp__brainstormform__ask_questions` exists, offer one form for the batch.
@@ -20,5 +21,5 @@ Read: `_shared/audience.md`, `brands/CONTEXT.md`. List the brands: the folders i
    Write an open question where you do not know.
 4. Show the brief in plain words and ask for changes.
 
-Gate: the user confirms the brief.
+Gate: pause for brief review only when this session permission requires it.
 Next: `/vf-research` if the video needs facts from the web. Else `/vf-script`.

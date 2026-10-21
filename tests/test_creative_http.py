@@ -10,6 +10,7 @@ from urllib.request import Request, urlopen
 
 from studio.server import make_server
 from studio import workspace as ws
+from studio import permissions
 from PIL import Image
 
 
@@ -24,7 +25,9 @@ class CreativeHttpTests(unittest.TestCase):
         self.thread.start()
         self.base = f'http://127.0.0.1:{self.server.server_port}'
         with self.call('/api/bootstrap') as response:
-            self.token = json.load(response)['token']
+            bootstrap = json.load(response)
+            self.token = bootstrap['token']
+            self.session = 'a' * 32 + '.' + bootstrap['session_nonce']
 
     def tearDown(self):
         self.server.shutdown()
@@ -35,6 +38,21 @@ class CreativeHttpTests(unittest.TestCase):
     def call(self, path, method='GET', body=None, *, token=True):
         headers = {'Content-Type': 'application/json'}
         if token: headers['X-Studio-Token'] = self.token if hasattr(self, 'token') else ''
+        if hasattr(self, 'session'): headers['X-VF-Session-ID'] = self.session
+        if token and method != 'GET' and path != '/api/permission' and hasattr(self, 'session'):
+            if path == '/api/creative' and isinstance(body, dict): scope = body.get('type', '') + ':' + body.get('id', '')
+            elif path.startswith('/api/creative/'):
+                parts = path.split('/'); scope = parts[3] + ':' + parts[4]
+            elif path.startswith('/api/styles/'):
+                scope = 'style:' + path.split('/')[3]
+            elif path == '/api/generations' and isinstance(body, dict): scope = body.get('subject_type', '') + ':' + body.get('subject_id', '')
+            elif path.startswith('/api/generations/'):
+                from studio.generation import generation_detail
+                detail = generation_detail(self.root, path.split('/')[3])
+                scope = detail['subject_type'] + ':' + detail['subject_id']
+            else: scope = None
+            if scope and ':' in scope:
+                permissions.grant(self.root, scope, 'each-stage', session_id=self.session)
         return urlopen(Request(self.base + path, data=json.dumps(body).encode() if body is not None else None,
                                headers=headers, method=method))
 
@@ -190,8 +208,9 @@ class CreativeHttpTests(unittest.TestCase):
         self.assertEqual(error.exception.code, 409)
         with self.call('/api/generations/test-batch/approve', 'POST', {'reviewer': 'Reviewer'}) as response:
             self.assertEqual(json.load(response)['state'], 'approved')
-        with self.call('/api/generations/test-batch/run', 'POST', {}) as response:
-            self.assertIn('handoff', json.load(response))
+        with self.assertRaises(HTTPError) as error:
+            self.call('/api/generations/test-batch/run', 'POST', {})
+        self.assertEqual(error.exception.code, 409)
         with self.assertRaises(HTTPError) as error:
             self.call('/api/generations/test-batch/outputs', 'POST', {'outputs': [], 'provenance': {}})
         self.assertEqual(error.exception.code, 400)
@@ -229,13 +248,13 @@ class CreativeHttpTests(unittest.TestCase):
         with self.assertRaises(HTTPError) as ordinary:
             urlopen(Request(self.base + '/api/creative',
                 data=b'{"type":"style","id":"too-large","prompt":"tiny","metadata":{"title":"Large"}}', method='POST',
-                headers={'X-Studio-Token': self.token, 'Content-Type': 'application/json',
+                headers={'X-Studio-Token': self.token, 'X-VF-Session-ID': self.session, 'Content-Type': 'application/json',
                          'Content-Length': str(JSON_LIMIT + 1)}))
         self.assertEqual(ordinary.exception.code, 400)
         self.assertFalse((self.root / 'styles/too-large').exists())
         with self.assertRaises(HTTPError) as oversized:
             urlopen(Request(self.base + '/api/generations/large-batch/outputs', data=b'{}', method='POST',
-                headers={'X-Studio-Token': self.token, 'Content-Type': 'application/json',
+                headers={'X-Studio-Token': self.token, 'X-VF-Session-ID': self.session, 'Content-Type': 'application/json',
                          'Content-Length': str(NATIVE_OUTPUT_LIMIT + 1)}))
         self.assertEqual(oversized.exception.code, 400)
         self.assertEqual(len(generation.generation_detail(self.root, 'large-batch')['outputs']), 1)

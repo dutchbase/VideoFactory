@@ -15,6 +15,7 @@ from studio.creative import (create_creative, creative_detail, creative_fingerpr
                              decide_creative, mark_creative_ready, save_workshop_answers)
 from studio.generation import (approve_generation, generation_detail, prepare_generation,
                                register_generated_outputs, run_generation, _run_codex)
+from studio.permissions import grant
 
 
 class GenerationTests(unittest.TestCase):
@@ -23,6 +24,7 @@ class GenerationTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         create_creative(self.root, 'character', 'tutor', 'A helpful tutor', {'title': 'Teacher'})
+        grant(self.root, 'character:tutor', 'full')
         detail = creative_detail(self.root, 'character', 'tutor')
         save_workshop_answers(self.root, 'character', 'tutor', {'look': 'Professional'},
                               brief='Cheerful professional tutor.', expected_revision=detail['revision'])
@@ -35,7 +37,9 @@ class GenerationTests(unittest.TestCase):
                    'purpose': 'character-concepts', 'prompt': 'Three distinct tutor concepts',
                    'references': [], 'transparent': True, 'image_count': 3,
                    'input_revision': creative_fingerprint(self.root, 'character', 'tutor', 'brief')}
-        return {**request, **changes}
+        result = {**request, **changes}
+        if result.get('transport') == 'openai-api': result.setdefault('max_paid_spend', 3)
+        return result
 
     def image(self, name, alpha=True):
         path = self.root / 'characters/tutor/generated/concepts-1' / name
@@ -87,41 +91,31 @@ class GenerationTests(unittest.TestCase):
         with self.assertRaises(ws.WorkspaceError):
             run_generation(self.root, 'concepts-1')
 
-    def test_unavailable_cli_and_false_success_leave_no_completed_outputs(self):
+    def test_unpriced_cli_is_blocked_before_preflight(self):
         prepare_generation(self.root, self.request())
         approve_generation(self.root, 'concepts-1', 'Reviewer')
-        with patch('studio.generation._codex_preflight', side_effect=ws.WorkspaceError('blocked', 'No Codex')):
-            with self.assertRaises(ws.WorkspaceError):
+        with patch('studio.generation._codex_preflight') as preflight:
+            with self.assertRaisesRegex(ws.WorkspaceError, 'maximum-cost quote'):
                 run_generation(self.root, 'concepts-1')
+            preflight.assert_not_called()
         self.assertEqual(generation_detail(self.root, 'concepts-1')['state'], 'approved')
-        with patch('studio.generation._codex_preflight'), patch('studio.generation._run_codex', return_value={'outputs': [], 'image_tool_used': True}):
-            result = run_generation(self.root, 'concepts-1')
-        self.assertNotEqual(result['state'], 'completed')
-        self.assertEqual(result['outputs'], [])
 
-    def test_runner_preserves_first_valid_draft_when_later_output_is_invalid(self):
+    def test_unpriced_cli_keeps_existing_drafts(self):
         prepare_generation(self.root, self.request())
         approve_generation(self.root, 'concepts-1', 'Reviewer')
         first = self.image('first.png')
-        with patch('studio.generation._codex_preflight'), patch('studio.generation._run_codex', return_value={
-                'outputs': [first, 'characters/tutor/generated/concepts-1/missing.png'],
-                'image_tool_used': True}):
-            result = run_generation(self.root, 'concepts-1')
-        self.assertEqual(result['state'], 'partial')
-        self.assertEqual([item['path'] for item in result['outputs']], [first])
+        with self.assertRaisesRegex(ws.WorkspaceError, 'maximum-cost quote'):
+            run_generation(self.root, 'concepts-1')
+        self.assertTrue((self.root / first).is_file())
+        self.assertEqual(generation_detail(self.root, 'concepts-1')['outputs'], [])
 
-    def test_active_runner_cannot_start_duplicate_paid_batch(self):
+    def test_unpriced_cli_cannot_start_paid_batch(self):
         prepare_generation(self.root, self.request())
         approve_generation(self.root, 'concepts-1', 'Reviewer')
 
-        def inspect_running(*_):
-            self.assertEqual(generation_detail(self.root, 'concepts-1')['state'], 'running')
-            with self.assertRaises(ws.WorkspaceError):
-                run_generation(self.root, 'concepts-1')
-            return {'outputs': [], 'image_tool_used': True}
-
-        with patch('studio.generation._codex_preflight'), patch('studio.generation._run_codex', side_effect=inspect_running):
-            self.assertEqual(run_generation(self.root, 'concepts-1')['state'], 'approved')
+        with self.assertRaisesRegex(ws.WorkspaceError, 'maximum-cost quote'):
+            run_generation(self.root, 'concepts-1')
+        self.assertEqual(generation_detail(self.root, 'concepts-1')['state'], 'approved')
 
     def test_api_route_requires_separate_billing_acknowledgement(self):
         prepare_generation(self.root, self.request(transport='openai-api', transparent=False))
@@ -180,33 +174,23 @@ class GenerationTests(unittest.TestCase):
         with patch('studio.generation.subprocess.run', side_effect=fake_run(success)):
             self.assertTrue(_run_codex(self.root, record, 'codex')['image_tool_used'])
 
-    def test_external_registrar_cannot_complete_active_batch_or_downgrade_completion(self):
+    def test_external_registrar_cannot_self_attest_cli_batch(self):
         prepare_generation(self.root, self.request())
         approve_generation(self.root, 'concepts-1', 'Reviewer')
         path = self.image('first.png')
 
-        def inspect_running(*_):
-            with self.assertRaises(ws.WorkspaceError):
-                register_generated_outputs(self.root, 'concepts-1', [path],
-                                           {'provider': 'openai', 'transport': 'codex-cli',
-                                            'coordinator': 'Codex CLI', 'image_tool_used': True})
-            current = generation_detail(self.root, 'concepts-1')
-            current.update(state='completed', outputs=[{'path': path}])
-            ws._atomic_write(self.root / '.studio/generations/concepts-1.json', json.dumps(current).encode())
-            return {'outputs': [], 'image_tool_used': False}
+        with self.assertRaises(ws.WorkspaceError):
+            register_generated_outputs(self.root, 'concepts-1', [path],
+                                       {'provider': 'openai', 'transport': 'codex-cli',
+                                        'coordinator': 'Codex CLI', 'image_tool_used': True})
 
-        with patch('studio.generation._codex_preflight'), patch('studio.generation._run_codex', side_effect=inspect_running):
-            self.assertEqual(run_generation(self.root, 'concepts-1')['state'], 'completed')
-
-    def test_extra_cli_paths_rejected_before_any_result_is_registered(self):
+    def test_unpriced_cli_does_not_register_existing_files(self):
         prepare_generation(self.root, self.request())
         approve_generation(self.root, 'concepts-1', 'Reviewer')
         paths = [self.image(f'image-{index}.png') for index in range(4)]
-        with patch('studio.generation._codex_preflight'), patch('studio.generation._run_codex', return_value={
-                'outputs': paths, 'image_tool_used': True}):
-            result = run_generation(self.root, 'concepts-1')
-        self.assertEqual(result['outputs'], [])
-        self.assertEqual(result['state'], 'approved')
+        with self.assertRaisesRegex(ws.WorkspaceError, 'maximum-cost quote'):
+            run_generation(self.root, 'concepts-1')
+        self.assertEqual(generation_detail(self.root, 'concepts-1')['outputs'], [])
 
     def test_identity_requires_selected_concept_reference_and_variant_requires_sheet_and_scene(self):
         selected = self.approve_design()

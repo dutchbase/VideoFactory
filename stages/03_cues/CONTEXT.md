@@ -1,5 +1,7 @@
 # 03 Storyboard
 
+Read `_shared/permissions.md` before production. Pause for human review when the active session permission requires it.
+
 Read the checked transcript, the brief and the brand files. Write `cues.md` with headings like these:
 
 ```
@@ -17,6 +19,6 @@ Run `python anim.py cues <slug>`. It reads `words.json` and writes `cues.json` a
 
 A brand can set a quality bar: a cue in the first 2 seconds, a new cue at most every 5 seconds, `[sfx: ...]` on cuts and reveals, and a `music:` bed. For such a brand `anim.py check` counts `too few beats` and `sound design missing` (`_shared/review.md`).
 
-Handoff: mark the current `cues` gate ready and open its exact Studio review link (`_shared/dashboard-review.md`).
+Handoff: when this session requires cue review, mark the current gate ready and open its exact Studio review link (`_shared/dashboard-review.md`). Otherwise continue to the next permitted stage.
 
 Guided command: `/vf-cues`. Next: `/vf-scene`.

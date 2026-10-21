@@ -5,10 +5,11 @@ description: Turn the voice into words with times (stage 02). Use when the user 
 # /vf-transcript — words with times
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `stages/02_transcript/CONTEXT.md`, `videos/<id>/01_voice/script.md`.
 Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` and ask which video.
 
-1. Check that a voice file exists in `videos/<id>/01_voice/` and that the user approved it.
+1. Check that a voice file exists in `videos/<id>/01_voice/`. Pause for voice review only when this session permission requires it.
 2. Check Whisper: `.venv/bin/python -c "import whisper"`. If it fails, say Whisper is missing.
    Ask before you install it: `.venv/bin/python -m pip install -r requirements-transcription.txt`.
    It is a large download. The first run also downloads model files.

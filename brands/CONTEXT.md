@@ -1,5 +1,7 @@
 # Brands
 
+Read `_shared/permissions.md` before editing a brand. You need `brand:<id>` permission to change shared brand files. A video scope can use that brand but cannot edit it. Pause for human review only at the brand stages required by the active session permission.
+
 One folder per brand: `brands/<id>/`. The house brand is `brands/videofactory/`. It shows every part in one place, so copy it as an example. Select a brand explicitly: `anim.py new <slug> --brand <id>`. A video stores its brand in `project.json`. A missing brand is an error.
 
 | File | Holds |
@@ -21,6 +23,6 @@ Process (guided: `/vf-new-brand`):
 
 Outputs: `brands/<id>/brand.md` and `brands/<id>/tokens.js`. From a repo also `brands/<id>/SOURCE.md`: what came from where.
 
-Human check: compare each colour and font with the brand source. Confirm the font licences. Record your approval in the video's `REVIEW.md`.
+Review check: compare each colour and font with the brand source. Confirm the font licences. When this session requires human review, record a decision for the exact current revision in the matching Studio review.
 
 Optional design ideas for a new brand, style or chart: `_shared/design-lookup.md`. Brand tokens still win.

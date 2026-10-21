@@ -14,6 +14,169 @@ from studio import paid_requests as paid
 from studio.production import production_lock, ProductionBusy, lease_fds, child_environment
 from studio.learning import save_lesson, load_lessons
 from studio.asset_adaptation import find_assets, plan_adaptation, adapt_asset
+from studio.permissions import grant, revoke
+from studio.workspace import review_state, decide_review, gate_fingerprint, mark_ready
+
+
+class RealPermissionRunTests(unittest.TestCase):
+    def test_full_does_not_reaccept_unchanged_requested_changes(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            project = root / 'videos/videofactory/demo'
+            (project / '01_voice').mkdir(parents=True)
+            (project / 'project.json').write_text('{"brand":"videofactory"}')
+            (project / '01_voice/brief.md').write_text(
+                '- Type: course\n- Language: en\n- Audience: new users\n- One outcome: save a draft\n')
+            grant(root, 'video:videofactory/demo', 'full')
+            fingerprint = gate_fingerprint(root, 'videofactory/demo', 'brief')
+            mark_ready(root, 'videofactory/demo', 'brief', fingerprint)
+            decide_review(root, 'videofactory/demo', 'brief', 'changes-requested', 'Reviewer',
+                          'Revise the opening', fingerprint)
+            with self.assertRaisesRegex(ValueError, 'Revise the current stage'):
+                auto._accept_validated(root, 'videofactory/demo', 'brief')
+            self.assertEqual(review_state(root, 'videofactory/demo', 'brief')['state'], 'changes-requested')
+
+    def test_full_accepts_real_brief_and_script_while_review_modes_pause(self):
+        for mode, selected, expected_calls, expected_status in (
+            ('full', [], ['brief', 'script', 'voice'], 'needs-attention'),
+            ('each-stage', [], ['brief'], 'waiting-for-review'),
+            ('selected-stages', ['script'], ['brief', 'script'], 'waiting-for-review'),
+        ):
+            with self.subTest(mode=mode), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder)
+                project = root / 'videos/videofactory/demo'
+                project.mkdir(parents=True)
+                (project / 'project.json').write_text('{"brand":"videofactory"}')
+                grant(root, 'video:videofactory/demo', mode, selected)
+                calls = []
+
+                def authored_runner(_root, _project, stage, _context):
+                    calls.append(stage)
+                    voice = project / '01_voice'
+                    voice.mkdir(exist_ok=True)
+                    if stage == 'brief':
+                        (voice / 'brief.md').write_text(
+                            '- Type: course\n- Language: en\n- Audience: new users\n'
+                            '- One outcome: save a draft\n')
+                    elif stage == 'script':
+                        (voice / 'script.md').write_text('Save the draft. Then check its name before you share it.\n')
+                    else:
+                        raise RuntimeError('Voice worker reached')
+
+                settings = dict(brand='videofactory', subject='A task', intended_result='Explain the task',
+                                format='tall', language='en', review_mode='autonomous', max_paid_spend=3)
+                with patch.object(auto, 'stage_runner', side_effect=authored_runner):
+                    run = auto.run_video(root, 'videofactory/demo', settings=settings)
+                self.assertEqual(calls, expected_calls)
+                self.assertEqual(run['status'], expected_status)
+                if mode == 'full':
+                    for gate in ('brief', 'script'):
+                        state = review_state(root, 'videofactory/demo', gate)
+                        self.assertEqual(state['state'], 'accepted')
+                        self.assertTrue(state['ready'])
+                        self.assertEqual(state['history'][-1]['kind'], 'acceptance')
+                elif mode == 'each-stage':
+                    self.assertEqual(run['review_stage'], 'brief')
+                    self.assertEqual(review_state(root, 'videofactory/demo', 'brief')['state'], 'awaiting-review')
+                    self.assertTrue(review_state(root, 'videofactory/demo', 'brief')['ready'])
+                else:
+                    self.assertEqual(run['review_stage'], 'script')
+                    self.assertEqual(review_state(root, 'videofactory/demo', 'brief')['state'], 'accepted')
+                    self.assertEqual(review_state(root, 'videofactory/demo', 'script')['state'], 'awaiting-review')
+                    self.assertTrue(review_state(root, 'videofactory/demo', 'script')['ready'])
+
+    def test_real_scene_and_render_acceptance_waits_for_complete_evidence(self):
+        for mode, selected, expected_status, expected_gate in (
+            ('full', [], 'ready-for-final-review', 'render'),
+            ('selected-stages', ['scene'], 'waiting-for-review', 'scene'),
+            ('selected-stages', ['render'], 'waiting-for-review', 'render'),
+        ):
+            with self.subTest(mode=mode, selected=selected), tempfile.TemporaryDirectory() as folder:
+                root = Path(folder)
+                project = root / 'videos/videofactory/demo'
+                project.mkdir(parents=True)
+                (project / 'project.json').write_text('{"brand":"videofactory"}')
+                grant(root, 'video:videofactory/demo', mode, selected)
+                calls = []
+
+                def write(name, content):
+                    path = project / name
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(content if isinstance(content, bytes) else content.encode())
+
+                def authored_runner(_root, _project, stage, context):
+                    calls.append(stage)
+                    if stage == 'brief':
+                        write('01_voice/brief.md', '- Type: course\n- Language: en\n- Audience: new users\n- One outcome: save a draft\n')
+                    elif stage == 'script':
+                        write('01_voice/script.md', 'Save the draft. Then check its name before you share it.\n')
+                    elif stage == 'voice':
+                        write('01_voice/voice.mp3', b'imported audio')
+                    elif stage == 'transcript':
+                        write('02_transcript/words.json', '{"duration":2,"words":[{"text":"Save","start":0,"end":1}]}')
+                        write('02_transcript/transcript.md', 'Save the draft.\n')
+                    elif stage == 'cues':
+                        write('03_cues/cues.md', '## Opening\nSave the draft.\n')
+                        write('03_cues/cues.json', '{"meta":{"duration":2},"cueList":[{"id":"1","start":0}]}')
+                        write('03_cues/cues.js', 'export const cues = [];\n')
+                    elif stage == 'scene':
+                        write('04_scene/scene.js', 'export function frame() { return 1; }\n')
+                        write('04_scene/index.html', '<html><body>Save the draft</body></html>\n')
+                        write('04_scene/assets/sound.md', 'Music and effects: none; original silent bed.\n')
+                    elif stage == 'checks':
+                        rows = ('page errors', 'cue warnings', 'clock use', 'nondeterministic frames',
+                                'text cut off', 'text overlaps', 'text too short to read')
+                        write('05_render/check.md', ''.join(f'{row}    0\n' for row in rows))
+                    elif stage == 'render':
+                        write('05_render/demo.mp4', b'video')
+                        write('05_render/sheets/sheet.png', b'sheet')
+                        write('05_render/stills/one.png', b'still')
+                        write('05_render/phone/one.png', b'phone')
+                        write('05_render/thumbnail-demo.png', b'thumbnail')
+                        write('05_render/demo-cover.jpg', b'cover')
+                        write('05_render/check-video.md', '- dead stretches over 3 s (stops the render): 0\n'
+                              '- one-frame flashes (must be 0): 0\n- format: 1080x1920 (ok)\n- loudness: no audio\n')
+                    elif stage == 'critic':
+                        write('05_render/frame-critic.md', 'Independent phone-frame review: text and motion are clear.\n')
+                        hashes = auto.review_artifacts(project)
+                        write('05_render/critic.json', json.dumps(dict(critic_id='independent-critic',
+                            scores=dict.fromkeys(auto.SCORES, 9), blocking_issues=[], evidence=['phone frame at 1s'],
+                            artifact_hashes=hashes, audio_review=dict(listened=True, evidence=['audio at 1s'],
+                            artifact_sha256=hashes['05_render/demo.mp4']))))
+                    elif stage == 'package':
+                        write('05_render/DESCRIPTION.md', 'ai_label: false\nA short video about saving a draft.\n')
+                        auto._package(project, context)
+
+                settings = dict(brand='videofactory', subject='A task', intended_result='Explain the task',
+                                format='tall', language='en', review_mode='autonomous', max_paid_spend=3)
+                with patch.object(auto, 'stage_runner', side_effect=authored_runner), \
+                        patch('studio.workspace._audio_check_ok', return_value=True):
+                    run = auto.run_video(root, 'videofactory/demo', settings=settings)
+                def reviewed(gate):
+                    with patch('studio.workspace._audio_check_ok', return_value=True):
+                        return review_state(root, 'videofactory/demo', gate)
+                self.assertEqual(run['status'], expected_status, run.get('stages'))
+                self.assertEqual(run['review_stage'], expected_gate)
+                self.assertTrue(reviewed(expected_gate)['ready'], reviewed(expected_gate))
+                if mode == 'full':
+                    self.assertEqual(reviewed('scene')['state'], 'accepted')
+                    self.assertEqual(reviewed('render')['state'], 'accepted')
+                    self.assertIn('package', calls)
+                elif expected_gate == 'scene':
+                    self.assertEqual(reviewed('scene')['state'], 'awaiting-review')
+                    self.assertNotIn('critic', calls)
+                else:
+                    self.assertIn('package', calls)
+                    self.assertEqual(reviewed('scene')['state'], 'accepted')
+                    self.assertEqual(reviewed('render')['state'], 'awaiting-review')
+                if mode != 'full':
+                    with patch('studio.workspace._audio_check_ok', return_value=True):
+                        decide_review(root, 'videofactory/demo', expected_gate, 'approved', 'Reviewer',
+                                      'Reviewed complete evidence', reviewed(expected_gate)['fingerprint'])
+                    with patch.object(auto, 'stage_runner', side_effect=authored_runner), \
+                            patch('studio.workspace._audio_check_ok', return_value=True):
+                        resumed = auto.run_video(root, 'videofactory/demo', resume=run['id'])
+                    self.assertEqual(resumed['status'], 'ready-for-final-review', resumed.get('stages'))
 
 
 class ManagedTests(unittest.TestCase):
@@ -26,6 +189,10 @@ class ManagedTests(unittest.TestCase):
         (self.project / 'project.json').write_text('{"brand":"videofactory"}')
         self.settings = dict(brand='videofactory', subject='A task', intended_result='Explain the task',
                              format='tall', language='en', review_mode='autonomous', max_paid_spend=3)
+        grant(self.root, 'video:videofactory/demo', 'full')
+        acceptance = patch.object(auto, '_accept_validated', return_value=None)
+        self.acceptance = acceptance.start()
+        self.addCleanup(acceptance.stop)
 
     def write(self, name, data):
         path = self.project / name
@@ -64,6 +231,7 @@ class ManagedTests(unittest.TestCase):
     def test_complete_resume_and_input_invalidation(self):
         run = self.run_mocked(settings=self.settings)
         self.assertEqual(run['status'], 'ready-for-final-review')
+        self.assertIn('brief', [call.args[2] for call in self.acceptance.call_args_list])
         with patch.object(auto, 'stage_runner', side_effect=AssertionError('Must reuse artifacts')), patch.object(auto, '_render_valid', return_value=True):
             resumed = auto.run_video(self.root, 'videofactory/demo', resume=run['id'])
         self.assertEqual(resumed['status'], 'ready-for-final-review')
@@ -77,9 +245,55 @@ class ManagedTests(unittest.TestCase):
 
     def test_selected_review_stops_without_approval(self):
         settings = self.settings | dict(review_mode='selected-stages', selected_stages=['brief'])
-        with patch.object(auto, '_approved', return_value=False): run = self.run_mocked(settings=settings)
+        grant(self.root, 'video:videofactory/demo', 'selected-stages', ['brief'])
+        with patch.object(auto, '_approved', return_value=False), patch.object(auto, '_ready_for_human'):
+            run = self.run_mocked(settings=settings)
         self.assertEqual(run['status'], 'waiting-for-review')
         self.assertNotIn('script', run['stages'])
+
+    def test_saved_run_mode_cannot_replace_live_permission(self):
+        revoke(self.root, 'video:videofactory/demo')
+        with self.assertRaisesRegex(ValueError, 'Permission is required'):
+            self.run_mocked(settings=self.settings)
+        grant(self.root, 'video:videofactory/demo', 'each-stage')
+        with patch.object(auto, '_approved', return_value=False), patch.object(auto, '_ready_for_human'):
+            run = self.run_mocked(settings=self.settings)
+        self.assertEqual(run['status'], 'waiting-for-review')
+        self.assertEqual(run['review_stage'], 'brief')
+        self.assertEqual(run['permission_scope'], 'video:videofactory/demo')
+        revoke(self.root, 'video:videofactory/demo')
+        with self.assertRaisesRegex(ValueError, 'Permission is required'):
+            self.run_mocked(resume=run['id'])
+
+    def test_paid_quote_needs_current_session_and_fresh_retry_approval(self):
+        ident = 'e' * 32
+        paid.atomic_json(self.root / '.studio/runs' / (ident + '.json'),
+                         dict(id=ident, video_id='videofactory/demo', settings=self.settings))
+        paid.record_quote(self.root, ident, 'image', 1, 'provider maximum')
+        with self.assertRaises(paid.BudgetError): paid.reserve(self.root, ident, 'image', 1)
+        quote = paid.inspect_quote(self.root, ident, 'image')
+        with self.assertRaisesRegex(paid.BudgetError, 'quote changed'):
+            paid.approve_quote(self.root, ident, 'image', 'wrong')
+        with patch.dict(os.environ, {'VF_PERMISSION_WORKER': '1',
+                                     'VF_PERMISSION_SCOPE': 'video:videofactory/demo'}):
+            with self.assertRaisesRegex(paid.BudgetError, 'worker cannot approve'):
+                paid.approve_quote(self.root, ident, 'image', quote['fingerprint'])
+        paid.approve_quote(self.root, ident, 'image', quote['fingerprint'])
+        with patch.dict(os.environ, {'VF_SESSION_ID': 'another-session'}):
+            with self.assertRaises(ValueError): paid.reserve(self.root, ident, 'image', 1)
+        revoke(self.root, 'video:videofactory/demo')
+        grant(self.root, 'video:videofactory/demo', 'full')
+        with self.assertRaisesRegex(paid.BudgetError, 'needs human approval'):
+            paid.reserve(self.root, ident, 'image', 1)
+        paid.approve_quote(self.root, ident, 'image', quote['fingerprint'])
+        paid.reserve(self.root, ident, 'image', 1)
+        revoke(self.root, 'video:videofactory/demo')
+        with self.assertRaises(ValueError):
+            paid.reconcile(self.root, ident, 'image', 1)
+        grant(self.root, 'video:videofactory/demo', 'full')
+        paid.reconcile(self.root, ident, 'image', 1)
+        paid.record_quote(self.root, ident, 'image', 1, 'new quote', retry=True)
+        with self.assertRaises(paid.BudgetError): paid.managed_quote(self.root, 'image', run_id=ident)
 
     def test_final_review_mode_and_missing_output(self):
         run = self.run_mocked(settings=self.settings | dict(review_mode='final-review-only'))
@@ -103,7 +317,10 @@ class ManagedTests(unittest.TestCase):
 
     def test_budget_unknown_uncertain_duplicate_and_limit(self):
         ident = 'a' * 32
-        paid.atomic_json(self.root / '.studio/runs' / (ident + '.json'), dict(settings=self.settings))
+        paid.atomic_json(self.root / '.studio/runs' / (ident + '.json'), dict(video_id='videofactory/demo', settings=self.settings))
+        for request, cost in [('first', 2), ('second', 1), ('third', '.01')]:
+            paid.record_quote(self.root, ident, request, cost, 'verified maximum')
+            paid.approve_quote(self.root, ident, request, paid.inspect_quote(self.root, ident, request)['fingerprint'])
         with self.assertRaises(paid.BudgetError): paid.reserve(self.root, ident, 'unknown', None)
         with self.assertRaises(RuntimeError):
             paid.guarded_call(self.root, ident, 'first', 2, lambda: (_ for _ in ()).throw(RuntimeError()))
@@ -189,6 +406,8 @@ class ManagedTests(unittest.TestCase):
             for stage in ('voice', 'transcript', 'checks', 'render'):
                 auto._default_runner(self.root, self.project, stage, context)
         self.assertEqual([a[2] for a in commands if a[0] != 'ffmpeg'], ['speak','transcribe','check','render','stills','listen'])
+        from studio.workspace import gate_fingerprint
+        self.assertEqual(commands[0][-2:], ['--confirm-script', gate_fingerprint(self.root, 'videofactory/demo', 'script')])
         self.assertIn(['--language','en'], [a[-2:] for a in commands if 'transcribe' in a])
 
     def test_full_default_dispatch_with_mocked_workers_and_paid_provider(self):
@@ -202,6 +421,8 @@ class ManagedTests(unittest.TestCase):
             else:
                 stage = {'speak':'voice','transcribe':'transcript','check':'checks','render':'render','cues':'cues'}.get(argv[2])
             if stage == 'voice':
+                paid.record_quote(self.root,run['id'],'mock-voice-request',1,'verified maximum')
+                paid.approve_quote(self.root,run['id'],'mock-voice-request',paid.inspect_quote(self.root,run['id'],'mock-voice-request')['fingerprint'])
                 paid.guarded_call(self.root,run['id'],'mock-voice-request',1,lambda:b'audio',provider='mock',purpose='voice')
             if stage: self.runner(root,self.project,stage,context)
         with patch.object(auto,'stage_runner',auto._default_runner), patch.object(auto,'_command',side_effect=command), \
@@ -227,17 +448,20 @@ class ManagedTests(unittest.TestCase):
 
     def test_quote_after_price_discovery_and_explicit_retry(self):
         ident = 'c'*32
-        paid.atomic_json(self.root / '.studio/runs' / (ident+'.json'), dict(settings=self.settings))
+        paid.atomic_json(self.root / '.studio/runs' / (ident+'.json'), dict(video_id='videofactory/demo', settings=self.settings))
         with patch.dict(os.environ, dict(VF_PAID_GUARD='1',VF_RUN_ROOT=str(self.root),VF_RUN_ID=ident)):
             with self.assertRaisesRegex(paid.BudgetError, 'logical-request'):
                 paid.managed_quote(self.root,'logical-request',purpose='voice',metadata={'characters':50})
             paid.record_quote(self.root,ident,'logical-request',1,'provider maximum price')
+            paid.approve_quote(self.root,ident,'logical-request',paid.inspect_quote(self.root,ident,'logical-request')['fingerprint'])
             run_id, quote = paid.managed_quote(self.root,'logical-request')
             paid.reserve(self.root,run_id,quote['request_id'],quote['max_cost'])
             with self.assertRaises(paid.BudgetError): paid.record_quote(self.root,ident,'logical-request',1,'retry',retry=True)
             paid.reconcile(self.root,ident,'logical-request',1,evidence='provider receipt')
             retry = paid.record_quote(self.root,ident,'logical-request',1,'new quoted attempt',retry=True)
             self.assertNotEqual(retry['request_id'],'logical-request')
+            with self.assertRaises(paid.BudgetError): paid.managed_quote(self.root,'logical-request')
+            paid.approve_quote(self.root,ident,'logical-request',paid.inspect_quote(self.root,ident,'logical-request')['fingerprint'])
             self.assertEqual(paid.managed_quote(self.root,'logical-request')[1]['request_id'], retry['request_id'])
 
     def test_paid_bundle_mirrors_pending_quote_and_charge(self):
@@ -250,6 +474,7 @@ class ManagedTests(unittest.TestCase):
         self.assertEqual(json.loads((bundle / 'voice-request.pending.json').read_text())['state'],'needs-quote')
         quote = paid.record_quote(self.root,ident,'voice-request',1,'verified provider maximum')
         self.assertEqual(json.loads((bundle / 'quotes.json').read_text())['voice-request'],quote)
+        paid.approve_quote(self.root,ident,'voice-request',paid.inspect_quote(self.root,ident,'voice-request')['fingerprint'])
         paid.guarded_call(self.root,ident,'voice-request',1,lambda:b'audio')
         ledger = json.loads((self.root / '.studio/paid' / (ident+'.json')).read_text())
         self.assertEqual(json.loads((bundle / 'ledger.json').read_text()),ledger)
@@ -264,12 +489,16 @@ class ManagedTests(unittest.TestCase):
     def test_quoted_image_requests_and_timeout_reservation(self):
         from studio import generation
         ident = 'b' * 32
-        record = dict(billing_acknowledged=True, requested_image_model='gpt-image-2', transparent=False,
+        (self.root / 'styles/demo').mkdir(parents=True)
+        grant(self.root, 'style:demo', 'full')
+        record = dict(id=ident, subject_type='style', subject_id='demo', billing_acknowledged=True, requested_image_model='gpt-image-2', transparent=False,
                       output_dir='styles/demo/generated', outputs=[], image_count=1,
                       resolved_references=[], prompt='A blue shape', purpose='style-material')
         request_id = generation.image_request_id(record, 1)
         runpath = self.root / '.studio/runs' / (ident + '.json')
-        paid.atomic_json(runpath, dict(settings=self.settings | dict(paid_quotes={request_id: dict(max_cost=1,evidence='provider maximum quote')})))
+        paid.atomic_json(runpath, dict(scope='style:demo', settings=self.settings))
+        paid.record_quote(self.root, ident, request_id, 1, 'provider maximum quote')
+        paid.approve_quote(self.root, ident, request_id, paid.inspect_quote(self.root, ident, request_id)['fingerprint'])
         script = self.root / 'image_gen.py'; script.write_text('')
         env = dict(VF_PAID_GUARD='1',VF_RUN_ROOT=str(self.root),VF_RUN_ID=ident,OPENAI_API_KEY='fake')
         with patch.dict(os.environ, env), patch.object(generation,'_API_SCRIPT',script), \
@@ -282,9 +511,8 @@ class ManagedTests(unittest.TestCase):
         with patch.dict(os.environ, env), patch.object(generation,'_API_SCRIPT',script):
             with self.assertRaises(paid.BudgetError): generation._run_api(self.root,record)
         request_id = generation.image_request_id(record,1)
-        run = json.loads(runpath.read_text())
-        run['settings']['paid_quotes'][request_id] = dict(max_cost=1,evidence='provider maximum quote')
-        paid.atomic_json(runpath,run)
+        paid.record_quote(self.root, ident, request_id, 1, 'provider maximum quote')
+        paid.approve_quote(self.root, ident, request_id, paid.inspect_quote(self.root, ident, request_id)['fingerprint'])
         with patch.dict(os.environ, env), patch.object(generation,'_API_SCRIPT',script), \
              patch.object(generation.subprocess,'run',side_effect=subprocess.TimeoutExpired([],900)):
             generation._run_api(self.root,record)

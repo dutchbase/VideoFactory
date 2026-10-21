@@ -4,7 +4,7 @@ A folder workspace that turns a voice into an explainer video: script → voice 
 One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages. State is the files in them.
 
 **Talk rule:** every chat reply follows `_shared/talk.md` (ASD-STE100, the user's language).
-**Work rule:** every guided command follows `_shared/guide.md` (ask in one batch, stop at each human check).
+**Work rule:** every production session follows `_shared/permissions.md` and `_shared/guide.md`. Ask for session permission before production; stop only at the review points required by that permission, plus any mandatory safety or evidence stop.
 
 ## Guided commands
 | Command | Job | Contract |
@@ -30,6 +30,7 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 |---|---|
 | Pipeline and stages | `CONTEXT.md` |
 | Rules for every run | `_shared/production-policy.md` |
+| Production permission and review decisions | `_shared/permissions.md` |
 | Tone, script, voice | `_shared/tone.md`, `_shared/script-production.md`, `_shared/voice.md` |
 | Scene look and helpers | `_shared/modern.md`, `_shared/motion.md`, `_shared/transitions.md` |
 | HTML engine (advanced) | `_shared/hyperframes.md` |
@@ -45,4 +46,4 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | Limits | `LIMITATIONS.md` |
 
 The CLI is `python anim.py <command>` (`-h` lists all). A video needs `--brand`; the house brand is `videofactory`.
-Automatic checks never approve publication: a person does.
+Before production, get permission for the current session and named scope. Permission to complete stages is separate from a human review decision. Automatic checks never approve publication: a person does.

@@ -10,6 +10,7 @@ from unittest import mock
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 import anim  # noqa: E402
+from studio.permissions import grant
 
 
 class HyperframesHelper(unittest.TestCase):
@@ -41,18 +42,24 @@ class HyperframesNew(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         base = Path(self.tmp.name)  # links resolve like in the repo: videos/<slug>/04_scene/../../../brands
-        for name in ("brands", "_runtime"):
+        for name in ("brands", "_runtime", "_templates"):
             (base / name).symlink_to(ROOT / name)
+        self.root = base
         self.videos = base / "videos"
         self.videos.mkdir()
         self.patch = mock.patch.object(anim, "VIDEOS", self.videos)
         self.patch.start()
+        self.root_patch = mock.patch.object(anim, "ROOT", self.root)
+        self.root_patch.start()
 
     def tearDown(self):
+        self.root_patch.stop()
         self.patch.stop()
         self.tmp.cleanup()
 
     def new(self, *argv):
+        if "--brand" in argv:
+            grant(self.root, "video:" + argv[argv.index("--brand") + 1] + "/" + argv[0], "full")
         with mock.patch.object(sys, "argv", ["anim.py", "new", *argv]), \
                 mock.patch("sys.stdout"), mock.patch("sys.stderr"):
             anim.main()
@@ -286,7 +293,9 @@ class HyperframesThumbnail(unittest.TestCase):
             (vdir / "project.json").write_text('{"brand": "videofactory", "engine": "hyperframes"}')
             subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "lavfi", "-i", "color=c=red:s=320x180:d=2",
                             str(vdir / "05_render" / "hf-thumb.mp4")], check=True)
+            grant(Path(d), "video:videofactory/hf-thumb", "full")
             with mock.patch.object(anim, "ROOT", Path(d)), mock.patch.object(anim, "VIDEOS", videos), \
+                    mock.patch("studio.workspace.review_state", return_value={"state": "accepted"}), \
                     mock.patch.object(sys, "argv", ["anim.py", "thumbnail", "hf-thumb"]), mock.patch("sys.stdout"):
                 anim.main()
             from PIL import Image

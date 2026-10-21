@@ -5,10 +5,11 @@ description: Check and render the final MP4 (stage 05). Use when the user says "
 # /vf-render — check and render
 
 Talk: `_shared/talk.md`. Steps: `_shared/guide.md`.
+Before production, follow `_shared/permissions.md`. Pause for review only when the active permission requires it. Ask separately before each paid request.
 Read: `stages/05_render/CONTEXT.md`, `_shared/review.md`.
 Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` and ask which video.
 
-1. Check that the user approved the scene. If not, go to `/vf-scene`.
+1. Check that the scene is complete. Pause for scene review only when this session permission requires it.
 2. Run `python anim.py check <id>`. It must be clean. If not, fix it with the steps of `/vf-scene`.
 3. For a long video, test the first five seconds: `python anim.py render <id> --start 0 --end 5 --workers 1`.
 4. Run `python anim.py render <id>`. Say that it takes minutes. Add `--phone` if the user wants a copy under 30 MB.
@@ -21,5 +22,5 @@ Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` a
 9. Fill `videos/<id>/05_render/DESCRIPTION.md`: title, description, chapters, sources, credits for music and effects.
    Write only true statements. Add any disclosure the contract names.
 
-Gate: the user watches the MP4 with sound and approves it. A passing check never approves it.
+Gate: when human review is required, the user watches the MP4 with sound and decides. A passing check never approves publication.
 Next: none. You never upload or publish. The user does that.

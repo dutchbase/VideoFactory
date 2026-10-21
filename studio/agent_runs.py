@@ -17,6 +17,7 @@ from studio.jobs import _KEY, _now, _process_start, _read, _record_path, _save, 
 from studio.jobs import validate_request_output
 from studio.workspace import WorkspaceError
 from studio.production import production_lock, lease_fds, child_environment
+from studio.permissions import current_session, session_context, child_environment as permission_environment
 
 # Approved gate -> agent request kind for the next stage. The kind's input gate matches claim_request.
 AGENT_NEXT = {"brief": "script", "transcript": "cues", "cues": "scene"}
@@ -35,7 +36,7 @@ AUTO_PROMPT = """You are running unattended. The user started you from the Video
 Studio request {id} is already claimed for you: {kind} for videos/{slug}.
 User instructions: {instructions}
 
-Read AGENTS.md, then _shared/dashboard-review.md and the CONTEXT.md of the {gate} stage.
+Read AGENTS.md, _shared/permissions.md, then _shared/dashboard-review.md and the CONTEXT.md of the {gate} stage.
 Do the work without asking questions. Where a choice is open, take the documented default and name it in your final note.
 Run the stage's checks. When the output is complete, read the current fingerprint with `.venv/bin/python anim.py review {slug} {gate}` and mark it ready with `.venv/bin/python anim.py review {slug} {gate} --ready --expected <fingerprint>`.
 Then run `.venv/bin/python anim.py studio-request {id} --finish succeeded --note '<one line>'`, or `--finish failed` with the reason.
@@ -46,7 +47,7 @@ GUIDED_PROMPT = """The user asked you from the VideoFactory Studio to guide them
 User instructions: {instructions}
 
 Claim it first with `.venv/bin/python anim.py studio-request {id} --claim claude`.
-Read AGENTS.md, then _shared/dashboard-review.md and the CONTEXT.md of the {gate} stage.
+Read AGENTS.md, _shared/permissions.md, then _shared/dashboard-review.md and the CONTEXT.md of the {gate} stage.
 Walk the user through the stage's open choices before you write. When the output is complete, read the fingerprint with `.venv/bin/python anim.py review {slug} {gate}`, mark it ready with `--ready --expected <fingerprint>`, and finish the request with `.venv/bin/python anim.py studio-request {id} --finish succeeded --note '<one line>'`.
 Never approve a gate yourself.
 """
@@ -129,6 +130,10 @@ def _start_run(root, request_id: str, mode: str) -> dict:
     if not path.exists(): raise WorkspaceError("missing", "Agent request not found.")
     with _LOCK:
         record = _read(path)
+        from studio.jobs import _request_permission
+        if record.get('session_id') != current_session(root):
+            raise WorkspaceError('blocked', 'This request belongs to another permission session.')
+        scope, _ = _request_permission(root, record)
         if record.get("run"): return record
         if record.get("subject") or record.get("kind") not in TASK:
             raise WorkspaceError("invalid", "Only script, cues and scene requests can be run from the studio.")
@@ -147,7 +152,7 @@ def _start_run(root, request_id: str, mode: str) -> dict:
         try:
             process = subprocess.Popen(argv, cwd=root, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
                                        stderr=subprocess.STDOUT, text=True, errors="replace", start_new_session=True,
-                                       env=os.environ | GUARD_ENV | child_environment(root), pass_fds=lease_fds())
+                                       env=os.environ | GUARD_ENV | child_environment(root) | permission_environment(root, scope), pass_fds=lease_fds())
         except OSError:
             finish_request(root, request_id, {"state": "failed", "note": "Claude Code could not be started."})
             raise WorkspaceError("blocked", "Claude Code could not be started from the studio.") from None
@@ -162,6 +167,11 @@ def _start_run(root, request_id: str, mode: str) -> dict:
 def start_run(root, request_id: str, mode: str) -> dict:
     _valid(request_id, "request id", _KEY)
     existing = _read(_record_path(root, "requests", request_id))
+    origin_session = current_session(root)
+    if existing.get('session_id') != origin_session:
+        raise WorkspaceError('blocked', 'This request belongs to another permission session.')
+    from studio.jobs import _request_permission
+    _request_permission(root, existing)
     if existing.get("run"):
         return existing
     if mode == "guided":
@@ -170,7 +180,7 @@ def start_run(root, request_id: str, mode: str) -> dict:
     result = {}
     def worker():
         try:
-            with production_lock(root, "studio-agent:" + request_id):
+            with session_context(origin_session), production_lock(root, "studio-agent:" + request_id):
                 result["record"] = _start_run(root, request_id, mode)
                 ready.set()
                 process = _PROCS.get(_key(root, request_id))
