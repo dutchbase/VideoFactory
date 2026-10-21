@@ -18,7 +18,7 @@ Make explainer videos by talking to an AI agent. You bring a topic and a voice. 
 
 Everything lives in one folder on your computer. There is no timeline editor and no cloud service. VideoFactory works with [Claude Code](https://claude.com/claude-code) and [Codex](https://github.com/openai/codex).
 
-[![The VideoFactory demo video: one chat, one video](videos/videofactory/what-is-videofactory/05_render/thumbnail-1.png)](https://github.com/dutchbase/videofactory/releases/tag/v0.1.0)
+[![Play the VideoFactory demo video (3:35)](.github/demo-thumbnail.png)](https://github.com/dutchbase/videofactory/releases/tag/v0.1.0)
 
 **Watch the demo (3:35):** [720p, 12 MB](https://github.com/dutchbase/videofactory/releases/download/v0.1.0/what-is-videofactory-720p.mp4) · [1080p, 43 MB](https://github.com/dutchbase/videofactory/releases/download/v0.1.0/what-is-videofactory.mp4)
 
