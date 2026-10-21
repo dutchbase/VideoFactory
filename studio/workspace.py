@@ -104,6 +104,8 @@ def safe_path(root: Path, relative: str, *, write: bool = False) -> Path:
         public = len(parts) >= 4 and ID.fullmatch(parts[1]) and parts[2] == "library" and Path(parts[-1]).suffix.lower() in (MEDIA_EXTENSIONS | {".js", ".css", ".html", ".svg"})
         if write or not public:
             raise WorkspaceError("invalid", "This brand file is private.")
+    if not write and (linked := _scene_link(base, parts)) is not None:
+        return linked
     path = base
     for part in parts:
         path = path / part
@@ -119,6 +121,37 @@ def safe_path(root: Path, relative: str, *, write: bool = False) -> Path:
     if write:
         if not _editable_path(parts):
             raise WorkspaceError("invalid", "This file is generated or read only.")
+    return path
+
+
+SCENE_BRAND_FILES = re.compile(r"(?:tokens\.js|(?:logo|fonts|sound)/[A-Za-z0-9_.-]+)\Z")
+
+
+def _scene_link(base: Path, parts: tuple[str, ...]) -> Path | None:
+    """Read a file through a scene's own runtime/, cues/ or brand/ link (made by `anim.py new`).
+    Each link must point at its expected place; brand/ opens only the files a scene shows."""
+    if parts[0] != "videos" or "04_scene" not in parts[2:4]:
+        return None
+    i = parts.index("04_scene", 2)
+    if len(parts) < i + 3 or parts[i + 1] not in ("runtime", "cues", "brand"):
+        return None
+    link, rest = base.joinpath(*parts[:i + 2]), parts[i + 2:]
+    if not link.is_symlink():
+        return None
+    target = link.resolve()
+    if parts[i + 1] == "runtime":
+        ok = target == base / "_runtime"
+    elif parts[i + 1] == "cues":
+        ok = target == base.joinpath(*parts[:i], "03_cues") and rest == ("cues.js",)
+    else:
+        ok = target.parent == base / "brands" and bool(ID.fullmatch(target.name)) and bool(SCENE_BRAND_FILES.fullmatch("/".join(rest)))
+    if not ok or any(p in (".", "..") or p.startswith(".") for p in rest):
+        raise WorkspaceError("invalid", "Cannot access symbolic links in the workspace.")
+    path = target
+    for part in rest:
+        path = path / part
+        if path.is_symlink():
+            raise WorkspaceError("invalid", "Cannot access symbolic links in the workspace.")
     return path
 
 

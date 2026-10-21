@@ -26,6 +26,7 @@ html, body { background: var(--bg); }
 }
 
 /* ---------- shots: one per idea, shown while its cue is live ---------- */
+[hidden] { display: none !important; }
 .vf-shot {
   position: absolute; inset: 0; padding: var(--safe-y) var(--safe-x);
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 36px;

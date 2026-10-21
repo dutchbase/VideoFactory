@@ -32,6 +32,35 @@ class WorkspaceTests(unittest.TestCase):
                 with self.subTest(name=name), self.assertRaises(WorkspaceError):
                     safe_path(root, name)
 
+    def test_scene_links_open_only_their_own_targets(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            scene = root / 'videos/house/demo/04_scene'
+            for name in ('_runtime', 'brands/house/logo', 'videos/house/demo/03_cues', '_auth'):
+                (root / name).mkdir(parents=True, exist_ok=True)
+            scene.mkdir(parents=True)
+            for name in ('_runtime/modern.css', 'brands/house/tokens.js', 'brands/house/voice.md',
+                         'brands/house/logo/mark.svg', 'videos/house/demo/03_cues/cues.js',
+                         'videos/house/demo/03_cues/cues.md', '_auth/session.json'):
+                (root / name).write_text('x')
+            (scene / 'runtime').symlink_to('../../../../_runtime')
+            (scene / 'brand').symlink_to('../../../../brands/house')
+            (scene / 'cues').symlink_to('../03_cues')
+            (scene / 'auth').symlink_to('../../../../_auth')
+            for name, real in (('runtime/modern.css', '_runtime/modern.css'), ('brand/tokens.js', 'brands/house/tokens.js'),
+                               ('brand/logo/mark.svg', 'brands/house/logo/mark.svg'), ('cues/cues.js', 'videos/house/demo/03_cues/cues.js')):
+                with self.subTest(name=name):
+                    self.assertEqual(safe_path(root, 'videos/house/demo/04_scene/' + name), (root / real).resolve())
+            for name in ('brand/voice.md', 'cues/cues.md', 'auth/session.json', 'brand/../voice.md'):
+                with self.subTest(name=name), self.assertRaises(WorkspaceError):
+                    safe_path(root, 'videos/house/demo/04_scene/' + name)
+            with self.assertRaises(WorkspaceError):
+                safe_path(root, 'videos/house/demo/04_scene/runtime/modern.css', write=True)
+            (scene / 'runtime').unlink()
+            (scene / 'runtime').symlink_to('../../../../_auth')
+            with self.assertRaises(WorkspaceError):
+                safe_path(root, 'videos/house/demo/04_scene/runtime/session.json')
+
     def test_failed_replace_keeps_original_and_generated_file_is_read_only(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
