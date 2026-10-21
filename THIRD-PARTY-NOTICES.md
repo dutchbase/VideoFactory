@@ -38,6 +38,8 @@ Components rewritten from MIT-licensed Remotion projects (library/fx/). VideoFac
 
 Animated icons in library/icons-animated/lucide-animated/ are converted from lucide-animated (MIT, https://github.com/pqoqubbw/icons, licenses/lucide-animated-MIT.txt). Their drawings are Lucide icons (ISC, licenses/lucide-LICENSE.txt). Icon tags and categories come from the Lucide repository metadata (ISC).
 
+Colour pictograms in library/graphics/fluent-emoji-flat/ are Microsoft Fluent Emoji (flat style), MIT, https://github.com/microsoft/fluentui-emoji, fetched through the Iconify API (https://api.iconify.design). Licence: licenses/fluent-emoji-MIT.txt.
+
 Lottie animations in library/lottie/ come from LottieFiles under the Lottie Simple License (https://lottiefiles.com/page/license), one file at a time. Each <name>.meta.json records the licence, the animation page and the creator.
 
 The sounds in brands/videofactory/sound/ are CC0 1.0 (public domain): effects from Kenney's Interface Sounds, UI Audio, Impact Sounds and Sci-fi Sounds packs (kenney.nl) and the Swishes Sound Pack by artisticdude (OpenGameArt), and two tracks by cynicmusic (OpenGameArt). They were converted to OGG, trimmed and level-set; one effect is played backwards. Every file, author, URL and licence is in brands/videofactory/sound/SOURCES.md. The generator _runtime/synth.py is our own code, written from a behaviour spec.
