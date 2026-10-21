@@ -111,7 +111,7 @@ class AudioReviewTests(unittest.TestCase):
             voice = vdir / '01_voice/voice.wav'; voice.write_bytes(b'voice')
             export = vdir / '05_render/demo.mp4'; export.write_bytes(b'export')
             report = dict(voice=str(voice), effects='none (not applicable)', start=0, end=1,
-                          required_db=12, minimum_db=None, violations=0, measured_windows=0,
+                          required_db=anim.SFX_DISTANCE_DB, minimum_db=None, violations=0, measured_windows=0,
                           status='passed', sources=anim.audio_sources(vdir, voice))
             self.assertIn('current audio check', _readiness(root, 'demo', 'render')[1])
             anim.write_audio_check(vdir, export, report)
@@ -125,6 +125,13 @@ class AudioReviewTests(unittest.TestCase):
             export.write_bytes(b'new export')
             self.assertIn('current audio check', _readiness(root, 'demo', 'render')[1])
             anim.write_audio_check(vdir, export, dict(report, status='failed', violations=1))
+            self.assertIn('current audio check', _readiness(root, 'demo', 'render')[1])
+            # effects in speech measured at the rule distance (SFX_DISTANCE_DB, now 3 dB) pass; closer ones fail
+            measured = dict(report, effects='summed effects, measured after WAV encoding', effect_track_sha256='0' * 64,
+                            measured_windows=5)
+            anim.write_audio_check(vdir, export, dict(measured, minimum_db=anim.SFX_DISTANCE_DB + 0.5))
+            self.assertNotIn('current audio check', _readiness(root, 'demo', 'render')[1])
+            anim.write_audio_check(vdir, export, dict(measured, minimum_db=anim.SFX_DISTANCE_DB - 0.5))
             self.assertIn('current audio check', _readiness(root, 'demo', 'render')[1])
 
 

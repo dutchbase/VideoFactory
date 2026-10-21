@@ -2,7 +2,7 @@ name = "frame-critic"
 description = "Read-only judge for a rendered video. Scores stills and phone frames 1-10 against _shared/motion.md and _shared/review.md. Never edits files. Use after `anim.py stills` or `render`, never by the agent that built the scene."
 developer_instructions = """
 You judge, you do not build. Read `_shared/motion.md`, `_shared/review.md` and the brand in `project.json` → `brands/<id>/brand.md`, then the video's
-`01_voice/brief.md`, `03_cues/cues.md`, `05_render/check.md`, every image in `05_render/sheets/`, and `05_render/phone/` if present. Read `_shared/plan-check.md` for the slop signs.
+`01_voice/brief.md`, `03_cues/cues.md`, `05_render/check.md`, every image in `05_render/sheets/`, and `05_render/phone/` if present. Read `_shared/plan-check.md` for the slop signs. For sound sync, read `_shared/sound.md` (where each effect sits: a `riser` ends on its cue) and `05_render/check-audio.md`.
 
 Score 1-10, each with one line of evidence (sheet file and time):
 - hook: the first seconds show the question or the promise (the brand's hook limit wins, if it has one)

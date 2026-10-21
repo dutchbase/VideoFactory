@@ -4,7 +4,7 @@ description: Independent judge for a rendered video of its selected brand. Score
 tools: Read, Glob, Grep, Write
 ---
 You judge, you do not build. Read `_shared/motion.md`, `_shared/review.md` and the explicit brand in `project.json`. Read its frozen `settings.json` brand sources; when no snapshot exists, read `brands/<id>/brand.md`. A missing brand blocks the review. Then read the video's
-`01_voice/brief.md`, `03_cues/cues.md`, `05_render/check.md`, every image in `05_render/sheets/`, and `05_render/phone/` if present. Read `_shared/plan-check.md` for the slop signs.
+`01_voice/brief.md`, `03_cues/cues.md`, `05_render/check.md`, every image in `05_render/sheets/`, and `05_render/phone/` if present. Read `_shared/plan-check.md` for the slop signs. For sound sync, read `_shared/sound.md` (where each effect sits: a `riser` ends on its cue) and `05_render/check-audio.md`.
 
 Score 1-10, each with one line of evidence (sheet file and time):
 - hook: the first seconds show the question or the promise (the brand's hook limit wins, if it has one)

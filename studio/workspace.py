@@ -616,7 +616,7 @@ def _audio_check_ok(folder: Path, export: Path) -> bool:
         duration = cues["meta"]["duration"]
         tolerance = anim.HF_LENGTH_TOL if _engine(folder) == "hyperframes" else .001
         if (report.get("status") != "passed" or report.get("violations") != 0 or
-                report.get("required_db") != 12 or report.get("start") != 0 or
+                report.get("required_db") != anim.SFX_DISTANCE_DB or report.get("start") != 0 or
                 not isinstance(report.get("end"), (int, float)) or report["end"] <= 0 or
                 not math.isfinite(report["end"]) or abs(report["end"] - duration) > tolerance or
                 report.get("export") != str(export.resolve()) or not export.is_file() or
@@ -634,7 +634,7 @@ def _audio_check_ok(folder: Path, export: Path) -> bool:
         if report.get("measured_windows") == 0 and report.get("minimum_db") is None:
             return True  # Separate stem verified; no effects in speech to compare.
         return (isinstance(report.get("minimum_db"), (int, float)) and
-                math.isfinite(report["minimum_db"]) and report["minimum_db"] >= 12 and
+                math.isfinite(report["minimum_db"]) and report["minimum_db"] >= anim.SFX_DISTANCE_DB and
                 report.get("measured_windows", 0) > 0)
     except (OSError, ValueError, TypeError, KeyError, SystemExit):
         return False

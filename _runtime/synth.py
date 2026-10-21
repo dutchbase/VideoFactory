@@ -534,12 +534,22 @@ _FILE = re.compile(r"[Ff][Ii][Ll][Ee]:((?:" + _PART + r"/)*" + _PART + r"\.(?:" 
                    re.IGNORECASE)
 
 
+_OFFSET = re.compile(r"@([0-9]+(?:\.[0-9]+)?|\.[0-9]+)(?=[ \t]|\Z)")
+
+
+def sfx_offset(token) -> float:
+    """Seconds after the cue start for `pop@0.4` (`@<seconds>` right after the name); 0 without one."""
+    m = _OFFSET.search(str(token))
+    return float(m.group(1)) if m else 0.0
+
+
 def parse_sfx(token):
     """Parse one `[sfx: ...]` item into (kind, name, gain). ValueError for anything else.
 
     `pop`, `whoosh 0.5` -> ("builtin", name, gain); `file:sfx/door.wav .8` -> ("file", "sfx/door.wav", 0.8).
+    An `@<seconds>` offset after the name (`pop@0.4 0.6`) is allowed and ignored here: see sfx_offset.
     """
-    text = str(token).strip()
+    text = _OFFSET.sub("", str(token), count=1).strip()
     names = ", ".join(SFX)
     bad = ValueError(f"sound effect '{text}': write a built-in name ({names}) or file:<name>.wav|mp3|ogg|flac, "
                      f"optionally followed by a gain such as 0.5")

@@ -13,11 +13,12 @@ Effects, music bed and loudness for every video. The voice always leads. Stock m
 ## Write it in cues.md
 - An effect on a cue: `## intro.card "a phrase" [sfx: pop]` (several: `[sfx: pop, tick]`). It plays at the cue start. Only the heading line counts: `cues` stops on a tag in a description line.
 - Gain per effect: `[sfx: pop 0.5]` (default 1, on top of the `sfx:` level below).
+- Offset per effect: `[sfx: pop@0.4]` plays 0.4 s after the cue start, so an effect can land on an event inside the shot (a card that lands, a counter that stops) without a new cue. With a gain: `[sfx: pop@0.4 0.5]`; files too: `[sfx: file:door.wav@1.2]`. Take the time from the shot code (`scene.js`), not by guess. A riser still ends on its time.
 - A sound file as an effect: `[sfx: file:door-close.wav]`, like `music: file:`. Gain works too: `[sfx: file:door.wav 0.6, pop 0.5]`. Formats: wav, mp3, ogg, flac, m4a, aif. The file lives in `04_scene/assets/` (subfolders allowed: `file:sfx/door.wav`), or in the shared `library/sfx/` (create it when needed; the video's own `assets/` wins). The mixer decodes it to 44.1 kHz mono, peak-normalises it to 0.5 (about the level of the built-in effects), applies the `sfx:` level and then the same speech limiter, ducking and mastering as every effect. It starts on its cue.
 - An unknown effect name, a malformed token or a missing file is an error: `cues` warns, `check` counts `sound effect unknown`, render stops. Nothing is skipped silently.
-- Effects inside speech are pushed at least 12 dB under the voice: a tick on a spoken word is inaudible. Put small effects in pauses or leave them out.
-- A music bed: one line before the first cue, `music: study 0.2` (a song: `study` is calm, for explaining, about 84 bpm; `tinker` is playful, about 116 bpm) or `music: file:<name>.mp3 0.2` (a stock track).
-- Effect level for the whole video: `sfx: 0.4` before the first cue (default 0.25).
+- Effects inside speech are held 3 dB under the voice around them: clear and punchy, never over a word. An effect that must sound full goes in a pause.
+- A music bed: one line before the first cue, `music: study 0.3` (a song: `study` is calm, for explaining, about 84 bpm; `tinker` is playful, about 116 bpm) or `music: file:<name>.mp3 0.2` (a stock track).
+- Effect level for the whole video: `sfx: 0.4` before the first cue (default 0.8).
 - Run `anim.py cues <slug>` after a change.
 
 ## Effects
@@ -36,15 +37,15 @@ Effects, music bed and loudness for every video. The voice always leads. Stock m
 | `impact` | the turn: the one moment the story changes |
 
 ## Rules
-- Every video has a music bed (`music: study 0.2`, or `music: file:<name> <gain>` with stock from `library.md`). Missing music is a warning in `check` and at render; leave it out only when the user asks.
+- Every video has a music bed (`music: study 0.3`, or `music: file:<name> <gain>` with stock from `library.md`). Missing music is a warning in `check` and at render; leave it out only when the user asks.
 - Effects sparingly: only where they mark an action on screen (a click, a stamp, a cut). No effect is better than a decorative one.
 - At most one `riser` and one `impact` in a video.
 - Continuous motion stays silent. Sound marks events, not movement.
 - A hit may lead its picture by 2–3 frames (about 0.1 s). Never let it trail.
 - Put the payoff hit in the pause before the line that names it. Under speech the ducking swallows it.
 - Leave about 0.3 s of near-silence before the biggest hit.
-- Cue gain (`sfx:`, default 0.25) is only an input level; it cannot guarantee balance against a soft voice. The music bed ducks under the voice automatically.
-- During speech, the sum of all effects must stay at least **12 dB below the voice for both RMS and peaks**. The mixer measures 44.1 kHz PCM in 20 ms windows, using 13 dB internally. Stereo analysis protects the quietest voice channel against the loudest effect channel without changing the voice.
+- Cue gain (`sfx:`, default 0.8) is only an input level; it cannot guarantee balance against a soft voice. The music bed ducks under the voice automatically, by about 6 dB. At 0.3 a brand song sits about 10 dB under a normal voice; if the user cannot hear the music on a phone speaker, raise it (0.4), if it competes with the words, lower it.
+- During speech, the sum of all effects must stay at least **3 dB below the voice for both RMS and peaks** (`SFX_DISTANCE_DB` in `anim.py`; the user chose it by ear on 2026-10-21, it was 12 dB). The mixer measures 44.1 kHz PCM in 20 ms windows against the voice level of the 1 s around each window (so a soft word start or a stop consonant does not count as silence), using 4 dB internally. Stereo analysis protects the quietest voice channel against the loudest effect channel without changing the voice.
 - Speech uses corrected word times from `cues.json`, matching `02_transcript/words.json`, padded 50 ms before and 150 ms after each word; overlapping intervals merge. Missing or stale timings with effects stop export.
 - Effects receive their cue gain first, then a continuous attenuation curve on the full timeline before fragment trimming. Silent voice inside speech mutes effects; gain returns within 250 ms after speech and never exceeds the original effect level. Music ducking and master goals stay unchanged.
 - Every export writes `05_render/check-audio.md`: stems, period, minimum measured RMS/peak distance and violations. Measurement checks the written effect WAV; violations stop export before replacing the MP4. Analysis windows remain anchored to the full timeline for consistent fragment balance. Studio requires a passing report tied by hashes to the current export and sources. Without effects the report explicitly says not applicable.
@@ -54,14 +55,14 @@ Effects, music bed and loudness for every video. The voice always leads. Stock m
 ## Sound-design pass
 Required for every video, short and long. Done before the scene gate.
 - Music bed under the whole video, ducked under the voice (automatic). CC0 or an allowlisted licence without attribution (`library.md`; every sound in `library/audio/` qualifies); never a track you cannot trace.
-- Effects on cuts, snaps and reveals, and on the hook. The rules above still hold: one riser and one impact at most, nothing on continuous motion, 12 dB under the voice.
+- Effects on cuts, snaps and reveals, and on the hook. The rules above still hold: one riser and one impact at most, nothing on continuous motion, 3 dB under the voice.
 - `04_scene/assets/sound.md` records the plan and the rights: music (file, source URL, author, licence, gain), each effect by cue id (name, purpose), and the licence of every sound. Built-in effects (`[sfx: name]`) are synthesized by `_runtime/synth.py` in this project: licence "own, built-in". If the brand has a sound file for that name, write "brand sound, see `brands/<id>/sound/SOURCES.md`". A file effect (`[sfx: file:<name>]`) is CC0 or allowlisted (`library.md`) and needs one line in `sound.md` with the file name, its source URL and its licence, for example `- door-close.wav: https://freesound.org/s/123 (CC0 1.0), cue intro.card`. Without that line `check` counts `sound effect unlicensed`, for every brand.
 - `anim.py check` counts `sound design missing` (no `music:` line, no `[sfx:]` (built-in or file), no `sound.md` or no licence in it). Only on the user's request: `"allow": ["minimal"]` in `project.json`, noted in `REVIEW.md`.
 
 ## Listen
 Optional: `bash tools/setup_earshot.sh` installs earshot (CPU, about 1.4 GB of models) and `claude mcp add` registers it, so the assistant can hear. Don't claim a sound fits without a reading; quote the number ("strong match, z +3.9; -14.2 LUFS").
 - Pick an effect or track: `rank "a short pop" candidates/*.wav`, `find` for a trim (reject "head cut" / "tail cut"), `describe` to confirm.
-- After render: `.venv/bin/python anim.py listen <slug>` writes `05_render/listen.md` (second-by-second transcript, loudness, sync against the cues). Not a counter; it never blocks render.
+- After render: `.venv/bin/python anim.py listen <slug>` writes `05_render/listen.md` (second-by-second transcript, loudness, and whether each effect lands on its time: cue start plus `@offset`; without effects, the cue starts). Not a counter; it never blocks render.
 - Times and levels are reliable; event labels are not (about half right when exposed, a quarter under music). It cannot judge taste, music quality, speech content or licences, and it misses soft build-ups (risers, whooshes). Treat it as evidence; the user's headphone and phone listen decides.
 - Never run `earshot llm`: it uploads audio to Google.
 

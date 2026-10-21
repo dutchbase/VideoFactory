@@ -68,6 +68,15 @@ class Listen(unittest.TestCase):
         self.assertIn("--fresh", calls[0])
         self.assertIn("--cues 1.0,2.5", calls[0])
 
+    def test_passes_effect_times_when_cues_have_effects(self):
+        # earshot must check that each effect lands, so it gets the effect times (cue start + @offset), not the cue starts
+        (self.vdir / "03_cues" / "cues.json").write_text(json.dumps(
+            {"cueList": [{"id": "a", "start": 1.0, "end": 2.5, "sfx": ["pop@0.4", "tick@0.4 0.5"]},
+                         {"id": "b", "start": 2.5, "end": 4.0, "sfx": ["whoosh"]}]}))
+        self.run_listen()
+        self.assertIn("--cues 1.4,2.5", self.log.read_text().splitlines()[0])
+        self.assertIn("Effect times passed to earshot: 1.40, 2.50", (self.vdir / "05_render" / "listen.md").read_text())
+
     def test_failure_shows_first_stderr_line_and_leaves_no_file(self):
         os.environ["STUB_FAIL"] = "1"
         self.assertIn("earshot timeline: error: no audio stream", self.fails_with())

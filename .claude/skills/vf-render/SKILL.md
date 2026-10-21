@@ -14,7 +14,8 @@ Video id: `<brand>/<slug>`. If the user gave none, run `python anim.py status` a
 4. Run `python anim.py render <id>`. Say that it takes minutes. Add `--phone` if the user wants a copy under 30 MB.
 5. Run `python anim.py thumbnail <id>`. Follow the thumbnail rule in `stages/05_render/CONTEXT.md`.
    Run `python anim.py chapters <id>` if the video is long enough for chapters.
-6. If earshot is installed, run `python anim.py listen <id>`. It is evidence only, not approval.
+6. Run `python anim.py listen <id>` (Earshot). It is evidence only, not approval. If Earshot is missing, offer to install it
+   (`bash tools/setup_earshot.sh`, about 1.4 GB): without it, no tool hears the render.
 7. Run the `frame-critic` judge on the render (`_shared/review.md`, the judge section). Fix what it names.
 8. Show the MP4 path, the length and the loudness line (from the render output, or `videos/<id>/05_render/check-video.md`).
 9. Fill `videos/<id>/05_render/DESCRIPTION.md`: title, description, chapters, sources, credits for music and effects.

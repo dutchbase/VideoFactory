@@ -124,7 +124,7 @@ class SfxBalance(unittest.TestCase):
         fx = np.full(44100, .8) + np.full(44100, .8)
         self.assertGreater(fx.max() * anim.FX_GAIN, voice.max())
         out = anim.limit_sfx(voice, fx, [(0, 1)], 44100)
-        self.assertLessEqual(abs(out).max(), .02 * 10 ** (-12 / 20))
+        self.assertLessEqual(abs(out).max(), .02 * 10 ** (-anim.SFX_DISTANCE_DB / 20))
         np.testing.assert_array_equal(voice, np.full(44100, .02))
 
     def test_loud_voice_silence_stereo_and_impact(self):
@@ -133,8 +133,8 @@ class SfxBalance(unittest.TestCase):
         voice[200:400] = 0
         fx = np.full(1000, .01); fx[100] = 1
         out = anim.limit_sfx(voice, fx, [(0, 1)], sr)
-        self.assertEqual(out[300], 0)
-        self.assertLessEqual(out[100], .8 * 10 ** (-12 / 20))
+        self.assertEqual(out[300], fx[300])  # a pause inside a word keeps the effect at its level
+        self.assertLessEqual(out[100], .8 * 10 ** (-anim.SFX_DISTANCE_DB / 20))
         self.assertTrue(np.all(abs(out) <= abs(fx)))
         np.testing.assert_array_equal(out, anim.limit_sfx(voice, fx, [(0, 1)], sr))
 
@@ -145,9 +145,30 @@ class SfxBalance(unittest.TestCase):
         self.assertEqual(anim.limit_sfx(voice, np.array([]), [], sr).size, 0)
         fx = np.ones(1000)
         out = anim.limit_sfx(voice, fx, [(.2, .4)], sr)
-        self.assertLessEqual(out[150:550].max(), .02 * 10 ** (-12 / 20))
+        self.assertLessEqual(out[150:550].max(), .02 * 10 ** (-anim.SFX_DISTANCE_DB / 20))
         self.assertEqual(out[800], 1)
         np.testing.assert_array_equal(out[200:400], anim.limit_sfx(voice, fx, [(.2, .4)], sr)[200:400])
+
+    def test_effect_on_a_word_stays_audible(self):
+        # a stop consonant (30 ms of silence) inside a word must not mute the effect over it
+        sr = 44100
+        voice = np.zeros(sr * 2); voice[int(.5 * sr):int(1.5 * sr)] = .2
+        voice[int(.5 * sr):int(.56 * sr)] *= np.linspace(0, 1, int(.06 * sr))  # soft onset
+        voice[int(.9 * sr):int(.93 * sr)] = 0
+        fx = np.zeros(sr * 2); fx[int(.5 * sr):int(1.0 * sr)] = .5
+        out = anim.limit_sfx(voice, fx, [(.5, 1.5)], sr)
+        rms = lambda a: float(np.sqrt(np.mean(a ** 2)))
+        self.assertGreater(rms(out[int(.9 * sr):int(.93 * sr)]), .2 * 10 ** (-20 / 20))
+        self.assertGreater(rms(out[int(.5 * sr):int(.56 * sr)]), .2 * 10 ** (-24 / 20))
+        self.assertEqual(anim.check_sfx(voice, out, [(.5, 1.5)], sr, 0, 2)['violations'], 0)
+
+    def test_effects_sit_3_db_under_the_voice(self):
+        # the user's choice (2026-10-21): during speech effects stay 3 dB under the voice, not 12
+        self.assertEqual(anim.SFX_DISTANCE_DB, 3)
+        voice, fx = np.full(1000, .2), np.full(1000, .2 * 10 ** (-5 / 20))
+        np.testing.assert_allclose(anim.limit_sfx(voice, fx, [(0, 1)], 1000), fx)
+        self.assertEqual(anim.check_sfx(voice, fx, [(0, 1)], 1000, 0, 1)['violations'], 0)
+        self.assertGreater(anim.check_sfx(voice, voice, [(0, 1)], 1000, 0, 1)['violations'], 0)
 
     def test_missing_timings_fail(self):
         with self.assertRaisesRegex(ValueError, 'word timings'):
@@ -170,7 +191,7 @@ class AudioExportChecks(unittest.TestCase):
             full = anim.prepare_effects(vdir, vdir / '01_voice/voice.wav', fx, vdir / '05_render/full.wav', 0, 2)
             cut = anim.prepare_effects(vdir, vdir / '01_voice/voice.wav', fx, vdir / '05_render/cut.wav', .4, 1.8)
             self.assertEqual(full['violations'], 0)
-            self.assertGreaterEqual(full['minimum_db'], 12)
+            self.assertGreaterEqual(full['minimum_db'], anim.SFX_DISTANCE_DB)
             self.assertEqual(cut['violations'], 0)
             np.testing.assert_array_equal(anim.decode_pcm(vdir / '05_render/full.wav'), anim.decode_pcm(vdir / '05_render/cut.wav'))
 

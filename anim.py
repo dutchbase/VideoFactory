@@ -121,8 +121,8 @@ def norm(word: str) -> str:
 
 
 def _chip():
-    """The sound module (_runtime/synth.py), imported on first use."""
-    runtime = str(ROOT / "_runtime")
+    """The sound module (_runtime/synth.py next to this file, not under a patched ROOT), imported on first use."""
+    runtime = str(Path(__file__).resolve().parent / "_runtime")
     if runtime not in sys.path:
         sys.path.insert(0, runtime)
     import synth
@@ -769,7 +769,7 @@ def cmd_cues(a) -> None:
     head = sheet_text.split("\n## ", 1)[0]
     music = re.search(r"(?m)^music:\s*(file:[A-Za-z0-9._-]+|\w+)(?:[ \t]+(\d*\.?\d+))?", head)
     meta = {"duration": duration, "voice": "../01_voice/" + (data.get("voice") or find_voice(vdir).name), "slug": a.slug,
-            "music": music.group(1) if music else None, "music_gain": float(music.group(2)) if music and music.group(2) else 0.25}
+            "music": music.group(1) if music else None, "music_gain": float(music.group(2)) if music and music.group(2) else 0.3}
     payload = {"meta": meta, "cueList": order, "cues": {c["id"]: c for c in order}, "words": words}
     snapshot = creative_snapshot(vdir)
     if snapshot:
@@ -1379,7 +1379,8 @@ def cmd_chapters(a) -> None:
 # 30-render
 # ====================================================================================================
 
-FX_GAIN = 0.25  # input level of the effect stem when 03_cues/cues.md has no sfx: line
+FX_GAIN = 0.8  # input level of the effect stem when 03_cues/cues.md has no sfx: line
+SFX_DISTANCE_DB = 3  # during speech the effects stay this far under the voice (RMS and peak); chosen by ear, 2026-10-21
 HF_BIN = ROOT / "tools" / "hyperframes" / "node_modules" / ".bin" / "hyperframes"
 EARSHOT_PY = ROOT / "tools" / "earshot" / ".venv" / "bin" / "python"
 MAX_RECORD_SECONDS = 90  # longest recording; at 12 fps that is about 1000 frame files
@@ -1565,7 +1566,10 @@ def after_render(a, vdir: Path, final: Path, fps: int, started: float, audio_rep
 
 
 def _sfx_windows(voice, effects, speech_intervals, sample_rate, no_voice: bool = False):
-    """Walk the effect stream in 20 ms windows: (lo, hi, None) outside speech, else (lo, hi, (voice rms, voice peak, fx rms, fx peak))."""
+    """Walk the effect stream in 20 ms windows: (lo, hi, None) outside speech, else (lo, hi, (voice rms, voice peak, fx rms, fx peak)).
+
+    The voice level is measured over the 1 s around each window, so a soft word start or a stop consonant
+    does not read as silence and mute the effect over it."""
     import numpy as np
     voice, effects = np.asarray(voice, dtype=np.float64), np.asarray(effects, dtype=np.float64)
     if sample_rate <= 0 or voice.ndim not in (1, 2) or effects.ndim not in (1, 2):
@@ -1586,7 +1590,7 @@ def _sfx_windows(voice, effects, speech_intervals, sample_rate, no_voice: bool =
         mask[max(0, math.floor((s - 0.05) * sample_rate)):min(n, math.ceil((e + 0.15) * sample_rate))] = True
     v = voice.reshape(-1, 1) if voice.ndim == 1 else voice
     v = v[:n] if len(v) >= n else np.vstack([v, np.zeros((n - len(v), v.shape[1]))])
-    step = max(1, round(0.02 * sample_rate))
+    step, reach = max(1, round(0.02 * sample_rate)), round(0.49 * sample_rate)
     marks = np.concatenate(([0], np.cumsum(mask)))
 
     def windows():
@@ -1595,21 +1599,20 @@ def _sfx_windows(voice, effects, speech_intervals, sample_rate, no_voice: bool =
             if marks[hi] == marks[lo]:
                 yield lo, hi, None
                 continue
-            m = mask[lo:hi]
-            vm, em = v[lo:hi][m], fx[lo:hi][m]
+            vm, em = v[max(0, lo - reach):min(n, hi + reach)], fx[lo:hi][mask[lo:hi]]
             yield lo, hi, (float(np.sqrt(np.mean(vm ** 2, axis=0)).min()), float(np.abs(vm).max(axis=0).min()),
                            float(np.sqrt(np.mean(em ** 2, axis=0)).max()), float(np.abs(em).max()))
     return windows()
 
 
 def limit_sfx(voice, effects, speech_intervals, sample_rate, no_voice: bool = False):
-    """Lower the effects wherever they come too close to the voice (13 dB margin). The voice is never changed."""
+    """Lower the effects wherever they come too close to the voice (SFX_DISTANCE_DB plus 1 dB margin). The voice is never changed."""
     import numpy as np
     out = np.array(effects, dtype=np.float64)
     windows = list(_sfx_windows(voice, out, speech_intervals, sample_rate, no_voice))
     if not windows:
         return out
-    ratio = 10 ** (-13 / 20)
+    ratio = 10 ** (-(SFX_DISTANCE_DB + 1) / 20)
     caps, previous = [], 1.0
     for lo, hi, levels in windows:
         if levels is None:
@@ -1661,7 +1664,7 @@ def prepare_effects(vdir: Path, voice: Path, effects, out: Path, start: float, e
     if report["violations"]:
         (vdir / "05_render").mkdir(parents=True, exist_ok=True)
         write_audio_check(vdir, vdir / "05_render/failed.mp4", report)
-        raise ValueError("Audio balance failed: written effects must be at least 12 dB below voice")
+        raise ValueError(f"Audio balance failed: written effects must be at least {SFX_DISTANCE_DB} dB below voice")
     return report
 
 
@@ -1761,7 +1764,7 @@ def mix_soundtrack(vdir: Path, voice: Path, video_args: list[str], out: Path, t0
     cut = ["-ss", f"{t0:.3f}", "-t", f"{t1 - t0:.3f}"]
     events = sfx_events(cues)
     files = load_sfx_files(vdir, events)  # dies on a bad token, unknown effect or missing file before anything is mixed
-    report = {"voice": str(voice), "effects": "none (not applicable)", "start": t0, "end": t1, "required_db": 12, "minimum_db": None,
+    report = {"voice": str(voice), "effects": "none (not applicable)", "start": t0, "end": t1, "required_db": SFX_DISTANCE_DB, "minimum_db": None,
               "violations": 0, "measured_windows": 0, "status": "passed", "sources": audio_sources(vdir, voice)}
     music = meta.get("music") or ""
     part = out.with_name(f"{out.stem}.mixing{out.suffix}")
@@ -1771,7 +1774,7 @@ def mix_soundtrack(vdir: Path, voice: Path, video_args: list[str], out: Path, t0
             inputs = [*cut, "-i", str(voice)]
             graph = "[1:a]alimiter=limit=0.89:level=0[a]"
         else:
-            synth, gain = _chip(), meta.get("music_gain", 0.25)
+            synth, gain = _chip(), meta.get("music_gain", 0.3)
             try:
                 label, music_file = _music_plan(vdir, music, synth)
                 generated, branded, effect_sources = _split_effects(vdir, events, synth)
@@ -1791,7 +1794,7 @@ def mix_soundtrack(vdir: Path, voice: Path, video_args: list[str], out: Path, t0
             inputs = [*cut, "-i", str(voice), *cut, "-i", str(bed_path), *cut, "-i", str(tmp / "fx.wav")]
             layout = _voice_layout(voice)  # music and effects are mono; the mix keeps the layout of the voice
             graph = (f"[1:a]aresample=44100,aformat=channel_layouts={layout},asplit=2[vm][vk];[vk]aformat=channel_layouts=mono[key];"
-                     "[2:a][key]sidechaincompress=threshold=0.02:ratio=10:attack=15:release=500[duck];"
+                     "[2:a][key]sidechaincompress=threshold=0.05:ratio=4:attack=15:release=500[duck];"  # gentle duck, about 6 dB under speech
                      f"[duck]aformat=channel_layouts={layout}[ducked];[3:a]aformat=channel_layouts={layout}[fx];"
                      "[vm][ducked][fx]amix=inputs=3:normalize=0:duration=first,alimiter=limit=0.89:level=0[a]")
         try:
@@ -2026,10 +2029,16 @@ def cmd_listen(a) -> None:
     mp4 = vdir / "05_render" / f"{vdir.name}.mp4"
     if not mp4.is_file():
         die(f"no render at {_relpath(mp4)}. Run `anim.py render {a.slug}` first")
-    starts = []
+    starts, kind = [], "Cue starts"
     cues_file = vdir / "03_cues" / "cues.json"
     if cues_file.is_file():
-        starts = [float(c["start"]) for c in json.loads(cues_file.read_text(encoding="utf-8")).get("cueList") or []]
+        cues = json.loads(cues_file.read_text(encoding="utf-8"))
+        # with effects, earshot checks that each one lands (cue start + @offset); without, it checks the cue starts
+        starts = sorted({round(at, 3) for at, _ in sfx_events(cues)})
+        if starts:
+            kind = "Effect times"
+        else:
+            starts = [float(c["start"]) for c in cues.get("cueList") or []]
     timeline = ["timeline", str(mp4)]
     if starts:
         timeline += ["--cues", ",".join(str(round(s, 3)) for s in starts)]
@@ -2049,7 +2058,7 @@ def cmd_listen(a) -> None:
     shown = ", ".join(f"{s:.2f}" for s in starts) or "none"
     report = vdir / "05_render" / "listen.md"
     report.write_text(f"# Listening report: {mp4.name}\n\nEvidence, not approval (`_shared/sound.md`). "
-                      f"Cue starts passed to earshot: {shown}.\n\n## Timeline\n\n{outputs[0]}\n\n## Measure\n\n{outputs[1]}\n",
+                      f"{kind} passed to earshot: {shown}.\n\n## Timeline\n\n{outputs[0]}\n\n## Measure\n\n{outputs[1]}\n",
                       encoding="utf-8")
     print(f"-> {_relpath(report)}")
 
@@ -2403,7 +2412,9 @@ def sfx_file(vdir: Path, name: str) -> Path | None:
 
 
 def sfx_events(cues: dict) -> list[tuple[float, str]]:
-    return [(c["start"], s) for c in cues.get("cueList") or [] for s in c.get("sfx") or []]
+    """(time, token) for every effect: the cue start plus its `@<seconds>` offset (synth.sfx_offset)."""
+    offset = _chip().sfx_offset
+    return [(round(c["start"] + offset(s), 3), s) for c in cues.get("cueList") or [] for s in c.get("sfx") or []]
 
 
 def sfx_file_paths(vdir: Path, events) -> dict[str, Path]:
@@ -2471,8 +2482,8 @@ def check_sfx(voice, effects, speech_intervals, sample_rate, start, end, no_voic
         distances = [20 * math.log10(v / e) if v else -math.inf
                      for v, e in ((vr, er), (vp, ep))]
         minimum = min(minimum, *distances)
-        violations += int(min(distances) < 12)
-    return {"required_db": 12, "minimum_db": minimum if math.isfinite(minimum) else None,
+        violations += int(min(distances) < SFX_DISTANCE_DB)
+    return {"required_db": SFX_DISTANCE_DB, "minimum_db": minimum if math.isfinite(minimum) else None,
             "violations": violations, "measured_windows": measured,
             "status": "failed" if violations else "passed"}
 
@@ -2504,7 +2515,7 @@ def write_audio_check(vdir: Path, final: Path, report: dict) -> None:
     text = ("# Audio balance check\n\n"
             f"- Voice: {report['voice']}\n- Effects: {report['effects']}\n"
             f"- Export period: {report['start']}–{report['end']} s\n"
-            "- Required distance: 12 dB (RMS and peak); internal margin: 13 dB\n"
+            f"- Required distance: {SFX_DISTANCE_DB} dB (RMS and peak); internal margin: {SFX_DISTANCE_DB + 1} dB\n"
             f"- Smallest distance: {distance if distance is not None else 'n/a (no measurable effects)'} dB\n"
             f"- Violations: {report['violations']}\n- Status: {report['status']}\n"
             f"- Effect events: {report.get('effect_events', [])}\n"

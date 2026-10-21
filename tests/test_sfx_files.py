@@ -30,6 +30,19 @@ class Parse(unittest.TestCase):
         self.assertEqual(synth.parse_sfx("file:door.wav"), ("file", "door.wav", 1.0))
         self.assertEqual(synth.parse_sfx(" file:sfx/door-1.mp3 .8 "), ("file", "sfx/door-1.mp3", 0.8))
 
+    def test_offset(self):
+        # `@<seconds>` after the name moves the effect onto an event inside the shot, after the cue start
+        self.assertEqual(synth.parse_sfx("pop@0.4"), ("builtin", "pop", 1.0))
+        self.assertEqual(synth.parse_sfx("pop@0.4 0.6"), ("builtin", "pop", 0.6))
+        self.assertEqual(synth.parse_sfx("file:sfx/door.wav@1.25 .8"), ("file", "sfx/door.wav", 0.8))
+        self.assertEqual(synth.sfx_offset("pop@0.4 0.6"), 0.4)
+        self.assertEqual(synth.sfx_offset("pop 0.6"), 0.0)
+        cues = {"cueList": [{"start": 2.0, "sfx": ["pop@0.5", "tick"]}]}
+        self.assertEqual(anim.sfx_events(cues), [(2.5, "pop@0.5"), (2.0, "tick")])
+        for token in ("pop@", "pop@x", "pop@-1"):
+            with self.assertRaises(ValueError, msg=token):
+                synth.parse_sfx(token)
+
     def test_bad_tokens(self):
         for token in ("popp", "file:../x.wav", "file:/etc/x.wav", "file:notes.txt", "file:door.wav loud", "pop, tick"):
             with self.assertRaises(ValueError, msg=token):
