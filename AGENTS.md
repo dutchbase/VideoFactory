@@ -36,6 +36,7 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | Review and checks | `_shared/review.md`, `_shared/plan-check.md` |
 | Sound and music | `_shared/sound.md`, `library/audio/CONTEXT.md` (effects and music library) |
 | What the library holds (every part, by category) | `library/CATALOG.md` |
+| Brand from a repo (local or GitHub) | `_shared/brand-from-repo.md` |
 | Library, stock, AI images | `_shared/library.md`, `_shared/image-generation.md` |
 | Rewrite a new component into the library | `_shared/porting.md` |
 | Screenshots and recordings | `_shared/capture.md` |

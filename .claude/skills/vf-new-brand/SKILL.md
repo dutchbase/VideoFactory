@@ -9,7 +9,8 @@ Read: `brands/CONTEXT.md`, `_templates/brand/`, `brands/videofactory/` (the exam
 
 1. Ask in one batch. If `mcp__brainstormform__ask_questions` exists, offer one form for the batch.
    - Brand name and id. Suggest the name as typed and an id in lowercase with hyphens.
-   - Source: website URL, logo file, or "invent". Suggest "invent".
+   - Source: website URL, local repo path, GitHub link, logo file, or "invent". Suggest "invent".
+     For a repo or GitHub link, follow `_shared/brand-from-repo.md`. Show the found values first, then ask only about gaps.
    - Colours. Suggest reading them from the site CSS. With no site, suggest three colours from `_shared/design-lookup.md`.
    - Fonts. They must be local and licensed. Suggest one from `_runtime/fonts/`, or an OFL font from Google Fonts.
    - Tone, audience and voice. Suggest plain and friendly, and "the user records their own voice".
