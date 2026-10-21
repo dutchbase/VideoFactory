@@ -1,4 +1,18 @@
-# VideoFactory
+<div align="center">
+
+# 🎬 VideoFactory
+
+**Turn a voice into an explainer video. Talk to an AI agent, approve each step, get an MP4.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-3776AB?logo=python&logoColor=white)
+![Platform: Linux](https://img.shields.io/badge/platform-Linux-informational?logo=linux&logoColor=white)
+![Works with Claude Code and Codex](https://img.shields.io/badge/works%20with-Claude%20Code%20%7C%20Codex-8A63D2)
+
+`script` → `voice` → `words` → `cues` → `scene` → `MP4`
+
+</div>
+
 
 Make explainer videos by talking to an AI agent. You bring a topic and a voice. The agent writes the script with you, times every word, builds the animation and renders a finished MP4. You check and approve each step.
 
