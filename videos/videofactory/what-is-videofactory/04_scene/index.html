@@ -37,11 +37,11 @@
   .tree pre b { color: var(--ink); font-weight: 700; }
   .agent-col { display: flex; flex-direction: column; gap: 30px; }
   .agent-col .vf-row { gap: 22px; }
-  .agent-col .vf-chip { font-size: 30px; padding: 16px 30px; }
+  .agent-col .vf-chip { font-size: 36px; padding: 16px 30px; text-transform: none; letter-spacing: 0; }
   .stages { display: flex; gap: 22px; width: 100%; }
   .stage { flex: 1; display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-radius: 22px;
-    background: var(--surface); border: 1.5px solid var(--line); font: 700 30px/1.1 var(--head); }
-  .stage .ck { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    background: var(--surface); border: 1.5px solid var(--line); font: 700 34px/1.1 var(--head); }
+  .stage .ck { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none;
     background: var(--green); color: var(--bg); font-size: 28px; }
 
   /* lists, terminals */
@@ -68,9 +68,11 @@
   .optc .vf-tile { width: 76px; height: 76px; font-size: 40px; border-radius: 20px; flex: none; }
   .optc b { display: block; font: 750 40px/1.1 var(--head); letter-spacing: -.02em; white-space: nowrap; }
   .opt-side { display: flex; flex-direction: column; gap: 40px; flex: 1; min-width: 0; height: 700px; justify-content: center; }
-  .spot { position: relative; height: 430px; }
+  .spot { position: relative; height: 700px; }
+  .meter { display: flex; gap: 10px; align-items: flex-end; height: 140px; }
+  .meter i { flex: 1; border-radius: 6px; background: var(--accent2); }
   .spot-p { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
-  .spot-p p { font: 750 56px/1.1 var(--head); letter-spacing: -.025em; }
+  .spot-p p { font: 750 64px/1.08 var(--head); letter-spacing: -.025em; }
   .spot-p .vf-row { gap: 16px; }
   .spot-p .vf-chip { font-size: 32px; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 16px 26px; }
   .spot-word { display: inline-flex; align-items: baseline; gap: 22px; align-self: flex-start; padding: 22px 30px; border-radius: 22px;
@@ -99,8 +101,7 @@
   .wordmark b em { font-style: normal; color: var(--accent); }
   .swatches { display: flex; gap: 18px; }
   .sw { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-  .sw i { width: 104px; height: 104px; border-radius: 26px; border: 1.5px solid var(--line); }
-  .sw span { font: 600 26px var(--mono); color: var(--dim); }
+  .sw i { width: 132px; height: 132px; border-radius: 32px; border: 1.5px solid var(--line); }
   .brand-bottom { display: flex; gap: 36px; width: 100%; }
   .fonts { flex: 1.6; }
   .fonts .f { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.5px solid var(--line); padding-bottom: 10px; }
@@ -116,6 +117,7 @@
   .stylec.new .vf-tile { width: 140px; height: 140px; font-size: 72px; border-radius: 40px; }
   .char-steps .vf-step { position: relative; }
   .char-steps .vf-step::before { content: none; }
+  .char-steps .vf-step span:not(.stamp) { font-size: 36px; }
   .stamp { align-self: flex-start; margin-top: 8px; padding: 10px 20px; border: 4px solid var(--green); color: var(--green);
     border-radius: 12px; font: 800 26px var(--mono); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-8deg); background: var(--bg); }
 
@@ -138,7 +140,7 @@
   .screen .view img { position: absolute; left: 0; top: 0; width: 100%; }
   .float-chip { position: absolute; z-index: 3; }
   .src { font-size: 34px; text-transform: none; letter-spacing: 0; color: var(--ink); }
-  .screen .cmd-tag { position: absolute; left: 40px; top: 96px; z-index: 3; padding: 18px 28px; border-radius: 18px; background: var(--bg);
+  .screen .cmd-tag { position: absolute; left: 40px; bottom: 40px; z-index: 3; padding: 18px 28px; border-radius: 18px; background: var(--bg);
     border: 1.5px solid var(--line); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); }
   .screen .cmd-tag .cmd { font-size: 46px; }
 
@@ -199,7 +201,8 @@
   .music span { display: block; font-size: 30px; color: var(--dim); margin-top: 6px; }
   .rec { width: 1100px; }
   .rec .url { font-size: 26px; }
-  .motion-frame { width: 1380px; border-radius: 26px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .motion-frame canvas { margin-top: -230px; }
+  .motion-frame { width: 1680px; height: 700px; border-radius: 26px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
   .fx-row { display: flex; gap: 28px; }
   .fx { width: 330px; align-items: center; padding: 30px; }
   .fx svg { width: 100%; height: 110px; }
@@ -251,21 +254,23 @@
   .studio-pair .view img { width: 100%; }
   .status-term { width: 1640px; }
   .status-term pre { font-size: 44px; }
-  .stat-table { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0 16px; padding: 10px 44px 40px; }
+  .stat-table { display: grid; grid-template-columns: 270px 200px 316px 176px 200px 220px; gap: 0 30px; padding: 10px 44px 40px; }
   .stat-table.hd { padding-bottom: 0; }
-  .stat-table .h { font: 600 30px var(--mono); color: var(--dim); padding-bottom: 14px; border-bottom: 1.5px solid var(--line); }
+  .stat-table .h { font: 600 40px var(--mono); color: var(--dim); padding-bottom: 14px; border-bottom: 1.5px solid var(--line); }
   .stat-table .v { font: 750 52px/1 var(--head); padding-top: 22px; color: var(--green); }
   .stat-table .v.no { color: var(--faint); }
-  .stat-id { font: 600 34px var(--mono); color: var(--ink); padding: 0 44px 22px; }
+  .stat-id { font: 600 40px var(--mono); color: var(--ink); padding: 0 44px 22px; }
   .next-line { font: 700 52px/1.1 var(--head); }
   .next-line .cmd { font-size: 52px; }
   .rule-line { font: 800 120px/1 var(--head); letter-spacing: -.045em; }
   .steps-dots { display: flex; gap: 30px; align-items: center; }
-  .steps-dots i { width: 120px; height: 16px; border-radius: 8px; background: var(--line); }
-  .steps-dots i.on { background: var(--accent); }
+  .steps-dots span { display: flex; flex-direction: column; align-items: center; gap: 14px; font: 600 30px var(--mono); color: var(--dim); }
+  .steps-dots i { width: 150px; height: 16px; border-radius: 8px; background: var(--line); }
   .yes-btn { padding: 28px 60px; border-radius: 20px; background: var(--green); color: var(--bg); font: 800 50px/1 var(--head); }
   .used { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1500px; }
-  .used .vf-chip { text-transform: none; letter-spacing: 0; font-size: 28px; color: var(--ink); }
+  .used .vf-chip { text-transform: none; letter-spacing: 0; font-size: 36px; color: var(--ink); }
+  .cta-chips .vf-chip { font-size: 30px; }
+  .cta-term pre { font-size: 36px; }
   .end-mark { display: flex; align-items: center; gap: 36px; }
   .end-mark img { height: 190px; }
   .end-mark b { font: 800 150px/1 var(--head); letter-spacing: -.05em; }
@@ -305,7 +310,7 @@
 
   <!-- 0:09 what: one folder, your agent, six checked stages -->
   <section class="vf-shot center" data-cue="what">
-    <h2 class="vf-h2" data-in="words" data-delay="0.2">One folder. Your <em>agent</em> does the work.</h2>
+    <h2 class="vf-h2" data-in="words">One folder. Your <em>agent</em> does the work.</h2>
     <div class="what-top">
       <div class="vf-code tree" data-in="rise">
         <div class="top"><i></i><i></i><i></i></div>
@@ -336,7 +341,7 @@
   <!-- 0:19 setup: what you need -->
   <section class="vf-shot center" data-cue="setup" data-until="setup.type">
     <h2 class="vf-title" data-in="words">What you need</h2>
-    <div class="vf-card need" data-in="rise" data-delay="0.2">
+    <div class="vf-card need" data-in="rise" data-at="setup.need-0.3">
       <ul class="vf-list">
         <li data-in="left" data-at="setup.need"><i data-icon="laptop"></i>Linux</li>
         <li data-in="left" data-at="@python>setup.need"><i data-icon="code"></i>Python 3.12</li>
@@ -372,13 +377,13 @@
       <div class="vf-card optc" id="o-form"><span class="vf-tile two"><i data-icon="message-circle"></i></span><b>Brainstormform</b></div>
     </div>
     <div class="opt-side">
-      <h2 class="vf-h2" data-in="words" data-delay="0.2">Everything else is <em>optional</em>.</h2>
       <div class="spot">
+        <div class="spot-p" data-spot="optional"><h2 class="vf-h2" data-in="words" data-delay="0.2">Everything else is <em>optional</em>.</h2></div>
         <div class="spot-p" data-spot="optional.whisper"><p>A time for every word</p><div class="spot-word" id="spot-word"><b></b><small></small></div></div>
         <div class="spot-p" data-spot="optional.eleven"><p>A paid AI voice</p><svg viewBox="0 0 600 150"><path id="owave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
         <div class="spot-p" data-spot="optional.stock"><p>Free keys for stock video and photos</p></div>
         <div class="spot-p" data-spot="optional.photos"><div class="photos" id="photos"><img src="assets/mic.jpg" alt=""><img src="assets/timeline/f040.jpg" alt=""><img src="assets/mic-pink.jpg" alt=""></div></div>
-        <div class="spot-p" data-spot="optional.earshot"><p>The agent listens to the sound</p></div>
+        <div class="spot-p" data-spot="optional.earshot"><p>The agent listens to the sound</p><div class="meter" id="meter"></div></div>
         <div class="spot-p" data-spot="optional.node"><p>An advanced animation engine</p><div class="vf-row"><span class="vf-chip">HyperFrames</span></div></div>
         <div class="spot-p" data-spot="optional.form"><p>Questions as a form in your browser</p><p class="url-mid" id="bf-url">github.com/<br><em>dutchbase/brainstormform</em></p></div>
       </div>
@@ -416,12 +421,12 @@
     <div class="brand-top">
       <div class="wordmark" data-in="pop"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
       <div class="swatches" data-in="rise" data-stagger="0.06" data-at="brand.new">
-        <div class="sw"><i style="background:var(--bg)"></i><span data-hex="bg"></span></div>
-        <div class="sw"><i style="background:var(--surface)"></i><span data-hex="surface"></span></div>
-        <div class="sw"><i style="background:var(--ink)"></i><span data-hex="ink"></span></div>
-        <div class="sw"><i style="background:var(--accent)"></i><span data-hex="accent"></span></div>
-        <div class="sw"><i style="background:var(--accent2)"></i><span data-hex="accent2"></span></div>
-        <div class="sw"><i style="background:var(--green)"></i><span data-hex="green"></span></div>
+        <div class="sw"><i style="background:var(--bg)"></i></div>
+        <div class="sw"><i style="background:var(--surface)"></i></div>
+        <div class="sw"><i style="background:var(--ink)"></i></div>
+        <div class="sw"><i style="background:var(--accent)"></i></div>
+        <div class="sw"><i style="background:var(--accent2)"></i></div>
+        <div class="sw"><i style="background:var(--green)"></i></div>
       </div>
     </div>
     <div class="brand-bottom">
@@ -469,7 +474,7 @@
     <div class="vf-col" style="gap:50px">
       <div class="vf-term" data-in="rise">
         <div class="top"><i></i><i></i><i></i></div>
-        <pre><span class="p">&gt; </span><span id="t-video">/vf-new-video</span></pre>
+        <pre style="font-size:48px"><span class="p">&gt; </span><span id="t-video">/vf-new-video</span></pre>
       </div>
       <div class="frames" data-in="pop" data-stagger="0.12" data-at="video.format">
         <div class="frm wide"><span>wide 16:9</span></div>
@@ -501,8 +506,8 @@
     <div class="vf-code script-card" data-in="rise" data-delay="0.1">
       <div class="top"><i></i><i></i><i></i></div>
       <pre><span class="c"># script.md</span>
-<span class="sl" data-in="wipe" data-delay="0.3">An explainer video usually means three tools,</span>
-<span class="sl" data-in="wipe" data-delay="0.7">a timeline and a lost weekend.</span></pre>
+<span class="sl" data-in="wipe" data-delay="0.15">An explainer video usually means three tools,</span>
+<span class="sl" data-in="wipe" data-delay="0.45">a timeline and a lost weekend.</span></pre>
     </div>
   </section>
   <section class="vf-shot center" data-cue="script.tone">
@@ -553,7 +558,7 @@
   <section class="vf-shot center" data-cue="scene" data-until="scene.library">
     <h2 class="vf-h2" data-in="words"><em>/vf-scene</em> builds the animation</h2>
     <div class="build">
-      <div class="vf-code" data-in="left" data-at="scene.build">
+      <div class="vf-code" data-in="left" data-at="scene+0.5">
         <div class="top"><i></i><i></i><i></i></div>
         <pre><span class="k">&lt;section</span> <span class="n">data-cue</span>=<span class="s">"hook"</span><span class="k">&gt;</span>
   <span class="k">&lt;h2</span> <span class="n">data-in</span>=<span class="s">"words"</span><span class="k">&gt;</span>
@@ -667,7 +672,7 @@
   <!-- 3:05 the Studio -->
   <section class="vf-shot center" data-cue="studio">
     <div class="studio-pair">
-      <div class="vf-browser a" data-in="rise">
+      <div class="vf-browser a" data-in="rise" id="studio-a">
         <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / videos</div></div>
         <div class="view"><img src="assets/studio-home.png" alt=""></div>
       </div>
@@ -684,10 +689,10 @@
       <div class="top"><i></i><i></i><i></i></div>
       <pre><span class="row-line"><span class="p">&gt; </span><span id="t-status">/vf-status</span></span></pre>
       <div class="stat-id" data-in="fade" data-at="status+0.7">videofactory/what-is-videofactory</div>
-      <div class="stat-table hd" data-in="rise" data-stagger="0.12" data-at="status+0.8">
+      <div class="stat-table hd" data-in="rise" data-stagger="0.05" data-at="status+0.7">
         <span class="h">00_research</span><span class="h">01_voice</span><span class="h">02_transcript</span><span class="h">03_cues</span><span class="h">04_scene</span><span class="h">05_render</span>
       </div>
-      <div class="stat-table" data-in="pop" data-stagger="0.12" data-at="status+1.0">
+      <div class="stat-table" data-in="pop" data-stagger="0.05" data-at="status+0.85">
         <span class="v no">not used</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v no">-</span>
       </div>
     </div>
@@ -697,7 +702,7 @@
   <!-- 3:16 the rules -->
   <section class="vf-shot center" data-cue="rules">
     <p class="rule-line" data-in="words">One step. Then it <em style="font-style:normal;color:var(--accent)">stops</em>.</p>
-    <div class="steps-dots" id="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="steps-dots" id="dots"><span><i></i>script</span><span><i></i>voice</span><span><i></i>words</span><span><i></i>cues</span><span><i></i>scene</span><span><i></i>render</span></div>
     <span class="yes-btn" data-in="zoom" data-at="rules.yes">A clear yes from you</span>
   </section>
 
@@ -712,8 +717,8 @@
   <!-- 3:27 call to action -->
   <section class="vf-shot center" data-cue="cta">
     <div class="end-mark" data-in="zoom"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
-    <div class="vf-row" style="gap:20px" data-in="rise" data-stagger="0.1" data-delay="0.4"><span class="vf-chip ok">Free</span><span class="vf-chip ok">Open source</span><span class="vf-chip ok">MIT</span></div>
-    <div class="vf-term" data-in="rise" data-at="cta.clone" style="width:1240px">
+    <div class="vf-row cta-chips" style="gap:20px" data-in="rise" data-stagger="0.1" data-delay="0.4"><span class="vf-chip ok">Free</span><span class="vf-chip ok">Open source</span><span class="vf-chip ok">MIT</span></div>
+    <div class="vf-term cta-term" data-in="rise" data-at="cta.clone" style="width:1300px">
       <div class="top"><i></i><i></i><i></i></div>
       <pre><span class="row-line"><span class="p">$ </span><span id="t-clone">git clone https://github.com/dutchbase/videofactory</span></span><span class="row-line" id="l-setup"><span class="p">&gt; </span>/vf-setup</span></pre>
     </div>

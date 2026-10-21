@@ -2,25 +2,43 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>What Is Videofactory thumbnail</title>
+<title>What Is VideoFactory thumbnail</title>
 <link rel="stylesheet" href="runtime/fonts/fonts.css">
 <link rel="stylesheet" href="runtime/modern.css">
 <style>
-  .thumb .vf-hero { font-size: 196px; max-width: 11ch; }
-  .thumb.center .vf-hero { max-width: 13ch; }
-  .thumb .vf-logo { height: 120px; }
+  .thumb .vf-hero { font-size: 156px; white-space: nowrap; }
+  .thumb.center .vf-hero { font-size: 150px; max-width: 13ch; white-space: normal; }
+  .thumb .vf-logo { height: 96px; margin-bottom: 40px; }
+  .thumb .vf-term { flex: 0 0 700px; }
+  .thumb .vf-term pre { font-size: 40px; line-height: 1.6; color: var(--ink); }
+  .thumb .vf-term .p { color: var(--accent); }
+  .thumb .vf-term .ok { color: var(--green); }
+  .thumb .row { display: flex; gap: 24px; justify-content: center; margin-top: 56px; }
+  .thumb .vf-chip { font-size: 36px; padding: 18px 30px; }
 </style>
 </head>
 <body>
 <div id="stage" data-width="1920" data-height="1080">
   <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
-  <section class="vf-shot thumb" data-thumb="1">
-    <img class="vf-logo" src="brand/logo/mark.svg" alt="">
-    <h1 class="vf-hero">What Is Videofactory</h1>
+  <section class="vf-shot split thumb" data-thumb="1">
+    <div>
+      <img class="vf-logo" src="brand/logo/mark.svg" alt="">
+      <h1 class="vf-hero">One chat.<br><em>One video.</em></h1>
+    </div>
+    <div class="vf-term">
+      <div class="top"><i></i><i></i><i></i></div>
+      <pre><span class="p">&gt; </span>/vf-new-video
+<span class="ok">done</span>  voice
+<span class="ok">done</span>  words
+<span class="ok">done</span>  cues
+<span class="ok">done</span>  scene
+<span class="ok">done</span>  video.mp4<span class="vf-caret"></span></pre>
+    </div>
   </section>
-  <section class="vf-shot thumb center" data-thumb="2">
-    <div class="vf-kicker plain" data-brand="name"></div>
-    <h1 class="vf-hero">What Is Videofactory</h1>
+  <section class="vf-shot center thumb" data-thumb="2">
+    <div class="vf-kicker plain">Free and open source</div>
+    <h1 class="vf-hero">Your AI agent makes the <em>video</em></h1>
+    <div class="row"><span class="vf-chip hot">Claude Code</span><span class="vf-chip">Codex</span><span class="vf-chip">MIT</span></div>
   </section>
 </div>
 <script src="cues/cues.js"></script>

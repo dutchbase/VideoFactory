@@ -30,8 +30,10 @@ Modern.type('#t-video', 'video+0.3', { cps: 18 });
 Modern.type('#t-status', 'status+0.1', { cps: 16 });
 
 // optional: each card lights up when the voice names it.
-const light = (sel, when, stagger = 0) =>
+const light = (sel, when, stagger = 0) => {
   tl.fromTo(sel, { '--lit': 0 }, { '--lit': 1, duration: 0.45, ease: P.ease.out, stagger }, at(when));
+  tl.fromTo(sel, { scale: 1 }, { scale: 1.07, duration: 0.18, ease: P.ease.out, yoyo: true, repeat: 1, stagger }, at(when));
+};
 light('#o-whisper', 'optional.whisper');
 light('#o-eleven', 'optional.eleven');
 light('.o-stock', 'optional.stock', 0.35);
@@ -41,7 +43,7 @@ light('#o-form', 'optional.form');
 // The panel beside the grid says what the named part does; it swaps when the voice names the next one.
 const spots = [...document.querySelectorAll('[data-spot]')];
 spots.forEach((el, i) => {
-  Modern.in(tl, el, `${el.dataset.spot}+0.05`, 'rise');
+  if (i) Modern.in(tl, el, `${el.dataset.spot}+0.05`, 'rise');   // the first panel is the headline; its words enter by data-in
   if (spots[i + 1]) Modern.out(tl, el, `${spots[i + 1].dataset.spot}-0.3`, 'sink');
 });
 Modern.in(tl, '#photos img', 'optional.photos+0.1', 'rise', { stagger: 0.14 });
@@ -53,8 +55,15 @@ if (first) {
   $('#spot-word small').textContent = clock(first.start);
 }
 
+// Earshot: a live level meter while the voice names it.
+const meter = $('#meter');
+const bars = Array.from({ length: 18 }, () => meter.appendChild(document.createElement('i')));
+P.onFrame((t) => bars.forEach((b, i) => {
+  const v = 0.18 + 0.82 * Math.abs(Math.sin(t * 5.3 + i * 0.7) * Math.sin(t * 2.1 + i * 0.31));
+  b.style.height = `${(v * 100).toFixed(1)}%`;
+}));
+
 // brand: the swatch labels come from the brand tokens; stamps land batch by batch.
-for (const el of document.querySelectorAll('[data-hex]')) el.textContent = T[el.dataset.hex] || '';
 Modern.in(tl, '.stamp', 'brand.approve', 'zoom', { stagger: 0.22 });
 
 Modern.type('#t-research', 'research+0.5', { cps: 16 });
@@ -142,8 +151,8 @@ P.onFrame((t) => {
 // stock, capture and motion: real clips on the scene clock.
 Modern.clip('#stock-clip', 'timeline', 'scene.stock');
 Modern.clip('#rec-clip', 'browser-search', 'scene.capture-1.2', { speed: 1.3 });
-Modern.clip('#motion-clip', 'agent-flow', 'scene.motion', { speed: 2.1 });
-Modern.clip('#player-clip', 'player', 'render');
+Modern.clip('#motion-clip', 'agent-flow', 'scene.motion', { speed: 1.4, from: 0.8 });
+Modern.clip('#player-clip', 'player', 'render', { from: 1.2 });
 
 // sound: four effect shapes that keep moving.
 const fx = [...document.querySelectorAll('.fxw')];
@@ -166,7 +175,7 @@ P.onFrame((t) => {
 for (const [id, n] of [['#c1', 5], ['#c2', 6], ['#c3', 1]]) {
   const el = $(id);
   P.onFrame(() => {
-    const v = Math.round(n * (1 - P.prog('check.zero', { dur: 1.1 })));
+    const v = Math.round(n * (1 - P.prog('check.zero', { dur: 1.3 })));
     el.textContent = v;
     el.style.color = v ? T.danger : T.green;
   });
@@ -188,10 +197,16 @@ P.onFrame((t) => {
   });
 });
 
-// rules: one step lights, then it stops; the next waits for a yes.
-[...document.querySelectorAll('#dots i')].forEach((d, i) => {
-  tl.to(d, { backgroundColor: T.accent, duration: 0.2 }, at('rules+0.6') + i * 0.5);
-});
+// rules: one step lights, then it stops; the next step lights only after the yes.
+const dots = [...document.querySelectorAll('#dots span')];
+for (const [k, when] of [[0, 'rules+0.8'], [1, 'rules.yes+0.9']]) {
+  tl.to(dots[k].querySelector('i'), { backgroundColor: T.accent, duration: 0.25 }, at(when));
+  tl.to(dots[k], { color: T.ink, duration: 0.25 }, at(when));
+}
+
+// studio: the videos page starts in the middle and moves aside when the review page arrives.
+// left and top, not x and y: the data-in entrance already moves y.
+tl.fromTo('#studio-a', { left: 190, top: 80 }, { left: 0, top: 0, duration: 0.6, ease: P.ease.move, immediateRender: true }, at('studio.pages-0.2'));
 
 // call to action: the clone line types, then the first command.
 Modern.type('#t-clone', 'cta.clone+0.1', { cps: 32 });

@@ -132,6 +132,51 @@ Stock and library: `04_scene/assets/library.md`. Sound: `04_scene/assets/sound.m
     "note": "",
     "fingerprint": "e4138f454d4a589c4033dcdfc2d7ac0ca208be0783e5ae6c6cbee6626d024185",
     "at": "2026-10-20T18:45:56.122970+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "c923f487328c3f3279beef6c6bd0c74f430eb7730fe17a52e57c17401642d6c2",
+    "at": "2026-10-20T20:56:10.428778+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "c923f487328c3f3279beef6c6bd0c74f430eb7730fe17a52e57c17401642d6c2",
+    "at": "2026-10-21T04:41:12.336891+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "74cb075c9525ff0c8107ab94c878b458273756522d32171ef3203a786337091c",
+    "at": "2026-10-21T04:41:21.054194+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "74cb075c9525ff0c8107ab94c878b458273756522d32171ef3203a786337091c",
+    "at": "2026-10-21T04:42:36.085717+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "8d95485dd6b705d3282d455531b8631a96ad77a695df0281a9918344572dcfff",
+    "at": "2026-10-21T04:59:34.064217+00:00"
   }
 ]
 ```

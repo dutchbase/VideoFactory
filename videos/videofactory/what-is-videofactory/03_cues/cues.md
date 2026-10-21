@@ -138,8 +138,10 @@ Chapter title: Check.
 A contact sheet of stills.
 ## check.count "A checker counts the problems"
 Counters with numbers.
-## check.zero "every counter reads zero" [sfx: chime]
+## check.zero "every counter reads zero"
 Counters count down to 0.
+## check.done "zero" [sfx: chime]
+The last counter lands on 0.
 
 ## render "Slash V F render makes" [sfx: whoosh]
 An MP4 card.
@@ -165,8 +167,10 @@ Terminal with the real status table.
 
 ## reveal "This video was made with" [sfx: impact]
 The reveal line.
+## reveal.end "commands" [sfx: riser]
+The riser builds into the logo.
 
-## cta "VideoFactory is free and" [sfx: riser]
+## cta "VideoFactory is free and"
 Logo, MIT chip.
 ## cta.clone "Clone the repo"
 Terminal: git clone, /vf-setup.

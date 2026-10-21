@@ -741,11 +741,22 @@
   {
    "id": "check.zero",
    "start": 167.94,
-   "end": 170.4,
+   "end": 169.24,
    "phraseEnd": 169.62,
    "phrase": "every counter reads zero",
    "text": "every counter reads zero.",
    "note": "Counters count down to 0.",
+   "score": 1.0,
+   "sfx": []
+  },
+  {
+   "id": "check.done",
+   "start": 169.24,
+   "end": 170.4,
+   "phraseEnd": 169.62,
+   "phrase": "zero",
+   "text": "zero.",
+   "note": "The last counter lands on 0.",
    "score": 1.0,
    "sfx": [
     "chime"
@@ -876,6 +887,19 @@
    ]
   },
   {
+   "id": "reveal.end",
+   "start": 205.92,
+   "end": 207.22,
+   "phraseEnd": 206.48,
+   "phrase": "commands",
+   "text": "commands.",
+   "note": "The riser builds into the logo.",
+   "score": 1.0,
+   "sfx": [
+    "riser"
+   ]
+  },
+  {
    "id": "cta",
    "start": 207.22,
    "end": 215.36,
@@ -884,9 +908,7 @@
    "text": "VideoFactory is free and",
    "note": "Logo, MIT chip.",
    "score": 1.0,
-   "sfx": [
-    "riser"
-   ]
+   "sfx": []
   },
   {
    "id": "cta.clone",
@@ -1648,11 +1670,22 @@
   "check.zero": {
    "id": "check.zero",
    "start": 167.94,
-   "end": 170.4,
+   "end": 169.24,
    "phraseEnd": 169.62,
    "phrase": "every counter reads zero",
    "text": "every counter reads zero.",
    "note": "Counters count down to 0.",
+   "score": 1.0,
+   "sfx": []
+  },
+  "check.done": {
+   "id": "check.done",
+   "start": 169.24,
+   "end": 170.4,
+   "phraseEnd": 169.62,
+   "phrase": "zero",
+   "text": "zero.",
+   "note": "The last counter lands on 0.",
    "score": 1.0,
    "sfx": [
     "chime"
@@ -1782,6 +1815,19 @@
     "impact"
    ]
   },
+  "reveal.end": {
+   "id": "reveal.end",
+   "start": 205.92,
+   "end": 207.22,
+   "phraseEnd": 206.48,
+   "phrase": "commands",
+   "text": "commands.",
+   "note": "The riser builds into the logo.",
+   "score": 1.0,
+   "sfx": [
+    "riser"
+   ]
+  },
   "cta": {
    "id": "cta",
    "start": 207.22,
@@ -1791,9 +1837,7 @@
    "text": "VideoFactory is free and",
    "note": "Logo, MIT chip.",
    "score": 1.0,
-   "sfx": [
-    "riser"
-   ]
+   "sfx": []
   },
   "cta.clone": {
    "id": "cta.clone",

@@ -6,8 +6,8 @@
   "height": 1080,
   "fps": 30,
   "workers": 4,
-  "frames": 330,
-  "start": 36.0,
-  "end": 47.0,
-  "elapsed_seconds": 44.93
+  "frames": 6461,
+  "start": 0.0,
+  "end": 215.36,
+  "elapsed_seconds": 651.691
 }
