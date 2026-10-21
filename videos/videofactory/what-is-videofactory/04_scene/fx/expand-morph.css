@@ -1,0 +1,2 @@
+/* expand-morph: the soft shadow under the growing card. White or black with alpha only. */
+.fx-expand-shadow { position: absolute; pointer-events: none; box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.45); }

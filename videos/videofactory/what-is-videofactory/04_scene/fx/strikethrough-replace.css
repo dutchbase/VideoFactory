@@ -1,0 +1,16 @@
+/* strikethrough-replace: both phrases share one grid cell, so the swap keeps the anchor (left edge or centre) and the box does not jump. */
+.fx-strikethrough-replace { display: inline-grid; justify-items: var(--fx-sr-justify, center); line-height: 1.15; white-space: nowrap; }
+.fx-strikethrough-replace-old, .fx-strikethrough-replace-new { grid-area: 1 / 1; }
+.fx-strikethrough-replace-new { color: var(--fx-sr-new, var(--ink)); }
+.fx-strikethrough-replace-text { position: relative; display: inline-block; }
+.fx-strikethrough-replace-line {
+  position: absolute;
+  left: -0.06em;
+  right: -0.06em;
+  top: var(--fx-sr-height, 0.56em);
+  height: var(--fx-sr-weight, 0.07em);
+  border-radius: 999px;
+  background: var(--fx-sr-strike, var(--accent));
+  transform-origin: left center;
+}
+.fx-strikethrough-replace-tilt { position: absolute; inset: 0; transform: rotate(var(--fx-sr-tilt, -0.6deg)); }

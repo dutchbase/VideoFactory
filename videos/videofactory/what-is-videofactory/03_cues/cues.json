@@ -2,9 +2,9 @@
  "meta": {
   "duration": 215.36,
   "voice": "../01_voice/voice.mp3",
-  "slug": "videofactory/what-is-videofactory",
+  "slug": "what-is-videofactory",
   "music": "study",
-  "music_gain": 0.18
+  "music_gain": 0.3
  },
  "cueList": [
   {
@@ -14,10 +14,12 @@
    "phraseEnd": 1.98,
    "phrase": "An explainer video usually means",
    "text": "An explainer video usually means",
-   "note": "Big type line arrives. Authored.",
+   "note": "Fx tracking-in: the big line spreads in from tight letters.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.46 0.7",
+    "pop@1.26 0.7"
    ]
   },
   {
@@ -27,9 +29,11 @@
    "phraseEnd": 3.68,
    "phrase": "three tools, a timeline",
    "text": "three tools, a timeline",
-   "note": "Three tool chips drop in: editor, timeline, audio.",
+   "note": "Fx spring-in: three tool chips (editor, timeline, audio) bounce in, each with a colour pictogram.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.12 0.5"
+   ]
   },
   {
    "id": "hook.weekend",
@@ -38,10 +42,11 @@
    "phraseEnd": 5.18,
    "phrase": "a lost weekend",
    "text": "a lost weekend.",
-   "note": "The chips get struck through; \"lost weekend\" in the accent colour.",
+   "note": "The chips are struck through and sink; \"a lost weekend\" pops in the accent colour.",
    "score": 1.0,
    "sfx": [
-    "error 0.6"
+    "error 0.6",
+    "whoosh@1.15 0.8"
    ]
   },
   {
@@ -51,10 +56,11 @@
    "phraseEnd": 7.76,
    "phrase": "VideoFactory turns all of that",
    "text": "VideoFactory turns all of that",
-   "note": "Chips collapse into one chat card.",
+   "note": "Fx expand-morph: the chips grow into the chat card. Whoosh.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.52 0.7",
+    "blip@1.66 0.6"
    ]
   },
   {
@@ -64,10 +70,10 @@
    "phraseEnd": 9.04,
    "phrase": "into one conversation",
    "text": "into one conversation.",
-   "note": "Chat bubbles appear: user asks, agent answers.",
+   "note": "Fx strikethrough-replace: \"Three tools. A lost weekend.\" becomes \"One conversation.\" A chat Lottie plays; the bubbles rise.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.6"
    ]
   },
   {
@@ -77,10 +83,10 @@
    "phraseEnd": 10.94,
    "phrase": "It is one folder on",
    "text": "It is one folder on",
-   "note": "A folder tree card (videos, brands, stages).",
+   "note": "Folder tree card with an animated folder icon.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.8"
    ]
   },
   {
@@ -90,10 +96,10 @@
    "phraseEnd": 14.24,
    "phrase": "Your AI agent, Claude Code",
    "text": "Your AI agent, Claude Code",
-   "note": "Chips: Claude Code, Codex.",
+   "note": "Chips: Claude Code, Codex, with an animated bot icon.",
    "score": 1.0,
    "sfx": [
-    "blip"
+    "blip 0.8"
    ]
   },
   {
@@ -103,10 +109,12 @@
    "phraseEnd": 17.46,
    "phrase": "You make the choices",
    "text": "You make the choices,",
-   "note": "Six stage steps, each gets a check mark.",
+   "note": "Fx connector-lines join the six stages; a check mark pops on each.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "tick@0.54 0.5",
+    "tick@1.18 0.5",
+    "stamp@1.82 0.7"
    ]
   },
   {
@@ -116,7 +124,7 @@
    "phraseEnd": 21.04,
    "phrase": "First, the setup",
    "text": "First, the setup.",
-   "note": "Chapter title: Setup.",
+   "note": "Chapter title: What you need, with an animated cog icon.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -129,9 +137,13 @@
    "phraseEnd": 23.08,
    "phrase": "You need Linux, Python",
    "text": "You need Linux, Python",
-   "note": "Required list, one row per item: Linux, Python 3.12, FFmpeg.",
+   "note": "Required list: Linux, Python 3.12, FFmpeg.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.5",
+    "tick@0.94 0.5",
+    "tick@2.76 0.5"
+   ]
   },
   {
    "id": "setup.agent",
@@ -142,7 +154,10 @@
    "text": "and Claude Code or Codex.",
    "note": "Last required row: Claude Code or Codex.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.5",
+    "whoosh@1.9 0.7"
+   ]
   },
   {
    "id": "setup.type",
@@ -151,10 +166,11 @@
    "phraseEnd": 29.88,
    "phrase": "Type slash V F setup",
    "text": "Type slash V F setup.",
-   "note": "Terminal types /vf-setup.",
+   "note": "Fx whip-pan to the next view. Fx terminal types /vf-setup.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.3 0.6",
+    "key@1.22 0.6"
    ]
   },
   {
@@ -164,9 +180,13 @@
    "phraseEnd": 32.26,
    "phrase": "The agent installs the rest",
    "text": "The agent installs the rest,",
-   "note": "Doctor table: rows turn OK. Rebuilt from real doctor.py output.",
+   "note": "Terminal prints the real doctor rows as OK; fx progress-bar fills the install.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.51 0.5",
+    "tick@0.93 0.5",
+    "tick@1.35 0.5"
+   ]
   },
   {
    "id": "setup.test",
@@ -175,10 +195,11 @@
    "phraseEnd": 35.34,
    "phrase": "renders a short test video",
    "text": "renders a short test video.",
-   "note": "A small video card with a play mark.",
+   "note": "Test video card springs in; a check-mark Lottie plays.",
    "score": 1.0,
    "sfx": [
-    "chime"
+    "pop@0.04 0.7",
+    "chime@0.88 0.8"
    ]
   },
   {
@@ -188,7 +209,7 @@
    "phraseEnd": 37.28,
    "phrase": "Everything else is optional",
    "text": "Everything else is optional.",
-   "note": "Grid of eight cards, all dim.",
+   "note": "Zoom-through target: eight option cards, all dim.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -201,9 +222,12 @@
    "phraseEnd": 39.24,
    "phrase": "Whisper gives every word",
    "text": "Whisper gives every word",
-   "note": "Whisper card lights up.",
+   "note": "Whisper card lights up with an animated icon; fx slot-roll shows the real time of one word of this video.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "coin@1.4 0.5"
+   ]
   },
   {
    "id": "optional.eleven",
@@ -212,9 +236,11 @@
    "phraseEnd": 41.8,
    "phrase": "ElevenLabs gives you a paid",
    "text": "ElevenLabs gives you a paid",
-   "note": "ElevenLabs card lights up.",
+   "note": "ElevenLabs card lights up; a live voice wave runs.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   {
    "id": "optional.stock",
@@ -223,9 +249,12 @@
    "phraseEnd": 44.62,
    "phrase": "Free keys from Pexels",
    "text": "Free keys from Pexels,",
-   "note": "Pexels, Pixabay, Unsplash cards light up.",
+   "note": "Pexels, Pixabay and Unsplash cards light up with animated icons.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "select@0.74 0.6"
+   ]
   },
   {
    "id": "optional.photos",
@@ -234,9 +263,11 @@
    "phraseEnd": 48.28,
    "phrase": "unlock stock video and photos",
    "text": "unlock stock video and photos.",
-   "note": "A stock photo slides into the stock cards.",
+   "note": "Three stock photos rise in next to the cards.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.14 0.7"
+   ]
   },
   {
    "id": "optional.earshot",
@@ -245,9 +276,11 @@
    "phraseEnd": 50.5,
    "phrase": "Earshot lets the agent listen",
    "text": "Earshot lets the agent listen",
-   "note": "Earshot card lights up.",
+   "note": "Earshot card lights up; a live level meter runs.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   {
    "id": "optional.node",
@@ -256,9 +289,12 @@
    "phraseEnd": 53.14,
    "phrase": "Node adds an advanced",
    "text": "Node adds an advanced",
-   "note": "Node card lights up.",
+   "note": "Node card lights up; a HyperFrames 3D cube clip (cube-3d) plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "whoosh@1.79 0.6"
+   ]
   },
   {
    "id": "optional.form",
@@ -269,7 +305,9 @@
    "text": "And Brainstormform shows",
    "note": "Brainstormform card lights up.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   {
    "id": "optional.browser",
@@ -278,9 +316,11 @@
    "phraseEnd": 58.2,
    "phrase": "as a form in your",
    "text": "as a form in your",
-   "note": "A small form window rises from the card.",
+   "note": "The form address rises from the card.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.6"
+   ]
   },
   {
    "id": "vf",
@@ -289,7 +329,7 @@
    "phraseEnd": 60.12,
    "phrase": "Not sure what to do",
    "text": "Not sure what to do",
-   "note": "Big question line.",
+   "note": "Fx zoom-through into the big question. Fx masked-slide-reveal on the words.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -302,10 +342,10 @@
    "phraseEnd": 62.6,
    "phrase": "Type slash V F",
    "text": "Type slash V F.",
-   "note": "Terminal types /vf.",
+   "note": "Fx terminal types /vf.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.26 0.6"
    ]
   },
   {
@@ -315,9 +355,11 @@
    "phraseEnd": 64.2,
    "phrase": "It reads your folders",
    "text": "It reads your folders",
-   "note": "Folders get scanned; a \"next step\" card lands.",
+   "note": "The terminal reads brands, videos and stages; fx notification-stack lands a \"Next step\" toast.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "step@0.44 0.5"
+   ]
   },
   {
    "id": "vf.help",
@@ -326,10 +368,13 @@
    "phraseEnd": 67.88,
    "phrase": "Slash V F help lists",
    "text": "Slash V F help lists",
-   "note": "The full command list, staggered.",
+   "note": "Fx masked-slide-reveal: the full command list, line by line. Fx blinds into the next chapter.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.6",
+    "step@0.34 0.5",
+    "step@1.54 0.5",
+    "whoosh@2.72 0.8"
    ]
   },
   {
@@ -339,10 +384,10 @@
    "phraseEnd": 70.92,
    "phrase": "Every video starts with",
    "text": "Every video starts with",
-   "note": "Chapter title: Brand, with the logo mark.",
+   "note": "Fx mesh-gradient behind it; fx svg-mask-reveal on the logo mark; fx mask-reveal on the wordmark.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.9 0.8"
    ]
   },
   {
@@ -352,9 +397,12 @@
    "phraseEnd": 73.62,
    "phrase": "Slash V F new brand",
    "text": "Slash V F new brand",
-   "note": "Colour swatches from the brand tokens.",
+   "note": "Palette icon plays; the six brand swatches pop in; fx handwriting-text writes \"your colours, your look\".",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.34 0.5",
+    "tick@1.94 0.5"
+   ]
   },
   {
    "id": "brand.fonts",
@@ -363,9 +411,11 @@
    "phraseEnd": 76.92,
    "phrase": "fonts, logo and voice",
    "text": "fonts, logo and voice.",
-   "note": "Font specimen, logo, voice card.",
+   "note": "Font specimen card and the voice card with an animated mic.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.7"
+   ]
   },
   {
    "id": "brand.style",
@@ -374,10 +424,11 @@
    "phraseEnd": 79.04,
    "phrase": "Slash V F new style",
    "text": "Slash V F new style",
-   "note": "Two style swatch cards on the Modern kit.",
+   "note": "Two style cards slide in; fx marker-highlight on \"look\".",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.34 0.6",
+    "tick@2.28 0.5"
    ]
   },
   {
@@ -387,9 +438,12 @@
    "phraseEnd": 82.7,
    "phrase": "Slash V F new character",
    "text": "Slash V F new character",
-   "note": "Character factory steps: brief, concepts, identity, variants.",
+   "note": "Four steps rise one by one (brief, concepts, identity, variants), each with a colour pictogram.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.24 0.6",
+    "pop@3.24 0.6"
+   ]
   },
   {
    "id": "brand.approve",
@@ -398,10 +452,11 @@
    "phraseEnd": 87.36,
    "phrase": "approve batch by batch",
    "text": "approve batch by batch.",
-   "note": "Approve stamps land on the steps.",
+   "note": "An approved stamp lands on each step; fx shake-emphasis on the stamp.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "stamp@0.24 0.8",
+    "stamp@0.9 0.8"
    ]
   },
   {
@@ -414,7 +469,8 @@
    "note": "Terminal types /vf-new-video.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "key@0.88 0.6"
    ]
   },
   {
@@ -424,9 +480,12 @@
    "phraseEnd": 93.32,
    "phrase": "Pick your brand, wide or",
    "text": "Pick your brand, wide or",
-   "note": "A wide frame and a tall frame side by side.",
+   "note": "A brand chip, then a wide frame and a tall frame spring in (fx spring-in); a frame icon plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@1.36 0.7",
+    "pop@2.16 0.7"
+   ]
   },
   {
    "id": "video.brief",
@@ -435,9 +494,13 @@
    "phraseEnd": 95.14,
    "phrase": "write a short brief",
    "text": "write a short brief:",
-   "note": "The real brief card: audience, outcome.",
+   "note": "Fx code-block types the brief: for, after.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.6",
+    "key@1.48 0.6",
+    "whoosh@4.46 0.8"
+   ]
   },
   {
    "id": "research",
@@ -446,10 +509,10 @@
    "phraseEnd": 99.52,
    "phrase": "Need facts?",
    "text": "Need facts?",
-   "note": "Chapter title: Research.",
+   "note": "Fx ken-burns on the real page screenshot; a command tag types /vf-research.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "key@0.75 0.6"
    ]
   },
   {
@@ -459,9 +522,11 @@
    "phraseEnd": 103.04,
    "phrase": "collects them from public web",
    "text": "collects them from public web",
-   "note": "Browser frame with a real page screenshot (grab).",
+   "note": "Fx arrow-annotate: \"Public page\".",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh@0.06 0.4"
+   ]
   },
   {
    "id": "research.source",
@@ -470,9 +535,11 @@
    "phraseEnd": 104.72,
    "phrase": "with a source for each",
    "text": "with a source for each",
-   "note": "Source chip with the URL.",
+   "note": "Fx callout: \"The source\" on the address.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.8"
+   ]
   },
   {
    "id": "script",
@@ -481,10 +548,11 @@
    "phraseEnd": 107.5,
    "phrase": "Slash V F script writes",
    "text": "Slash V F script writes",
-   "note": "Script lines type in.",
+   "note": "Script card; fx marker-highlight on \"three tools\" and \"a lost weekend\".",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "select@2.24 0.5"
    ]
   },
   {
@@ -494,10 +562,11 @@
    "phraseEnd": 110.64,
    "phrase": "A tone check removes hype",
    "text": "A tone check removes hype",
-   "note": "Hype words get struck through.",
+   "note": "Fx strikethrough-replace: the hype line \"Unlock your productivity\" becomes \"Make your video\".",
    "score": 1.0,
    "sfx": [
-    "error 0.6"
+    "error@1.32 0.6",
+    "blip@1.99 0.6"
    ]
   },
   {
@@ -507,10 +576,11 @@
    "phraseEnd": 115.72,
    "phrase": "Slash V F voice makes",
    "text": "Slash V F voice makes",
-   "note": "Chapter title: Voice.",
+   "note": "Title; the free card with a microphone photo (fx ken-burns).",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.7 0.7"
    ]
   },
   {
@@ -520,9 +590,11 @@
    "phraseEnd": 118.22,
    "phrase": "Record yourself for free",
    "text": "Record yourself for free,",
-   "note": "Card with a microphone photo (stock).",
+   "note": "The microphone card stays; the record icon plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "blip@0.04 0.5"
+   ]
   },
   {
    "id": "voice.eleven",
@@ -531,9 +603,11 @@
    "phraseEnd": 119.94,
    "phrase": "or let ElevenLabs read",
    "text": "or let ElevenLabs read",
-   "note": "Second card: ElevenLabs.",
+   "note": "Second card: ElevenLabs; the AI-05 motion clip plays on it.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop 0.7"
+   ]
   },
   {
    "id": "voice.approve",
@@ -542,9 +616,11 @@
    "phraseEnd": 122.56,
    "phrase": "A paid voice only runs",
    "text": "A paid voice only runs",
-   "note": "Real Studio review page screenshot (grab).",
+   "note": "Real Studio review page screenshot scrolls to the Approved bar.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh@0.55 0.5"
+   ]
   },
   {
    "id": "voice.stamp",
@@ -553,10 +629,11 @@
    "phraseEnd": 124.16,
    "phrase": "approve the script in",
    "text": "approve the script in",
-   "note": "The Approve button gets pressed; stamp.",
+   "note": "One camera move onto the Approved bar; stamp.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "whoosh@0.1 0.4",
+    "stamp@1.35 0.9"
    ]
   },
   {
@@ -566,10 +643,12 @@
    "phraseEnd": 127.4,
    "phrase": "Slash V F transcript gives",
    "text": "Slash V F transcript gives",
-   "note": "Real words with times light up one by one.",
+   "note": "A typed command /vf-transcript; the CAP-06 caption clip plays; the real words appear with their times.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@1.06 0.4",
+    "tick@2.14 0.4"
    ]
   },
   {
@@ -579,9 +658,11 @@
    "phraseEnd": 129.2,
    "phrase": "an exact time",
    "text": "an exact time.",
-   "note": "Time stamps highlight.",
+   "note": "The times light up one by one.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.5"
+   ]
   },
   {
    "id": "cues",
@@ -590,10 +671,12 @@
    "phraseEnd": 131.76,
    "phrase": "Slash V F cues marks",
    "text": "Slash V F cues marks",
-   "note": "A timeline with cue markers.",
+   "note": "A clock Lottie loops; fx timeline draws the first real cue marks.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@0.57 0.5",
+    "blip@1.8 0.6"
    ]
   },
   {
@@ -603,9 +686,11 @@
    "phraseEnd": 133.7,
    "phrase": "the picture must change",
    "text": "the picture must change.",
-   "note": "Markers snap to words.",
+   "note": "More marks land on the time line.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.4"
+   ]
   },
   {
    "id": "scene",
@@ -614,7 +699,7 @@
    "phraseEnd": 135.52,
    "phrase": "Now the fun part",
    "text": "Now the fun part.",
-   "note": "Chapter title: Scene.",
+   "note": "Chapter title: Scene, with an animated icon.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -627,9 +712,11 @@
    "phraseEnd": 137.84,
    "phrase": "Slash V F scene builds",
    "text": "Slash V F scene builds",
-   "note": "Code card turns into a picture.",
+   "note": "Fx code-block types the HTML; an arrow turns it into a picture.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "blip@0.82 0.6"
+   ]
   },
   {
    "id": "scene.library",
@@ -638,10 +725,12 @@
    "phraseEnd": 141.26,
    "phrase": "It takes icons, graphics and",
    "text": "It takes icons, graphics and",
-   "note": "Icon grid and a Lottie animation from the library.",
+   "note": "Wall: eight animated icons, eight colour pictograms, four Lotties (icons play on the word).",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.3 0.7",
+    "pop@1.52 0.7",
+    "pop@2.42 0.7"
    ]
   },
   {
@@ -651,9 +740,11 @@
    "phraseEnd": 144.64,
    "phrase": "It finds stock video",
    "text": "It finds stock video,",
-   "note": "A stock video clip, a stock photo and a music card.",
+   "note": "Fx zoom-through: the stock video, a stock photo and the UTL-07 music-bars clip.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh 0.8"
+   ]
   },
   {
    "id": "scene.capture",
@@ -675,9 +766,12 @@
    "phraseEnd": 151.6,
    "phrase": "It drops in ready-made",
    "text": "It drops in ready-made",
-   "note": "A motion-pack clip plays (use motion:).",
+   "note": "Three motion-pack clips: AI-03 agent flow, CIN-01 card stack, BKG-08 ticker.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.09 0.7",
+    "select@0.4 0.5"
+   ]
   },
   {
    "id": "scene.sound",
@@ -686,10 +780,13 @@
    "phraseEnd": 154.56,
    "phrase": "And it adds sound effects",
    "text": "And it adds sound effects",
-   "note": "Effect chips with wave lines.",
+   "note": "Fx sparkline-row: four effect waves (whoosh, pop, stamp, chime). Fx grid-pixelate into the next chapter.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "whoosh@0.24 0.5",
+    "pop@0.64 0.6",
+    "stamp@1.04 0.6",
+    "chime@1.44 0.5"
    ]
   },
   {
@@ -699,9 +796,12 @@
    "phraseEnd": 157.44,
    "phrase": "from free CC0 files",
    "text": "from free CC0 files,",
-   "note": "Chips: CC0 file, generated.",
+   "note": "Chips: free CC0 files, generated here.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.02 0.6",
+    "whoosh@3.75 0.8"
+   ]
   },
   {
    "id": "check",
@@ -710,10 +810,10 @@
    "phraseEnd": 161.34,
    "phrase": "Before you see anything",
    "text": "Before you see anything,",
-   "note": "Chapter title: Check.",
+   "note": "A contact sheet of stills with the title; fx grid-pixelate lands here.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.44 0.8"
    ]
   },
   {
@@ -723,9 +823,11 @@
    "phraseEnd": 163.66,
    "phrase": "takes a still at every",
    "text": "takes a still at every",
-   "note": "A contact sheet of stills.",
+   "note": "Fx spotlight moves over the contact sheet.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.5"
+   ]
   },
   {
    "id": "check.count",
@@ -734,9 +836,12 @@
    "phraseEnd": 166.16,
    "phrase": "A checker counts the problems",
    "text": "A checker counts the problems,",
-   "note": "Counters with numbers.",
+   "note": "Fx comparison-bars: first check against now for three counters.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.7",
+    "coin@3.22 0.5"
+   ]
   },
   {
    "id": "check.zero",
@@ -745,9 +850,11 @@
    "phraseEnd": 169.62,
    "phrase": "every counter reads zero",
    "text": "every counter reads zero.",
-   "note": "Counters count down to 0.",
+   "note": "The counters count down to 0.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "coin@0.32 0.5"
+   ]
   },
   {
    "id": "check.done",
@@ -756,10 +863,10 @@
    "phraseEnd": 169.62,
    "phrase": "zero",
    "text": "zero.",
-   "note": "The last counter lands on 0.",
+   "note": "A success Lottie on the last 0.",
    "score": 1.0,
    "sfx": [
-    "chime"
+    "chime 0.9"
    ]
   },
   {
@@ -769,10 +876,11 @@
    "phraseEnd": 172.04,
    "phrase": "Slash V F render makes",
    "text": "Slash V F render makes",
-   "note": "An MP4 card.",
+   "note": "The VID-01 player clip with the file name chip.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.5 0.6"
    ]
   },
   {
@@ -782,9 +890,12 @@
    "phraseEnd": 175.68,
    "phrase": "Voice, music and effects",
    "text": "Voice, music and effects",
-   "note": "Three wave lines merge into one.",
+   "note": "Three wave lines merge into one; fx gauge-dial shows the effects 3 dB under the voice.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@1.26 0.6",
+    "coin@1.82 0.5"
+   ]
   },
   {
    "id": "render.extras",
@@ -793,10 +904,11 @@
    "phraseEnd": 178.46,
    "phrase": "You also get a phone",
    "text": "You also get a phone",
-   "note": "Phone copy, thumbnail, chapters.",
+   "note": "Phone copy, thumbnail, and the chapters on an fx timeline.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.45 0.7",
+    "tick@1.06 0.5"
    ]
   },
   {
@@ -806,9 +918,11 @@
    "phraseEnd": 183.22,
    "phrase": "With Earshot, the agent",
    "text": "With Earshot, the agent",
-   "note": "A listening report card.",
+   "note": "Fx line-chart: the real voice level over the whole video.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.4 0.7"
+   ]
   },
   {
    "id": "studio",
@@ -817,7 +931,7 @@
    "phraseEnd": 186.466,
    "phrase": "The Studio is a web",
    "text": "The Studio is a web",
-   "note": "Real Studio dashboard screenshot (grab).",
+   "note": "Fx device-pullback: the real Studio page pulls back into a laptop.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -830,9 +944,11 @@
    "phraseEnd": 189.8,
    "phrase": "It shows every video",
    "text": "It shows every video,",
-   "note": "A review page slides over it.",
+   "note": "Two real Studio pages side by side.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh 0.5"
+   ]
   },
   {
    "id": "status",
@@ -841,10 +957,11 @@
    "phraseEnd": 194.72,
    "phrase": "Slash V F status shows",
    "text": "Slash V F status shows",
-   "note": "Terminal with the real status table.",
+   "note": "Fx terminal prints the real status row; fx stat-card: 5 stages done.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.32 0.6",
+    "coin@2.44 0.6"
    ]
   },
   {
@@ -854,10 +971,11 @@
    "phraseEnd": 197.92,
    "phrase": "Each command does one",
    "text": "Each command does one",
-   "note": "\"One step. Then it stops.\"",
+   "note": "Fx mask-reveal: \"One step. Then it stops.\" Step dots.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@0.84 0.5"
    ]
   },
   {
@@ -867,10 +985,11 @@
    "phraseEnd": 201.6,
    "phrase": "Nothing is paid or published",
    "text": "Nothing is paid or published",
-   "note": "\"A clear yes from you.\"",
+   "note": "\"A clear yes from you.\" button with fx shake-emphasis.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "stamp@0.52 0.8",
+    "tick@0.94 0.5"
    ]
   },
   {
@@ -880,23 +999,12 @@
    "phraseEnd": 205.36,
    "phrase": "This video was made with",
    "text": "This video was made with",
-   "note": "The reveal line.",
+   "note": "Fx matrix-decode on the reveal line; fx donut-chart tally of the library parts used (37 fx, 22 icons, 18 graphics, 8 Lottie, 8 clips). Fx circle-reveal into the end card.",
    "score": 1.0,
    "sfx": [
-    "impact"
-   ]
-  },
-  {
-   "id": "reveal.end",
-   "start": 205.92,
-   "end": 207.22,
-   "phraseEnd": 206.48,
-   "phrase": "commands",
-   "text": "commands.",
-   "note": "The riser builds into the logo.",
-   "score": 1.0,
-   "sfx": [
-    "riser"
+    "pop@0.56 0.6",
+    "riser@2.95",
+    "impact@2.95"
    ]
   },
   {
@@ -906,9 +1014,11 @@
    "phraseEnd": 208.82,
    "phrase": "VideoFactory is free and",
    "text": "VideoFactory is free and",
-   "note": "Logo, MIT chip.",
+   "note": "Fx particle-field behind the logo; chips Free, Open source, MIT.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.4 0.6"
+   ]
   },
   {
    "id": "cta.clone",
@@ -917,9 +1027,12 @@
    "phraseEnd": 210.94,
    "phrase": "Clone the repo",
    "text": "Clone the repo,",
-   "note": "Terminal: git clone, /vf-setup.",
+   "note": "Terminal: git clone, then /vf-setup.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.45 0.6",
+    "blip@1.94 0.6"
+   ]
   },
   {
    "id": "cta.today",
@@ -928,10 +1041,11 @@
    "phraseEnd": 214.56,
    "phrase": "make your first video today",
    "text": "make your first video today.",
-   "note": "The repo URL.",
+   "note": "The repo URL pops in with fx shimmer-sweep; a confetti Lottie.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.02 0.7",
+    "powerup@0.24 0.5"
    ]
   }
  ],
@@ -943,10 +1057,12 @@
    "phraseEnd": 1.98,
    "phrase": "An explainer video usually means",
    "text": "An explainer video usually means",
-   "note": "Big type line arrives. Authored.",
+   "note": "Fx tracking-in: the big line spreads in from tight letters.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.46 0.7",
+    "pop@1.26 0.7"
    ]
   },
   "hook.tools": {
@@ -956,9 +1072,11 @@
    "phraseEnd": 3.68,
    "phrase": "three tools, a timeline",
    "text": "three tools, a timeline",
-   "note": "Three tool chips drop in: editor, timeline, audio.",
+   "note": "Fx spring-in: three tool chips (editor, timeline, audio) bounce in, each with a colour pictogram.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.12 0.5"
+   ]
   },
   "hook.weekend": {
    "id": "hook.weekend",
@@ -967,10 +1085,11 @@
    "phraseEnd": 5.18,
    "phrase": "a lost weekend",
    "text": "a lost weekend.",
-   "note": "The chips get struck through; \"lost weekend\" in the accent colour.",
+   "note": "The chips are struck through and sink; \"a lost weekend\" pops in the accent colour.",
    "score": 1.0,
    "sfx": [
-    "error 0.6"
+    "error 0.6",
+    "whoosh@1.15 0.8"
    ]
   },
   "turn": {
@@ -980,10 +1099,11 @@
    "phraseEnd": 7.76,
    "phrase": "VideoFactory turns all of that",
    "text": "VideoFactory turns all of that",
-   "note": "Chips collapse into one chat card.",
+   "note": "Fx expand-morph: the chips grow into the chat card. Whoosh.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.52 0.7",
+    "blip@1.66 0.6"
    ]
   },
   "turn.chat": {
@@ -993,10 +1113,10 @@
    "phraseEnd": 9.04,
    "phrase": "into one conversation",
    "text": "into one conversation.",
-   "note": "Chat bubbles appear: user asks, agent answers.",
+   "note": "Fx strikethrough-replace: \"Three tools. A lost weekend.\" becomes \"One conversation.\" A chat Lottie plays; the bubbles rise.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.6"
    ]
   },
   "what": {
@@ -1006,10 +1126,10 @@
    "phraseEnd": 10.94,
    "phrase": "It is one folder on",
    "text": "It is one folder on",
-   "note": "A folder tree card (videos, brands, stages).",
+   "note": "Folder tree card with an animated folder icon.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.8"
    ]
   },
   "what.agent": {
@@ -1019,10 +1139,10 @@
    "phraseEnd": 14.24,
    "phrase": "Your AI agent, Claude Code",
    "text": "Your AI agent, Claude Code",
-   "note": "Chips: Claude Code, Codex.",
+   "note": "Chips: Claude Code, Codex, with an animated bot icon.",
    "score": 1.0,
    "sfx": [
-    "blip"
+    "blip 0.8"
    ]
   },
   "what.check": {
@@ -1032,10 +1152,12 @@
    "phraseEnd": 17.46,
    "phrase": "You make the choices",
    "text": "You make the choices,",
-   "note": "Six stage steps, each gets a check mark.",
+   "note": "Fx connector-lines join the six stages; a check mark pops on each.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "tick@0.54 0.5",
+    "tick@1.18 0.5",
+    "stamp@1.82 0.7"
    ]
   },
   "setup": {
@@ -1045,7 +1167,7 @@
    "phraseEnd": 21.04,
    "phrase": "First, the setup",
    "text": "First, the setup.",
-   "note": "Chapter title: Setup.",
+   "note": "Chapter title: What you need, with an animated cog icon.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -1058,9 +1180,13 @@
    "phraseEnd": 23.08,
    "phrase": "You need Linux, Python",
    "text": "You need Linux, Python",
-   "note": "Required list, one row per item: Linux, Python 3.12, FFmpeg.",
+   "note": "Required list: Linux, Python 3.12, FFmpeg.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.5",
+    "tick@0.94 0.5",
+    "tick@2.76 0.5"
+   ]
   },
   "setup.agent": {
    "id": "setup.agent",
@@ -1071,7 +1197,10 @@
    "text": "and Claude Code or Codex.",
    "note": "Last required row: Claude Code or Codex.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.5",
+    "whoosh@1.9 0.7"
+   ]
   },
   "setup.type": {
    "id": "setup.type",
@@ -1080,10 +1209,11 @@
    "phraseEnd": 29.88,
    "phrase": "Type slash V F setup",
    "text": "Type slash V F setup.",
-   "note": "Terminal types /vf-setup.",
+   "note": "Fx whip-pan to the next view. Fx terminal types /vf-setup.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.3 0.6",
+    "key@1.22 0.6"
    ]
   },
   "setup.doctor": {
@@ -1093,9 +1223,13 @@
    "phraseEnd": 32.26,
    "phrase": "The agent installs the rest",
    "text": "The agent installs the rest,",
-   "note": "Doctor table: rows turn OK. Rebuilt from real doctor.py output.",
+   "note": "Terminal prints the real doctor rows as OK; fx progress-bar fills the install.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.51 0.5",
+    "tick@0.93 0.5",
+    "tick@1.35 0.5"
+   ]
   },
   "setup.test": {
    "id": "setup.test",
@@ -1104,10 +1238,11 @@
    "phraseEnd": 35.34,
    "phrase": "renders a short test video",
    "text": "renders a short test video.",
-   "note": "A small video card with a play mark.",
+   "note": "Test video card springs in; a check-mark Lottie plays.",
    "score": 1.0,
    "sfx": [
-    "chime"
+    "pop@0.04 0.7",
+    "chime@0.88 0.8"
    ]
   },
   "optional": {
@@ -1117,7 +1252,7 @@
    "phraseEnd": 37.28,
    "phrase": "Everything else is optional",
    "text": "Everything else is optional.",
-   "note": "Grid of eight cards, all dim.",
+   "note": "Zoom-through target: eight option cards, all dim.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -1130,9 +1265,12 @@
    "phraseEnd": 39.24,
    "phrase": "Whisper gives every word",
    "text": "Whisper gives every word",
-   "note": "Whisper card lights up.",
+   "note": "Whisper card lights up with an animated icon; fx slot-roll shows the real time of one word of this video.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "coin@1.4 0.5"
+   ]
   },
   "optional.eleven": {
    "id": "optional.eleven",
@@ -1141,9 +1279,11 @@
    "phraseEnd": 41.8,
    "phrase": "ElevenLabs gives you a paid",
    "text": "ElevenLabs gives you a paid",
-   "note": "ElevenLabs card lights up.",
+   "note": "ElevenLabs card lights up; a live voice wave runs.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   "optional.stock": {
    "id": "optional.stock",
@@ -1152,9 +1292,12 @@
    "phraseEnd": 44.62,
    "phrase": "Free keys from Pexels",
    "text": "Free keys from Pexels,",
-   "note": "Pexels, Pixabay, Unsplash cards light up.",
+   "note": "Pexels, Pixabay and Unsplash cards light up with animated icons.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "select@0.74 0.6"
+   ]
   },
   "optional.photos": {
    "id": "optional.photos",
@@ -1163,9 +1306,11 @@
    "phraseEnd": 48.28,
    "phrase": "unlock stock video and photos",
    "text": "unlock stock video and photos.",
-   "note": "A stock photo slides into the stock cards.",
+   "note": "Three stock photos rise in next to the cards.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.14 0.7"
+   ]
   },
   "optional.earshot": {
    "id": "optional.earshot",
@@ -1174,9 +1319,11 @@
    "phraseEnd": 50.5,
    "phrase": "Earshot lets the agent listen",
    "text": "Earshot lets the agent listen",
-   "note": "Earshot card lights up.",
+   "note": "Earshot card lights up; a live level meter runs.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   "optional.node": {
    "id": "optional.node",
@@ -1185,9 +1332,12 @@
    "phraseEnd": 53.14,
    "phrase": "Node adds an advanced",
    "text": "Node adds an advanced",
-   "note": "Node card lights up.",
+   "note": "Node card lights up; a HyperFrames 3D cube clip (cube-3d) plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6",
+    "whoosh@1.79 0.6"
+   ]
   },
   "optional.form": {
    "id": "optional.form",
@@ -1198,7 +1348,9 @@
    "text": "And Brainstormform shows",
    "note": "Brainstormform card lights up.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.6"
+   ]
   },
   "optional.browser": {
    "id": "optional.browser",
@@ -1207,9 +1359,11 @@
    "phraseEnd": 58.2,
    "phrase": "as a form in your",
    "text": "as a form in your",
-   "note": "A small form window rises from the card.",
+   "note": "The form address rises from the card.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.6"
+   ]
   },
   "vf": {
    "id": "vf",
@@ -1218,7 +1372,7 @@
    "phraseEnd": 60.12,
    "phrase": "Not sure what to do",
    "text": "Not sure what to do",
-   "note": "Big question line.",
+   "note": "Fx zoom-through into the big question. Fx masked-slide-reveal on the words.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -1231,10 +1385,10 @@
    "phraseEnd": 62.6,
    "phrase": "Type slash V F",
    "text": "Type slash V F.",
-   "note": "Terminal types /vf.",
+   "note": "Fx terminal types /vf.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.26 0.6"
    ]
   },
   "vf.reads": {
@@ -1244,9 +1398,11 @@
    "phraseEnd": 64.2,
    "phrase": "It reads your folders",
    "text": "It reads your folders",
-   "note": "Folders get scanned; a \"next step\" card lands.",
+   "note": "The terminal reads brands, videos and stages; fx notification-stack lands a \"Next step\" toast.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "step@0.44 0.5"
+   ]
   },
   "vf.help": {
    "id": "vf.help",
@@ -1255,10 +1411,13 @@
    "phraseEnd": 67.88,
    "phrase": "Slash V F help lists",
    "text": "Slash V F help lists",
-   "note": "The full command list, staggered.",
+   "note": "Fx masked-slide-reveal: the full command list, line by line. Fx blinds into the next chapter.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop 0.6",
+    "step@0.34 0.5",
+    "step@1.54 0.5",
+    "whoosh@2.72 0.8"
    ]
   },
   "brand": {
@@ -1268,10 +1427,10 @@
    "phraseEnd": 70.92,
    "phrase": "Every video starts with",
    "text": "Every video starts with",
-   "note": "Chapter title: Brand, with the logo mark.",
+   "note": "Fx mesh-gradient behind it; fx svg-mask-reveal on the logo mark; fx mask-reveal on the wordmark.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.9 0.8"
    ]
   },
   "brand.new": {
@@ -1281,9 +1440,12 @@
    "phraseEnd": 73.62,
    "phrase": "Slash V F new brand",
    "text": "Slash V F new brand",
-   "note": "Colour swatches from the brand tokens.",
+   "note": "Palette icon plays; the six brand swatches pop in; fx handwriting-text writes \"your colours, your look\".",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick@0.34 0.5",
+    "tick@1.94 0.5"
+   ]
   },
   "brand.fonts": {
    "id": "brand.fonts",
@@ -1292,9 +1454,11 @@
    "phraseEnd": 76.92,
    "phrase": "fonts, logo and voice",
    "text": "fonts, logo and voice.",
-   "note": "Font specimen, logo, voice card.",
+   "note": "Font specimen card and the voice card with an animated mic.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.7"
+   ]
   },
   "brand.style": {
    "id": "brand.style",
@@ -1303,10 +1467,11 @@
    "phraseEnd": 79.04,
    "phrase": "Slash V F new style",
    "text": "Slash V F new style",
-   "note": "Two style swatch cards on the Modern kit.",
+   "note": "Two style cards slide in; fx marker-highlight on \"look\".",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.34 0.6",
+    "tick@2.28 0.5"
    ]
   },
   "brand.character": {
@@ -1316,9 +1481,12 @@
    "phraseEnd": 82.7,
    "phrase": "Slash V F new character",
    "text": "Slash V F new character",
-   "note": "Character factory steps: brief, concepts, identity, variants.",
+   "note": "Four steps rise one by one (brief, concepts, identity, variants), each with a colour pictogram.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.24 0.6",
+    "pop@3.24 0.6"
+   ]
   },
   "brand.approve": {
    "id": "brand.approve",
@@ -1327,10 +1495,11 @@
    "phraseEnd": 87.36,
    "phrase": "approve batch by batch",
    "text": "approve batch by batch.",
-   "note": "Approve stamps land on the steps.",
+   "note": "An approved stamp lands on each step; fx shake-emphasis on the stamp.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "stamp@0.24 0.8",
+    "stamp@0.9 0.8"
    ]
   },
   "video": {
@@ -1343,7 +1512,8 @@
    "note": "Terminal types /vf-new-video.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "key@0.88 0.6"
    ]
   },
   "video.format": {
@@ -1353,9 +1523,12 @@
    "phraseEnd": 93.32,
    "phrase": "Pick your brand, wide or",
    "text": "Pick your brand, wide or",
-   "note": "A wide frame and a tall frame side by side.",
+   "note": "A brand chip, then a wide frame and a tall frame spring in (fx spring-in); a frame icon plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@1.36 0.7",
+    "pop@2.16 0.7"
+   ]
   },
   "video.brief": {
    "id": "video.brief",
@@ -1364,9 +1537,13 @@
    "phraseEnd": 95.14,
    "phrase": "write a short brief",
    "text": "write a short brief:",
-   "note": "The real brief card: audience, outcome.",
+   "note": "Fx code-block types the brief: for, after.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.6",
+    "key@1.48 0.6",
+    "whoosh@4.46 0.8"
+   ]
   },
   "research": {
    "id": "research",
@@ -1375,10 +1552,10 @@
    "phraseEnd": 99.52,
    "phrase": "Need facts?",
    "text": "Need facts?",
-   "note": "Chapter title: Research.",
+   "note": "Fx ken-burns on the real page screenshot; a command tag types /vf-research.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "key@0.75 0.6"
    ]
   },
   "research.web": {
@@ -1388,9 +1565,11 @@
    "phraseEnd": 103.04,
    "phrase": "collects them from public web",
    "text": "collects them from public web",
-   "note": "Browser frame with a real page screenshot (grab).",
+   "note": "Fx arrow-annotate: \"Public page\".",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh@0.06 0.4"
+   ]
   },
   "research.source": {
    "id": "research.source",
@@ -1399,9 +1578,11 @@
    "phraseEnd": 104.72,
    "phrase": "with a source for each",
    "text": "with a source for each",
-   "note": "Source chip with the URL.",
+   "note": "Fx callout: \"The source\" on the address.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.8"
+   ]
   },
   "script": {
    "id": "script",
@@ -1410,10 +1591,11 @@
    "phraseEnd": 107.5,
    "phrase": "Slash V F script writes",
    "text": "Slash V F script writes",
-   "note": "Script lines type in.",
+   "note": "Script card; fx marker-highlight on \"three tools\" and \"a lost weekend\".",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "select@2.24 0.5"
    ]
   },
   "script.tone": {
@@ -1423,10 +1605,11 @@
    "phraseEnd": 110.64,
    "phrase": "A tone check removes hype",
    "text": "A tone check removes hype",
-   "note": "Hype words get struck through.",
+   "note": "Fx strikethrough-replace: the hype line \"Unlock your productivity\" becomes \"Make your video\".",
    "score": 1.0,
    "sfx": [
-    "error 0.6"
+    "error@1.32 0.6",
+    "blip@1.99 0.6"
    ]
   },
   "voice": {
@@ -1436,10 +1619,11 @@
    "phraseEnd": 115.72,
    "phrase": "Slash V F voice makes",
    "text": "Slash V F voice makes",
-   "note": "Chapter title: Voice.",
+   "note": "Title; the free card with a microphone photo (fx ken-burns).",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.7 0.7"
    ]
   },
   "voice.free": {
@@ -1449,9 +1633,11 @@
    "phraseEnd": 118.22,
    "phrase": "Record yourself for free",
    "text": "Record yourself for free,",
-   "note": "Card with a microphone photo (stock).",
+   "note": "The microphone card stays; the record icon plays.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "blip@0.04 0.5"
+   ]
   },
   "voice.eleven": {
    "id": "voice.eleven",
@@ -1460,9 +1646,11 @@
    "phraseEnd": 119.94,
    "phrase": "or let ElevenLabs read",
    "text": "or let ElevenLabs read",
-   "note": "Second card: ElevenLabs.",
+   "note": "Second card: ElevenLabs; the AI-05 motion clip plays on it.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop 0.7"
+   ]
   },
   "voice.approve": {
    "id": "voice.approve",
@@ -1471,9 +1659,11 @@
    "phraseEnd": 122.56,
    "phrase": "A paid voice only runs",
    "text": "A paid voice only runs",
-   "note": "Real Studio review page screenshot (grab).",
+   "note": "Real Studio review page screenshot scrolls to the Approved bar.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh@0.55 0.5"
+   ]
   },
   "voice.stamp": {
    "id": "voice.stamp",
@@ -1482,10 +1672,11 @@
    "phraseEnd": 124.16,
    "phrase": "approve the script in",
    "text": "approve the script in",
-   "note": "The Approve button gets pressed; stamp.",
+   "note": "One camera move onto the Approved bar; stamp.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "whoosh@0.1 0.4",
+    "stamp@1.35 0.9"
    ]
   },
   "transcript": {
@@ -1495,10 +1686,12 @@
    "phraseEnd": 127.4,
    "phrase": "Slash V F transcript gives",
    "text": "Slash V F transcript gives",
-   "note": "Real words with times light up one by one.",
+   "note": "A typed command /vf-transcript; the CAP-06 caption clip plays; the real words appear with their times.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@1.06 0.4",
+    "tick@2.14 0.4"
    ]
   },
   "transcript.exact": {
@@ -1508,9 +1701,11 @@
    "phraseEnd": 129.2,
    "phrase": "an exact time",
    "text": "an exact time.",
-   "note": "Time stamps highlight.",
+   "note": "The times light up one by one.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.5"
+   ]
   },
   "cues": {
    "id": "cues",
@@ -1519,10 +1714,12 @@
    "phraseEnd": 131.76,
    "phrase": "Slash V F cues marks",
    "text": "Slash V F cues marks",
-   "note": "A timeline with cue markers.",
+   "note": "A clock Lottie loops; fx timeline draws the first real cue marks.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@0.57 0.5",
+    "blip@1.8 0.6"
    ]
   },
   "cues.change": {
@@ -1532,9 +1729,11 @@
    "phraseEnd": 133.7,
    "phrase": "the picture must change",
    "text": "the picture must change.",
-   "note": "Markers snap to words.",
+   "note": "More marks land on the time line.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "tick 0.4"
+   ]
   },
   "scene": {
    "id": "scene",
@@ -1543,7 +1742,7 @@
    "phraseEnd": 135.52,
    "phrase": "Now the fun part",
    "text": "Now the fun part.",
-   "note": "Chapter title: Scene.",
+   "note": "Chapter title: Scene, with an animated icon.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -1556,9 +1755,11 @@
    "phraseEnd": 137.84,
    "phrase": "Slash V F scene builds",
    "text": "Slash V F scene builds",
-   "note": "Code card turns into a picture.",
+   "note": "Fx code-block types the HTML; an arrow turns it into a picture.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "blip@0.82 0.6"
+   ]
   },
   "scene.library": {
    "id": "scene.library",
@@ -1567,10 +1768,12 @@
    "phraseEnd": 141.26,
    "phrase": "It takes icons, graphics and",
    "text": "It takes icons, graphics and",
-   "note": "Icon grid and a Lottie animation from the library.",
+   "note": "Wall: eight animated icons, eight colour pictograms, four Lotties (icons play on the word).",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.3 0.7",
+    "pop@1.52 0.7",
+    "pop@2.42 0.7"
    ]
   },
   "scene.stock": {
@@ -1580,9 +1783,11 @@
    "phraseEnd": 144.64,
    "phrase": "It finds stock video",
    "text": "It finds stock video,",
-   "note": "A stock video clip, a stock photo and a music card.",
+   "note": "Fx zoom-through: the stock video, a stock photo and the UTL-07 music-bars clip.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh 0.8"
+   ]
   },
   "scene.capture": {
    "id": "scene.capture",
@@ -1604,9 +1809,12 @@
    "phraseEnd": 151.6,
    "phrase": "It drops in ready-made",
    "text": "It drops in ready-made",
-   "note": "A motion-pack clip plays (use motion:).",
+   "note": "Three motion-pack clips: AI-03 agent flow, CIN-01 card stack, BKG-08 ticker.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.09 0.7",
+    "select@0.4 0.5"
+   ]
   },
   "scene.sound": {
    "id": "scene.sound",
@@ -1615,10 +1823,13 @@
    "phraseEnd": 154.56,
    "phrase": "And it adds sound effects",
    "text": "And it adds sound effects",
-   "note": "Effect chips with wave lines.",
+   "note": "Fx sparkline-row: four effect waves (whoosh, pop, stamp, chime). Fx grid-pixelate into the next chapter.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "whoosh@0.24 0.5",
+    "pop@0.64 0.6",
+    "stamp@1.04 0.6",
+    "chime@1.44 0.5"
    ]
   },
   "scene.cc0": {
@@ -1628,9 +1839,12 @@
    "phraseEnd": 157.44,
    "phrase": "from free CC0 files",
    "text": "from free CC0 files,",
-   "note": "Chips: CC0 file, generated.",
+   "note": "Chips: free CC0 files, generated here.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.02 0.6",
+    "whoosh@3.75 0.8"
+   ]
   },
   "check": {
    "id": "check",
@@ -1639,10 +1853,10 @@
    "phraseEnd": 161.34,
    "phrase": "Before you see anything",
    "text": "Before you see anything,",
-   "note": "Chapter title: Check.",
+   "note": "A contact sheet of stills with the title; fx grid-pixelate lands here.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "pop@0.44 0.8"
    ]
   },
   "check.still": {
@@ -1652,9 +1866,11 @@
    "phraseEnd": 163.66,
    "phrase": "takes a still at every",
    "text": "takes a still at every",
-   "note": "A contact sheet of stills.",
+   "note": "Fx spotlight moves over the contact sheet.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "select@0.04 0.5"
+   ]
   },
   "check.count": {
    "id": "check.count",
@@ -1663,9 +1879,12 @@
    "phraseEnd": 166.16,
    "phrase": "A checker counts the problems",
    "text": "A checker counts the problems,",
-   "note": "Counters with numbers.",
+   "note": "Fx comparison-bars: first check against now for three counters.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.04 0.7",
+    "coin@3.22 0.5"
+   ]
   },
   "check.zero": {
    "id": "check.zero",
@@ -1674,9 +1893,11 @@
    "phraseEnd": 169.62,
    "phrase": "every counter reads zero",
    "text": "every counter reads zero.",
-   "note": "Counters count down to 0.",
+   "note": "The counters count down to 0.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "coin@0.32 0.5"
+   ]
   },
   "check.done": {
    "id": "check.done",
@@ -1685,10 +1906,10 @@
    "phraseEnd": 169.62,
    "phrase": "zero",
    "text": "zero.",
-   "note": "The last counter lands on 0.",
+   "note": "A success Lottie on the last 0.",
    "score": 1.0,
    "sfx": [
-    "chime"
+    "chime 0.9"
    ]
   },
   "render": {
@@ -1698,10 +1919,11 @@
    "phraseEnd": 172.04,
    "phrase": "Slash V F render makes",
    "text": "Slash V F render makes",
-   "note": "An MP4 card.",
+   "note": "The VID-01 player clip with the file name chip.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "pop@0.5 0.6"
    ]
   },
   "render.mix": {
@@ -1711,9 +1933,12 @@
    "phraseEnd": 175.68,
    "phrase": "Voice, music and effects",
    "text": "Voice, music and effects",
-   "note": "Three wave lines merge into one.",
+   "note": "Three wave lines merge into one; fx gauge-dial shows the effects 3 dB under the voice.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@1.26 0.6",
+    "coin@1.82 0.5"
+   ]
   },
   "render.extras": {
    "id": "render.extras",
@@ -1722,10 +1947,11 @@
    "phraseEnd": 178.46,
    "phrase": "You also get a phone",
    "text": "You also get a phone",
-   "note": "Phone copy, thumbnail, chapters.",
+   "note": "Phone copy, thumbnail, and the chapters on an fx timeline.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.45 0.7",
+    "tick@1.06 0.5"
    ]
   },
   "render.earshot": {
@@ -1735,9 +1961,11 @@
    "phraseEnd": 183.22,
    "phrase": "With Earshot, the agent",
    "text": "With Earshot, the agent",
-   "note": "A listening report card.",
+   "note": "Fx line-chart: the real voice level over the whole video.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.4 0.7"
+   ]
   },
   "studio": {
    "id": "studio",
@@ -1746,7 +1974,7 @@
    "phraseEnd": 186.466,
    "phrase": "The Studio is a web",
    "text": "The Studio is a web",
-   "note": "Real Studio dashboard screenshot (grab).",
+   "note": "Fx device-pullback: the real Studio page pulls back into a laptop.",
    "score": 1.0,
    "sfx": [
     "whoosh"
@@ -1759,9 +1987,11 @@
    "phraseEnd": 189.8,
    "phrase": "It shows every video",
    "text": "It shows every video,",
-   "note": "A review page slides over it.",
+   "note": "Two real Studio pages side by side.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "whoosh 0.5"
+   ]
   },
   "status": {
    "id": "status",
@@ -1770,10 +2000,11 @@
    "phraseEnd": 194.72,
    "phrase": "Slash V F status shows",
    "text": "Slash V F status shows",
-   "note": "Terminal with the real status table.",
+   "note": "Fx terminal prints the real status row; fx stat-card: 5 stages done.",
    "score": 1.0,
    "sfx": [
-    "key"
+    "key@0.32 0.6",
+    "coin@2.44 0.6"
    ]
   },
   "rules": {
@@ -1783,10 +2014,11 @@
    "phraseEnd": 197.92,
    "phrase": "Each command does one",
    "text": "Each command does one",
-   "note": "\"One step. Then it stops.\"",
+   "note": "Fx mask-reveal: \"One step. Then it stops.\" Step dots.",
    "score": 1.0,
    "sfx": [
-    "whoosh"
+    "whoosh",
+    "tick@0.84 0.5"
    ]
   },
   "rules.yes": {
@@ -1796,10 +2028,11 @@
    "phraseEnd": 201.6,
    "phrase": "Nothing is paid or published",
    "text": "Nothing is paid or published",
-   "note": "\"A clear yes from you.\"",
+   "note": "\"A clear yes from you.\" button with fx shake-emphasis.",
    "score": 1.0,
    "sfx": [
-    "stamp"
+    "stamp@0.52 0.8",
+    "tick@0.94 0.5"
    ]
   },
   "reveal": {
@@ -1809,23 +2042,12 @@
    "phraseEnd": 205.36,
    "phrase": "This video was made with",
    "text": "This video was made with",
-   "note": "The reveal line.",
+   "note": "Fx matrix-decode on the reveal line; fx donut-chart tally of the library parts used (37 fx, 22 icons, 18 graphics, 8 Lottie, 8 clips). Fx circle-reveal into the end card.",
    "score": 1.0,
    "sfx": [
-    "impact"
-   ]
-  },
-  "reveal.end": {
-   "id": "reveal.end",
-   "start": 205.92,
-   "end": 207.22,
-   "phraseEnd": 206.48,
-   "phrase": "commands",
-   "text": "commands.",
-   "note": "The riser builds into the logo.",
-   "score": 1.0,
-   "sfx": [
-    "riser"
+    "pop@0.56 0.6",
+    "riser@2.95",
+    "impact@2.95"
    ]
   },
   "cta": {
@@ -1835,9 +2057,11 @@
    "phraseEnd": 208.82,
    "phrase": "VideoFactory is free and",
    "text": "VideoFactory is free and",
-   "note": "Logo, MIT chip.",
+   "note": "Fx particle-field behind the logo; chips Free, Open source, MIT.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.4 0.6"
+   ]
   },
   "cta.clone": {
    "id": "cta.clone",
@@ -1846,9 +2070,12 @@
    "phraseEnd": 210.94,
    "phrase": "Clone the repo",
    "text": "Clone the repo,",
-   "note": "Terminal: git clone, /vf-setup.",
+   "note": "Terminal: git clone, then /vf-setup.",
    "score": 1.0,
-   "sfx": []
+   "sfx": [
+    "pop@0.45 0.6",
+    "blip@1.94 0.6"
+   ]
   },
   "cta.today": {
    "id": "cta.today",
@@ -1857,10 +2084,11 @@
    "phraseEnd": 214.56,
    "phrase": "make your first video today",
    "text": "make your first video today.",
-   "note": "The repo URL.",
+   "note": "The repo URL pops in with fx shimmer-sweep; a confetti Lottie.",
    "score": 1.0,
    "sfx": [
-    "pop"
+    "pop@0.02 0.7",
+    "powerup@0.24 0.5"
    ]
   }
  },

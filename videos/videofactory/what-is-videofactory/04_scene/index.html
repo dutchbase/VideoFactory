@@ -5,76 +5,127 @@
 <title>What Is VideoFactory</title>
 <link rel="stylesheet" href="runtime/fonts/fonts.css">
 <link rel="stylesheet" href="runtime/modern.css">
+<link rel="stylesheet" href="blocks/core.css">
+<link rel="stylesheet" href="fx/arrow-annotate.css">
+<link rel="stylesheet" href="fx/blinds.css">
+<link rel="stylesheet" href="fx/callout.css">
+<link rel="stylesheet" href="fx/circle-reveal.css">
+<link rel="stylesheet" href="fx/code-block.css">
+<link rel="stylesheet" href="fx/comparison-bars.css">
+<link rel="stylesheet" href="fx/connector-lines.css">
+<link rel="stylesheet" href="fx/device-pullback.css">
+<link rel="stylesheet" href="fx/donut-chart.css">
+<link rel="stylesheet" href="fx/expand-morph.css">
+<link rel="stylesheet" href="fx/gauge-dial.css">
+<link rel="stylesheet" href="fx/grid-pixelate.css">
+<link rel="stylesheet" href="fx/handwriting-text.css">
+<link rel="stylesheet" href="fx/ken-burns.css">
+<link rel="stylesheet" href="fx/line-chart.css">
+<link rel="stylesheet" href="fx/marker-highlight.css">
+<link rel="stylesheet" href="fx/mask-reveal.css">
+<link rel="stylesheet" href="fx/masked-slide-reveal.css">
+<link rel="stylesheet" href="fx/matrix-decode.css">
+<link rel="stylesheet" href="fx/mesh-gradient.css">
+<link rel="stylesheet" href="fx/notification-stack.css">
+<link rel="stylesheet" href="fx/particle-field.css">
+<link rel="stylesheet" href="fx/progress-bar.css">
+<link rel="stylesheet" href="fx/shake-emphasis.css">
+<link rel="stylesheet" href="fx/shimmer-sweep.css">
+<link rel="stylesheet" href="fx/slot-roll.css">
+<link rel="stylesheet" href="fx/sparkline-row.css">
+<link rel="stylesheet" href="fx/spotlight.css">
+<link rel="stylesheet" href="fx/spring-in.css">
+<link rel="stylesheet" href="fx/stat-card.css">
+<link rel="stylesheet" href="fx/strikethrough-replace.css">
+<link rel="stylesheet" href="fx/svg-mask-reveal.css">
+<link rel="stylesheet" href="fx/terminal.css">
+<link rel="stylesheet" href="fx/timeline.css">
+<link rel="stylesheet" href="fx/tracking-in.css">
+<link rel="stylesheet" href="fx/whip-pan.css">
+<link rel="stylesheet" href="fx/zoom-through.css">
 <style>
   /* Styles for this scene only. Brand values come from tokens.js through the CSS variables. */
-  .vf-shot { gap: 44px; padding-top: 100px; padding-bottom: 200px; }
+  .vf-shot { gap: 40px; padding-top: 90px; padding-bottom: 190px; }
+  .vf-captions { z-index: 30; }
   .mono { font-family: var(--mono); }
   .vf-term, .vf-code { text-align: left; }
   .cmd { font: 700 40px/1 var(--mono); color: var(--accent); letter-spacing: -.01em; }
-  .grow { flex: 1; min-width: 0; }
+  .slot { position: relative; }
+  .pict { width: 170px; height: 170px; }
+  .pict-s { width: 64px; height: 64px; }
+  .pict-xs { width: 52px; height: 52px; }
+  .pict-t { width: 104px; height: 104px; }
 
-  /* hook and turn: the three tools */
-  .tools { display: flex; gap: 44px; }
-  .tool { width: 320px; align-items: center; text-align: center; padding: 48px 30px 44px; }
-  .tool b { position: relative; font: 750 46px/1.1 var(--head); letter-spacing: -.02em; }
+  /* A shot that an fx transition plays between: a wrapper with its own ground, hidden until the transition or the shot list shows it. */
+  .txw { position: absolute; inset: 0; visibility: hidden; overflow: hidden; background: var(--bg); }
+  .txw > .vf-bg { z-index: 0; }
+  .mesh-host, .pf-host { position: absolute; inset: 0; pointer-events: none; }
+  .txw > .vf-shot { z-index: 2; }
+
+  /* hook and turn */
+  .hook-title { white-space: nowrap; }
+  .tools { display: flex; gap: 48px; }
+  .tool { width: 420px; align-items: center; text-align: center; padding: 44px 30px 46px; gap: 18px; }
+  .tool b { position: relative; font: 750 64px/1.1 var(--head); letter-spacing: -.02em; }
   .tool b::after { content: ""; position: absolute; left: -6%; right: -6%; top: 54%; height: 6px; border-radius: 3px;
     background: var(--danger); transform: scaleX(var(--strike, 0)); transform-origin: left; }
-  .weekend { margin-top: 8px; }
-  .tools.fold { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; }
-  .fold .tool { opacity: .45; }
-  .fold .tool b { --strike: 1; }
-
-  /* chat */
-  .chat { width: 1180px; padding: 40px 48px; gap: 22px; }
-  .bubble { max-width: 78%; padding: 22px 30px; border-radius: 26px; font-size: 36px; line-height: 1.3; }
+  .weekend { margin-top: 4px; }
+  .turn-line { white-space: nowrap; }
+  .turn-row { display: flex; align-items: center; gap: 56px; }
+  .lot { width: 400px; height: 400px; flex: none; }
+  .chat { width: 1060px; padding: 36px 44px; gap: 22px; }
+  .chat-h { display: flex; align-items: center; gap: 16px; padding-bottom: 6px; }
+  .chat-h b { font: 750 40px/1 var(--head); color: var(--dim); }
+  .bubble { max-width: 80%; padding: 20px 30px; border-radius: 26px; font-size: 40px; line-height: 1.25; }
   .bubble.me { align-self: flex-end; background: var(--accent); color: var(--bg); font-weight: 600; border-bottom-right-radius: 8px; }
   .bubble.ai { align-self: flex-start; background: var(--raised); color: var(--ink); border-bottom-left-radius: 8px; }
   .bubble.me.mono { font-family: var(--mono); font-weight: 700; }
 
-  /* folder tree and stage steps */
-  .what-top { display: flex; gap: 72px; align-items: center; justify-content: center; width: 100%; }
-  .tree pre { font-size: 40px; line-height: 1.5; color: var(--dim); padding: 30px 44px; }
+  /* what: folder, agent, six stages */
+  .what-top { display: flex; gap: 56px; align-items: center; justify-content: center; width: 100%; }
+  .vf-tile.big { width: 150px; height: 150px; font-size: 80px; border-radius: 40px; }
+  .tree pre { font-size: 40px; line-height: 1.45; color: var(--dim); padding: 26px 40px; }
   .tree pre b { color: var(--ink); font-weight: 700; }
-  .agent-col { display: flex; flex-direction: column; gap: 30px; }
-  .agent-col .vf-row { gap: 22px; }
-  .agent-col .vf-chip { font-size: 36px; padding: 16px 30px; text-transform: none; letter-spacing: 0; }
-  .stages { display: flex; gap: 22px; width: 100%; }
-  .stage { flex: 1; display: flex; align-items: center; gap: 16px; padding: 22px 24px; border-radius: 22px;
-    background: var(--surface); border: 1.5px solid var(--line); font: 700 34px/1.1 var(--head); }
-  .stage .ck { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; flex: none;
-    background: var(--green); color: var(--bg); font-size: 28px; }
+  .agent-col { display: flex; flex-direction: column; gap: 26px; }
+  .agent-col .vf-row { gap: 20px; }
+  .agent-col .vf-chip { font-size: 38px; padding: 16px 28px; text-transform: none; letter-spacing: 0; }
+  .agent-col .vf-chip .vf-icon { font-size: 42px; }
+  .stages { position: relative; display: flex; justify-content: space-between; width: 1600px; margin-top: 10px; }
+  .stage { position: relative; z-index: 2; width: 214px; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 22px 10px 24px;
+    border-radius: 24px; background: var(--surface); border: 1.5px solid var(--line); font: 750 40px/1.1 var(--head); }
+  .stage .ck { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--bg); font-size: 32px; }
 
-  /* lists, terminals */
-  .need { min-width: 760px; padding: 44px 52px; }
-  .need .vf-list li { font-size: 50px; }
-  .vf-shot .term-wide { flex: 0 0 1000px; width: 1000px; }
-  .vf-term pre { font-size: 30px; line-height: 1.6; color: var(--ink); }
-  .term-wide pre, .vf-scan pre { font-size: 40px; }
-  .vf-term .p { color: var(--accent); }
-  .vf-term .ok { color: var(--green); font-weight: 700; }
-  .vf-term .opt { color: var(--faint); }
-  .vf-term .dim { color: var(--dim); }
-  .row-line { display: block; white-space: pre; }
-  .testcard { width: 420px; align-items: center; text-align: center; }
-  .testcard .vf-tile { width: 150px; height: 150px; font-size: 78px; border-radius: 40px; }
-  .ok-line { font: 700 38px/1.2 var(--head); color: var(--green); }
+  /* setup */
+  .title-row { gap: 36px; flex-wrap: nowrap; }
+  .need { min-width: 760px; padding: 40px 52px; }
+  .need .vf-list li { font-size: 52px; }
+  .setup-split { gap: 70px; }
+  .setup-split > .term-slot { flex: 0 0 1000px; width: 1000px; height: 500px; }
+  .setup-right { flex: 1; gap: 34px; align-items: stretch; }
+  #pb-slot { height: 150px; }
+  .testcard { align-items: center; text-align: center; padding: 30px 36px; gap: 12px; }
+  .testcard .vf-tile { width: 96px; height: 96px; font-size: 52px; border-radius: 28px; }
+  .okrow { display: flex; align-items: center; gap: 12px; }
+  .hand-keep { white-space: nowrap; }
+  .lot-s { width: 150px; height: 150px; flex: none; }
+  #lot-ok { width: 230px; height: 230px; margin: -80px 0 -80px -30px; }   /* big enough to read at phone size, without pushing the row down */
+  .ok-line { font: 700 38px/1.15 var(--head); color: var(--green); text-align: left; }
+  .fx-terminal-body { padding: 26px 34px 30px; }
 
   /* optional parts: a grid of names, and one big panel that says what the named part does */
-  .vf-shot.opt-split { gap: 72px; }
-  .vf-shot .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; width: 940px; flex: 0 0 940px; }
-  .optc { --lit: 0; flex-direction: row; align-items: center; gap: 22px; padding: 26px 26px; border-radius: 24px;
+  .vf-shot.opt-split { gap: 64px; }
+  .vf-shot .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; width: 900px; flex: 0 0 900px; }
+  .optc { --lit: 0; flex-direction: row; align-items: center; gap: 20px; padding: 24px 24px; border-radius: 24px;
     border-color: color-mix(in srgb, var(--accent) calc(var(--lit) * 100%), var(--line)); }
   .optc > * { opacity: calc(.32 + .68 * var(--lit)); }
-  .optc .vf-tile { width: 76px; height: 76px; font-size: 40px; border-radius: 20px; flex: none; }
+  .optc .vf-tile { width: 76px; height: 76px; font-size: 42px; border-radius: 20px; flex: none; }
   .optc b { display: block; font: 750 40px/1.1 var(--head); letter-spacing: -.02em; white-space: nowrap; }
-  .opt-side { display: flex; flex-direction: column; gap: 40px; flex: 1; min-width: 0; height: 700px; justify-content: center; }
+  .opt-side { display: flex; flex-direction: column; flex: 1; min-width: 0; height: 700px; justify-content: center; }
   .spot { position: relative; height: 700px; }
   .meter { display: flex; gap: 10px; align-items: flex-end; height: 140px; }
   .meter i { flex: 1; border-radius: 6px; background: var(--accent2); }
   .spot-p { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 28px; }
-  .spot-p p { font: 750 64px/1.08 var(--head); letter-spacing: -.025em; }
-  .spot-p .vf-row { gap: 16px; }
-  .spot-p .vf-chip { font-size: 32px; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 16px 26px; }
+  .spot-p p { font: 750 60px/1.08 var(--head); letter-spacing: -.025em; }
   .spot-word { display: inline-flex; align-items: baseline; gap: 22px; align-self: flex-start; padding: 22px 30px; border-radius: 22px;
     background: var(--surface); border: 1.5px solid var(--accent); }
   .spot-word b { font: 750 56px/1 var(--head); }
@@ -82,16 +133,19 @@
   .spot svg { width: 100%; height: 150px; }
   .photos { display: flex; gap: 20px; }
   .photos img { width: 180px; height: 240px; object-fit: cover; border-radius: 20px; border: 1.5px solid var(--line); }
-  .spot-p .url-mid { font: 700 34px/1.25 var(--mono); letter-spacing: 0; color: var(--ink); }
+  .spot-p .url-mid { font: 700 44px/1.25 var(--mono); letter-spacing: 0; color: var(--ink); }
   .url-mid em { font-style: normal; color: var(--accent); }
+  .cube-frame canvas { transform: scale(1.95); transform-origin: 46% 52%; }
+  .cube-frame { width: 640px; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 40px 100px -40px rgba(0,0,0,.8); }
 
-  /* /vf */
-  .vf-scan { width: 900px; }
-  .next-card { width: 560px; }
-  .next-card .cmd { font-size: 52px; }
-  .cmd-grid { display: grid; grid-template-columns: repeat(5, auto); gap: 20px 22px; justify-content: center; }
-  .cmd-grid .vf-chip { font-size: 32px; text-transform: none; letter-spacing: 0; color: var(--ink); padding: 16px 26px; }
-  .cmd-grid .vf-chip.hot { color: var(--bg); }
+  /* /vf and /vf-help */
+  .vf-pair { gap: 40px; align-items: center; flex-wrap: nowrap; }
+  #vf-slot { width: 900px; height: 460px; }
+  #note-slot { width: 640px; height: 210px; }
+  .fx-note-title { font-size: 40px; }
+  .fx-note-body { font-size: 32px; }
+  .cmdlist { font: 700 54px/1.3 var(--mono); color: var(--accent2); text-align: center; letter-spacing: 0; }
+  .cmdlist .fx-msr-item, .cmdlist span { color: inherit; }
 
   /* brand */
   .brand-top { display: flex; align-items: center; gap: 80px; width: 100%; }
@@ -99,15 +153,17 @@
   .wordmark img { height: 150px; }
   .wordmark b { font: 800 104px/1 var(--head); letter-spacing: -.045em; }
   .wordmark b em { font-style: normal; color: var(--accent); }
-  .swatches { display: flex; gap: 18px; }
-  .sw { display: flex; flex-direction: column; gap: 12px; align-items: center; }
-  .sw i { width: 132px; height: 132px; border-radius: 32px; border: 1.5px solid var(--line); }
+  .swatch-col { gap: 8px; }
+  .sw-row { flex-wrap: nowrap; gap: 24px; }
+  .swatches { display: flex; gap: 16px; }
+  .sw i { display: block; width: 96px; height: 96px; border-radius: 26px; border: 1.5px solid var(--line); }
+  .note { font-size: 50px; padding-left: 6px; white-space: nowrap; letter-spacing: .1em; }   /* ends well inside the right safe area */
   .brand-bottom { display: flex; gap: 36px; width: 100%; }
   .fonts { flex: 1.6; }
   .fonts .f { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.5px solid var(--line); padding-bottom: 10px; }
   .fonts .f:last-child { border-bottom: 0; }
-  .fonts .f small { font: 500 30px var(--mono); color: var(--dim); }
-  .voicec { flex: 1; }
+  .fonts .f small { font: 500 40px var(--mono); color: var(--dim); }
+  .voicec { flex: 1; align-items: flex-start; }
   .styles { display: flex; gap: 44px; }
   .stylec { width: 620px; height: 470px; }
   .stylec .mini { flex: 1; border-radius: 18px; background: var(--bg); border: 1.5px solid var(--line); padding: 30px; display: flex; flex-direction: column; gap: 18px; justify-content: center; }
@@ -115,11 +171,11 @@
   .stylec .bar { height: 14px; border-radius: 7px; background: linear-gradient(90deg, var(--grad-a), var(--grad-b)); width: 70%; }
   .stylec.new { border-style: dashed; border-width: 3px; background: transparent; box-shadow: none; align-items: center; justify-content: center; text-align: center; }
   .stylec.new .vf-tile { width: 140px; height: 140px; font-size: 72px; border-radius: 40px; }
-  .char-steps .vf-step { position: relative; }
+  .char-steps .vf-step { position: relative; gap: 10px; }
   .char-steps .vf-step::before { content: none; }
   .char-steps .vf-step span:not(.stamp) { font-size: 36px; }
   .stamp { align-self: flex-start; margin-top: 8px; padding: 10px 20px; border: 4px solid var(--green); color: var(--green);
-    border-radius: 12px; font: 800 26px var(--mono); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-8deg); background: var(--bg); }
+    border-radius: 12px; font: 800 28px var(--mono); letter-spacing: .08em; text-transform: uppercase; transform: rotate(-8deg); background: var(--bg); }
 
   /* new video */
   .frames { display: flex; gap: 36px; align-items: flex-end; }
@@ -127,191 +183,212 @@
   .frm span { font: 700 32px var(--mono); color: var(--ink); }
   .frm.wide { width: 400px; height: 225px; }
   .frm.tall { width: 160px; height: 284px; }
-  .brief { width: 760px; }
-  .brief dl { display: grid; grid-template-columns: auto 1fr; gap: 22px 28px; font-size: 40px; line-height: 1.2; }
-  .brief dt { font: 600 28px/1.6 var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: .1em; }
-  .brief dd { color: var(--ink); }
+  .video-split { gap: 56px; }
+  .fx-arrow-annotate-label { paint-order: stroke; stroke: var(--bg); stroke-width: 12px; stroke-linejoin: round; }
+  .video-split .slot { width: 880px; min-height: 420px; }
+  .brand-chip { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: flex; align-items: center; gap: 28px; padding: 28px 40px; border-radius: 28px; background: var(--surface); border: 2px solid color-mix(in srgb, var(--accent) 55%, transparent); }
+  .brand-chip img { width: 96px; height: 96px; }
+  .brand-chip b { display: block; font: 800 56px/1.1 var(--head); color: var(--ink); letter-spacing: -.02em; }
+  .brand-chip small { font: 600 34px var(--mono); color: var(--dim); }
+  #brief-slot { width: 900px; height: 420px; flex: 0 0 900px; }
 
   /* screens */
   .screen { width: 1360px; }
-  .wide-screen { width: 1600px; }
-  .wide-screen .view { height: 700px; }
+  .wide-screen { width: 1500px; }
+  .wide-screen .view { height: 620px; }
   .screen .view { height: 560px; overflow: hidden; position: relative; }
   .screen .view img { position: absolute; left: 0; top: 0; width: 100%; }
-  .float-chip { position: absolute; z-index: 3; }
-  .src { font-size: 34px; text-transform: none; letter-spacing: 0; color: var(--ink); }
   .screen .cmd-tag { position: absolute; left: 40px; bottom: 40px; z-index: 3; padding: 18px 28px; border-radius: 18px; background: var(--bg);
     border: 1.5px solid var(--line); box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); }
   .screen .cmd-tag .cmd { font-size: 46px; }
+  #r-browser { margin-top: 0; }
 
   /* script and tone */
-  .script-card { width: 1300px; }
-  .script-card pre { font-size: 40px; }
-  .tone { display: flex; flex-direction: column; align-items: center; gap: 30px; }
-  .tone .vf-icon { transform: rotate(90deg); }
-  .tone .bad { font: 750 72px/1.1 var(--head); color: var(--faint); position: relative; white-space: nowrap; }
-  .tone .bad::after { content: ""; position: absolute; left: -2%; right: -2%; top: 52%; height: 7px; border-radius: 4px; background: var(--danger); transform: scaleX(var(--strike, 0)); transform-origin: left; }
-  .tone .good { font: 750 60px/1.12 var(--head); max-width: 1300px; }
-  .tone .vf-icon { font-size: 64px; color: var(--accent); }
+  .script-row { display: flex; align-items: center; gap: 56px; }
+  .script-card { width: 1180px; }
+  .script-card pre { font-size: 40px; line-height: 1.6; }
+  .tone-box { display: flex; flex-direction: column; align-items: center; gap: 34px; min-height: 220px; justify-content: center; }
+  .tone-line { font: 750 64px/1.1 var(--head); letter-spacing: -.02em; white-space: nowrap; }
+  .tone-note { font: 600 36px var(--mono); color: var(--dim); }
 
   /* voice */
   .voice-cards { display: flex; gap: 44px; }
-  .vcard { width: 640px; padding: 0; overflow: hidden; gap: 0; }
-  .vcard .pic { height: 300px; position: relative; overflow: hidden; }
+  .vcard { width: 700px; padding: 0; overflow: hidden; gap: 0; }
+  .vcard .pic { height: 330px; position: relative; overflow: hidden; }
   .vcard .pic img { width: 100%; height: 100%; object-fit: cover; }
-  .vcard .pic.wave { display: grid; place-items: center; background: var(--raised); }
-  .vcard .meta { padding: 30px 38px; display: flex; justify-content: space-between; align-items: center; }
+  .vcard .meta { padding: 28px 36px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
   .vcard h3 { font: 750 46px/1.05 var(--head); }
+  .vf-tile.s { width: 64px; height: 64px; font-size: 36px; border-radius: 18px; }
+  .clip-box { width: 100%; height: 100%; overflow: hidden; }
+  .clip-box canvas { width: 100%; height: 100%; object-fit: cover; }
 
   /* transcript and cues */
-  .words { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; max-width: 1600px; }
-  .word { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 20px 22px; border-radius: 20px; background: var(--surface); border: 1.5px solid var(--line); }
-  .word b { font: 750 52px/1 var(--head); color: var(--faint); letter-spacing: -.02em; }
-  .word small { font: 600 30px var(--mono); color: var(--faint); padding: 4px 10px; border-radius: 8px; }
-  .track { position: relative; width: 1500px; height: 300px; }
-  .track .line { position: absolute; left: 0; right: 0; top: 170px; height: 4px; border-radius: 2px; background: var(--line); }
-  .track .tick { position: absolute; top: 160px; width: 4px; height: 24px; border-radius: 2px; background: var(--dim); }
-  .track .tw { position: absolute; top: 204px; transform: translateX(-50%); font: 600 30px var(--font); color: var(--dim); white-space: nowrap; }
-  .track .mk { position: absolute; top: 70px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
-  .track .mk i { width: 34px; height: 34px; background: var(--accent); transform: rotate(45deg); border-radius: 6px; }
-  .track .mk span { font: 700 30px var(--mono); color: var(--accent); }
   .transcript-term { align-self: center; }
   .transcript-term pre { font-size: 44px; }
+  .tr-row { display: flex; align-items: center; gap: 48px; }
+  .cap-frame { width: 920px; flex: none; }
+  .words { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start; width: 700px; }
+  .word { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 16px 20px; border-radius: 20px; background: var(--surface); border: 1.5px solid var(--line); }
+  .word b { font: 750 46px/1 var(--head); color: var(--faint); letter-spacing: -.02em; }
+  .word small { font: 600 30px var(--mono); color: var(--faint); padding: 4px 10px; border-radius: 8px; }
+  #cue-slot { width: 1500px; height: 230px; }
+  .cues-row { display: flex; align-items: center; gap: 44px; }
 
   /* scene */
-  .build { display: flex; align-items: center; gap: 50px; }
-  .build .vf-code { width: 760px; }
-  .build .vf-code pre { font-size: 32px; }
+  .build { display: flex; align-items: center; gap: 40px; }
+  #code-slot { width: 800px; height: 380px; }
   .build .arrow { font-size: 80px; color: var(--accent); }
-  .mini-frame { width: 720px; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); background: var(--bg); position: relative;
+  .mini-frame { width: 700px; aspect-ratio: 16 / 9; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); background: var(--bg); position: relative;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
   .mini-frame b { font: 750 34px/1.05 var(--head); letter-spacing: -.02em; }
-  .mini-frame .mt { display: flex; gap: 16px; }
+  .mt { display: flex; gap: 16px; }
   .mini-frame .mt span { width: 120px; height: 100px; border-radius: 16px; background: var(--surface); border: 1.5px solid var(--line); display: grid; place-items: center; color: var(--accent); font-size: 42px; }
-  .lib { display: flex; align-items: center; gap: 70px; }
-  .icon-grid { display: grid; grid-template-columns: repeat(4, 120px); gap: 22px; }
-  .icon-grid .vf-tile { width: 120px; height: 120px; font-size: 60px; }
-  #lottie { width: 520px; height: 520px; border-radius: 30px; background: var(--surface); border: 1.5px solid var(--line); }
-  .stock { display: flex; gap: 32px; align-items: stretch; }
-  .clip-frame { width: 860px; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); }
-  .stock .side { display: flex; flex-direction: column; gap: 32px; width: 520px; }
-  .stock .side img { width: 100%; height: 300px; object-fit: cover; border-radius: 24px; border: 1.5px solid var(--line); }
-  .music { flex-direction: row; align-items: center; gap: 24px; padding: 26px 30px; }
-  .music b { display: block; font: 750 38px/1.1 var(--head); }
-  .music span { display: block; font-size: 30px; color: var(--dim); margin-top: 6px; }
-  .rec { width: 1100px; }
+  .wall { display: flex; gap: 40px; align-items: flex-start; }
+  .wall-col { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .wall-tag { font: 700 34px var(--mono); color: var(--accent); letter-spacing: .04em; }
+  .wall-grid { display: grid; grid-template-columns: repeat(4, 118px); gap: 16px; }
+  .wall-grid .vf-tile { width: 118px; height: 118px; font-size: 64px; border-radius: 28px; }
+  .wall-grid .pict-t { width: 118px; height: 118px; padding: 8px; }
+  .lot-row { display: flex; flex-direction: column; gap: 10px; }
+  .lot-w { width: 176px; height: 176px; border-radius: 24px; background: var(--surface); border: 1.5px solid var(--line); }
+  .lot-col { display: grid; grid-template-columns: repeat(2, 150px); gap: 16px; }
+  .stock { display: flex; gap: 32px; align-items: center; }
+  .clip-frame { width: 900px; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); }
+  .stock .side { display: flex; flex-direction: column; gap: 28px; width: 560px; }
+  .stock .side .ph { width: 100%; height: 280px; object-fit: cover; border-radius: 24px; border: 1.5px solid var(--line); display: block; }
+  .stock .side .clip-frame { width: 560px; }
+  .ph-wrap { width: 560px; height: 280px; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); }
+  .ph-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .rec { width: 1400px; overflow: hidden; }
+  .rec #rec-clip { transform: scale(1.4); transform-origin: 0 0; }   /* the search box and results, not the white margins */
   .rec .url { font-size: 26px; }
-  .motion-frame canvas { margin-top: -230px; }
-  .motion-frame { width: 1680px; height: 700px; border-radius: 26px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
-  .fx-row { display: flex; gap: 28px; }
-  .fx { width: 330px; align-items: center; padding: 30px; }
-  .fx svg { width: 100%; height: 110px; }
-  .fx path { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; }
-  .fx.two path { stroke: var(--accent2); }
-  .fx b { font: 700 32px var(--mono); }
-  .src-row { display: flex; gap: 24px; }
-  .src-row .vf-chip { font-size: 30px; padding: 18px 32px; }
+  .motion-row { display: flex; gap: 32px; align-items: center; }
+  .mclip { display: flex; flex-direction: column; gap: 18px; align-items: center; }
+  .mclip.side .clip-frame { width: 480px; }
+  #m-agent { filter: brightness(1.45) contrast(1.1); }
+  .mclip.main .clip-frame { width: 780px; }
+  .mclip .vf-chip { font-size: 36px; padding: 12px 26px; }
+  .snd-row { display: flex; gap: 60px; align-items: center; }
+  #spark-slot { width: 1060px; height: 500px; }
+  .snd-side { gap: 28px; width: 440px; }
+  .src-row { display: flex; gap: 18px; flex-direction: column; align-items: flex-start; }
+  .src-row .vf-chip { font-size: 32px; padding: 18px 30px; text-transform: none; letter-spacing: 0; }
+  .fx-sparkline-row-label { font-size: 44px; }
+  .fx-sparkline-row-value, .fx-sparkline-row-delta { visibility: hidden; }
 
   /* check */
-  .check { display: flex; align-items: center; gap: 70px; }
-  .sheet { width: 880px; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
+  .check { display: flex; align-items: center; gap: 56px; }
+  .sheet { position: relative; width: 760px; border-radius: 22px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
   .sheet img { display: block; width: 100%; }
-  .counters { display: flex; flex-direction: column; gap: 24px; width: 700px; }
-  .counter { flex-direction: row; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 34px; text-align: left; }
-  .counter span { font-size: 40px; line-height: 1.15; color: var(--ink); }
-  .counter b { font: 800 72px/1 var(--head); font-variant-numeric: tabular-nums; color: var(--danger); }
+  #bars-slot { width: 800px; height: 520px; }
+  .fx-comparison-bars-label { font-size: 40px; }
 
   /* render */
+  .render-split { gap: 64px; }
+  .render-split > .vf-col { flex: 0 0 860px; }
   .player-frame { width: 100%; aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden; border: 1.5px solid var(--line); box-shadow: 0 50px 120px -50px rgba(0,0,0,.8); }
-  .file-chip { align-self: flex-start; text-transform: none; letter-spacing: 0; font-size: 28px; }
-  .mix { width: 100%; height: auto; }
-  .mix .lab { font: 700 26px var(--mono); fill: var(--dim); }
+  .file-chip { align-self: flex-start; text-transform: none; letter-spacing: 0; font-size: 32px; }
+  .mix-col { align-items: center; gap: 4px; }
+  .mix { width: 640px; height: auto; }
+  .mix .lab { font: 700 30px var(--mono); fill: var(--dim); }
   .mix path { fill: none; stroke-width: 6; stroke-linecap: round; }
-  .extras { display: flex; gap: 48px; align-items: center; }
-  .extras .vf-phone { width: 250px; padding: 12px; border-radius: 48px; }
-  .extras .vf-phone > * { border-radius: 38px; }
-  .phone-mini { background: var(--bg) !important; display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
-  .phone-mini b { font: 750 34px/1.05 var(--head); text-align: center; padding: 0 20px; }
-  .phone-mini .mt span { width: 70px; height: 70px; border-radius: 14px; background: var(--surface); border: 1.5px solid var(--line); display: inline-grid; place-items: center; color: var(--accent); font-size: 32px; margin: 0 4px; }
-  .thumb { width: 480px; aspect-ratio: 16 / 9; border-radius: 20px; background: var(--bg); border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 18px; }
-  .thumb img { height: 90px; }
-  .thumb b { font: 800 50px/1 var(--head); letter-spacing: -.04em; }
+  #gauge-slot { width: 480px; height: 480px; }
+  .extras { display: flex; gap: 70px; align-items: center; justify-content: center; }
+  .extra-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .vf-phone.mini { width: 270px; padding: 12px; border-radius: 52px; }
+  .vf-phone.mini > * { border-radius: 32px; }
+  .phone-mini { background: var(--bg) !important; display: flex !important; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+  .phone-mini b { font: 750 28px/1.05 var(--head); text-align: center; padding: 0 14px; }
+  .phone-mini .mt span { width: 52px; height: 52px; border-radius: 12px; background: var(--surface); border: 1.5px solid var(--line); display: inline-grid; place-items: center; color: var(--accent); font-size: 26px; margin: 0 3px; }
+  .thumb { width: 520px; aspect-ratio: 16 / 9; border-radius: 20px; background: var(--bg); border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 18px; box-shadow: 0 40px 90px -40px rgba(0,0,0,.8); }
+  .thumb img { height: 100px; }
+  .thumb b { font: 800 56px/1 var(--head); letter-spacing: -.04em; }
   .thumb b em { font-style: normal; color: var(--accent); }
-  .chapters { width: 520px; }
-  .chapters li { display: flex; gap: 24px; font-size: 40px; }
-  .chapters li span { font: 600 36px var(--mono); color: var(--accent); width: 104px; }
-  .chapters ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .cap-row { display: flex; align-items: center; gap: 14px; font: 700 36px var(--head); color: var(--dim); }
+  #chap-slot { width: 1500px; height: 230px; }
   .earshot { width: 1100px; flex-direction: row; align-items: center; gap: 36px; }
   .earshot .vf-tile { width: 130px; height: 130px; font-size: 66px; }
   .earshot .cmd { font-size: 40px; }
 
   /* studio, status, rules, end */
-  .studio-pair { position: relative; width: 1560px; height: 780px; }
+  .full-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+  .txw.noglow > .vf-bg { display: none; }
+  .studio-pair { position: relative; width: 1560px; height: 760px; }
   .studio-pair .vf-browser { position: absolute; width: 1180px; }
   .studio-pair .a { left: 0; top: 0; }
   .studio-pair .b { right: 0; bottom: 0; }
-  .studio-pair .view { height: 560px; overflow: hidden; }
+  .studio-pair .view { height: 540px; overflow: hidden; }
   .studio-pair .view img { width: 100%; }
-  .status-term { width: 1640px; }
-  .status-term pre { font-size: 44px; }
-  .stat-table { display: grid; grid-template-columns: 270px 200px 316px 176px 200px 220px; gap: 0 30px; padding: 10px 44px 40px; }
-  .stat-table.hd { padding-bottom: 0; }
-  .stat-table .h { font: 600 40px var(--mono); color: var(--dim); padding-bottom: 14px; border-bottom: 1.5px solid var(--line); }
-  .stat-table .v { font: 750 52px/1 var(--head); padding-top: 22px; color: var(--green); }
-  .stat-table .v.no { color: var(--faint); }
-  .stat-id { font: 600 40px var(--mono); color: var(--ink); padding: 0 44px 22px; }
-  .next-line { font: 700 52px/1.1 var(--head); }
-  .next-line .cmd { font-size: 52px; }
-  .rule-line { font: 800 120px/1 var(--head); letter-spacing: -.045em; }
+  .status-row { display: flex; gap: 64px; align-items: center; }
+  #status-slot { width: 980px; height: 640px; }
+  #stat-slot { width: 560px; height: 420px; }
+  #lc-slot { width: 1200px; height: 460px; }
+  .rule-line { font: 800 120px/1 var(--head); letter-spacing: -.045em; white-space: nowrap; }
   .steps-dots { display: flex; gap: 30px; align-items: center; }
-  .steps-dots span { display: flex; flex-direction: column; align-items: center; gap: 14px; font: 600 30px var(--mono); color: var(--dim); }
+  .steps-dots span { display: flex; flex-direction: column; align-items: center; gap: 14px; font: 600 32px var(--mono); color: var(--dim); }
   .steps-dots i { width: 150px; height: 16px; border-radius: 8px; background: var(--line); }
-  .yes-btn { padding: 28px 60px; border-radius: 20px; background: var(--green); color: var(--bg); font: 800 50px/1 var(--head); }
-  .used { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 1500px; }
-  .used .vf-chip { text-transform: none; letter-spacing: 0; font-size: 36px; color: var(--ink); }
-  .cta-chips .vf-chip { font-size: 30px; }
-  .cta-term pre { font-size: 36px; }
+  .yes-btn { display: inline-flex; align-items: center; gap: 22px; padding: 22px 48px; border-radius: 20px; background: var(--green); color: var(--bg); font: 800 50px/1 var(--head); }
+  .yes-btn .vf-icon { font-size: 56px; }
+  .reveal-line { font-size: 92px; text-align: center; line-height: 1.1; white-space: nowrap; }
+  .reveal-line span { display: inline-block; }
+  .reveal-row { display: flex; align-items: center; gap: 70px; }
+  .used { display: flex; flex-wrap: wrap; gap: 14px; justify-content: flex-start; width: 860px; }
+  .used .vf-chip { text-transform: none; letter-spacing: 0; font-size: 34px; color: var(--ink); }
+  #tally-slot { width: 780px; height: 440px; }
+  .cta-chips .vf-chip { font-size: 40px; }
+  .cta-term { width: 1300px; }
+  .cta-term pre { font-size: 38px; }
+  .row-line { display: block; }
   .end-mark { display: flex; align-items: center; gap: 36px; }
   .end-mark img { height: 190px; }
   .end-mark b { font: 800 150px/1 var(--head); letter-spacing: -.05em; }
   .end-mark b em { font-style: normal; color: var(--accent); }
+  .url-row { display: flex; align-items: center; gap: 26px; }
+  .url-row .rk { font-size: 80px; color: var(--accent); }
   .url-big { font: 700 62px/1 var(--mono); color: var(--ink); }
-  .url-big em { font-style: normal; color: var(--accent); }
+  .confetti { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; z-index: 0; opacity: .8; }   /* behind the end card: the logo and URL stay clean */
 </style>
 </head>
 <body>
 <div id="stage" data-width="1920" data-height="1080">
   <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
 
-  <!-- 0:00 hook: three tools, then a lost weekend -->
-  <section class="vf-shot center" data-cue="hook">
-    <h2 class="vf-h2" data-in="words">An explainer video usually means</h2>
-    <div class="tools" data-in="drop" data-stagger="0.12" data-at="hook+0.5">
-      <div class="tool vf-card"><span class="vf-tile"><i data-icon="video"></i></span><b>Editor</b></div>
-      <div class="tool vf-card"><span class="vf-tile two"><i data-icon="layers"></i></span><b>Timeline</b></div>
-      <div class="tool vf-card"><span class="vf-tile"><i data-icon="headphones"></i></span><b>Audio</b></div>
-    </div>
-    <p class="vf-title weekend" data-in="pop" data-at="hook.weekend">a lost <em>weekend</em></p>
-  </section>
+  <!-- 0:00 hook: a line tracks in, three tools spring in, then a lost weekend (A of the expand-morph into turn) -->
+  <div class="txw" id="w-hook" style="visibility:visible">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="hook" data-until="turn.chat">
+      <h2 class="vf-h2 hook-title" id="hook-title">An explainer video usually means</h2>
+      <div class="tools" id="tools">
+        <div class="tool vf-card"><img class="pict" src="assets/graphics/fluent-emoji-flat/laptop.svg" alt=""><b>Editor</b></div>
+        <div class="tool vf-card"><img class="pict" src="assets/graphics/fluent-emoji-flat/stopwatch.svg" alt=""><b>Timeline</b></div>
+        <div class="tool vf-card"><img class="pict" src="assets/graphics/fluent-emoji-flat/headphone.svg" alt=""><b>Audio</b></div>
+      </div>
+      <p class="vf-title weekend" data-in="pop" data-at="hook.weekend">a lost <em>weekend</em></p>
+    </section>
+  </div>
 
-  <!-- 0:06 turn: the tools fold into one chat -->
-  <section class="vf-shot center" data-cue="turn">
-    <div class="tools fold">
-      <div class="tool vf-card"><span class="vf-tile"><i data-icon="video"></i></span><b>Editor</b></div>
-      <div class="tool vf-card"><span class="vf-tile two"><i data-icon="layers"></i></span><b>Timeline</b></div>
-      <div class="tool vf-card"><span class="vf-tile"><i data-icon="headphones"></i></span><b>Audio</b></div>
-    </div>
-    <div class="vf-card chat">
-      <div class="bubble me mono">/vf-new-video</div>
-      <div class="bubble ai">Which brand? Wide or tall?</div>
-      <div class="bubble me">House brand. Wide.</div>
-    </div>
-  </section>
+  <!-- 0:06 turn: the pain is struck out and one conversation takes its place (B of the expand-morph) -->
+  <div class="txw" id="w-turn">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="turn" data-cue-offset="-0.6">
+      <h2 class="vf-h2 turn-line" id="turn-line">Three tools. A lost weekend.</h2>
+      <div class="turn-row">
+        <canvas id="lot-chat" class="lot" width="800" height="800"></canvas>
+        <div class="vf-card chat" id="chat">
+          <div class="chat-h"><img class="pict-s" src="assets/graphics/fluent-emoji-flat/speech-balloon.svg" alt=""><b>Chat with your agent</b></div>
+          <div class="bubble me mono">/vf-new-video</div>
+          <div class="bubble ai">Which brand? Wide or tall?</div>
+          <div class="bubble me">House brand. Wide.</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- 0:09 what: one folder, your agent, six checked stages -->
   <section class="vf-shot center" data-cue="what">
     <h2 class="vf-h2" data-in="words">One folder. Your <em>agent</em> does the work.</h2>
     <div class="what-top">
+      <span class="vf-tile big" data-in="pop"><i data-icon="lucide-animated/folder-open" data-play="@folder"></i></span>
       <div class="vf-code tree" data-in="rise">
         <div class="top"><i></i><i></i><i></i></div>
         <pre><b>videofactory/</b>
@@ -321,137 +398,154 @@
       </div>
       <div class="agent-col">
         <div class="vf-row" data-in="pop" data-stagger="0.12" data-at="what.agent">
-          <span class="vf-chip hot">Claude Code</span><span class="vf-chip hot">Codex</span>
+          <span class="vf-chip hot"><i data-icon="lucide-animated/bot" data-play="what.agent+0.25"></i>Claude Code</span><span class="vf-chip hot">Codex</span>
         </div>
         <div class="vf-row">
-          <span class="vf-chip" data-in="rise" data-at="@choices>what">You choose</span><span class="vf-chip ok" data-in="rise" data-at="@check>what">You check</span>
+          <span class="vf-chip" data-in="rise" data-at="@choices>what">You choose</span><span class="vf-chip ok" data-in="rise" data-at="@check>what"><i data-icon="lucide-animated/check-check" data-play="@check>what"></i>You check</span>
         </div>
       </div>
     </div>
-    <div class="stages" data-in="rise" data-stagger="0.07" data-at="what.check">
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Research</div>
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Voice</div>
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Words</div>
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Cues</div>
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Scene</div>
-      <div class="stage"><span class="ck"><i data-icon="check"></i></span>Render</div>
+    <div class="stages" id="stages" data-in="rise" data-stagger="0.07" data-at="what.check">
+      <div class="stage" id="st0"><span class="ck"><i data-icon="check"></i></span>Research</div>
+      <div class="stage" id="st1"><span class="ck"><i data-icon="check"></i></span>Voice</div>
+      <div class="stage" id="st2"><span class="ck"><i data-icon="check"></i></span>Words</div>
+      <div class="stage" id="st3"><span class="ck"><i data-icon="check"></i></span>Cues</div>
+      <div class="stage" id="st4"><span class="ck"><i data-icon="check"></i></span>Scene</div>
+      <div class="stage" id="st5"><span class="ck"><i data-icon="check"></i></span>Render</div>
     </div>
   </section>
 
-  <!-- 0:19 setup: what you need -->
-  <section class="vf-shot center" data-cue="setup" data-until="setup.type">
-    <h2 class="vf-title" data-in="words">What you need</h2>
-    <div class="vf-card need" data-in="rise" data-at="setup.need-0.3">
-      <ul class="vf-list">
-        <li data-in="left" data-at="setup.need"><i data-icon="laptop"></i>Linux</li>
-        <li data-in="left" data-at="@python>setup.need"><i data-icon="code"></i>Python 3.12</li>
-        <li data-in="left" data-at="@ffmpeg>setup.need"><i data-icon="video"></i>FFmpeg</li>
-        <li data-in="left" data-at="setup.agent"><i data-icon="bot"></i>Claude Code or Codex</li>
-      </ul>
-    </div>
-  </section>
+  <!-- 0:19 setup: what you need (A of the whip pan) -->
+  <div class="txw" id="w-setup">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="setup" data-until="setup.type">
+      <div class="vf-row title-row">
+        <span class="vf-tile big" data-in="pop"><i data-icon="lucide-animated/cog" data-play="setup+0.15"></i></span>
+        <h2 class="vf-title" data-in="words">What you need</h2>
+      </div>
+      <div class="vf-card need" data-in="rise" data-at="setup.need-0.3">
+        <ul class="vf-list">
+          <li data-in="left" data-at="setup.need"><i data-icon="laptop"></i>Linux</li>
+          <li data-in="left" data-at="@python>setup.need"><i data-icon="code"></i>Python 3.12</li>
+          <li data-in="left" data-at="@ffmpeg>setup.need"><i data-icon="video"></i>FFmpeg</li>
+          <li data-in="left" data-at="setup.agent"><i data-icon="lucide-animated/bot" data-play="setup.agent+0.2"></i>Claude Code or Codex</li>
+        </ul>
+      </div>
+    </section>
+  </div>
 
-  <!-- 0:28 setup: /vf-setup, the doctor rows, a test video -->
-  <section class="vf-shot split" data-cue="setup.type" data-until="optional">
-    <div class="vf-term term-wide" data-in="rise">
-      <div class="top"><i></i><i></i><i></i></div>
-      <pre><span class="row-line"><span class="p">&gt; </span><span id="t-setup">/vf-setup</span></span><span class="doc" data-in="left" data-stagger="0.3" data-at="setup.doctor"><span class="row-line"><span class="ok">OK</span>  Python    <span class="dim">3.12.14</span></span><span class="row-line"><span class="ok">OK</span>  Chromium  <span class="dim">opens a page</span></span><span class="row-line"><span class="ok">OK</span>  ffmpeg    <span class="dim">n9.0.2</span></span><span class="row-line"><span class="ok">OK</span>  Fonts     <span class="dim">with licences</span></span><span class="row-line"><span class="ok">OK</span>  Whisper   <span class="dim">installed</span></span></span></pre>
-    </div>
-    <div class="vf-card testcard" data-in="pop" data-at="setup.test">
-      <span class="vf-tile"><i data-icon="play"></i></span>
-      <h3>Test video</h3>
-      <p class="ok-line">All required parts are OK.</p>
-    </div>
-  </section>
+  <!-- 0:28 setup: /vf-setup, the doctor rows, an install bar, a test video (B of the whip pan) -->
+  <div class="txw" id="w-setup2">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot split setup-split" data-cue="setup.type" data-cue-offset="-0.3" data-until="optional">
+      <div class="slot term-slot" id="setup-slot"></div>
+      <div class="vf-col setup-right">
+        <div class="slot" id="pb-slot"></div>
+        <div class="vf-card testcard" id="testcard">
+          <span class="vf-tile"><i data-icon="lucide-animated/play" data-play="setup.test+0.25"></i></span>
+          <h3>Test video</h3>
+          <div class="okrow"><canvas id="lot-check" class="lot-s" width="300" height="300"></canvas><p class="ok-line">All required parts are OK.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- 0:36 optional parts: the grid names them, the panel says what each one does -->
-  <section class="vf-shot split opt-split" data-cue="optional">
-    <div class="opt-grid" data-in="rise" data-stagger="0.04">
-      <div class="vf-card optc" id="o-whisper"><span class="vf-tile"><i data-icon="clock"></i></span><b>Whisper</b></div>
-      <div class="vf-card optc" id="o-eleven"><span class="vf-tile two"><i data-icon="mic"></i></span><b>ElevenLabs</b></div>
-      <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="camera"></i></span><b>Pexels</b></div>
-      <div class="vf-card optc o-stock"><span class="vf-tile two"><i data-icon="image"></i></span><b>Pixabay</b></div>
-      <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="image"></i></span><b>Unsplash</b></div>
-      <div class="vf-card optc" id="o-earshot"><span class="vf-tile two"><i data-icon="headphones"></i></span><b>Earshot</b></div>
-      <div class="vf-card optc" id="o-node"><span class="vf-tile"><i data-icon="code"></i></span><b>Node</b></div>
-      <div class="vf-card optc" id="o-form"><span class="vf-tile two"><i data-icon="message-circle"></i></span><b>Brainstormform</b></div>
-    </div>
-    <div class="opt-side">
-      <div class="spot">
-        <div class="spot-p" data-spot="optional"><h2 class="vf-h2" data-in="words" data-delay="0.2">Everything else is <em>optional</em>.</h2></div>
-        <div class="spot-p" data-spot="optional.whisper"><p>A time for every word</p><div class="spot-word" id="spot-word"><b></b><small></small></div></div>
-        <div class="spot-p" data-spot="optional.eleven"><p>A paid AI voice</p><svg viewBox="0 0 600 150"><path id="owave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
-        <div class="spot-p" data-spot="optional.stock"><p>Free keys for stock video and photos</p></div>
-        <div class="spot-p" data-spot="optional.photos"><div class="photos" id="photos"><img src="assets/mic.jpg" alt=""><img src="assets/timeline/f040.jpg" alt=""><img src="assets/mic-pink.jpg" alt=""></div></div>
-        <div class="spot-p" data-spot="optional.earshot"><p>The agent listens to the sound</p><div class="meter" id="meter"></div></div>
-        <div class="spot-p" data-spot="optional.node"><p>An advanced animation engine</p><div class="vf-row"><span class="vf-chip">HyperFrames</span></div></div>
-        <div class="spot-p" data-spot="optional.form"><p>Questions as a form in your browser</p><p class="url-mid" id="bf-url">github.com/<br><em>dutchbase/brainstormform</em></p></div>
+  <!-- 0:36 optional parts: the grid names them, the panel says what each one does (A of the zoom-through into /vf) -->
+  <div class="txw" id="w-optional">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot split opt-split" data-cue="optional" data-until="vf.type">
+      <div class="opt-grid" data-in="rise" data-stagger="0.04">
+        <div class="vf-card optc" id="o-whisper"><span class="vf-tile"><i data-icon="lucide-animated/clock" data-play="@whisper"></i></span><b>Whisper</b></div>
+        <div class="vf-card optc" id="o-eleven"><span class="vf-tile two"><i data-icon="lucide-animated/mic" data-play="@elevenlabs"></i></span><b>ElevenLabs</b></div>
+        <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="lucide-animated/gallery-thumbnails" data-play="@pexels"></i></span><b>Pexels</b></div>
+        <div class="vf-card optc o-stock"><span class="vf-tile two"><i data-icon="lucide-animated/frame" data-play="@pixabay"></i></span><b>Pixabay</b></div>
+        <div class="vf-card optc o-stock"><span class="vf-tile"><i data-icon="lucide-animated/scan-text" data-play="@unsplash"></i></span><b>Unsplash</b></div>
+        <div class="vf-card optc" id="o-earshot"><span class="vf-tile two"><i data-icon="lucide-animated/audio-lines" data-play="@earshot>optional"></i></span><b>Earshot</b></div>
+        <div class="vf-card optc" id="o-node"><span class="vf-tile"><i data-icon="lucide-animated/terminal" data-play="@node>optional"></i></span><b>Node</b></div>
+        <div class="vf-card optc" id="o-form"><span class="vf-tile two"><i data-icon="lucide-animated/message-square-more" data-play="@brainstormform"></i></span><b>Brainstormform</b></div>
       </div>
-    </div>
-  </section>
+      <div class="opt-side">
+        <div class="spot">
+          <div class="spot-p" data-spot="optional"><h2 class="vf-h2" data-in="words" data-delay="0.2">Everything else is <em>optional</em>.</h2></div>
+          <div class="spot-p" data-spot="optional.whisper"><p>A time for every word</p><div class="spot-word" id="spot-word"><b></b><small></small></div></div>
+          <div class="spot-p" data-spot="optional.eleven"><p>A paid AI voice</p><svg viewBox="0 0 600 150"><path id="owave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
+          <div class="spot-p" data-spot="optional.stock"><p>Free keys for stock video and photos</p></div>
+          <div class="spot-p" data-spot="optional.photos"><div class="photos" id="photos"><img src="assets/mic.jpg" alt=""><img src="assets/timeline/f040.jpg" alt=""><img src="assets/mic-pink.jpg" alt=""></div></div>
+          <div class="spot-p" data-spot="optional.earshot"><p>The agent listens to the sound</p><div class="meter" id="meter"></div></div>
+          <div class="spot-p" data-spot="optional.node"><p>An advanced animation engine</p><div class="cube-frame" id="cube-clip"></div></div>
+          <div class="spot-p" data-spot="optional.form"><p>Questions as a form in your browser</p><p class="url-mid" id="bf-url">github.com/<br><em>dutchbase/brainstormform</em></p></div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- 0:59 /vf reads the folders and names the next step -->
-  <section class="vf-shot center" data-cue="vf" data-until="vf.help">
-    <h2 class="vf-h2" data-in="words">Not sure what to do <em>next</em>?</h2>
-    <div class="vf-row" style="gap:44px;align-items:stretch">
-      <div class="vf-term vf-scan" data-in="rise" data-at="vf.type-0.3">
-        <div class="top"><i></i><i></i><i></i></div>
-        <pre><span class="row-line"><span class="p">&gt; </span><span id="t-vf">/vf</span></span><span class="scan" data-in="left" data-stagger="0.18" data-at="vf.reads"><span class="row-line"><span class="ok">done</span>  01 voice</span><span class="row-line"><span class="ok">done</span>  02 transcript</span><span class="row-line"><span class="ok">done</span>  03 cues</span><span class="row-line"><span class="opt">open</span>  04 scene</span></span></pre>
+  <!-- 0:59 /vf reads the folders and names the next step (B of the zoom-through) -->
+  <div class="txw" id="w-vf">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="vf" data-cue-offset="-0.2" data-until="vf.help">
+      <h2 class="vf-h2" id="vf-title">Not sure what to do <em>next</em>?</h2>
+      <div class="vf-row vf-pair">
+        <div class="slot" id="vf-slot"></div>
+        <div class="slot" id="note-slot"></div>
       </div>
-      <div class="vf-card hot next-card" data-in="pop" data-at="vf.reads+1.1">
-        <span class="vf-small">Next step</span>
-        <span class="cmd">/vf-scene</span>
-        <p>Build the animation.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- 1:06 /vf-help: every command -->
-  <section class="vf-shot center" data-cue="vf.help" data-until="brand">
-    <h2 class="vf-h2" data-in="words"><em>/vf-help</em> lists every command</h2>
-    <div class="cmd-grid" data-in="pop" data-stagger="0.035">
-      <span class="vf-chip hot">/vf</span><span class="vf-chip">/vf-help</span><span class="vf-chip">/vf-setup</span><span class="vf-chip">/vf-new-brand</span><span class="vf-chip">/vf-new-style</span>
-      <span class="vf-chip">/vf-new-character</span><span class="vf-chip">/vf-new-video</span><span class="vf-chip">/vf-research</span><span class="vf-chip">/vf-script</span><span class="vf-chip">/vf-voice</span>
-      <span class="vf-chip">/vf-transcript</span><span class="vf-chip">/vf-cues</span><span class="vf-chip">/vf-scene</span><span class="vf-chip">/vf-render</span><span class="vf-chip">/vf-status</span>
-    </div>
-  </section>
+  <!-- 1:06 /vf-help: every command (A of the blinds into brand) -->
+  <div class="txw" id="w-vfhelp">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="vf.help" data-until="brand.new">
+      <h2 class="vf-h2" id="help-title"><em>/vf-help</em> lists every command</h2>
+      <div class="cmdlist" id="cmdlist">/vf /vf-help /vf-setup /vf-new-brand /vf-new-style /vf-new-character /vf-new-video /vf-research /vf-script /vf-voice /vf-transcript /vf-cues /vf-scene /vf-render /vf-status</div>
+    </section>
+  </div>
 
-  <!-- 1:09 brand: logo, colours, fonts, voice -->
-  <section class="vf-shot" data-cue="brand" data-until="brand.style">
-    <div class="brand-top">
-      <div class="wordmark" data-in="pop"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
-      <div class="swatches" data-in="rise" data-stagger="0.06" data-at="brand.new">
-        <div class="sw"><i style="background:var(--bg)"></i></div>
-        <div class="sw"><i style="background:var(--surface)"></i></div>
-        <div class="sw"><i style="background:var(--ink)"></i></div>
-        <div class="sw"><i style="background:var(--accent)"></i></div>
-        <div class="sw"><i style="background:var(--accent2)"></i></div>
-        <div class="sw"><i style="background:var(--green)"></i></div>
+  <!-- 1:09 brand: logo, colours, fonts, voice (B of the blinds) -->
+  <div class="txw" id="w-brand">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <div class="mesh-host" id="mesh-brand"></div>
+    <section class="vf-shot" data-cue="brand" data-cue-offset="-0.4" data-until="brand.style">
+      <div class="brand-top">
+        <div class="wordmark"><img id="logo-mark" src="brand/logo/mark.svg" alt=""><b id="wordmark">Video<em>Factory</em></b></div>
+        <div class="vf-col swatch-col">
+          <div class="vf-row sw-row">
+            <span class="vf-tile" id="pal-tile"><i data-icon="lucide-animated/palette" data-play="@colours"></i></span>
+            <div class="swatches" id="swatches">
+              <div class="sw"><i style="background:var(--bg)"></i></div>
+              <div class="sw"><i style="background:var(--surface)"></i></div>
+              <div class="sw"><i style="background:var(--ink)"></i></div>
+              <div class="sw"><i style="background:var(--accent)"></i></div>
+              <div class="sw"><i style="background:var(--accent2)"></i></div>
+              <div class="sw"><i style="background:var(--green)"></i></div>
+            </div>
+          </div>
+          <p class="vf-hand note" id="hand-note">your colours, your look</p>
+        </div>
       </div>
-    </div>
-    <div class="brand-bottom">
-      <div class="vf-card fonts" data-in="rise" data-at="brand.fonts">
-        <div class="f"><span style="font:800 64px/1 var(--head);letter-spacing:-.04em">Archivo</span><small>headings</small></div>
-        <div class="f"><span style="font:500 52px/1 var(--font)">Inter</span><small>body</small></div>
-        <div class="f"><span style="font:600 44px/1 var(--mono)">JetBrains Mono</span><small>labels</small></div>
+      <div class="brand-bottom">
+        <div class="vf-card fonts" id="fonts">
+          <div class="f"><span style="font:800 64px/1 var(--head);letter-spacing:-.04em">Archivo</span><small>headings</small></div>
+          <div class="f"><span style="font:500 52px/1 var(--font)">Inter</span><small>body</small></div>
+          <div class="f"><span style="font:600 44px/1 var(--mono)">JetBrains Mono</span><small>labels</small></div>
+        </div>
+        <div class="vf-card voicec" id="voicec">
+          <span class="vf-tile two"><i data-icon="lucide-animated/mic" data-play="@voice>brand"></i></span>
+          <h3>George</h3>
+          <p>ElevenLabs voice</p>
+        </div>
       </div>
-      <div class="vf-card voicec" data-in="rise" data-at="brand.fonts+0.15">
-        <span class="vf-tile two"><i data-icon="mic"></i></span>
-        <h3>George</h3>
-        <p>ElevenLabs voice</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- 1:17 /vf-new-style -->
   <section class="vf-shot center" data-cue="brand.style">
-    <h2 class="vf-h2" data-in="words"><em>/vf-new-style</em> designs a new look</h2>
+    <h2 class="vf-h2"><em>/vf-new-style</em> designs <span id="mh-look">a new look</span></h2>
     <div class="styles">
-      <div class="vf-card stylec" data-in="left">
+      <div class="vf-card stylec" id="style-a">
         <div class="mini"><b>Big type.</b><div class="bar"></div><div class="vf-row" style="gap:14px"><span class="vf-chip hot">Modern</span><span class="vf-chip">Dark</span></div></div>
         <h3>Modern</h3>
       </div>
-      <div class="vf-card stylec new" data-in="right" data-delay="0.15">
+      <div class="vf-card stylec new" id="style-b">
         <span class="vf-tile"><i data-icon="plus"></i></span>
         <h3>Your style</h3>
       </div>
@@ -460,75 +554,77 @@
 
   <!-- 1:21 /vf-new-character: steps, approved batch by batch -->
   <section class="vf-shot center" data-cue="brand.character" data-until="video">
-    <h2 class="vf-h2" data-in="words"><em>/vf-new-character</em> makes a mascot</h2>
-    <div class="vf-steps char-steps" data-in="rise" data-stagger="0.1">
-      <div class="vf-step on"><b>Brief</b><span>Who it is</span><span class="stamp">Approved</span></div>
-      <div class="vf-step on"><b>Concepts</b><span>AI images</span><span class="stamp">Approved</span></div>
-      <div class="vf-step on"><b>Identity</b><span>One locked look</span><span class="stamp">Approved</span></div>
-      <div class="vf-step on"><b>Variants</b><span>Poses and faces</span><span class="stamp">Approved</span></div>
+    <div class="vf-row title-row">
+      <h2 class="vf-h2" data-in="words"><em>/vf-new-character</em> makes a mascot</h2>
+      <span class="vf-tile" id="stamp-tile" data-in="pop" data-at="brand.approve-0.5"><i data-icon="lucide-animated/stamp" data-play="brand.approve"></i></span>
+    </div>
+    <div class="vf-steps char-steps">
+      <div class="vf-step on"><img class="pict-s" src="assets/graphics/fluent-emoji-flat/memo.svg" alt=""><b>Brief</b><span>Who it is</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><img class="pict-s" src="assets/graphics/fluent-emoji-flat/light-bulb.svg" alt=""><b>Concepts</b><span>AI images</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><img class="pict-s" src="assets/graphics/fluent-emoji-flat/bullseye.svg" alt=""><b>Identity</b><span>One locked look</span><span class="stamp">Approved</span></div>
+      <div class="vf-step on"><img class="pict-s" src="assets/graphics/fluent-emoji-flat/sparkles.svg" alt=""><b>Variants</b><span>Poses and faces</span><span class="stamp">Approved</span></div>
     </div>
   </section>
 
   <!-- 1:28 /vf-new-video: brand, format, brief -->
-  <section class="vf-shot split" data-cue="video">
-    <div class="vf-col" style="gap:50px">
+  <section class="vf-shot split video-split" data-cue="video">
+    <div class="vf-col" style="gap:50px;flex:0 0 700px">
       <div class="vf-term" data-in="rise">
         <div class="top"><i></i><i></i><i></i></div>
         <pre style="font-size:48px"><span class="p">&gt; </span><span id="t-video">/vf-new-video</span></pre>
       </div>
-      <div class="frames" data-in="pop" data-stagger="0.12" data-at="video.format">
-        <div class="frm wide"><span>wide 16:9</span></div>
-        <div class="frm tall"><span>tall</span></div>
+      <div class="frames">
+        <div class="frm wide" id="frm-wide"><span>wide 16:9</span></div>
+        <div class="frm tall" id="frm-tall"><span>tall</span></div>
+        <span class="vf-tile" data-in="pop" data-at="video.format"><i data-icon="lucide-animated/frame" data-play="@wide"></i></span>
       </div>
     </div>
-    <div class="vf-card brief" data-in="right" data-at="video.brief">
-      <h3>Brief</h3>
-      <dl>
-        <dt>For</dt><dd>Friends who make content or code a little</dd>
-        <dt>After</dt><dd>They know every command and make a video</dd>
-      </dl>
-    </div>
+    <div class="slot" id="brief-slot"><div class="brand-chip" id="brand-chip"><img src="brand/logo/mark.svg" alt=""><div><b>videofactory</b><small>your brand</small></div></div></div>
   </section>
 
   <!-- 1:39 /vf-research: a public page, a source -->
   <section class="vf-shot center" data-cue="research">
-    <div class="vf-browser screen wide-screen" data-in="rise" style="position:relative">
-      <div class="top"><i></i><i></i><i></i><div class="url">en.wikipedia.org/wiki/Tutorial</div></div>
-      <div class="view"><img id="research-img" src="assets/research-page.png" alt=""></div>
-      <div class="cmd-tag" data-in="left" data-delay="0.4"><span class="cmd" id="t-research">/vf-research</span></div>
-      <span class="vf-chip hot float-chip src" style="right:40px;bottom:40px" data-in="pop" data-at="research.source-0.6">Source: Wikipedia</span>
+    <div class="vf-row title-row">
+      <span class="vf-tile" data-in="pop"><i data-icon="lucide-animated/search" data-play="@facts"></i></span>
+      <h2 class="vf-h2" data-in="words">Need <em>facts</em>?</h2>
+    </div>
+    <div class="vf-browser screen wide-screen" id="r-browser" data-in="rise" data-delay="0.3" style="position:relative">
+      <div class="top"><i></i><i></i><i></i><div class="url" id="r-url">en.wikipedia.org/wiki/Tutorial</div></div>
+      <div class="view" id="r-view"><img id="research-img" src="assets/research-page.png" alt=""></div>
+      <div class="cmd-tag" data-in="left" data-delay="0.6"><span class="cmd" id="t-research">/vf-research</span></div>
     </div>
   </section>
 
-  <!-- 1:46 /vf-script and the tone check -->
+  <!-- 1:45 /vf-script and the tone check -->
   <section class="vf-shot center" data-cue="script" data-until="script.tone">
-    <h2 class="vf-h2" data-in="words"><em>/vf-script</em> writes the narration with you</h2>
-    <div class="vf-code script-card" data-in="rise" data-delay="0.1">
-      <div class="top"><i></i><i></i><i></i></div>
-      <pre><span class="c"># script.md</span>
-<span class="sl" data-in="wipe" data-delay="0.15">An explainer video usually means three tools,</span>
-<span class="sl" data-in="wipe" data-delay="0.45">a timeline and a lost weekend.</span></pre>
+    <div class="script-row">
+      <span class="vf-tile big" data-in="pop"><i data-icon="lucide-animated/file-text" data-play="@narration"></i></span>
+      <div class="vf-col" style="gap:30px">
+        <h2 class="vf-h2" data-in="words"><em>/vf-script</em> writes the narration with you</h2>
+        <div class="vf-code script-card" data-in="rise" data-delay="0.1">
+          <div class="top"><i></i><i></i><i></i></div>
+          <pre><span class="c"># script.md</span>
+<span class="sl" data-in="wipe" data-delay="0.15">An explainer video usually means <span id="mk1">three tools</span>,</span>
+<span class="sl" data-in="wipe" data-delay="0.45">a timeline and <span id="mk2">a lost weekend</span>.</span></pre>
+        </div>
+      </div>
     </div>
   </section>
   <section class="vf-shot center" data-cue="script.tone">
     <h2 class="vf-h2" data-in="words">A tone check removes the hype</h2>
-    <div class="tone">
-      <span class="bad" id="bad">Unlock your productivity</span>
-      <i data-icon="arrow-right" data-in="fade" data-at="script.tone+1.4"></i>
-      <span class="good" data-in="words" data-at="script.tone+1.6">Move the invoice into this folder, then check its label.</span>
-    </div>
+    <div class="tone-box"><p class="tone-line" id="tone-line">Unlock your productivity</p></div>
   </section>
 
   <!-- 1:54 /vf-voice: free or paid -->
   <section class="vf-shot center" data-cue="voice" data-until="voice.approve">
     <h2 class="vf-h2" data-in="words"><em>/vf-voice</em> makes the voice</h2>
     <div class="voice-cards">
-      <div class="vf-card vcard" data-in="left" data-at="voice.free">
+      <div class="vf-card vcard" data-in="left" data-at="voice+0.7">
         <div class="pic"><img id="mic" src="assets/mic.jpg" alt=""></div>
-        <div class="meta"><h3>Your own voice</h3><span class="vf-chip ok">Free</span></div>
+        <div class="meta"><h3>Your own voice</h3><span class="vf-tile s"><i data-icon="lucide-animated/mic" data-play="@record"></i></span><span class="vf-chip ok">Free</span></div>
       </div>
       <div class="vf-card vcard" data-in="right" data-at="voice.eleven">
-        <div class="pic wave"><svg viewBox="0 0 600 200" width="560" height="190"><path id="vwave" d="" fill="none" stroke="var(--accent2)" stroke-width="8" stroke-linecap="round"/></svg></div>
+        <div class="pic"><div class="clip-box" id="ai-clip"></div></div>
         <div class="meta"><h3>ElevenLabs</h3><span class="vf-chip">Paid</span></div>
       </div>
     </div>
@@ -538,34 +634,36 @@
   <section class="vf-shot center" data-cue="voice.approve" data-until="transcript">
     <div class="vf-browser screen" data-in="rise" style="position:relative">
       <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / review / script</div></div>
-      <div class="view"><img id="review-img" style="transform-origin:465px 815px" src="assets/studio-review.png" alt=""></div>
+      <div class="view" id="review-view"><img id="review-img" style="transform-origin:465px 815px" src="assets/studio-review.png" alt=""></div>
     </div>
   </section>
 
   <!-- 2:05 /vf-transcript: every word gets a time -->
   <section class="vf-shot center" data-cue="transcript">
     <div class="vf-term transcript-term" data-in="rise"><div class="top"><i></i><i></i><i></i></div><pre><span class="p">&gt; </span><span id="t-transcript">/vf-transcript</span></pre></div>
-    <div class="words" id="words"></div>
+    <div class="tr-row">
+      <div class="clip-frame cap-frame" id="cap-clip" data-in="left" data-delay="0.2"></div>
+      <div class="words" id="words"></div>
+    </div>
   </section>
 
-  <!-- 2:10 /vf-cues: markers snap to words -->
+  <!-- 2:10 /vf-cues: markers on the time line -->
   <section class="vf-shot center" data-cue="cues">
-    <h2 class="vf-h2" data-in="words"><em>/vf-cues</em> marks where the picture changes</h2>
-    <div class="track" id="track" data-in="fade" data-delay="0.2"><div class="line"></div></div>
+    <div class="cues-row">
+      <canvas id="lot-clock" class="lot-s" width="300" height="300"></canvas>
+      <h2 class="vf-h2" data-in="words"><em>/vf-cues</em> marks where the picture changes</h2>
+    </div>
+    <div class="slot" id="cue-slot"></div>
   </section>
 
   <!-- 2:14 /vf-scene: code becomes a picture -->
   <section class="vf-shot center" data-cue="scene" data-until="scene.library">
-    <h2 class="vf-h2" data-in="words"><em>/vf-scene</em> builds the animation</h2>
+    <div class="vf-row title-row">
+      <span class="vf-tile" data-in="pop"><i data-icon="lucide-animated/projector" data-play="@animation"></i></span>
+      <h2 class="vf-h2" data-in="words"><em>/vf-scene</em> builds the animation</h2>
+    </div>
     <div class="build">
-      <div class="vf-code" data-in="left" data-at="scene+0.5">
-        <div class="top"><i></i><i></i><i></i></div>
-        <pre><span class="k">&lt;section</span> <span class="n">data-cue</span>=<span class="s">"hook"</span><span class="k">&gt;</span>
-  <span class="k">&lt;h2</span> <span class="n">data-in</span>=<span class="s">"words"</span><span class="k">&gt;</span>
-    <span>An explainer video</span>
-  <span class="k">&lt;/h2&gt;</span>
-<span class="k">&lt;/section&gt;</span></pre>
-      </div>
+      <div class="slot" id="code-slot"></div>
       <i class="arrow" data-icon="arrow-right" data-in="fade" data-at="scene.build+0.5"></i>
       <div class="mini-frame" data-in="zoom" data-at="scene.build+0.8">
         <b>An explainer video usually means</b>
@@ -574,32 +672,64 @@
     </div>
   </section>
 
-  <!-- 2:19 library: icons and a Lottie animation -->
-  <section class="vf-shot center" data-cue="scene.library">
-    <h2 class="vf-h2" data-in="words">Icons, graphics and Lottie from the library</h2>
-    <div class="lib">
-      <div class="icon-grid" data-in="pop" data-stagger="0.03">
-        <span class="vf-tile"><i data-icon="rocket"></i></span><span class="vf-tile two"><i data-icon="globe"></i></span><span class="vf-tile"><i data-icon="chart-bar"></i></span><span class="vf-tile two"><i data-icon="lightbulb"></i></span>
-        <span class="vf-tile two"><i data-icon="shield-check"></i></span><span class="vf-tile"><i data-icon="users"></i></span><span class="vf-tile two"><i data-icon="target"></i></span><span class="vf-tile"><i data-icon="zap"></i></span>
-        <span class="vf-tile"><i data-icon="book-open"></i></span><span class="vf-tile two"><i data-icon="calendar"></i></span><span class="vf-tile"><i data-icon="trending-up"></i></span><span class="vf-tile two"><i data-icon="star"></i></span>
-      </div>
-      <canvas id="lottie" width="1040" height="1040" data-in="zoom" data-delay="0.3"></canvas>
-    </div>
-  </section>
-
-  <!-- 2:23 stock video, a photo, music -->
-  <section class="vf-shot center" data-cue="scene.stock">
-    <div class="stock">
-      <div class="clip-frame" id="stock-clip" data-in="left"></div>
-      <div class="side">
-        <img src="assets/mic-pink.jpg" alt="" data-in="right" data-delay="0.2">
-        <div class="vf-card music" data-in="right" data-delay="0.35">
-          <span class="vf-tile two"><i data-icon="headphones"></i></span>
-          <div><b>Calm Piano 1</b><span>cynicmusic, CC0</span></div>
+  <!-- 2:19 library: animated icons, colour graphics and Lottie (A of the zoom-through into the stock shot) -->
+  <div class="txw" id="w-library">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="scene.library" data-until="scene.capture">
+      <h2 class="vf-h2" data-in="words">Icons, graphics and Lottie from the library</h2>
+      <div class="wall">
+        <div class="wall-col">
+          <p class="wall-tag" data-in="fade" data-at="@icons">Animated icons</p>
+          <div class="wall-grid" data-in="pop" data-stagger="0.04" data-at="scene.library+0.3">
+            <span class="vf-tile"><i data-icon="lucide-animated/rocket" data-play="@icons"></i></span>
+            <span class="vf-tile two"><i data-icon="lucide-animated/layers" data-play="@icons" data-delay="0.1"></i></span>
+            <span class="vf-tile"><i data-icon="lucide-animated/workflow" data-play="@icons" data-delay="0.2"></i></span>
+            <span class="vf-tile two"><i data-icon="lucide-animated/gauge" data-play="@icons" data-delay="0.3"></i></span>
+            <span class="vf-tile two"><i data-icon="lucide-animated/projector" data-play="@icons" data-delay="0.4"></i></span>
+            <span class="vf-tile"><i data-icon="lucide-animated/bot" data-play="@icons" data-delay="0.5"></i></span>
+            <span class="vf-tile two"><i data-icon="lucide-animated/cog" data-play="@icons" data-delay="0.6"></i></span>
+            <span class="vf-tile"><i data-icon="lucide-animated/check-check" data-play="@icons" data-delay="0.7"></i></span>
+          </div>
+        </div>
+        <div class="wall-col">
+          <p class="wall-tag" data-in="fade" data-at="@graphics">Colour graphics</p>
+          <div class="wall-grid" data-in="pop" data-stagger="0.06" data-at="@graphics">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/rocket.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/trophy.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/bar-chart.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/calendar.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/graduation-cap.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/clipboard.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/party-popper.svg" alt="">
+            <img class="pict-t" src="assets/graphics/fluent-emoji-flat/magnifying-glass-tilted-left.svg" alt="">
+          </div>
+        </div>
+        <div class="wall-col">
+          <p class="wall-tag" data-in="fade" data-at="@lottie">Lottie</p>
+          <div class="lot-col" data-in="zoom" data-stagger="0.1" data-at="@lottie">
+            <canvas id="lot-w1" class="lot-w" width="300" height="300"></canvas>
+            <canvas id="lot-w2" class="lot-w" width="300" height="300"></canvas>
+            <canvas id="lot-w3" class="lot-w" width="300" height="300"></canvas>
+            <canvas id="lot-w4" class="lot-w" width="300" height="300"></canvas>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
+
+  <!-- 2:23 stock video, a photo, music (B of the zoom-through) -->
+  <div class="txw" id="w-stock">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="scene.stock" data-cue-offset="-0.2">
+      <div class="stock">
+        <div class="clip-frame" id="stock-clip"></div>
+        <div class="side">
+          <div class="ph-wrap" id="ph-wrap"><img id="ph-img" src="assets/mic-pink.jpg" alt=""></div>
+          <div class="clip-frame" id="music-clip"></div>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <!-- 2:26 a real browser recording -->
   <section class="vf-shot center" data-cue="scene.capture">
@@ -609,121 +739,149 @@
     </div>
   </section>
 
-  <!-- 2:30 a ready-made motion component -->
+  <!-- 2:30 ready-made motion components from the pack -->
   <section class="vf-shot center" data-cue="scene.motion">
-    <div class="motion-frame" id="motion-clip" data-in="zoom"></div>
-  </section>
-
-  <!-- 2:33 sound effects and music: CC0 files or generated -->
-  <section class="vf-shot center" data-cue="scene.sound" data-until="check">
-    <h2 class="vf-h2" data-in="words">Sound effects and music</h2>
-    <div class="fx-row" data-in="pop" data-stagger="0.08">
-      <div class="vf-card fx"><svg viewBox="0 0 300 110"><path class="fxw" data-k="0" d=""/></svg><b>whoosh</b></div>
-      <div class="vf-card fx two"><svg viewBox="0 0 300 110"><path class="fxw" data-k="1" d=""/></svg><b>pop</b></div>
-      <div class="vf-card fx"><svg viewBox="0 0 300 110"><path class="fxw" data-k="2" d=""/></svg><b>stamp</b></div>
-      <div class="vf-card fx two"><svg viewBox="0 0 300 110"><path class="fxw" data-k="3" d=""/></svg><b>chime</b></div>
-    </div>
-    <div class="src-row" data-in="rise" data-stagger="0.15" data-at="scene.cc0">
-      <span class="vf-chip ok">Free CC0 files</span><span class="vf-chip hot">Generated on your computer</span>
+    <div class="motion-row">
+      <div class="mclip side"><div class="clip-frame" id="m-agent"></div><span class="vf-chip" data-in="rise" data-delay="0.3">Agent flow</span></div>
+      <div class="mclip main"><div class="clip-frame" id="m-stack"></div><span class="vf-chip hot" data-in="rise" data-delay="0.2">Card stack</span></div>
+      <div class="mclip side"><div class="clip-frame" id="m-ticker"></div><span class="vf-chip" data-in="rise" data-delay="0.4">Ticker</span></div>
     </div>
   </section>
 
-  <!-- 2:40 check: a still per cue, counters to zero -->
-  <section class="vf-shot center" data-cue="check">
-    <h2 class="vf-h2" data-in="words">Every counter must read <em>zero</em></h2>
-    <div class="check">
-      <div class="sheet" data-in="rise" data-at="check.still"><img src="assets/contact.jpg" alt=""></div>
-      <div class="counters" data-in="right" data-stagger="0.1" data-at="check.count">
-        <div class="vf-card counter"><span>Text overlaps</span><b id="c1">0</b></div>
-        <div class="vf-card counter"><span>Text too short to read</span><b id="c2">0</b></div>
-        <div class="vf-card counter"><span>Sound design missing</span><b id="c3">0</b></div>
+  <!-- 2:33 sound effects and music: CC0 files or generated (A of the pixelate into check) -->
+  <div class="txw" id="w-sound">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="scene.sound" data-until="check.count">
+      <h2 class="vf-h2" data-in="words">Sound effects and music</h2>
+      <div class="snd-row">
+        <div class="slot" id="spark-slot"></div>
+        <div class="src-row" data-in="rise" data-stagger="0.15" data-at="scene.cc0">
+          <span class="vf-chip ok">Free CC0 files</span><span class="vf-chip hot">Generated here</span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- 2:50 render: one file, the mix -->
-  <section class="vf-shot split" data-cue="render" data-until="render.extras">
+  <!-- 2:40 check: a still per cue, the counters go to zero (B of the pixelate) -->
+  <div class="txw" id="w-check">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="check" data-cue-offset="-0.3">
+      <div class="vf-row title-row">
+        <h2 class="vf-h2" data-in="words" data-at="check+0.2">Every counter must read <em>zero</em></h2>
+        <canvas id="lot-ok" class="lot-s" width="300" height="300"></canvas>
+      </div>
+      <div class="check" id="check-row">
+        <div class="sheet" id="sheet"><img src="assets/contact.jpg" alt=""></div>
+        <div class="slot" id="bars-slot"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2:50 render: one file, a mix, a loudness target -->
+  <section class="vf-shot split render-split" data-cue="render" data-until="render.extras">
     <div class="vf-col">
       <div class="player-frame" id="player-clip" data-in="zoom"></div>
       <span class="vf-chip hot file-chip" data-in="pop" data-delay="0.5">what-is-videofactory.mp4</span>
     </div>
-    <svg class="mix" viewBox="0 0 760 360" data-in="fade" data-at="render+0.6">
-      <text class="lab" x="0" y="66">Voice</text><text class="lab" x="0" y="186">Music</text><text class="lab" x="0" y="306">Effects</text>
-      <path id="mw0" d="" stroke="var(--accent)"/><path id="mw1" d="" stroke="var(--accent2)"/><path id="mw2" d="" stroke="var(--green)"/>
-    </svg>
+    <div class="vf-col mix-col">
+      <svg class="mix" viewBox="0 0 760 360" data-in="fade" data-at="render+0.6">
+        <text class="lab" x="0" y="66">Voice</text><text class="lab" x="0" y="186">Music</text><text class="lab" x="0" y="306">Effects</text>
+        <path id="mw0" d="" stroke="var(--accent)"/><path id="mw1" d="" stroke="var(--accent2)"/><path id="mw2" d="" stroke="var(--green)"/>
+      </svg>
+      <div class="slot" id="gauge-slot"></div>
+    </div>
   </section>
 
-  <!-- 2:57 phone copy, thumbnail, chapters, Earshot -->
-  <section class="vf-shot center" data-cue="render.extras" data-until="studio">
+  <!-- 2:57 phone copy, thumbnail, chapters -->
+  <section class="vf-shot center" data-cue="render.extras" data-until="render.earshot">
     <div class="extras">
-      <div class="vf-phone" data-in="rise"><div class="phone-mini"><b>An explainer video usually means</b><div class="mt"><span><i data-icon="video"></i></span><span><i data-icon="layers"></i></span><span><i data-icon="headphones"></i></span></div></div></div>
-      <div class="thumb" data-in="rise" data-delay="0.15"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
-      <div class="vf-card chapters" data-in="rise" data-delay="0.3">
-        <h3>Chapters</h3>
-        <ul><li><span>0:00</span>Intro</li><li><span>0:19</span>Setup</li><li><span>1:09</span>Brand</li><li><span>2:14</span>Scene</li><li><span>2:50</span>Render</li></ul>
+      <div class="extra-col">
+        <div class="vf-phone mini" data-in="rise"><div class="phone-mini"><b>An explainer video usually means</b><div class="mt"><span><i data-icon="video"></i></span><span><i data-icon="layers"></i></span><span><i data-icon="headphones"></i></span></div></div></div>
+        <div class="cap-row" data-in="fade" data-delay="0.3"><img class="pict-xs" src="assets/graphics/fluent-emoji-flat/mobile-phone.svg" alt=""><span>Phone copy</span></div>
+      </div>
+      <div class="extra-col">
+        <div class="thumb" data-in="rise" data-delay="0.15"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
+        <div class="cap-row" data-in="fade" data-delay="0.45"><span>Thumbnail</span></div>
       </div>
     </div>
-    <div class="vf-card earshot" data-in="rise" data-at="render.earshot">
-      <span class="vf-tile two"><i data-icon="headphones"></i></span>
+    <div class="slot" id="chap-slot"></div>
+  </section>
+
+  <!-- 3:01 Earshot listens -->
+  <section class="vf-shot center" data-cue="render.earshot">
+    <div class="vf-card earshot" data-in="rise">
+      <span class="vf-tile two"><i data-icon="lucide-animated/audio-lines" data-play="@earshot>render"></i></span>
       <div class="vf-col" style="gap:10px"><h3>Earshot listens to the render</h3><span class="cmd">python anim.py listen</span></div>
     </div>
+    <div class="slot" id="lc-slot"></div>
   </section>
 
-  <!-- 3:05 the Studio -->
-  <section class="vf-shot center" data-cue="studio">
-    <div class="studio-pair">
-      <div class="vf-browser a" data-in="rise" id="studio-a">
-        <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / videos</div></div>
-        <div class="view"><img src="assets/studio-home.png" alt=""></div>
+  <!-- 3:05 the Studio: the real page, pulled back into a laptop (A of the device pull-back) -->
+  <div class="txw noglow" id="w-studio">
+    <section class="vf-shot full" data-cue="studio" data-until="studio.pages">
+      <img class="full-img" src="assets/studio-home.png" alt="">
+    </section>
+  </div>
+  <div class="txw" id="w-studiopages">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="studio.pages" data-cue-offset="-1.0">
+      <div class="studio-pair">
+        <div class="vf-browser a" id="studio-a">
+          <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / videos</div></div>
+          <div class="view"><img src="assets/studio-home.png" alt=""></div>
+        </div>
+        <div class="vf-browser b" id="studio-b">
+          <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / review / script</div></div>
+          <div class="view"><img src="assets/studio-review.png" alt=""></div>
+        </div>
       </div>
-      <div class="vf-browser b" data-in="right" data-at="studio.pages">
-        <div class="top"><i></i><i></i><i></i><div class="url">127.0.0.1:8765 / review / script</div></div>
-        <div class="view"><img src="assets/studio-review.png" alt=""></div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- 3:13 /vf-status: the real table for this video, then the next command -->
+  <!-- 3:13 /vf-status: the real table for this video, a stat card -->
   <section class="vf-shot center" data-cue="status">
-    <div class="vf-term status-term" data-in="rise">
-      <div class="top"><i></i><i></i><i></i></div>
-      <pre><span class="row-line"><span class="p">&gt; </span><span id="t-status">/vf-status</span></span></pre>
-      <div class="stat-id" data-in="fade" data-at="status+0.7">videofactory/what-is-videofactory</div>
-      <div class="stat-table hd" data-in="rise" data-stagger="0.05" data-at="status+0.7">
-        <span class="h">00_research</span><span class="h">01_voice</span><span class="h">02_transcript</span><span class="h">03_cues</span><span class="h">04_scene</span><span class="h">05_render</span>
-      </div>
-      <div class="stat-table" data-in="pop" data-stagger="0.05" data-at="status+0.85">
-        <span class="v no">not used</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v">done</span><span class="v no">-</span>
-      </div>
+    <div class="status-row">
+      <div class="slot" id="status-slot"></div>
+      <div class="slot" id="stat-slot"></div>
     </div>
-    <p class="next-line" data-in="rise" data-at="status+2.4">Next: <span class="cmd">/vf-render</span></p>
   </section>
 
   <!-- 3:16 the rules -->
   <section class="vf-shot center" data-cue="rules">
-    <p class="rule-line" data-in="words">One step. Then it <em style="font-style:normal;color:var(--accent)">stops</em>.</p>
+    <p class="rule-line" id="rule-line">One step. Then it <em style="font-style:normal;color:var(--accent)">stops</em>.</p>
     <div class="steps-dots" id="dots"><span><i></i>script</span><span><i></i>voice</span><span><i></i>words</span><span><i></i>cues</span><span><i></i>scene</span><span><i></i>render</span></div>
-    <span class="yes-btn" data-in="zoom" data-at="rules.yes">A clear yes from you</span>
+    <span class="yes-btn" id="yes-btn" data-in="zoom" data-at="rules.yes"><img class="pict-xs" src="assets/graphics/fluent-emoji-flat/check-mark-button.svg" alt="">A clear yes from you<i data-icon="lucide-animated/stamp" data-play="rules.yes+0.2"></i></span>
   </section>
 
-  <!-- 3:24 reveal -->
-  <section class="vf-shot center" data-cue="reveal">
-    <h2 class="vf-title" data-in="words">This video was made with <em>these commands</em>.</h2>
-    <div class="used" data-in="pop" data-stagger="0.05" data-delay="0.6">
-      <span class="vf-chip">/vf-new-video</span><span class="vf-chip">/vf-script</span><span class="vf-chip">/vf-voice</span><span class="vf-chip">/vf-transcript</span><span class="vf-chip">/vf-cues</span><span class="vf-chip">/vf-scene</span><span class="vf-chip hot">/vf-render</span>
-    </div>
-  </section>
+  <!-- 3:24 reveal: the same commands, and what this video used (A of the circle reveal) -->
+  <div class="txw" id="w-reveal">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <section class="vf-shot center" data-cue="reveal" data-until="cta.today">
+      <h2 class="vf-title reveal-line"><span id="rl1">This video was made with</span><br><span id="rl2">those same commands.</span></h2>
+      <div class="reveal-row">
+        <div class="used" id="used" data-in="pop" data-stagger="0.05" data-at="reveal+0.9">
+          <span class="vf-chip">/vf-new-video</span><span class="vf-chip">/vf-script</span><span class="vf-chip">/vf-voice</span><span class="vf-chip">/vf-transcript</span><span class="vf-chip">/vf-cues</span><span class="vf-chip">/vf-scene</span><span class="vf-chip hot">/vf-render</span>
+        </div>
+        <div class="slot" id="tally-slot"></div>
+      </div>
+    </section>
+  </div>
 
-  <!-- 3:27 call to action -->
-  <section class="vf-shot center" data-cue="cta">
-    <div class="end-mark" data-in="zoom"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
-    <div class="vf-row cta-chips" style="gap:20px" data-in="rise" data-stagger="0.1" data-delay="0.4"><span class="vf-chip ok">Free</span><span class="vf-chip ok">Open source</span><span class="vf-chip ok">MIT</span></div>
-    <div class="vf-term cta-term" data-in="rise" data-at="cta.clone" style="width:1300px">
-      <div class="top"><i></i><i></i><i></i></div>
-      <pre><span class="row-line"><span class="p">$ </span><span id="t-clone">git clone https://github.com/dutchbase/videofactory</span></span><span class="row-line" id="l-setup"><span class="p">&gt; </span>/vf-setup</span></pre>
-    </div>
-    <p class="url-big" data-in="pop" data-at="cta.today">github.com/<em>dutchbase/videofactory</em></p>
-  </section>
+  <!-- 3:27 call to action (B of the circle reveal) -->
+  <div class="txw" id="w-cta">
+    <div class="vf-bg"><div class="vf-glow"></div><div class="vf-glow two"></div></div>
+    <div class="pf-host" id="pf-cta"></div>
+    <canvas id="lot-confetti" class="confetti" width="960" height="540"></canvas>
+    <section class="vf-shot center" data-cue="cta" data-cue-offset="-0.5" id="shot-cta">
+      <div class="end-mark" id="end-mark"><img src="brand/logo/mark.svg" alt=""><b>Video<em>Factory</em></b></div>
+      <div class="vf-row cta-chips" style="gap:20px"><span class="vf-chip ok" data-in="rise" data-at="cta+0.4">Free</span><span class="vf-chip ok" data-in="rise" data-at="cta+0.5">Open source</span><span class="vf-chip ok" data-in="rise" data-at="cta+0.6">MIT</span></div>
+      <div class="vf-term cta-term" data-in="rise" data-at="cta.clone">
+        <div class="top"><i></i><i></i><i></i></div>
+        <pre><span class="row-line"><span class="p">$ </span><span id="t-clone">git clone https://github.com/dutchbase/videofactory</span></span><span class="row-line" id="l-setup"><span class="p">&gt; </span>/vf-setup</span></pre>
+      </div>
+      <div class="url-row" id="url-row"><i class="rk" data-icon="lucide-animated/rocket" data-play="cta.today+0.1"></i><p class="url-big" id="cta-url">github.com/dutchbase/videofactory</p></div>
+    </section>
+  </div>
 
   <div class="vf-captions"><p></p></div>
 </div>
@@ -732,9 +890,71 @@
 <script src="runtime/vendor/gsap.min.js"></script>
 <script src="runtime/player.js"></script>
 <script src="runtime/icons.js"></script>
+<script src="runtime/animicon.js"></script>
+<script src="assets/icons-animated/lucide-animated/audio-lines.js"></script>
+<script src="assets/icons-animated/lucide-animated/bot.js"></script>
+<script src="assets/icons-animated/lucide-animated/check-check.js"></script>
+<script src="assets/icons-animated/lucide-animated/clock.js"></script>
+<script src="assets/icons-animated/lucide-animated/cog.js"></script>
+<script src="assets/icons-animated/lucide-animated/file-text.js"></script>
+<script src="assets/icons-animated/lucide-animated/folder-open.js"></script>
+<script src="assets/icons-animated/lucide-animated/frame.js"></script>
+<script src="assets/icons-animated/lucide-animated/gallery-thumbnails.js"></script>
+<script src="assets/icons-animated/lucide-animated/gauge.js"></script>
+<script src="assets/icons-animated/lucide-animated/layers.js"></script>
+<script src="assets/icons-animated/lucide-animated/message-square-more.js"></script>
+<script src="assets/icons-animated/lucide-animated/mic.js"></script>
+<script src="assets/icons-animated/lucide-animated/palette.js"></script>
+<script src="assets/icons-animated/lucide-animated/play.js"></script>
+<script src="assets/icons-animated/lucide-animated/projector.js"></script>
+<script src="assets/icons-animated/lucide-animated/rocket.js"></script>
+<script src="assets/icons-animated/lucide-animated/scan-text.js"></script>
+<script src="assets/icons-animated/lucide-animated/search.js"></script>
+<script src="assets/icons-animated/lucide-animated/stamp.js"></script>
+<script src="assets/icons-animated/lucide-animated/terminal.js"></script>
+<script src="assets/icons-animated/lucide-animated/workflow.js"></script>
 <script src="runtime/lib.js"></script>
 <script src="assets/real.js"></script>
 <script src="runtime/modern.js"></script>
+<script src="blocks/core.js"></script>
+<script src="fx/kit.js"></script>
+<script src="fx/arrow-annotate.js"></script>
+<script src="fx/blinds.js"></script>
+<script src="fx/callout.js"></script>
+<script src="fx/circle-reveal.js"></script>
+<script src="fx/code-block.js"></script>
+<script src="fx/comparison-bars.js"></script>
+<script src="fx/connector-lines.js"></script>
+<script src="fx/device-pullback.js"></script>
+<script src="fx/donut-chart.js"></script>
+<script src="fx/expand-morph.js"></script>
+<script src="fx/gauge-dial.js"></script>
+<script src="fx/grid-pixelate.js"></script>
+<script src="fx/handwriting-text.js"></script>
+<script src="fx/ken-burns.js"></script>
+<script src="fx/line-chart.js"></script>
+<script src="fx/marker-highlight.js"></script>
+<script src="fx/mask-reveal.js"></script>
+<script src="fx/masked-slide-reveal.js"></script>
+<script src="fx/matrix-decode.js"></script>
+<script src="fx/mesh-gradient.js"></script>
+<script src="fx/notification-stack.js"></script>
+<script src="fx/particle-field.js"></script>
+<script src="fx/progress-bar.js"></script>
+<script src="fx/shake-emphasis.js"></script>
+<script src="fx/shimmer-sweep.js"></script>
+<script src="fx/slot-roll.js"></script>
+<script src="fx/sparkline-row.js"></script>
+<script src="fx/spotlight.js"></script>
+<script src="fx/spring-in.js"></script>
+<script src="fx/stat-card.js"></script>
+<script src="fx/strikethrough-replace.js"></script>
+<script src="fx/svg-mask-reveal.js"></script>
+<script src="fx/terminal.js"></script>
+<script src="fx/timeline.js"></script>
+<script src="fx/tracking-in.js"></script>
+<script src="fx/whip-pan.js"></script>
+<script src="fx/zoom-through.js"></script>
 <script src="scene.js"></script>
 </body>
 </html>

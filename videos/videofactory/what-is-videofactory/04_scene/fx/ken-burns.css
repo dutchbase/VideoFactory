@@ -1,0 +1,2 @@
+/* ken-burns: the frame that clips the zoomed element. */
+.fx-ken-burns { position: absolute; overflow: hidden; }

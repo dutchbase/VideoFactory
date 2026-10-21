@@ -1,0 +1,5 @@
+/* masked-slide-reveal: each mask is one line high with padding below and above, so descenders (g j p q y) and accents are not cut. */
+.fx-masked-slide-reveal { display: flex; flex-wrap: wrap; justify-content: var(--fx-msr-align, center); column-gap: var(--fx-msr-gap, 0.28em); line-height: 1.12; letter-spacing: -0.02em; }
+.fx-masked-slide-reveal-lines { flex-direction: column; align-items: var(--fx-msr-align, center); row-gap: 0.1em; }
+.fx-masked-slide-reveal-mask { display: block; overflow: hidden; padding: 0.12em 0.04em 0.28em; margin: -0.12em -0.04em -0.28em; }
+.fx-masked-slide-reveal-item { display: block; line-height: 1.12; white-space: nowrap; }

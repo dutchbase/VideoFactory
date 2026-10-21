@@ -177,6 +177,213 @@ Stock and library: `04_scene/assets/library.md`. Sound: `04_scene/assets/sound.m
     "note": "",
     "fingerprint": "8d95485dd6b705d3282d455531b8631a96ad77a695df0281a9918344572dcfff",
     "at": "2026-10-21T04:59:34.064217+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "dfb14e751b45079eec88f17095fc7e78cb7754d5d6fcebf5d33d57aa61904f9a",
+    "at": "2026-10-21T05:18:01.963186+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "dfb14e751b45079eec88f17095fc7e78cb7754d5d6fcebf5d33d57aa61904f9a",
+    "at": "2026-10-21T05:20:09.923895+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "aaa0a197e5066b50a98eca693cb40c0c520db9c662e76081d97b0bf0f2093a32",
+    "at": "2026-10-21T05:31:52.371261+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "0b05f4b999e3ae79b2cc7b245b0baf1f07e5ed50c17e98fdf7c148401c05008e",
+    "at": "2026-10-21T05:41:41.126994+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "6fdb9a00fb345f26b21f150158911a04719811d115b526a0dc041b7b1da23dea",
+    "at": "2026-10-21T06:10:50.575412+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "6fdb9a00fb345f26b21f150158911a04719811d115b526a0dc041b7b1da23dea",
+    "at": "2026-10-21T06:14:23.992874+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "89861052ffa4ef7e05801007d98aa5f28d38e80cf7e93f0bf6147c259dbf9c3e",
+    "at": "2026-10-21T06:23:07.957436+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "89861052ffa4ef7e05801007d98aa5f28d38e80cf7e93f0bf6147c259dbf9c3e",
+    "at": "2026-10-21T07:19:52.528570+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "9ab312a8667c4b192483c6e8d2935be6c37dedf09e66f5cda29f2180c44935e6",
+    "at": "2026-10-21T09:34:57.773760+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "9ab312a8667c4b192483c6e8d2935be6c37dedf09e66f5cda29f2180c44935e6",
+    "at": "2026-10-21T10:05:05.286714+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "0159dbed4c9826a119c78a22b95b714c27fa646e433ed73e7c7bf8261c243ec8",
+    "at": "2026-10-21T10:05:21.124718+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "42743c14eeaa06c5b4f1d4e7a650d490cdc6bf42e5e6b06d8cb1f85113237141",
+    "at": "2026-10-21T10:15:36.014935+00:00"
+  },
+  {
+    "gate": "cues",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "42743c14eeaa06c5b4f1d4e7a650d490cdc6bf42e5e6b06d8cb1f85113237141",
+    "at": "2026-10-21T10:16:27.399380+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "ac9e41ea1612acc61f567194444276206aea42fb911c16a760ed7c7c44af86e2",
+    "at": "2026-10-21T10:49:42.186830+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "ac9e41ea1612acc61f567194444276206aea42fb911c16a760ed7c7c44af86e2",
+    "at": "2026-10-21T10:51:38.107494+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "a20b3690672d78a868e063cc1b7235727e856e6dd0624590e208588a4db1feac",
+    "at": "2026-10-21T11:01:02.248446+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "a20b3690672d78a868e063cc1b7235727e856e6dd0624590e208588a4db1feac",
+    "at": "2026-10-21T11:10:58.140096+00:00"
+  },
+  {
+    "gate": "render",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "565c6e0f517f3e9f5f1a11d6d43092140db8cbeea2c451d7f435f42b49b4d98d",
+    "at": "2026-10-21T11:11:04.320299+00:00"
+  },
+  {
+    "gate": "render",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "565c6e0f517f3e9f5f1a11d6d43092140db8cbeea2c451d7f435f42b49b4d98d",
+    "at": "2026-10-21T11:13:17.274690+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "e1eb98b31a8c151a35b2e1777774943cbf9291a0483ef905ed01d4a8ba83fff2",
+    "at": "2026-10-21T11:27:38.669026+00:00"
+  },
+  {
+    "gate": "scene",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "e1eb98b31a8c151a35b2e1777774943cbf9291a0483ef905ed01d4a8ba83fff2",
+    "at": "2026-10-21T11:28:56.754297+00:00"
+  },
+  {
+    "gate": "render",
+    "kind": "ready",
+    "decision": null,
+    "reviewer": null,
+    "note": "",
+    "fingerprint": "39fc42bcf9157de19f74b686229e3b5f54ecd6350bd8b889d36a372af14d5b84",
+    "at": "2026-10-21T11:54:57.782314+00:00"
+  },
+  {
+    "gate": "render",
+    "kind": "decision",
+    "decision": "approved",
+    "reviewer": "Reviewer",
+    "note": "",
+    "fingerprint": "39fc42bcf9157de19f74b686229e3b5f54ecd6350bd8b889d36a372af14d5b84",
+    "at": "2026-10-21T11:56:13.626852+00:00"
   }
 ]
 ```

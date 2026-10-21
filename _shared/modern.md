@@ -91,6 +91,7 @@ P.onFrame((t) => { el.style.opacity = P.fade('aside'); }); // anything else: a p
 - `python anim.py use <slug> <ref>` copies a library item into `04_scene/assets/`; then `<img src="assets/…">`.
 - Screenshots: `python anim.py grab <slug> <url> <name>`; recordings: `python anim.py record …` (see `_shared/capture.md`).
 - Motion-pack and stock video clips: `python anim.py use <slug> motion:<brand>/<ID> --as <name>` or `stock:...`, then `Modern.clip` (`_shared/library.md`).
+- A clip whose source video sits in the video folder (a motion-pack render in `04_scene/motion/`) keeps its frames out of git (`assets/.gitignore`). `stills`, `check` and `render` cut them again from the source when they are missing, for example after a fresh clone.
 - Every image must load. A missing file stops the render with a clear error.
 
 ## Formats and safe areas

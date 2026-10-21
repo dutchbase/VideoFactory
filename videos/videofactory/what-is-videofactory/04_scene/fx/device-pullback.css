@@ -1,0 +1,6 @@
+/* device-pullback: the device (ground, bezel, base) that shot A snaps into. Colours come from the brand variables in the markup. */
+.fx-device { position: absolute; inset: 0; pointer-events: none; }
+.fx-device-ground { position: absolute; inset: 0; }
+.fx-device-shell { position: absolute; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.7); }
+.fx-device-base { position: absolute; }
+.fx-device-dot { position: absolute; }

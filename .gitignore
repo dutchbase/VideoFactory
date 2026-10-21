@@ -39,7 +39,13 @@ videos/*/*/05_render/benchmarks/
 videos/*/*/05_render/review-rounds/
 
 # The demo video ships with the repo
-!videos/videofactory/what-is-videofactory/05_render/what-is-videofactory.mp4
+# review frames are rebuilt by `anim.py stills` and the phone check; they stay local
+videos/*/*/05_render/stills/
+videos/*/*/05_render/sheets/
+videos/*/*/05_render/phone/
+videos/*/*/05_render/contact.png
+videos/*/*/05_render/contact.html
+# the demo MP4 is published as a GitHub Release asset, not in the repo
 
 # Generated setup fixture output
 tests/fixtures/silent-first-scene/05_render/*.mp4

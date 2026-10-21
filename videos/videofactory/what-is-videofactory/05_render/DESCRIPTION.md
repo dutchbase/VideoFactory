@@ -30,7 +30,7 @@ Get it: https://github.com/dutchbase/videofactory. Clone the repo and type `/vf-
 
 ## Sources
 
-- Screenshot and screen recording of Wikipedia (the article "Explainer video" and the search page), https://en.wikipedia.org/wiki/Explainer_video. Wikipedia text is licensed CC BY-SA 4.0.
+- Screenshot of the Wikipedia article "Tutorial" (the link https://en.wikipedia.org/wiki/Explainer_video leads there), and a screen recording of a Wikipedia search. Wikipedia text is licensed CC BY-SA 4.0.
 - Screenshots of the VideoFactory Studio, the local web app in this repo.
 
 ## Credits
@@ -40,7 +40,8 @@ Get it: https://github.com/dutchbase/videofactory. Clone the repo and type `/vf-
 - **Sound effects:** Kenney (Interface Sounds, UI Audio, Impact Sounds, Sci-fi Sounds, https://kenney.nl) and artisticdude (Swishes Sound Pack, OpenGameArt), all CC0 1.0. Mouse clicks: "Mouse clicks and scroll wheel" by tgfcoder, https://freesound.org/people/tgfcoder/sounds/146877, CC0 1.0.
 - **Stock video:** "Computer video editing" by Gilmer Diaz Estela, Pexels, https://www.pexels.com/video/computer-video-editing-7699548/.
 - **Stock photos:** microphone photos by Jacob Hodgson and Sandra Tenschert, Unsplash.
-- **Animation:** "growth chart" Lottie from LottieFiles (Lottie Simple License). Motion clips AI-03 and VID-01 from the VideoFactory motion pack (MIT).
+- **Animation:** 8 Lottie animations from LottieFiles (Lottie Simple License): growth chart, chat bubble, check mark, bar graph, clock, success check, confetti burst and search. 7 motion clips from the VideoFactory motion pack (MIT): AI-03, AI-05, VID-01, CIN-01, UTL-07, BKG-08 and CAP-06. One 3D cube block, rendered with HyperFrames (Apache 2.0). 37 effects and 7 transitions from the VideoFactory fx library (MIT), rewritten from Remotion UI and other MIT Remotion projects (see THIRD-PARTY-NOTICES.md).
+- **Icons and pictograms:** 22 animated icons from lucide-animated (MIT, https://github.com/pqoqubbw/icons), interface icons from Lucide (ISC), and 18 colour pictograms from Microsoft Fluent Emoji (MIT, https://github.com/microsoft/fluentui-emoji).
 - **Fonts:** Inter, Archivo, JetBrains Mono and Caveat (SIL Open Font License 1.1).
 
 ## Disclosures

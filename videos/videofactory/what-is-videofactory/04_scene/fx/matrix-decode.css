@@ -1,0 +1,4 @@
+/* matrix-decode: every character keeps the width of its real glyph; the scramble glyph sits on top, centred. */
+.fx-matrix-decode { white-space: nowrap; color: var(--fx-md-ink, var(--ink)); }
+.fx-matrix-decode-ch { position: relative; }
+.fx-matrix-decode-glyph { position: absolute; left: 0; right: 0; top: 0; text-align: center; }

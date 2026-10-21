@@ -1,0 +1,3 @@
+/* connector-lines: the SVG fills its root and sits under the boxes it connects (z-index 1). */
+.fx-connector-lines { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+.fx-connector-path { fill: none; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }

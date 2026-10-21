@@ -1,0 +1,2 @@
+/* mask-reveal: the element is clipped by a moving inset; the edge stays sharp. */
+.fx-mask-reveal { color: var(--ink); font-family: var(--head); }

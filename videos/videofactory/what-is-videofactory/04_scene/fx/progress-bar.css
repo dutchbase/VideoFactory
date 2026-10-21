@@ -1,0 +1,7 @@
+/* progress-bar: the label and the number sit on the ground above the track, never on the fill. */
+.fx-progress-bar { display: flex; flex-direction: column; gap: 22px; font-family: var(--font); color: var(--ink); }
+.fx-progress-bar-head { display: flex; align-items: baseline; justify-content: space-between; gap: 40px; }
+.fx-progress-bar-label { font: 600 40px/1.1 var(--font); color: var(--dim); }
+.fx-progress-bar-value { font: 800 96px/1 var(--head); color: var(--ink); font-variant-numeric: tabular-nums; margin-left: auto; }
+.fx-progress-bar-track { position: relative; border-radius: 999px; overflow: hidden; }
+.fx-progress-bar-fill { height: 100%; width: 0; border-radius: 999px; }

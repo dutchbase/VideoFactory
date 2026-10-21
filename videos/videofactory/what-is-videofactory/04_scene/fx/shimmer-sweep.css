@@ -1,0 +1,11 @@
+/* shimmer-sweep: the text is painted by a gradient (band of colour on the base colour); only the gradient position moves. */
+.fx-shimmer-sweep-text {
+  display: inline-block;
+  background-image: linear-gradient(var(--fx-ss-angle, 100deg), var(--fx-ss-base, var(--ink)) 40%, var(--fx-ss-shine, var(--accent)) 50%, var(--fx-ss-base, var(--ink)) 60%);
+  background-size: 250% 100%;
+  background-position: calc(var(--fx-ss-pos, 150) * 1%) 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

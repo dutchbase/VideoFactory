@@ -1,18 +1,88 @@
 # Sound plan and rights
 
 ## Music
-- `study` from the brand: "Calm Piano 1 (Vaporware)" by cynicmusic (The Cynic Project), https://opengameart.org/content/calm-piano-1-vaporware, licence CC0 1.0. Gain 0.18 under the whole video. Brand sound, see `brands/videofactory/sound/SOURCES.md`.
+- `study` from the brand: "Calm Piano 1 (Vaporware)" by cynicmusic (The Cynic Project), https://opengameart.org/content/calm-piano-1-vaporware, licence CC0 1.0. Gain 0.3 under the whole video (ducks about 6 dB under the voice). Brand sound, see `brands/videofactory/sound/SOURCES.md`.
 
-## Effects (all brand sounds, see `brands/videofactory/sound/SOURCES.md`; licence CC0 1.0)
-- `whoosh` (17): every chapter cut, so the ear hears each new topic.
-- `pop` (8): a new object lands: the chat, the folder, the command list, the style cards, the effect chips, the extras, the last call.
-- `key` (3): a terminal types a command (`/vf-setup`, `/vf`, `/vf-status`).
-- `stamp` (4): a check or an approval lands (stage checks, character batches, script approval, "a clear yes").
-- `error` (2, gain 0.6): something gets struck through (the three tools, the hype line).
-- `chime` (2): a good result (the test video, every counter at zero).
-- `blip` (1): the agent chips appear.
-- `impact` (1): the reveal line. The first big hit of the video.
-- `riser` (1): into the call to action.
+## Effects: 129 in total, every cue has at least one
+All are brand sounds, see `brands/videofactory/sound/SOURCES.md` (licence CC0 1.0), except the one file effect below. Each sits on a visible event of `scene.js`; offsets are seconds after the cue start; a number after the offset is the gain. The effects sit 3 dB under the voice. Nothing plays on continuous motion (drifts, waves, the particle field). One riser, one impact, three chimes.
+Count per name: `pop` 36, `whoosh` 25, `tick` 20, `select` 11, `blip` 7, `key` 7, `stamp` 6, `coin` 5, `chime` 3, `step` 3, `error` 2, `file:mouse-clicks.wav` 1, `impact` 1, `powerup` 1, `riser` 1.
+
+- hook: `whoosh` (the big line tracks in); `pop@0.46 0.7` (card, chip or icon lands); `pop@1.26 0.7` (card, chip or icon lands)
+- hook.tools: `tick@0.12 0.5` (list row or small step)
+- hook.weekend: `error 0.6` (the three tools are struck out); `whoosh@1.15 0.8` (the expand-morph into the chat; starts early so its peak meets the move)
+- turn: `pop@0.52 0.7` (the chat card lands); `blip@1.66 0.6` (a choice is made)
+- turn.chat: `pop 0.6` (card, chip or icon lands)
+- what: `pop 0.8` (card, chip or icon lands)
+- what.agent: `blip 0.8` (a choice is made)
+- what.check: `tick@0.54 0.5` (list row or small step); `tick@1.18 0.5` (list row or small step); `stamp@1.82 0.7` (approval or check lands)
+- setup: `whoosh` (cut or fast move)
+- setup.need: `tick 0.5` (list row or small step); `tick@0.94 0.5` (list row or small step); `tick@2.76 0.5` (list row or small step)
+- setup.agent: `tick 0.5` (list row or small step); `whoosh@1.9 0.7` (cut or fast move)
+- setup.type: `key@0.3 0.6` (a command types); `key@1.22 0.6` (a command types)
+- setup.doctor: `tick@0.51 0.5`, `tick@0.93 0.5`, `tick@1.35 0.5` (each OK line of the doctor lands)
+- setup.test: `pop@0.04 0.7` (card, chip or icon lands); `chime@0.88 0.8` (the test video is ready)
+- optional: `whoosh` (cut or fast move)
+- optional.whisper: `select@0.04 0.6` (an option is chosen); `coin@1.4 0.5` (a counter stops)
+- optional.eleven: `select@0.04 0.6` (an option is chosen)
+- optional.stock: `select@0.04 0.6` (an option is chosen); `select@0.74 0.6` (an option is chosen)
+- optional.photos: `pop@0.14 0.7` (card, chip or icon lands)
+- optional.earshot: `select@0.04 0.6` (an option is chosen)
+- optional.node: `select@0.04 0.6` (an option is chosen); `whoosh@1.79 0.6` (cut or fast move)
+- optional.form: `select@0.04 0.6` (an option is chosen)
+- optional.browser: `pop@0.04 0.6` (card, chip or icon lands)
+- vf: `whoosh` (cut or fast move)
+- vf.type: `key@0.26 0.6` (a command types)
+- vf.reads: `step@0.44 0.5` (cursor or list step)
+- vf.help: `pop 0.6` (card, chip or icon lands); `step@0.34 0.5` (cursor or list step); `step@1.54 0.5` (cursor or list step); `whoosh@2.72 0.8` (cut or fast move)
+- brand: `pop@0.9 0.8` (the logo and wordmark have landed)
+- brand.new: `tick@0.34 0.5` (list row or small step); `tick@1.94 0.5` (list row or small step)
+- brand.fonts: `pop@0.04 0.7` (card, chip or icon lands)
+- brand.style: `pop@0.34 0.6` (card, chip or icon lands); `tick@2.28 0.5` (list row or small step)
+- brand.character: `pop@0.24 0.6` (card, chip or icon lands); `pop@3.24 0.6` (card, chip or icon lands)
+- brand.approve: `stamp@0.24 0.8` (first approval stamp); `stamp@0.9 0.8` (last approval stamp)
+- video: `whoosh` (cut or fast move); `key@0.88 0.6` (a command types)
+- video.format: `pop@1.36 0.7` (card, chip or icon lands); `pop@2.16 0.7` (card, chip or icon lands)
+- video.brief: `pop@0.04 0.6` (card, chip or icon lands); `key@1.48 0.6` (a command types); `whoosh@4.46 0.8` (the cut into research; starts 0.22 s early so its peak meets the cut)
+- research: `key@0.75 0.6` (a command types)
+- research.web: `whoosh@0.06 0.4` (cut or fast move)
+- research.source: `pop@0.04 0.8` (card, chip or icon lands)
+- script: `whoosh` (cut or fast move); `select@2.24 0.5` (an option is chosen)
+- script.tone: `error@1.32 0.6` (something is struck out); `blip@1.99 0.6` (a choice is made)
+- voice: `whoosh` (cut or fast move); `pop@0.7 0.7` (card, chip or icon lands)
+- voice.free: `blip@0.04 0.5` (a choice is made)
+- voice.eleven: `pop 0.7` (card, chip or icon lands)
+- voice.approve: `whoosh@0.55 0.5` (the review page starts to scroll to the Approved bar)
+- voice.stamp: `whoosh@0.1 0.4` (cut or fast move); `stamp@1.35 0.9` (the script is approved)
+- transcript: `whoosh` (cut or fast move); `tick@1.06 0.4` (list row or small step); `tick@2.14 0.4` (list row or small step)
+- transcript.exact: `select@0.04 0.5` (an option is chosen)
+- cues: `whoosh` (cut or fast move); `tick@0.57 0.5` (list row or small step); `blip@1.8 0.6` (a choice is made)
+- cues.change: `tick 0.4` (list row or small step)
+- scene: `whoosh` (cut or fast move)
+- scene.build: `blip@0.82 0.6` (a choice is made)
+- scene.library: `pop@0.3 0.7` (card, chip or icon lands); `pop@1.52 0.7` (card, chip or icon lands); `pop@2.42 0.7` (card, chip or icon lands)
+- scene.stock: `whoosh 0.8` (cut or fast move)
+- scene.capture: `file:mouse-clicks.wav` (real clicks while the browser recording plays)
+- scene.motion: `pop@0.09 0.7` (card, chip or icon lands); `select@0.4 0.5` (an option is chosen)
+- scene.sound: `whoosh@0.24 0.5` (cut or fast move); `pop@0.64 0.6` (card, chip or icon lands); `stamp@1.04 0.6` (approval or check lands); `chime@1.44 0.5` (good result)
+- scene.cc0: `pop@0.02 0.6` (card, chip or icon lands); `whoosh@3.75 0.8` (cut or fast move)
+- check: `pop@0.44 0.8` (card, chip or icon lands)
+- check.still: `select@0.04 0.5` (an option is chosen)
+- check.count: `pop@0.04 0.7` (card, chip or icon lands); `coin@3.22 0.5` (a counter stops)
+- check.zero: `coin@0.32 0.5` (a counter stops)
+- check.done: `chime 0.9` (every counter reads zero)
+- render: `whoosh` (cut or fast move); `pop@0.5 0.6` (card, chip or icon lands)
+- render.mix: `pop@1.26 0.6` (card, chip or icon lands); `coin@1.82 0.5` (a counter stops)
+- render.extras: `pop@0.45 0.7` (the phone copy card lands); `tick@1.06 0.5` (list row or small step)
+- render.earshot: `pop@0.4 0.7` (the Earshot card lands)
+- studio: `whoosh` (cut or fast move)
+- studio.pages: `whoosh 0.5` (cut or fast move)
+- status: `key@0.32 0.6` (a command types); `coin@2.44 0.6` (a counter stops)
+- rules: `whoosh` (cut or fast move); `tick@0.84 0.5` (list row or small step)
+- rules.yes: `stamp@0.52 0.8` (approval or check lands); `tick@0.94 0.5` (list row or small step)
+- reveal: `pop@0.56 0.6` (card, chip or icon lands); `riser@2.95` (ends on the circle reveal); `impact@2.95` (the circle reveal opens the end card, in the pause before "VideoFactory is free")
+- cta: `pop@0.4 0.6` (card, chip or icon lands)
+- cta.clone: `pop@0.45 0.6` (the clone terminal lands); `blip@1.94 0.6` (a choice is made)
+- cta.today: `pop@0.02 0.7` (card, chip or icon lands); `powerup@0.24 0.5` (confetti on "today")
 
 ## File effects
 - mouse-clicks.wav: https://freesound.org/people/tgfcoder/sounds/146877 (CC0 1.0), by tgfcoder, found through Openverse. Cut 21.6 to 23.5 s of "Mouse clicks and scroll wheel", louder by 9.5 dB. Cue scene.capture: real clicks while the browser recording plays.

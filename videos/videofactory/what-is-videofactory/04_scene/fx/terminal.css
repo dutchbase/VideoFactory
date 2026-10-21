@@ -1,0 +1,15 @@
+/* terminal: a window on the page ground; the cursor and the typed text are set by the part. */
+.fx-terminal { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 2; }
+.fx-terminal-win { box-sizing: border-box; overflow: hidden; border: 2px solid var(--line); border-radius: 24px;
+  background: color-mix(in srgb, var(--ink) 6%, var(--cream)); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.6); }
+.fx-terminal-bar { display: flex; align-items: center; gap: 12px; padding: 20px 28px; border-bottom: 2px solid var(--line); }
+.fx-terminal-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--dim); opacity: 0.45; }
+.fx-terminal-title { margin-left: 12px; font-family: var(--font); font-size: 0.6em; color: var(--dim); }
+.fx-terminal-body { padding: 32px 40px 36px; font-family: var(--mono, var(--font)); line-height: 1.6; color: var(--ink); }
+.fx-terminal-row, .fx-terminal-out { white-space: pre; min-height: 1.6em; }
+.fx-terminal-prompt { color: var(--accent); margin-right: 0.8em; }
+.fx-terminal-cursor { display: inline-block; width: 0.55em; height: 1.1em; margin-left: 1px; vertical-align: text-bottom; background: var(--ink); opacity: 0; }
+.fx-terminal-out { color: var(--dim); }
+.fx-terminal-green { color: var(--green); }
+.fx-terminal-accent { color: var(--accent); }
+.fx-terminal-ink { color: var(--ink); }

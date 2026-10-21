@@ -16,14 +16,18 @@ window.REAL = {
    "fps": 24,
    "src": "AI-03_16x9_6s.mp4",
    "start": 0.0,
-   "end": 6.0
+   "end": 6.0,
+   "path": "04_scene/motion/AI-03_16x9_6s.mp4",
+   "width": 1920
   },
   "player": {
    "n": 144,
    "fps": 24,
    "src": "VID-01_16x9_6s.mp4",
    "start": 0.0,
-   "end": 6.0
+   "end": 6.0,
+   "path": "04_scene/motion/VID-01_16x9_6s.mp4",
+   "width": 1920
   },
   "browser-search": {
    "n": 147,
@@ -31,7 +35,61 @@ window.REAL = {
    "src": "f96e6733db8b23989a692dbdd9c96f1e.webm",
    "start": 0.3,
    "end": 12.52
+  },
+  "card-stack": {
+   "n": 144,
+   "fps": 24,
+   "src": "CIN-01_16x9_6s.mp4",
+   "start": 0.0,
+   "end": 6.0,
+   "path": "04_scene/motion/CIN-01_16x9_6s.mp4",
+   "width": 1920
+  },
+  "ai-voice": {
+   "n": 144,
+   "fps": 24,
+   "src": "AI-05_16x9_6s.mp4",
+   "start": 0.0,
+   "end": 6.0,
+   "path": "04_scene/motion/AI-05_16x9_6s.mp4",
+   "width": 1920
+  },
+  "audio-bars": {
+   "n": 144,
+   "fps": 24,
+   "src": "UTL-07_16x9_6s.mp4",
+   "start": 0.0,
+   "end": 6.0,
+   "path": "04_scene/motion/UTL-07_16x9_6s.mp4",
+   "width": 1920
+  },
+  "ticker": {
+   "n": 144,
+   "fps": 24,
+   "src": "BKG-08_16x9_6s.mp4",
+   "start": 0.0,
+   "end": 6.0,
+   "path": "04_scene/motion/BKG-08_16x9_6s.mp4",
+   "width": 1920
+  },
+  "transcript-cap": {
+   "n": 144,
+   "fps": 24,
+   "src": "CAP-06_16x9_6s.mp4",
+   "start": 0.0,
+   "end": 6.0,
+   "path": "04_scene/motion/CAP-06_16x9_6s.mp4",
+   "width": 1920
+  },
+  "engines-cube": {
+   "n": 72,
+   "fps": 24,
+   "src": "engines-cube.mp4",
+   "start": 0.0,
+   "end": 3.0,
+   "path": "04_scene/motion/engines-cube.mp4",
+   "width": 1920
   }
  },
- "captured": "2026-10-20"
+ "captured": "2026-10-21"
 };

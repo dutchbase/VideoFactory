@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1920, height=1080">
+<title>engines cube</title>
+<!-- Source of assets/engines-cube: the HyperFrames cube-3d block with VideoFactory text. Rendered by hyperframes 0.8.86 (anim.hf render) in a scratch folder with links brand, runtime, blocks. -->
+<link href="runtime/fonts/fonts.css" rel="stylesheet">
+<link href="blocks/core/core.css" rel="stylesheet">
+<link href="blocks/room-3d/room-3d.css" rel="stylesheet">
+<link href="blocks/cube-3d/cube-3d.css" rel="stylesheet">
+<style>
+  html, body { width: 1920px; height: 1080px; margin: 0; overflow: hidden; background: var(--cream); }
+  #stage { position: relative; width: 1920px; height: 1080px; color: var(--ink); font-family: var(--font); }
+  .b-camera3d { left: 590px; top: 170px; }
+  .b-shadow3d { left: 580px; top: 930px; }
+  .b-cube3d .b-face3d .b-head3d { font-size: 84px; }
+  .b-cube3d .b-face3d > svg { width: 200px; height: 190px; }
+</style>
+</head>
+<body>
+<div id="stage" data-composition-id="main" data-start="0" data-duration="3" data-width="1920" data-height="1080" data-fps="30"></div>
+<script src="brand/tokens.js"></script>
+<script src="runtime/vendor/gsap.min.js"></script>
+<script src="cues/cues.js"></script>
+<script src="runtime/hf-bridge.js"></script>
+<script src="blocks/core/core.js"></script>
+<script src="blocks/room-3d/room-3d.js"></script>
+<script src="blocks/cube-3d/cube-3d.js"></script>
+<script>
+  // Two engines on one cube: the Modern kit turns into HyperFrames.
+  const tl = gsap.timeline({ paused: true }), H = Blocks.core(tl);
+  const b = Blocks.cube3d(H, document.getElementById('stage'));
+  H.mk('h2', 'b-head3d', b.front, 'MODERN KIT');
+  Blocks.room3d.drawing(b.front, [['M30 40H210V190H30Z', true], ['M30 85H210 M80 85V190']]);
+  H.mk('h2', 'b-head3d', b.next, 'HYPERFRAMES');
+  Blocks.room3d.drawing(b.next, [['M60 30L195 110L60 190Z', true]]);
+  tl.set(b.camera, { rotationX: -14, rotationY: -22, z: -260, force3D: true, immediateRender: true }, 0);
+  tl.set(b.shadow, { x: 0, scaleX: 1, immediateRender: true }, 0);
+  tl.set(b.object, { rotationY: 0, immediateRender: true }, 0);
+  tl.fromTo(b.camera, { z: -620, rotationY: -40 }, { z: -300, rotationY: -22, duration: 0.9, ease: 'power3.out', immediateRender: true }, 0);
+  b.turn(1.2, 1.0);
+  tl.to(b.shadow, { scaleX: 0.8, x: 60, duration: 1.0, ease: 'power2.inOut' }, 1.2);
+  tl.to(b.camera, { rotationY: -14, z: -340, duration: 0.9, ease: 'power2.inOut' }, 2.1);
+  window.__timelines['main'] = tl;
+</script>
+</body>
+</html>

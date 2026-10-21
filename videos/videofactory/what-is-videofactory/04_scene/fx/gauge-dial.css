@@ -1,0 +1,7 @@
+/* gauge-dial: the readout sits in the open gap under the needle's hub, on the ground. */
+.fx-gauge-dial { position: relative; color: var(--ink); font-family: var(--font); }
+.fx-gauge-dial svg { display: block; }
+.fx-gauge-dial-read { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; transform: translateY(-50%); text-align: center; }
+.fx-gauge-dial-value { font: 800 112px/1 var(--head); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fx-gauge-dial-label { font: 600 40px/1.1 var(--font); color: var(--dim); }
+.fx-gauge-dial-end { position: absolute; transform: translateX(-50%); font: 600 32px/1 var(--font); color: var(--dim); font-variant-numeric: tabular-nums; }
