@@ -5,7 +5,7 @@ description: "The old shot pushes past the lens and blurs, a hard cut lands, and
 tags: ["transition", "zoom", "push", "blur", "cut", "scene", "camera", "through", "depth"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["zoom-through.js", "zoom-through.css"]
 depends: ["core"]
 api: ["FX.zoomThrough(H, from, to, {at, out = 0.2, dur = 0.5, blur = 18, outScale = 1.2, inScale = 0.75}): from is shot A, to is shot B, both full-frame on one stage; A exits from `at`, the cut is at `at + out`, B settles over `dur`", "out is the length of A's exit in s; dur is the length of B's arrival in s; blur is the blur in px at the cut (motion.md: 10 for objects, 18-20 for full-frame surfaces); outScale is A's end scale; inScale is B's start scale", "returns {cut, end}: the cut time and the time B is at rest"]

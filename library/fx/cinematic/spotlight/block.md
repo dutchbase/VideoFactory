@@ -5,7 +5,7 @@ description: "Dims everything in an element except one circle or rounded rectang
 tags: ["spotlight", "focus", "dim", "highlight", "vignette", "attention", "darken", "reveal", "look here", "light"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["spotlight.js", "spotlight.css"]
 depends: ["core"]
 api: ["FX.spotlight(H, el, {at, dur = 0.7, shape = 'circle'|'rect', target: el|selector, x, y, r = 200, w = 500, h = 300, radius = 28, pad = 28, dim = 0.78, color: 'cream', ring = true, ringColor: 'accent', moves: [{at, dur = 0.7, target|x,y,r|x,y,w,h}], exitAt, exitDur = 0.5}): a veil is added on top of el", "returns {veil, ring}"]

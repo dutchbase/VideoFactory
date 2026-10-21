@@ -5,7 +5,7 @@ description: "Text settles from a slight tilt (default -8 degrees) to straight w
 tags: ["rotate", "tilt", "entrance", "text", "title", "spring", "calm", "fade", "settle"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["rotate-in.js", "rotate-in.css"]
 depends: ["core"]
 api: ["FX.rotateIn(H, el, {at, dur = 0.7, angle = -8, origin = '50% 50%', by: null|'words'|'chars', stagger = 0.08}): el appears at `at`; angle is clamped to -12..12", "returns {el, parts}"]

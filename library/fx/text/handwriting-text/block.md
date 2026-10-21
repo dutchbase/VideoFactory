@@ -5,7 +5,7 @@ description: "Writes a line of text on letter by letter, left to right, with a p
 tags: ["handwriting", "write on", "pen", "script", "signature", "text", "reveal", "underline", "draw"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["handwriting-text.js", "handwriting-text.css"]
 depends: ["core"]
 api: ["FX.handwritingText(H, el, {at, perChar = 0.07, dur = chars * perChar, wobble = 1.4, pen = 0.1, penColor: 'accent', seed = 1, underline = false, lineColor: 'accent', lineDur = 0.5}): the text of el is written on from `at`; pen is the dot size in em (0 hides it)", "returns {el, parts, end}: end is the time the last stroke ends"]

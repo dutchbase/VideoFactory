@@ -5,7 +5,7 @@ description: "A line draws on left to right over a soft area with dots that pop 
 tags: ["line", "chart", "trend", "graph", "data", "growth", "series", "timeline", "area"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["line-chart.js", "line-chart.css"]
 depends: ["core"]
 api: ["FX.lineChart(H, el, {at, dur = 2.0, values: [numbers] (7 sample values), labels: null|[text per point], labelEvery = 1, unit = '', decimals = 0, zero = false, fill = true, showDots = true, strokeWidth = 8, width = 1500, height = 560, valueGutter = 200, color: 'accent'}): builds the chart inside el; the line draws over `dur` seconds from `at`", "returns {el, root, last}"]

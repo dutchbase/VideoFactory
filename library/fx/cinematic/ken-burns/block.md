@@ -5,7 +5,7 @@ description: "A slow, steady zoom and pan over any element, usually a picture; t
 tags: ["ken burns", "zoom", "pan", "drift", "photo", "still", "documentary", "camera", "slow", "cinematic"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["ken-burns.js", "ken-burns.css"]
 depends: ["core"]
 api: ["FX.kenBurns(H, el, {at, dur = 5, fromScale = 1, toScale = 1.1, from: {x: 0.5, y: 0.5}, to: {x: 0.5, y: 0.5}, clip = true}): el zooms from `at` for `dur` seconds and then holds", "returns {el, wrap}"]

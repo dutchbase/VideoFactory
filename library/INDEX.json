@@ -10191,7 +10191,7 @@
    "background"
   ],
   "category": "backgrounds",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/backgrounds/animated-noise-grain"
@@ -10215,7 +10215,7 @@
    "look here"
   ],
   "category": "shapes",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/shapes/arrow-annotate"
@@ -10239,7 +10239,7 @@
    "mask"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/blinds"
@@ -10263,7 +10263,7 @@
    "calm"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/blur-reveal"
@@ -10287,7 +10287,7 @@
    "arrow"
   ],
   "category": "shapes",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/shapes/callout"
@@ -10312,7 +10312,7 @@
    "seeded"
   ],
   "category": "cinematic",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/cinematic/camera-shake"
@@ -10336,7 +10336,7 @@
    "wipe"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/circle-reveal"
@@ -10361,7 +10361,7 @@
    "lines"
   ],
   "category": "interface",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/interface/code-block"
@@ -10385,7 +10385,7 @@
    "versus"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/comparison-bars"
@@ -10409,7 +10409,7 @@
    "relationship"
   ],
   "category": "shapes",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/shapes/connector-lines"
@@ -10434,7 +10434,7 @@
    "product"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/device-pullback"
@@ -10458,7 +10458,7 @@
    "split"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/donut-chart"
@@ -10482,7 +10482,7 @@
    "data"
   ],
   "category": "backgrounds",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/backgrounds/dynamic-grid"
@@ -10506,7 +10506,7 @@
    "modal"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/expand-morph"
@@ -10530,7 +10530,7 @@
    "narrowing"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/funnel-chart"
@@ -10554,7 +10554,7 @@
    "level"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/gauge-dial"
@@ -10578,7 +10578,7 @@
    "retro"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/grid-pixelate"
@@ -10602,7 +10602,7 @@
    "draw"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/handwriting-text"
@@ -10627,7 +10627,7 @@
    "cinematic"
   ],
   "category": "cinematic",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/cinematic/ken-burns"
@@ -10651,7 +10651,7 @@
    "area"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/line-chart"
@@ -10675,7 +10675,7 @@
    "phrase"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/marker-highlight"
@@ -10699,7 +10699,7 @@
    "list"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/marquee"
@@ -10723,7 +10723,7 @@
    "uncover"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/mask-reveal"
@@ -10747,7 +10747,7 @@
    "entrance"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/masked-slide-reveal"
@@ -10771,7 +10771,7 @@
    "resolve"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/matrix-decode"
@@ -10795,7 +10795,7 @@
    "colour"
   ],
   "category": "backgrounds",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/backgrounds/mesh-gradient"
@@ -10819,7 +10819,7 @@
    "afterimage"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/motion-trail"
@@ -10844,7 +10844,7 @@
    "inbox"
   ],
   "category": "interface",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/interface/notification-stack"
@@ -10868,7 +10868,7 @@
    "ring"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/orbit-motion"
@@ -10893,7 +10893,7 @@
    "canvas"
   ],
   "category": "backgrounds",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/backgrounds/particle-field"
@@ -10917,7 +10917,7 @@
    "gauge"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/pie-reveal"
@@ -10940,7 +10940,7 @@
    "score"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/progress-bar"
@@ -10964,7 +10964,7 @@
    "tech"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/rgb-glitch-text"
@@ -10988,7 +10988,7 @@
    "settle"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/rotate-in"
@@ -11012,7 +11012,7 @@
    "vibrate"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/shake-emphasis"
@@ -11036,7 +11036,7 @@
    "gradient"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/shimmer-sweep"
@@ -11060,7 +11060,7 @@
    "text"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/skew-in"
@@ -11084,7 +11084,7 @@
    "digits"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/slot-roll"
@@ -11108,7 +11108,7 @@
    "delta"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/sparkline-row"
@@ -11133,7 +11133,7 @@
    "light"
   ],
   "category": "cinematic",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/cinematic/spotlight"
@@ -11157,7 +11157,7 @@
    "pop in"
   ],
   "category": "entrances",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/entrances/spring-in"
@@ -11181,7 +11181,7 @@
    "data"
   ],
   "category": "scenes",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/scenes/stat-card"
@@ -11205,7 +11205,7 @@
    "statement"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/strikethrough-replace"
@@ -11229,7 +11229,7 @@
    "entrance"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/stroke-to-fill-text"
@@ -11254,7 +11254,7 @@
    "uncover"
   ],
   "category": "shapes",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/shapes/svg-mask-reveal"
@@ -11279,7 +11279,7 @@
    "cursor"
   ],
   "category": "interface",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/interface/terminal"
@@ -11303,7 +11303,7 @@
    "data"
   ],
   "category": "data",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/data/timeline"
@@ -11327,7 +11327,7 @@
    "snap"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/tracking-in"
@@ -11350,7 +11350,7 @@
    "title"
   ],
   "category": "text",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/text/underline"
@@ -11374,7 +11374,7 @@
    "camera"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/whip-pan"
@@ -11398,7 +11398,7 @@
    "ground"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/wipe"
@@ -11422,7 +11422,7 @@
    "depth"
   ],
   "category": "transitions",
-  "status": "draft",
+  "status": "approved",
   "engine": "both",
   "license": "MIT",
   "path": "fx/transitions/zoom-through"

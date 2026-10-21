@@ -5,7 +5,7 @@ description: "One short shake of the whole scene that fades to rest by itself; u
 tags: ["camera", "shake", "impact", "hit", "slam", "rumble", "shock", "handheld", "cinematic", "seeded"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["camera-shake.js", "camera-shake.css"]
 depends: ["core"]
 api: ["FX.cameraShake(H, el, {at, dur = 0.6, intensity = 14, rotate = 0.5, rate = 20, decay = 2, seed = 1}): el shakes from `at` for `dur` seconds and then sits still", "returns {el, at, end}"]

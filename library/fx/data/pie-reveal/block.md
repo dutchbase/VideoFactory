@@ -5,7 +5,7 @@ description: "A single ring fills clockwise from 12 o'clock to a percent while t
 tags: ["pie", "ring", "percent", "chart", "data", "reveal", "donut", "counter", "gauge"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["pie-reveal.js", "pie-reveal.css"]
 depends: ["core"]
 api: ["FX.pieReveal(H, el, {at, dur = 1.4, value = 72, max = 100, label = '', suffix = '%', decimals = 0, size = 560, thickness = 56, color: 'accent', trackColor: 'line'}): builds the ring inside el; it fills over `dur` seconds from `at`", "returns {el, root, value, label, arc}"]

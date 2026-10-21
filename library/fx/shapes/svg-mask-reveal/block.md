@@ -5,7 +5,7 @@ description: "An SVG shape (circle, star, heart, your own path) grows from a poi
 tags: ["mask", "reveal", "svg", "shape", "clip", "wipe", "star", "circle", "transition", "uncover"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["svg-mask-reveal.js", "svg-mask-reveal.css"]
 depends: ["core"]
 api: ["FX.svgMaskReveal(H, el, {at, dur = 1, shape = 'circle'|'diamond'|'square'|'hexagon'|'star'|'plus'|'heart'|'M ... Z' (path on a 0-100 box, absolute M L H V C Q Z), origin: {x: 0.5, y: 0.5}, rotation = 0, bouncy = false, invert = false}): el is clipped by the shape from `at`", "returns {el}"]

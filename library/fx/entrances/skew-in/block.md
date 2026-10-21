@@ -5,7 +5,7 @@ description: "An element slides in sideways while leaning, then stands up straig
 tags: ["skew", "lean", "slide", "entrance", "editorial", "headline", "title", "shear", "text"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["skew-in.js", "skew-in.css"]
 depends: ["core"]
 api: ["FX.skewIn(H, el, {at, dur = 0.6, skew = 14, skewY = 0, travel = 56, direction: 'left'|'right' = 'left', origin = '0% 100%'}): el appears at `at`", "returns {el, at, dur}"]

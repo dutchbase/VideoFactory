@@ -5,7 +5,7 @@ description: "A hand-drawn arrow draws itself from a point to a target element, 
 tags: ["arrow", "annotate", "pointer", "hand-drawn", "sketch", "label", "highlight", "draw-on", "look here"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["arrow-annotate.js", "arrow-annotate.css"]
 depends: ["core"]
 api: ["FX.arrowAnnotate(H, root, {at, dur = 0.8, from: {x, y}, target: el|selector, to: {x, y}, label, labelSize = 44, color: 'accent', strokeWidth = 6, headSize = 38, bow = 0.25, gap = 24, sketch = true, seed = 3, exitAt, exitDur = 0.25}): the arrow is added to root; points are stage px inside root", "returns {svg, from, to}"]

@@ -5,7 +5,7 @@ description: "A dial arc fills and a needle sweeps to a target while the readout
 tags: ["gauge", "dial", "needle", "meter", "score", "speedometer", "metric", "data", "level"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["gauge-dial.js", "gauge-dial.css"]
 depends: ["core"]
 api: ["FX.gaugeDial(H, el, {at, dur = 1.6, value = 72, min = 0, max = 100, label = '', unit = '%', decimals = 0, size = 640, thickness = 44, sweep = 240, tickCount = 9, showRange = true, color: 'accent', trackColor: 'line'}): builds the dial inside el; the needle sweeps over `dur` seconds from `at`", "returns {el, root, value}"]

@@ -5,7 +5,7 @@ description: "A highlighter stroke sweeps word by word across a phrase, as marke
 tags: ["highlight", "marker", "highlighter", "emphasis", "text", "underline", "box", "knockout", "phrase"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["marker-highlight.js", "marker-highlight.css"]
 depends: ["core"]
 api: ["FX.markerHighlight(H, el, {at, phrase = null (all words), variant = 'marker'|'knockout'|'underline'|'box', dur = 0.45, stagger = 0.16, softness = 12, markerColor = 'accent' ('ink' for knockout), flipColor = 'cream', text = el.textContent}): the first word is marked from `at`", "returns {el, words, end}"]

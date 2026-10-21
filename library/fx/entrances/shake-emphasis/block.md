@@ -5,7 +5,7 @@ description: "A short impact shake that dies away, with a small squash on the hi
 tags: ["shake", "impact", "emphasis", "hit", "punch", "jolt", "beat", "stress", "vibrate"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["shake-emphasis.js", "shake-emphasis.css"]
 depends: ["core"]
 api: ["FX.shakeEmphasis(H, el, {at, dur = 0.6, intensity = 14, rotation = 1.4, punch = 0.05, frequency = 22, axis: 'both'|'x'|'y' = 'both', decay = 2.2, repeat = 1, every = dur + 0.6, seed = 1}): el shakes from `at`", "returns {el, at, end}"]

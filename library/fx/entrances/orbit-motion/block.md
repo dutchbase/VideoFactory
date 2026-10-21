@@ -5,7 +5,7 @@ description: "The children of an element travel round a tilted ellipse with dept
 tags: ["orbit", "circle", "ellipse", "rotate", "carousel", "satellites", "items", "depth", "ring"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["orbit-motion.js", "orbit-motion.css"]
 depends: ["core"]
 api: ["FX.orbitMotion(H, el, {at, to, radiusX = 520, radiusY = 190, period = 8, phase = 0, tilt = -12, direction: 'cw'|'ccw' = 'cw', centerX = 50, centerY = 50, depth = 0.28, depthFade = 0.4, upright = true, showPath = false, enter = 0.7, stagger = 0.1}): children of el orbit from `at` to `to`", "returns {el, items}"]

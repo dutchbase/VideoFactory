@@ -5,7 +5,7 @@ description: "Lines draw between named anchors or boxes, one after the other, wi
 tags: ["connector", "lines", "diagram", "flow", "edges", "graph", "network", "dashed", "relationship"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["connector-lines.js", "connector-lines.css"]
 depends: ["core"]
 api: ["FX.connectorLines(H, root, {at, anchors: [{id, x, y} | {id, el}], edges: [{from, to, shape, bow, color, dot}], shape = 'curve'|'elbow'|'straight', bow = 0.16, color: 'accent', strokeWidth = 4, dashed = false, dot = true, dur = 0.7, stagger = 0.25, gap = 14, exitAt, exitDur = 0.3}): the SVG is added to root, under the boxes", "returns {svg, edges}"]

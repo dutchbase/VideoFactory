@@ -5,7 +5,7 @@ description: "Random glyphs resolve from left to right into the real text, with 
 tags: ["decode", "matrix", "scramble", "text", "reveal", "glyphs", "hacker", "typing", "resolve"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["matrix-decode.js", "matrix-decode.css"]
 depends: ["core"]
 api: ["FX.matrixDecode(H, el, {at, dur = 1.0, rate = 24, jitter = 2, glyphs = letters and digits, seed = 'matrix-decode', color = 'ink', hotColor = 'accent', scrambleColor = 'dim', text = el.textContent}): the text appears at `at` as a scramble and is clean at `at + dur`", "returns {el, parts, end}"]

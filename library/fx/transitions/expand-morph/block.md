@@ -5,7 +5,7 @@ description: "A rounded card of the next shot grows from a small origin rect to 
 tags: ["transition", "expand", "morph", "card", "container", "cut", "scene", "shared element", "modal"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["expand-morph.js", "expand-morph.css"]
 depends: ["core"]
 api: ["FX.expandMorph(H, from, to, {at, lead = 0.14, dur = 0.8, shrink = 0.09, origin = [0.36, 0.34, 0.28, 0.32], radius = 28}): from is shot A, to is shot B, both full-frame on one stage; A leans back from `at`, the card starts at `at + lead` and is full at `at + lead + dur`", "lead is the length of A's anticipation in s; shrink is how much A shrinks (K3: about 0.09); origin is the start rect of the card as [x, y, width, height] shares of the frame; radius is the corner radius in px at the start (it goes to 0)", "returns {shadow, cut, end}: the shadow element, the time the card starts and the end time"]

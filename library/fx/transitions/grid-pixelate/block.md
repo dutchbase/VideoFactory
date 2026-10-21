@@ -5,7 +5,7 @@ description: "Square cells of the next shot's ground colour fill the frame in a 
 tags: ["transition", "grid", "pixelate", "mosaic", "cells", "cut", "scene", "scatter", "retro"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["grid-pixelate.js", "grid-pixelate.css"]
 depends: ["core"]
 api: ["FX.gridPixelate(H, from, to, {at, dur = 0.6, cols = 16, rows = cols * height / width, seed = 1, accent = 0, ground = null|role}): from is shot A, to is shot B, both full-frame on one stage; the cells run from `at` to `at + dur`, the shots swap at `at + dur / 2`", "cols and rows are 2-64; seed sets the scatter (same seed, same order); accent is the share of cells painted in the accent colour (0-1); ground is a colour role for the cells (default: the background B already has)", "returns {canvas, end}"]

@@ -5,7 +5,7 @@ description: "Generic toast notifications slide in, stack in a corner and dismis
 tags: ["notification", "toast", "stack", "alert", "popup", "message", "ui", "dismiss", "badge", "inbox"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["notification-stack.js", "notification-stack.css"]
 depends: ["core"]
 api: ["FX.notificationStack(H, root, {at, toasts: [{title, body, meta, tone: 'info'|'success'|'warn'|'error', at, hold}], align = 'top-right'|'top-left'|'bottom-right'|'bottom-left', stagger = 0.7, life = 2.2, progress = true, width = 640, margin = 60, gap = 20}): a stack in the corner of root", "returns {el, toasts, end}"]

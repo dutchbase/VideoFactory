@@ -5,7 +5,7 @@ description: "Two colour copies ride just off the text and burst wider now and t
 tags: ["glitch", "rgb", "chromatic", "split", "text", "title", "distortion", "burst", "tech"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["rgb-glitch-text.js", "rgb-glitch-text.css"]
 depends: ["core"]
 api: ["FX.rgbGlitchText(H, el, {at, dur = 2.4, split = 0.02, intensity = 0.07, period = 0.8, burst = 0.2, rate = 12, seed = 7, color = 'ink', colorA = 'accent', colorB = 'green', text = el.textContent}): the text snaps in at `at`, the glitch ends at `at + dur`", "returns {el, end}"]

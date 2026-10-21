@@ -5,7 +5,7 @@ description: "Glowing dots drift across the frame with depth: near dots are bigg
 tags: ["background", "particles", "dust", "bokeh", "stars", "ambient", "depth", "glow", "drift", "canvas"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["particle-field.js", "particle-field.css"]
 depends: ["core"]
 api: ["FX.particleField(H, root, {from = 0, to, color: 'accent', count = 70, angle = 8, speed = 1, size = 14, minSize = 2, drift = 4, glow = 1.6, intensity = 1, seed = 1}): canvas behind the content of root", "returns {canvas}"]

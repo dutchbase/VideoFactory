@@ -5,7 +5,7 @@ description: "Slats open one after the other, each sweeping sideways or down, an
 tags: ["transition", "blinds", "slats", "stripes", "reveal", "cut", "scene", "stagger", "mask"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["blinds.js", "blinds.css"]
 depends: ["core"]
 api: ["FX.blinds(H, from, to, {at, dur = 0.6, slats = 8, orientation = 'horizontal'|'vertical', stagger = 0.5, alternate = false, soft = 0.12}): from is shot A, to is shot B, both full-frame on one stage; the slats open from `at` to `at + dur`", "slats is 2-48; horizontal slats stack top to bottom and sweep sideways, vertical slats stand side by side and sweep down; stagger is the share of dur that the start of the last slat is late; alternate turns every second slat the other way; soft is the soft edge as a share of the sweep", "returns {end, slats}"]

@@ -5,7 +5,7 @@ description: "The text snaps in, then an accent line draws under it after a shor
 tags: ["underline", "emphasis", "line", "draw", "text", "accent", "key phrase", "title"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["underline.js", "underline.css"]
 depends: ["core"]
 api: ["FX.underline(H, el, {at, dur = 0.25, lineDelay = 0.3, lineDur = 0.5, rise = 24, lineColor = 'accent', thickness = 0.08, offset = 0.04, text = el.textContent}): text at `at`, line from `at + lineDelay`", "returns {el, text, line, end}"]

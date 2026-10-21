@@ -5,7 +5,7 @@ description: "Film grain laid over the whole frame on a canvas; the pattern chan
 tags: ["grain", "noise", "film", "texture", "overlay", "vignette", "analog", "canvas", "background"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["animated-noise-grain.js", "animated-noise-grain.css"]
 depends: ["core"]
 api: ["FX.animatedNoiseGrain(H, root, {from = 0, to, opacity = 0.14, size = 2, hold = 2, fps = 30, vignette = 0.6, seed = 1}): canvas over the content of root, drawn from `from` to `to` (default: the end of the video)", "returns {canvas}"]

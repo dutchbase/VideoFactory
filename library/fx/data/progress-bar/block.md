@@ -5,7 +5,7 @@ description: "A pill-shaped bar fills from 0 to a value while the number above i
 tags: ["bar", "progress", "percent", "data", "chart", "fill", "counter", "score"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["progress-bar.js", "progress-bar.css"]
 depends: ["core"]
 api: ["FX.progressBar(H, el, {at, dur = 1.2, value = 72, max = 100, label = '', suffix = '%', decimals = 0, showValue = true, width = 1200, height = 40, color: 'accent', trackColor: 'line'}): builds the bar inside el; the bar fills over `dur` seconds from `at`", "returns {el, root, label, value, track, fill}"]

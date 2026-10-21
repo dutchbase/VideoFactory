@@ -5,7 +5,7 @@ description: "A stack of rows, each with a label, a small trend line that draws 
 tags: ["sparkline", "trend", "metrics", "kpi", "row", "chart", "dashboard", "data", "delta"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["sparkline-row.js", "sparkline-row.css"]
 depends: ["core"]
 api: ["FX.sparklineRow(H, el, {at, dur = 1.2, rows: [{label, values: [numbers], value?, delta?, unit?, color?}] (3 sample rows), stagger = 0.35, unit = '', decimals = 0, showArea = true, width = 1600, rowHeight = 150, sparkWidth = 560, labelWidth = 340, deltaWidth = 200, color: 'accent', upColor: 'green', downColor: 'accent'}): builds the rows inside el; each line draws over `dur` seconds, row i starts `i * stagger` after `at`", "returns {el, root, rows}"]

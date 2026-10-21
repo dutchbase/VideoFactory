@@ -5,7 +5,7 @@ description: "Text is uncovered by a mask that slides away with a hard, sharp ed
 tags: ["mask", "reveal", "wipe", "clip", "entrance", "text", "title", "hard edge", "uncover"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["mask-reveal.js", "mask-reveal.css"]
 depends: ["core"]
 api: ["FX.maskReveal(H, el, {at, dur = 0.7, direction: 'left'|'right'|'top'|'bottom' = 'left'}): el is uncovered from `at`", "returns {el, at, dur}"]

@@ -5,7 +5,7 @@ description: "Words or lines slide up out of a line mask one after another; use 
 tags: ["mask", "slide", "reveal", "text", "words", "lines", "headline", "stagger", "entrance"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["masked-slide-reveal.js", "masked-slide-reveal.css"]
 depends: ["core"]
 api: ["FX.maskedSlideReveal(H, el, {at, dur = 0.55, stagger = 0.09, lines: null|[...], by: 'words'|'lines', align = 'center', gap = 0.28, text = el.textContent}): the items slide in from `at`", "returns {el, parts, end}"]

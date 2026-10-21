@@ -5,7 +5,7 @@ description: "A technical grid of lines or dots drifts diagonally and loops by o
 tags: ["background", "grid", "lines", "dots", "technical", "dashboard", "drift", "atmosphere", "data"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["dynamic-grid.js", "dynamic-grid.css"]
 depends: ["core"]
 api: ["FX.dynamicGrid(H, root, {from = 0, to, cell = 96, speed = 36, angle = 45, variant = 'lines'|'dots', color = 'dim', opacity = 0.5, fade = true, glow = 0}): a grid as the first child of root, drawn from `from` to `to` (default: the end of the video)", "cell is the size of one cell in stage px; speed is the drift in px per second; angle is the drift direction in degrees (0 = right, 90 = down); color is a brand colour role; fade softens the edges of the frame; glow (0-1) adds an accent light in the middle", "returns {el}"]

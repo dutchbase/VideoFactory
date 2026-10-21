@@ -5,7 +5,7 @@ description: "Soft blobs of brand colour drift slowly behind a scene; a quiet at
 tags: ["background", "gradient", "mesh", "blobs", "ambient", "atmosphere", "soft", "drift", "colour"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["mesh-gradient.js", "mesh-gradient.css"]
 depends: ["core"]
 api: ["FX.meshGradient(H, root, {from = 0, to, colors = ['accent', 'line', 'dim'], speed = 1, size = 0.45, opacity = 0.5, background = null, seed = 1}): a backdrop as the first child of root, drawn from `from` to `to` (default: the end of the video)", "colors is a list of brand colour roles, one blob each; size is the blob radius as a share of the stage width; speed 1 is one slow lap in about 16 s; opacity is the strength of the blobs (keep it low); background is an optional colour role painted under the blobs; seed sets the places and phases", "returns {el}"]

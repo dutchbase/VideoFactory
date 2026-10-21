@@ -5,7 +5,7 @@ description: "A round hole opens from any point of the frame and shows the next 
 tags: ["transition", "circle", "iris", "reveal", "cut", "scene", "mask", "radial", "wipe"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["circle-reveal.js", "circle-reveal.css"]
 depends: ["core"]
 api: ["FX.circleReveal(H, from, to, {at, dur = 0.58, x = 0.5, y = 0.5, soft = 0.12, lag = 0.2, push = 1.04, ground = null|role|false}): from is shot A, to is shot B, both full-frame on one stage; the circle opens from `at` to `at + dur`", "x and y are the centre of the circle as a share of the frame; soft is the soft edge as a share of the radius; lag is how far B trails the strip (share of dur); push is the scale A leans to under the hole (1 = still); ground is a colour role for the strip (default: the background B already has, false = no strip)", "returns {panel, end}: the strip element and the end time"]

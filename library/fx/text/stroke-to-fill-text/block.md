@@ -5,7 +5,7 @@ description: "Letters appear as an outline and then a solid fill floods each let
 tags: ["stroke", "outline", "fill", "text", "title", "reveal", "letters", "wipe", "entrance"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["stroke-to-fill-text.js", "stroke-to-fill-text.css"]
 depends: ["core"]
 api: ["FX.strokeToFillText(H, el, {at, by = 'chars'|'words'|'whole', stagger = 0.04, outlineDur = 0.35, fillDelay = 0.4, fillDur = 0.6, direction = 'up'|'down'|'left'|'right', strokeWidth = 3, retain = 0.35, softness = 14, strokeColor = 'ink', fillColor = 'ink', text = el.textContent}): outline at `at`, fill after `fillDelay`", "returns {el, parts, end}"]

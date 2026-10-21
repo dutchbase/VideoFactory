@@ -5,7 +5,7 @@ description: "A multi-segment donut whose slices sweep on clockwise one after an
 tags: ["donut", "pie", "chart", "segments", "share", "legend", "data", "total", "split"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["donut-chart.js", "donut-chart.css"]
 depends: ["core"]
 api: ["FX.donutChart(H, el, {at, dur = 1.8, segments: [{label, value, color?}] (4 sample parts), totalLabel = '', unit = '', decimals = 0, size = 520, thickness = 64, gap = 8, width = 1200, trackColor: 'line'}): builds the ring and the legend inside el; the sweep runs `dur` seconds from `at`", "returns {el, root, total, legend}"]

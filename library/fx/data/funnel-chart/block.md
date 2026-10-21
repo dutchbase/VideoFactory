@@ -5,7 +5,7 @@ description: "Stage bands wipe in from the top and narrow toward the bottom, wit
 tags: ["funnel", "chart", "stages", "conversion", "drop-off", "data", "pipeline", "steps", "narrowing"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["funnel-chart.js", "funnel-chart.css"]
 depends: ["core"]
 api: ["FX.funnelChart(H, el, {at, dur = 0.8, stages: [{label, value}] (4 sample stages), stagger = 0.45, unit = '', decimals = 0, showDropoff = true, tailOpacity = 0.45, width = 1600, bandHeight = 120, gap = 64, labelWidth = 560, color: 'accent', dropColor: 'accent'}): builds the funnel inside el; band i wipes over `dur` seconds, starting `i * stagger` after `at`", "returns {el, root, items}"]

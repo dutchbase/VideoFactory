@@ -5,7 +5,7 @@ description: "Each character spins through a reel of glyphs and lands on the new
 tags: ["slot", "roll", "counter", "number", "text", "reel", "change", "odometer", "digits"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["slot-roll.js", "slot-roll.css"]
 depends: ["core"]
 api: ["FX.slotRoll(H, el, {at, from = el.textContent, to = from, dur = 1.0, stagger = 0.08, spins = 2, cell = 0.64, glyphs = digits (or letters and digits), color = 'ink'}): the roll runs from `at` to `at + dur`", "returns {el, cells, end}"]

@@ -5,7 +5,7 @@ description: "Text rises 16 px out of a soft blur and fades in on a calm spring 
 tags: ["text", "reveal", "entrance", "blur", "spring", "title", "fade", "soft", "calm"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["blur-reveal.js"]
 depends: ["core"]
 api: ["FX.blurReveal(H, el, {at, dur = 0.7, by: null|'words'|'chars', stagger = 0.06, blur = 10, rise = 16}): el appears at `at`", "returns {el, parts}"]

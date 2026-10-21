@@ -5,7 +5,7 @@ description: "Wide letter-spacing collapses to normal while the line sharpens ou
 tags: ["tracking", "letter-spacing", "text", "title", "entrance", "spring", "blur", "reveal", "snap"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["tracking-in.js", "tracking-in.css"]
 depends: ["core"]
 api: ["FX.trackingIn(H, el, {at, dur = 0.8, from = 0.28, blur = 6, bounce = 0}): el appears at `at`; `from` is the start spacing in em", "returns {el, end}"]

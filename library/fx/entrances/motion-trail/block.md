@@ -5,7 +5,7 @@ description: "An element flies in from the side and leaves a trail of fading, bl
 tags: ["trail", "echo", "motion blur", "fly in", "entrance", "speed", "ghost", "slide", "afterimage"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["motion-trail.js", "motion-trail.css"]
 depends: ["core"]
 api: ["FX.motionTrail(H, el, {at, dur = 0.9, x = -520, y = 0, count = 5, gap = 0.06, opacity = 0.45, falloff = 1.6, scale = 0.82, blur = 4, ease = 'power3.out', color: null}): el flies in from (x, y) px away at `at`", "returns {el, echoes, end}"]

@@ -5,7 +5,7 @@ description: "The outgoing shot starts at about 3x, pulls back slowly, then snap
 tags: ["transition", "device", "mockup", "pullback", "reveal", "laptop", "phone", "cut", "scene", "product"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["device-pullback.js", "device-pullback.css"]
 depends: ["core"]
 api: ["FX.devicePullback(H, from, to, {at, dur = 1, hold = 0.6, device = 'laptop'|'phone', start = 3, ratio = 0.56, focus = [0.5, 0.5], frame = 'line', ground = 'cream'}): from is shot A (the product screen), to is shot B, both full-frame on one stage; the pull-back runs from `at` to `at + dur`, the snap is at `at + dur`, the cut to B at `at + dur + hold`", "start is the scale A starts at; ratio is the scale change of the last step (K6: about 0.56); focus is the point of A that sits in the middle at the start, as a share of the frame; frame and ground are colour roles for the device and the ground around it", "returns {wrap, snap, cut}: the device element and the two times"]

@@ -5,7 +5,7 @@ description: "A seamless band of words that scrolls sideways at a steady speed, 
 tags: ["marquee", "ticker", "scroll", "band", "loop", "words", "text", "atmospheric", "list"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["marquee.js", "marquee.css"]
 depends: ["core"]
 api: ["FX.marquee(H, el, {at, to, items = words of el, speed = 120, direction: 'left'|'right' = 'left', gap = 96, size = 96, dots = true, color: 'ink', dur = 0.5}): fills el with a clipped, scrolling band; speed in px per second", "returns {el, track}"]

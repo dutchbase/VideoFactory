@@ -5,7 +5,7 @@ description: "Rows of two bars, a muted before and a coloured after, that grow i
 tags: ["bars", "comparison", "before", "after", "delta", "chart", "data", "change", "versus"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["comparison-bars.js", "comparison-bars.css"]
 depends: ["core"]
 api: ["FX.comparisonBars(H, el, {at, dur = 1.0, rows: [{label, before, after, delta?}] (3 sample rows), seriesLabels = ['Before', 'After'], stagger = 0.3, pairOffset = 0.18, unit = '', decimals = 0, showDelta = true, width = 1600, barHeight = 44, rowGap = 54, labelWidth = 340, valueWidth = 190, deltaWidth = 220, beforeColor: 'dim', afterColor: 'accent', upColor: 'green', downColor: 'accent'}): builds the legend and rows inside el; each bar grows over `dur` seconds, row i starts `i * stagger` after `at`", "returns {el, root, rows}"]

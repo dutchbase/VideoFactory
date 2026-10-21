@@ -5,7 +5,7 @@ description: "An element scales up a little and rises into place on a spring, wi
 tags: ["spring", "entrance", "scale", "rise", "snappy", "bouncy", "smooth", "card", "pop in"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["spring-in.js", "spring-in.css"]
 depends: ["core"]
 api: ["FX.springIn(H, el, {at, config: 'snappy'|'smooth'|'bouncy' = 'snappy', from = 0.88, travel = 24, direction: 'up'|'down'|'left'|'right' = 'up', origin = '50% 50%', dur = by preset, bounce = by preset}): el appears at `at`", "returns {el, at, dur}"]

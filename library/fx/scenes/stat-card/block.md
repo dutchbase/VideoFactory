@@ -5,7 +5,7 @@ description: "A big number counts up above its label, and an accent rule draws u
 tags: ["stat", "number", "count up", "kpi", "metric", "milestone", "label", "scene", "data"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["stat-card.js", "stat-card.css"]
 depends: ["core"]
 api: ["FX.statCard(H, el, {at, value = 100, label = '', prefix = '', suffix = '', decimals = 0, locale: 'en'|'nl' = 'en', separator = true, dur = 1.2, numberSize = 240, labelSize = 72, color: null, ruleColor: 'accent', rule = true}): builds the card in el, which needs a size", "returns {el, num, label, end}"]

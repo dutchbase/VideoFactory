@@ -5,7 +5,7 @@ description: "A label box lands next to one spot, then a line draws from the box
 tags: ["callout", "label", "annotation", "pointer", "line", "tutorial", "name the part", "tooltip", "arrow"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["callout.js", "callout.css"]
 depends: ["core"]
 api: ["FX.callout(H, root, {at, label = 'Look here', target: el|selector, x, y, position = 'top-right'|'top-left'|'bottom-right'|'bottom-left', offset = 170, size = 52, color: 'accent', lineWidth = 5, dur = 0.5, lineDelay = 0.3, lineDur = 0.5, margin = 60, gap = 20, exitAt, exitDur = 0.25}): box and line are added to root; x, y and the target are stage px inside root", "returns {el: box, svg, anchor}"]

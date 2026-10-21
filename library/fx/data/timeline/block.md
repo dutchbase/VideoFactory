@@ -5,7 +5,7 @@ description: "A horizontal timeline: a thin line strokes itself on, dots land at
 tags: ["timeline", "steps", "milestones", "roadmap", "dots", "sequence", "history", "process", "data"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["timeline.js", "timeline.css"]
 depends: ["core"]
 api: ["FX.timeline(H, el, {at, dur = 2.0, points: [{label, sub?}] (5 sample steps), width = 1600, labelWidth = 300, dotSize = 44, lineHeight = 6, color: 'dim', lineColor: 'line', accentColor: 'accent'}): builds the timeline inside el; the line draws over `dur` seconds from `at`", "returns {el, root, items}"]

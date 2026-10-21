@@ -5,7 +5,7 @@ description: "Both full-frame shots slide along one axis in about eight frames w
 tags: ["transition", "whip", "pan", "slide", "motion blur", "cut", "scene", "fast", "camera"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["whip-pan.js", "whip-pan.css"]
 depends: ["core"]
 api: ["FX.whipPan(H, from, to, {at, dur = 8/30, dir = 'left'|'right'|'up'|'down', blur = 20, punch = 2.2, travel = 1}): from is shot A, to is shot B, both full-frame on one stage; the pan runs from `at` to `at + dur`", "dir is the way the content moves (left = B arrives from the right); blur is the peak blur in px at the fastest point; punch (1-4) is how hard the move is squeezed into a few frames; travel is the share of the frame each shot moves (1 = edge to edge)", "returns {end}"]

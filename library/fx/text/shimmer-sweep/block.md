@@ -5,7 +5,7 @@ description: "A single band of accent colour sweeps once (or a few times) across
 tags: ["shimmer", "sweep", "shine", "highlight", "emphasis", "text", "light", "band", "gradient"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["shimmer-sweep.js", "shimmer-sweep.css"]
 depends: ["core"]
 api: ["FX.shimmerSweep(H, el, {at, dur = 0.9, repeat = 1, interval = 1.6, color = 'ink', shimmerColor = 'accent', angle = 100, text = el.textContent}): the first sweep runs from `at` to `at + dur`", "returns {el, text, end}"]

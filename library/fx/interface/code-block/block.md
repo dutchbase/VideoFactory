@@ -5,7 +5,7 @@ description: "A code window with syntax colours where the code types itself char
 tags: ["code", "syntax", "highlight", "snippet", "developer", "editor", "typing", "programming", "window", "lines"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["code-block.js", "code-block.css"]
 depends: ["core"]
 api: ["FX.codeBlock(H, root, {at, code, title, lang = 'js'|'py', by = 'chars'|'lines', lineNumbers = false, size = 40, width = 1500, chrome = true, x, y, typeDur = total characters / 45 s, lead = 0.3, stagger = 0.2}): a window centred in root (or at x, y)", "returns {el, lines, end}"]

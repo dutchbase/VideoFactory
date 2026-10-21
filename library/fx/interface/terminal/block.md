@@ -5,7 +5,7 @@ description: "A terminal window where a command types itself after the prompt an
 tags: ["terminal", "shell", "cli", "command", "typing", "console", "developer", "prompt", "output", "cursor"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["terminal.js", "terminal.css"]
 depends: ["core"]
 api: ["FX.terminal(H, root, {at, command = 'make video', output: [string | {text, tone: 'green'|'accent'|'ink'}], prompt = '$', title, chrome = true, size = 40, width = 1500, x, y, typeDur = 0.05 s per character, lead = 0.3, outputDelay = 0.5, stagger = 0.35}): a window centred in root (or at x, y)", "returns {el, typed, end}"]

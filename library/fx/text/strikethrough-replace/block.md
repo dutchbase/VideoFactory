@@ -5,7 +5,7 @@ description: "A line strikes out one phrase, holds a beat, then a new phrase rep
 tags: ["strikethrough", "replace", "correction", "text", "cut", "before-after", "edit", "swap", "statement"]
 kind: "fx"
 engine: "both"
-status: "draft"
+status: "approved"
 files: ["strikethrough-replace.js", "strikethrough-replace.css"]
 depends: ["core"]
 api: ["FX.strikethroughReplace(H, el, {at, to, from = el.textContent, strike = 0.3, hold = 0.35, align = 'center'|'left'|'right', strikeColor = 'accent', replaceColor = 'ink', weight = 0.07, height = 0.56, tilt = -0.6}): strike starts at `at`, swap at `at + strike + hold`", "returns {el, swap, end}"]
