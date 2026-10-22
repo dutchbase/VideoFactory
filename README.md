@@ -90,6 +90,7 @@ Type these in Claude Code or Codex, inside the repo folder. Each command does on
 | `/vf-status` | Shows the progress of every video. |
 | `/vf-image` | Makes brand images: one design exported to every size you pick (Instagram, LinkedIn, X, YouTube, profile pictures, link previews). |
 | `/vf-image-sizes` | Lists every known platform size, ratio, round crop and safe area. |
+| `/vf-looks` | Shows every video look in your brand's colours and opens the board; set a default, a shortlist of 5 and a look per video type. |
 
 Under the hood the commands call `python anim.py <command>`. Run `python anim.py -h` to see all of them.
 

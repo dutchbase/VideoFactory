@@ -48,7 +48,7 @@ Frontmatter, same JSON-line rule:
 - `default`: `{"visual": id, "editing": id, "content": id}`; a value may be a list, main look first
 - `shortlist`: up to 5 visual ids
 - `rules`: video type or content id → `{"visual": id or [ids], "editing": …, "content": …}` (any subset)
-CLI: join several ids with `+`, e.g. `looks prefs --brand vai --rule course:visual=whiteboard+data-journalism`.
+CLI: join several ids with `+`, e.g. `looks prefs --brand videofactory --rule course:visual=whiteboard+data-journalism`.
 When the user says "always use X", "put X on the shortlist" or "use X for courses", edit this file, then run `python anim.py looks check --brand <id>`.
 
 Resolution for a new video, per axis: the user's explicit choice > the rule for the video type > the brand default > the visual card's `pairs_with` > none (plain Modern). `python anim.py looks pick --brand <id> --type <type>` prints the result and its source. `anim.py new --type <type>` (or `--visual/--editing/--content`) writes `looks` into `project.json` and copies every chosen card into `videos/<brand>/<slug>/04_scene/looks/<axis>-<id>.md`. `--visual a,b` gives several looks. The copy is frozen: later card edits do not change the video.
