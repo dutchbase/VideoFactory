@@ -1,0 +1,1062 @@
+{
+  "version": 1,
+  "checked": "2026-10-21",
+  "sizes": [
+    {
+      "id": "instagram-square",
+      "platform": "Instagram",
+      "use": "Feed post, square",
+      "w": 1080,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1. Grid shows 3:4, so square can appear letterboxed.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-portrait",
+      "platform": "Instagram",
+      "use": "Feed post, portrait 4:5",
+      "w": 1080,
+      "h": 1350,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 34,
+        "bottom": 0,
+        "left": 34
+      },
+      "note": "Best all-round feed size. Grid crops sides by about 34 px.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-grid",
+      "platform": "Instagram",
+      "use": "Feed post, 3:4 grid",
+      "w": 1080,
+      "h": 1440,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "3:4 matches the profile grid (changed late 2025 per guides).",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-landscape",
+      "platform": "Instagram",
+      "use": "Feed post, landscape 1.91:1",
+      "w": 1080,
+      "h": 566,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Smallest feed footprint. Export JPG or PNG at 1080 wide.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-story",
+      "platform": "Instagram",
+      "use": "Story, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 250,
+        "right": 0,
+        "bottom": 340,
+        "left": 0
+      },
+      "note": "Top and bottom UI bands cover content. Guides say 250 top, 250 to 340 bottom.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-reel",
+      "platform": "Instagram",
+      "use": "Reel video frame, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 250,
+        "right": 120,
+        "bottom": 340,
+        "left": 0
+      },
+      "note": "Caption and buttons cover the bottom and right edge.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-reel-cover",
+      "platform": "Instagram",
+      "use": "Reel cover, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 240,
+        "right": 0,
+        "bottom": 240,
+        "left": 0
+      },
+      "note": "Profile grid shows a centre 3:4 crop (1080x1440). Keep titles in the middle.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "instagram-profile",
+      "platform": "Instagram",
+      "use": "Profile picture",
+      "w": 320,
+      "h": 320,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle.",
+      "source_url": "https://www.post-bridge.com/blog/instagram-post-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-feed-landscape",
+      "platform": "Facebook",
+      "use": "Feed post, landscape 1.91:1",
+      "w": 1200,
+      "h": 630,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Link and image post size.",
+      "source_url": "https://developers.facebook.com/docs/sharing/webmasters/images",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-feed-square",
+      "platform": "Facebook",
+      "use": "Feed post, square",
+      "w": 1080,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1.",
+      "source_url": "https://linearity.io/blog/facebook-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-feed-portrait",
+      "platform": "Facebook",
+      "use": "Feed post, portrait 4:5",
+      "w": 1080,
+      "h": 1350,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "4:5 uses the most mobile feed space.",
+      "source_url": "https://linearity.io/blog/facebook-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-cover",
+      "platform": "Facebook",
+      "use": "Page cover photo",
+      "w": 851,
+      "h": 315,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 145,
+        "bottom": 0,
+        "left": 145
+      },
+      "note": "Mobile shows 16:9 centre crop (about 560 px wide), so sides are cut. Sources also say 820x312.",
+      "source_url": "https://www.socialpilot.co/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-event-cover",
+      "platform": "Facebook",
+      "use": "Event cover",
+      "w": 1920,
+      "h": 1005,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "About 1.91:1. Older 1200x628 still works.",
+      "source_url": "https://linearity.io/blog/facebook-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-group-cover",
+      "platform": "Facebook",
+      "use": "Group cover",
+      "w": 1640,
+      "h": 856,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Single source only (Avery and Co). Not cross-checked.",
+      "source_url": "https://www.averyandco.co.th/en/blog/16-facebook-image-sizes-2026-practical-use",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-story",
+      "platform": "Facebook",
+      "use": "Story, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 250,
+        "right": 0,
+        "bottom": 340,
+        "left": 0
+      },
+      "note": "Top and bottom UI bands cover content.",
+      "source_url": "https://linearity.io/blog/facebook-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "facebook-profile",
+      "platform": "Facebook",
+      "use": "Profile picture",
+      "w": 720,
+      "h": 720,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown at about 170 px on desktop as a circle. Upload 720 or larger.",
+      "source_url": "https://www.socialpilot.co/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-banner",
+      "platform": "LinkedIn",
+      "use": "Personal profile banner",
+      "w": 1584,
+      "h": 396,
+      "shape": "rect",
+      "safe": {
+        "top": 40,
+        "right": 160,
+        "bottom": 40,
+        "left": 420
+      },
+      "note": "4:1, JPG or PNG, under 8 MB. Profile photo covers the lower left on desktop. Phones crop the centre.",
+      "source_url": "https://www.manypixels.co/blog/social-media-design/linkedin-banner-size",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-company-cover",
+      "platform": "LinkedIn",
+      "use": "Company page cover",
+      "w": 1512,
+      "h": 256,
+      "shape": "rect",
+      "safe": {
+        "top": 28,
+        "right": 150,
+        "bottom": 56,
+        "left": 340
+      },
+      "note": "Sources disagree: 1512x256, older 1128x191, reported 4200x700 (6:1). Max 3 MB. Logo covers lower left.",
+      "source_url": "https://www.manypixels.co/blog/social-media-design/linkedin-banner-size",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-post-landscape",
+      "platform": "LinkedIn",
+      "use": "Feed post, landscape 1.91:1",
+      "w": 1200,
+      "h": 627,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Max about 5 MB.",
+      "source_url": "https://www.hopperhq.com/blog/the-ultimate-guide-to-linkedin-dimensions-post-sizes/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-post-square",
+      "platform": "LinkedIn",
+      "use": "Feed post, square",
+      "w": 1200,
+      "h": 1200,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1. Max about 5 MB.",
+      "source_url": "https://www.hopperhq.com/blog/the-ultimate-guide-to-linkedin-dimensions-post-sizes/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-post-portrait",
+      "platform": "LinkedIn",
+      "use": "Feed post, portrait 4:5",
+      "w": 1080,
+      "h": 1350,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Portrait shows in feed on mobile.",
+      "source_url": "https://linearity.io/blog/linkedin-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-article-cover",
+      "platform": "LinkedIn",
+      "use": "Article cover",
+      "w": 1280,
+      "h": 720,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Sources disagree: 1280x720, 1920x1080, 744x400 thumbnail. Chose 16:9 1280x720.",
+      "source_url": "https://linearity.io/blog/linkedin-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-newsletter-cover",
+      "platform": "LinkedIn",
+      "use": "Newsletter cover",
+      "w": 1920,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Not verified. Using 16:9 like the article cover.",
+      "source_url": "https://linearity.io/blog/linkedin-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-event-banner",
+      "platform": "LinkedIn",
+      "use": "Event banner",
+      "w": 1280,
+      "h": 720,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Sources disagree: 1776x444, 1280x720, 1200x627. Chose 16:9 1280x720.",
+      "source_url": "https://linearity.io/blog/linkedin-size-guide/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-profile",
+      "platform": "LinkedIn",
+      "use": "Personal profile photo",
+      "w": 400,
+      "h": 400,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Min 200x200. Shown as a circle.",
+      "source_url": "https://www.hopperhq.com/blog/the-ultimate-guide-to-linkedin-dimensions-post-sizes/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "linkedin-company-logo",
+      "platform": "LinkedIn",
+      "use": "Company logo",
+      "w": 300,
+      "h": 300,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "PNG or JPEG. Shown square on the Page.",
+      "source_url": "https://www.hopperhq.com/blog/the-ultimate-guide-to-linkedin-dimensions-post-sizes/",
+      "checked": "2026-10-21",
+      "layout": "is-avatar"
+    },
+    {
+      "id": "x-post-landscape",
+      "platform": "X",
+      "use": "Post image, 16:9",
+      "w": 1200,
+      "h": 675,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Most cited size. Some guides use 1600x900.",
+      "source_url": "https://www.tweetarchivist.com/twitter-image-size-guide",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "x-post-square",
+      "platform": "X",
+      "use": "Post image, square",
+      "w": 1080,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1.",
+      "source_url": "https://skedsocial.com/en-au/blog/twitter-post-size-guide",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "x-header",
+      "platform": "X",
+      "use": "Profile header",
+      "w": 1500,
+      "h": 500,
+      "shape": "rect",
+      "safe": {
+        "top": 60,
+        "right": 0,
+        "bottom": 60,
+        "left": 260
+      },
+      "note": "3:1. Avatar covers lower left. Top and bottom can be cropped on some screens. Under 2 MB (one guide says 5 MB).",
+      "source_url": "https://snappa.com/blog/twitter-video-format/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "x-profile",
+      "platform": "X",
+      "use": "Profile picture",
+      "w": 400,
+      "h": 400,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle, displayed up to 200 px.",
+      "source_url": "https://snappa.com/blog/twitter-video-format/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "youtube-thumbnail",
+      "platform": "YouTube",
+      "use": "Video thumbnail",
+      "w": 1280,
+      "h": 720,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "16:9, min 640 wide. Help page now says up to 3840x2160 is fine. 2 MB limit on mobile.",
+      "source_url": "https://support.google.com/youtube/answer/72431",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "youtube-banner",
+      "platform": "YouTube",
+      "use": "Channel banner",
+      "w": 2560,
+      "h": 1440,
+      "shape": "rect",
+      "safe": {
+        "top": 508,
+        "right": 507,
+        "bottom": 509,
+        "left": 507
+      },
+      "note": "Official: min 2048x1152, recommended 2560x1440, max 6 MB. Safe area 1546x423 centre (1235x338 at min size).",
+      "source_url": "https://support.google.com/youtube/answer/10456525",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "youtube-profile",
+      "platform": "YouTube",
+      "use": "Channel profile picture",
+      "w": 800,
+      "h": 800,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Official: renders 98x98, max 15 MB. 800x800 is the common upload.",
+      "source_url": "https://support.google.com/youtube/answer/10456525",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "youtube-shorts-cover",
+      "platform": "YouTube",
+      "use": "Shorts cover, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 250,
+        "right": 120,
+        "bottom": 340,
+        "left": 0
+      },
+      "note": "Help page allows up to 2160x3840, min 640 high. Shorts UI covers bottom and right.",
+      "source_url": "https://support.google.com/youtube/answer/72431",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "tiktok-cover",
+      "platform": "TikTok",
+      "use": "Video cover, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 130,
+        "right": 140,
+        "bottom": 480,
+        "left": 60
+      },
+      "note": "Caption and buttons cover the bottom and right. Safe values are from guides, not TikTok.",
+      "source_url": "https://www.post-bridge.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "tiktok-profile",
+      "platform": "TikTok",
+      "use": "Profile picture",
+      "w": 200,
+      "h": 200,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle. Not verified against an official page.",
+      "source_url": "https://www.post-bridge.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "pinterest-pin",
+      "platform": "Pinterest",
+      "use": "Standard pin, 2:3",
+      "w": 1000,
+      "h": 1500,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Official: pins taller than 2:3 can be cut off. PNG or JPEG, max 20 MB.",
+      "source_url": "https://help.pinterest.com/en/business/article/pinterest-product-specs",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "pinterest-square",
+      "platform": "Pinterest",
+      "use": "Square pin",
+      "w": 1000,
+      "h": 1000,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1. Takes less feed space than 2:3.",
+      "source_url": "https://socialbee.com/blog/social-media-image-sizes/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "pinterest-vertical",
+      "platform": "Pinterest",
+      "use": "Vertical pin, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 200,
+        "right": 0,
+        "bottom": 250,
+        "left": 0
+      },
+      "note": "Used for video and idea pins. Can be truncated in feed.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "pinterest-profile",
+      "platform": "Pinterest",
+      "use": "Profile picture",
+      "w": 400,
+      "h": 400,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle. Not verified against an official page.",
+      "source_url": "https://socialbee.com/blog/social-media-image-sizes/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "threads-post-portrait",
+      "platform": "Threads",
+      "use": "Post image, portrait 4:5",
+      "w": 1080,
+      "h": 1350,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Guides agree.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "threads-post-square",
+      "platform": "Threads",
+      "use": "Post image, square",
+      "w": 1080,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "1:1.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "threads-profile",
+      "platform": "Threads",
+      "use": "Profile picture",
+      "w": 320,
+      "h": 320,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle. Not verified.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "bluesky-banner",
+      "platform": "Bluesky",
+      "use": "Profile banner",
+      "w": 1500,
+      "h": 500,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 120,
+        "bottom": 0,
+        "left": 240
+      },
+      "note": "3:1. Mobile crops sides tighter. Avatar covers lower left.",
+      "source_url": "https://posteverywhere.ai/blog/bluesky-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "bluesky-post",
+      "platform": "Bluesky",
+      "use": "Post image, square",
+      "w": 1080,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Sources disagree: 1000 px cap, 1200x675, 1080x1350. Max about 2000 px, 1 MB. Large files are compressed.",
+      "source_url": "https://posteverywhere.ai/blog/bluesky-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "bluesky-profile",
+      "platform": "Bluesky",
+      "use": "Profile picture",
+      "w": 400,
+      "h": 400,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle.",
+      "source_url": "https://posteverywhere.ai/blog/bluesky-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "whatsapp-status",
+      "platform": "WhatsApp",
+      "use": "Status, 9:16",
+      "w": 1080,
+      "h": 1920,
+      "shape": "rect",
+      "safe": {
+        "top": 200,
+        "right": 0,
+        "bottom": 300,
+        "left": 0
+      },
+      "note": "Top bar and reply bar cover content. Safe values not verified.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "whatsapp-profile",
+      "platform": "WhatsApp",
+      "use": "Profile picture",
+      "w": 640,
+      "h": 640,
+      "shape": "circle",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Shown as a circle. Not verified against an official page.",
+      "source_url": "https://socialbu.com/blog/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "web-og",
+      "platform": "Web",
+      "use": "Open Graph share image",
+      "w": 1200,
+      "h": 630,
+      "shape": "rect",
+      "safe": {
+        "top": 60,
+        "right": 120,
+        "bottom": 60,
+        "left": 120
+      },
+      "note": "Official: 1200x630 or larger, about 1.91:1, max 8 MB. Some apps crop to a square centre.",
+      "source_url": "https://developers.facebook.com/docs/sharing/webmasters/images",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "web-blog-hero",
+      "platform": "Web",
+      "use": "Blog hero",
+      "w": 1920,
+      "h": 1080,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "16:9. Common convention.",
+      "source_url": "https://www.linearity.io/guide/social-media-image-sizes",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "web-app-icon",
+      "platform": "Web",
+      "use": "Square app icon",
+      "w": 512,
+      "h": 512,
+      "shape": "rect",
+      "safe": {
+        "top": 51,
+        "right": 51,
+        "bottom": 51,
+        "left": 51
+      },
+      "note": "Maskable icon: keep content inside the central 80 percent.",
+      "source_url": "https://web.dev/articles/maskable-icon",
+      "checked": "2026-10-21",
+      "layout": "is-avatar"
+    },
+    {
+      "id": "web-favicon-source",
+      "platform": "Web",
+      "use": "Favicon source",
+      "w": 512,
+      "h": 512,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Simple mark with little padding. Scales down to 16 px.",
+      "source_url": "https://developer.mozilla.org/en-US/docs/Glossary/Favicon",
+      "checked": "2026-10-21",
+      "layout": "is-avatar"
+    },
+    {
+      "id": "email-header",
+      "platform": "Email",
+      "use": "Email header, 1x",
+      "w": 600,
+      "h": 200,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Standard 600 px email width. Export the 2x version too.",
+      "source_url": "https://www.litmus.com/blog/a-guide-to-retina-and-high-resolution-email-images/",
+      "checked": "2026-10-21"
+    },
+    {
+      "id": "email-header-2x",
+      "platform": "Email",
+      "use": "Email header, 2x retina",
+      "w": 1200,
+      "h": 400,
+      "shape": "rect",
+      "safe": {
+        "top": 0,
+        "right": 0,
+        "bottom": 0,
+        "left": 0
+      },
+      "note": "Retina export of email-header. Display at 600x200.",
+      "source_url": "https://www.litmus.com/blog/a-guide-to-retina-and-high-resolution-email-images/",
+      "checked": "2026-10-21"
+    }
+  ],
+  "sets": {
+    "instagram-all": [
+      "instagram-square",
+      "instagram-portrait",
+      "instagram-grid",
+      "instagram-landscape",
+      "instagram-story",
+      "instagram-reel",
+      "instagram-reel-cover",
+      "instagram-profile"
+    ],
+    "facebook-all": [
+      "facebook-feed-landscape",
+      "facebook-feed-square",
+      "facebook-feed-portrait",
+      "facebook-cover",
+      "facebook-event-cover",
+      "facebook-group-cover",
+      "facebook-story",
+      "facebook-profile"
+    ],
+    "linkedin-all": [
+      "linkedin-banner",
+      "linkedin-company-cover",
+      "linkedin-post-landscape",
+      "linkedin-post-square",
+      "linkedin-post-portrait",
+      "linkedin-article-cover",
+      "linkedin-newsletter-cover",
+      "linkedin-event-banner",
+      "linkedin-profile",
+      "linkedin-company-logo"
+    ],
+    "x-all": [
+      "x-post-landscape",
+      "x-post-square",
+      "x-header",
+      "x-profile"
+    ],
+    "youtube-all": [
+      "youtube-thumbnail",
+      "youtube-banner",
+      "youtube-profile",
+      "youtube-shorts-cover"
+    ],
+    "tiktok-all": [
+      "tiktok-cover",
+      "tiktok-profile"
+    ],
+    "pinterest-all": [
+      "pinterest-pin",
+      "pinterest-square",
+      "pinterest-vertical",
+      "pinterest-profile"
+    ],
+    "threads-all": [
+      "threads-post-portrait",
+      "threads-post-square",
+      "threads-profile"
+    ],
+    "bluesky-all": [
+      "bluesky-banner",
+      "bluesky-post",
+      "bluesky-profile"
+    ],
+    "whatsapp-all": [
+      "whatsapp-status",
+      "whatsapp-profile"
+    ],
+    "web-all": [
+      "web-og",
+      "web-blog-hero",
+      "web-app-icon",
+      "web-favicon-source"
+    ],
+    "email-all": [
+      "email-header",
+      "email-header-2x"
+    ],
+    "profile-all": [
+      "instagram-profile",
+      "facebook-profile",
+      "linkedin-profile",
+      "linkedin-company-logo",
+      "x-profile",
+      "youtube-profile",
+      "tiktok-profile",
+      "pinterest-profile",
+      "threads-profile",
+      "bluesky-profile",
+      "whatsapp-profile"
+    ],
+    "story-all": [
+      "instagram-story",
+      "instagram-reel",
+      "instagram-reel-cover",
+      "facebook-story",
+      "youtube-shorts-cover",
+      "tiktok-cover",
+      "pinterest-vertical",
+      "whatsapp-status"
+    ],
+    "banner-all": [
+      "facebook-cover",
+      "facebook-event-cover",
+      "facebook-group-cover",
+      "linkedin-banner",
+      "linkedin-company-cover",
+      "linkedin-event-banner",
+      "x-header",
+      "youtube-banner",
+      "bluesky-banner",
+      "email-header",
+      "email-header-2x"
+    ],
+    "feed-all": [
+      "instagram-square",
+      "instagram-portrait",
+      "instagram-grid",
+      "instagram-landscape",
+      "facebook-feed-landscape",
+      "facebook-feed-square",
+      "facebook-feed-portrait",
+      "linkedin-post-landscape",
+      "linkedin-post-square",
+      "linkedin-post-portrait",
+      "x-post-landscape",
+      "x-post-square",
+      "threads-post-portrait",
+      "threads-post-square",
+      "bluesky-post",
+      "pinterest-pin",
+      "pinterest-square"
+    ]
+  }
+}

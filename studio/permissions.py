@@ -19,10 +19,10 @@ SESSION_CHOICES = ("full", "each-stage", "selected-stages")
 MODES = SESSION_CHOICES
 STAGES = ("research", "brief", "script", "voice", "voice-test", "transcript", "cues",
           "scene", "checks", "render", "critic", "package", "concepts", "rig", "variant",
-          "materials", "sample", "design", "identity", "animation")
+          "materials", "sample", "design", "identity", "animation", "final")
 REVIEWABLE_STAGES = ("research", "brief", "script", "voice-test", "voice", "transcript",
                      "cues", "scene", "render", "materials", "sample", "design",
-                     "identity", "rig", "animation")
+                     "identity", "rig", "animation", "final")
 _SESSION_ID = uuid.uuid4().hex
 _REQUEST_SESSION = contextvars.ContextVar("vf_permission_session", default=None)
 _LOCK = threading.RLock()
@@ -64,7 +64,7 @@ def _session(root, session_id):
 def _scope_path(root, scope):
     root = Path(root).resolve()
     if not isinstance(scope, str) or ":" not in scope:
-        raise ValueError("Use a named video, brand, style, or character scope.")
+        raise ValueError("Use a named video, image, brand, style, or character scope.")
     kind, identity = scope.split(":", 1)
     if kind == "video":
         parts = identity.split("/")
@@ -78,6 +78,16 @@ def _scope_path(root, scope):
             raise ValueError("Video scope cannot use symbolic links.")
         if project.exists():
             resolve_project(root, identity)
+        return brand_dir / ".permissions" / f"{slug}.json"
+    if kind == "image":
+        parts = identity.split("/")
+        if len(parts) != 2 or any(not _PART.fullmatch(part) for part in parts):
+            raise ValueError("Use a canonical brand/slug image ID.")
+        brand, slug = parts
+        images = root / "images"
+        brand_dir = images / brand
+        if any(path.is_symlink() for path in (images, brand_dir, brand_dir / slug)):
+            raise ValueError("Image scope cannot use symbolic links.")
         return brand_dir / ".permissions" / f"{slug}.json"
     if kind not in ("brand", "style", "character") or not _PART.fullmatch(identity):
         raise ValueError("Invalid named scope.")

@@ -22,6 +22,7 @@ If the system `python` lacks the packages, use `.venv/bin/python` wherever a ski
    - No MP4 in `videos/<id>/05_render/`: `/vf-render`.
    - All done: tell the user the video is ready to watch. The user decides to publish.
 5. `/vf-research` is optional, before `/vf-script`. Offer it when the video needs facts from the web.
+   If the user asks for an image, a post, a banner or a profile picture, run `python anim.py image status` and use `/vf-image`.
 6. Say in two sentences where the video stands and which command is next. If the user asked to continue, open the matching skill in `.agents/skills/` or `.claude/skills/` and follow it. If the user only asked for status, offer the command and wait for their instruction.
 
 A file on disk is not an approval. Check `_shared/permissions.md` to see whether the last stage needs human review.

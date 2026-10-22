@@ -27,7 +27,8 @@ _PURPOSES = {"character-concepts": ("character", "brief", 3),
              "character-identity": ("character", "design", 2),
              "character-variant": ("character", "identity", 1),
              "character-animation": ("character", "identity", 1),
-             "style-material": ("style", "brief", 1)}
+             "style-material": ("style", "brief", 1),
+             "image-picture": ("image", "brief", 1)}
 _IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp"}
 MAX_IMAGE_BYTES = 16 * 1024 * 1024
 MAX_IMAGE_PIXELS = 4096 * 4096
@@ -138,6 +139,13 @@ def _check_animation_variant(root, subject_id, context, resolved):
         raise ws.WorkspaceError("blocked", "Animation batch must attach the registered variant artwork.")
 
 
+def _subject_id(subject_type, value):
+    """A style or character ID, or brand/slug for an image job."""
+    if subject_type == "image" and isinstance(value, str) and value.count("/") == 1:
+        return "/".join(ws._id(part) for part in value.split("/"))
+    return ws._id(value)
+
+
 def prepare_generation(root, request):
     root = Path(root).resolve()
     if not isinstance(request, dict) or set(request) - {"id", "subject_type", "subject_id", "purpose", "prompt", "references", "transparent", "image_count", "input_revision", "provider", "transport", "image_model", "context", "max_paid_spend"}:
@@ -146,7 +154,7 @@ def prepare_generation(root, request):
     purpose = request.get("purpose")
     if purpose not in _PURPOSES or request.get("subject_type") != _PURPOSES[purpose][0]:
         raise ws.WorkspaceError("invalid", "Unsupported generation purpose or subject.")
-    subject_id = ws._id(request.get("subject_id"))
+    subject_id = _subject_id(request["subject_type"], request.get("subject_id"))
     scope = request["subject_type"] + ":" + subject_id
     try: require_permission(root, scope)
     except ValueError as exc: raise ws.WorkspaceError("blocked", str(exc)) from None
@@ -189,7 +197,8 @@ def prepare_generation(root, request):
     _check_canonical_references(root, subject_id, purpose, resolved)
     if purpose == "character-animation":
         _check_animation_variant(root, subject_id, context, resolved)
-    output_dir = f"{'characters' if request['subject_type'] == 'character' else 'styles'}/{subject_id}/generated/{ident}"
+    output_dir = (f"images/{subject_id}/02_design/pictures/generated/{ident}" if request["subject_type"] == "image" else
+                  f"{'characters' if request['subject_type'] == 'character' else 'styles'}/{subject_id}/generated/{ident}")
     ws.safe_path(root, output_dir)
     record = {"id": ident, "subject_type": request["subject_type"], "subject_id": subject_id,
               "purpose": purpose, "prompt": request["prompt"].strip(), "references": references,

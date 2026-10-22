@@ -1,6 +1,7 @@
 # VideoFactory
 
 A folder workspace that turns a voice into an explainer video: script → voice → words → cues → scene → MP4.
+It also makes brand images: one design exported to every platform size (`images/CONTEXT.md`).
 One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages. State is the files in them.
 
 **Talk rule:** every chat reply follows `_shared/talk.md` (ASD-STE100, the user's language).
@@ -24,6 +25,8 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | `/vf-scene` | Stage 04: the animation | `stages/04_scene/CONTEXT.md`, `_shared/modern.md` |
 | `/vf-render` | Stage 05: check and render the MP4 | `stages/05_render/CONTEXT.md` |
 | `/vf-status` | Progress of every video | `python anim.py status` |
+| `/vf-image` | Brand images: one design in every size | `images/CONTEXT.md` |
+| `/vf-image-sizes` | Every known platform size and ratio | `_shared/image-sizes.json` |
 
 ## Routes
 | Need | Contract |
@@ -41,6 +44,7 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | Library, stock, AI images | `_shared/library.md`, `_shared/image-generation.md` |
 | Rewrite a new component into the library | `_shared/porting.md` |
 | Screenshots and recordings | `_shared/capture.md` |
+| Brand images and platform sizes | `images/CONTEXT.md`, `_shared/image-sizes.json` |
 | Studio (browser app) | `studio/CONTEXT.md`, `_shared/dashboard-review.md` |
 | Autonomous runs | `_shared/autonomous-runs.md` |
 | Limits | `LIMITATIONS.md` |

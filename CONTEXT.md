@@ -13,6 +13,8 @@ Before production in chat, Studio or a saved run, ask for permission for this se
 
 Studio review uses exact saved fingerprints and a separate ready step. Follow `_shared/dashboard-review.md`. `anim.py review <slug> <gate>` shows the current state and the review link. Start the local page with `anim.py studio` (`studio/CONTEXT.md`). Reusable looks live under `styles/`. Described source records live under `library/materials/`. `.studio/` stores jobs and requests, not production facts.
 
+Still images have their own pipeline: brief → design → export, one design in every platform size (`images/CONTEXT.md`).
+
 Tall (9:16) fits socials and ads. Wide (16:9) fits courses, explainers and onboarding (`_shared/audience.md`).
 
 Managed runs use the saved session permission and review mode, plus current output as evidence (`_shared/autonomous-runs.md`). Automatic validation and permission-based stage completion are not human approval.

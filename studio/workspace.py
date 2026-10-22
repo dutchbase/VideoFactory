@@ -27,7 +27,7 @@ from studio import readcache
 
 
 ID = re.compile(r"[a-z0-9][a-z0-9-]*\Z")
-SHELVES = {"brands", "videos", "_shared", "_runtime", "library", "styles", "characters"}
+SHELVES = {"brands", "videos", "images", "_shared", "_runtime", "library", "styles", "characters"}
 GATES = ("research", "brief", "script", "voice-test", "voice", "transcript", "cues", "scene", "render")
 SILENT_UNUSED_GATES = {"brief", "script", "voice-test", "voice", "transcript"}
 BASE_KITS = {"modern"}  # the one built-in kit a style recipe can sit on

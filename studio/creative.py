@@ -16,7 +16,8 @@ from PIL import Image
 from studio import workspace as ws
 
 _GATES = {"style": ("brief", "materials", "sample"),
-          "character": ("brief", "design", "identity")}
+          "character": ("brief", "design", "identity"),
+          "image": ("brief", "final")}
 _HEADING = "## Studio creative review events"
 _TEMPLATES = Path(__file__).resolve().parents[1] / "_templates"
 _FORM_FIELDS = {"sessionId", "submittedAt", "durationMs", "notes", "skipped", "unanswered", "hidden"}
@@ -28,7 +29,13 @@ _RIG_MOUTHS = frozenset("ABCDEFGHX")
 
 def _folder(root, subject_type, ident):
     if subject_type not in _GATES:
-        raise ws.WorkspaceError("invalid", "Creative subject must be style or character.")
+        raise ws.WorkspaceError("invalid", "Creative subject must be style, character or image.")
+    if subject_type == "image":
+        from studio.images import ImageError, job_dir
+        try:
+            return job_dir(root, ident)
+        except ImageError as exc:
+            raise ws.WorkspaceError("missing", str(exc)) from None
     path = ws.safe_path(root, f"{'styles' if subject_type == 'style' else 'characters'}/{ws._id(ident)}")
     if not path.is_dir():
         raise ws.WorkspaceError("missing", "Creative subject does not exist.")
@@ -47,6 +54,11 @@ def _gate(subject_type, gate):
 
 @ws._read_once
 def _files(folder, subject_type, gate):
+    if subject_type == "image":
+        from studio.images import design_files, export_files
+        if gate == "brief":
+            return [folder / "01_brief/brief.md"]
+        return design_files(folder) + export_files(folder) + [folder / "03_export/report.json"]
     brief = [folder / "01_brief/prompt.md", folder / "01_brief/answers.json", folder / "01_brief/brief.md"] if subject_type == "style" else [folder / "01_design/prompt.md", folder / "01_design/answers.json", folder / "01_design/brief.md"]
     if gate == "brief":
         return brief if subject_type == "style" else brief + [folder / "character.md"]
@@ -220,6 +232,7 @@ def _answers_complete(data):
 
 def _previous(subject_type, gate, folder):
     if gate == "brief": return None
+    if subject_type == "image": return "brief"
     if subject_type == "style": return "brief" if gate == "materials" else "materials"
     if gate == "design": return "brief"
     if gate == "identity": return "design"
@@ -256,7 +269,8 @@ def creative_fingerprint(root, subject_type, id, gate):
 
 @ws._read_once
 def _events(folder, subject_type):
-    path = ws.safe_path(folder.parents[1], (folder / "REVIEW.md").relative_to(folder.parents[1]).as_posix())
+    root = folder.parents[2 if subject_type == "image" else 1]
+    path = ws.safe_path(root, (folder / "REVIEW.md").relative_to(root).as_posix())
     prose = path.read_text(encoding="utf-8") if path.is_file() else "# Creative reviews\n"
     if _HEADING not in prose:
         return prose, []
@@ -289,7 +303,10 @@ def _readiness(root, subject_type, id, gate):
     if previous and creative_review_state(root, subject_type, id, previous)["state"] not in {"approved", "accepted"}:
         missing.append(f"current {previous} approval")
     files = _files(folder, subject_type, gate)
-    if gate == "brief":
+    if subject_type == "image":
+        from studio.images import brief_problems, report_problems
+        missing += brief_problems(root, folder) if gate == "brief" else report_problems(root, folder)
+    elif gate == "brief":
         if not files[0].is_file() or not files[0].read_text(encoding="utf-8").strip():
             missing.append("saved prompt")
         answers = files[1]

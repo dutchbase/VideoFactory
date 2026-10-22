@@ -38,6 +38,9 @@ videos/*/*/05_render/listen.md
 videos/*/*/05_render/benchmarks/
 videos/*/*/05_render/review-rounds/
 
+# Image previews with safe-area lines are rebuilt by `anim.py image export --guides`
+images/*/*/03_export/preview/
+
 # The demo video ships with the repo
 # review frames are rebuilt by `anim.py stills` and the phone check; they stay local
 videos/*/*/05_render/stills/

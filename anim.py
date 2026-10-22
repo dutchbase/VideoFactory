@@ -2665,6 +2665,134 @@ def cmd_review(a) -> None:
     print(f"http://127.0.0.1:{a.port}/videos/{a.slug}/review/{gate}")
 
 
+# ---------------------------------------------------------------- images
+
+
+def cmd_image(a) -> None:
+    """Brand images: one design exported to many platform sizes (images/CONTEXT.md, studio/images.py)."""
+    from studio import images
+    try:
+        {"new": _image_new, "sizes": _image_sizes, "export": _image_export, "status": _image_status,
+         "review": _image_review, "picture": _image_picture}[a.act](a, images)
+    except images.ImageError as error:
+        die(str(error))
+
+
+def _image_new(a, images) -> None:
+    dest = images.create(ROOT, a.brand, a.slug, a.sizes, a.title)
+    ident = f"{a.brand}/{a.slug}"
+    print(f"-> {dest.relative_to(ROOT)}")
+    print(f"next: fill {dest.relative_to(ROOT)}/01_brief/brief.md, then: python anim.py image review {ident} brief")
+
+
+def _image_sizes(a, images) -> None:
+    print("\n".join(images.size_table(ROOT, a.platform, a.set)))
+
+
+def _image_status(a, images) -> None:
+    rows = [images.job_state(ROOT, ident, job) for ident, job in images.iter_jobs(ROOT)]
+    if not rows:
+        print("no image jobs yet. `python anim.py image new <slug> --brand <brand>`")
+        return
+    width = max(30, max(len(r["id"]) for r in rows) + 2)
+    print("image".ljust(width) + "brief".ljust(11) + "sizes".ljust(7) + "export".ljust(28) + "brief review".ljust(18) + "final review")
+    for r in rows:
+        print(r["id"].ljust(width) + r["brief"].ljust(11) + str(r["sizes"]).ljust(7) + r["export"].ljust(28)
+              + r["brief_review"].ljust(18) + r["final_review"])
+
+
+def _image_export(a, images) -> None:
+    from playwright.async_api import async_playwright
+    job = images.job_dir(ROOT, a.image)
+    problems = images.brief_problems(ROOT, job)
+    if problems:
+        die("the brief is not complete: " + "; ".join(problems))
+    rows = images.brief_sizes(ROOT, job)
+    if a.only:
+        wanted = [r["id"] for r in images.resolve_sizes(ROOT, a.only)]
+        extra = [i for i in wanted if i not in {r["id"] for r in rows}]
+        if extra:
+            die(f"not in the brief: {', '.join(extra)}. Add them to the Sizes section first.")
+        rows = [r for r in rows if r["id"] in wanted]
+    out = job / "03_export" / ("preview" if a.guides else "")
+    out.mkdir(parents=True, exist_ok=True)
+    uri = (job / "02_design" / "design.html").resolve().as_uri()
+
+    async def shoot() -> list[dict]:
+        results = []
+        async with async_playwright() as p:
+            browser, tab, _, errors = await open_page(p, f"{uri}?render&{images.size_query(rows[0], a.guides)}")
+            try:
+                for i, row in enumerate(rows):
+                    seen = len(errors)
+                    if i:
+                        await tab.set_viewport_size({"width": row["w"], "height": row["h"]})
+                        await tab.goto(f"{uri}?render&{images.size_query(row, a.guides)}")
+                        await tab.wait_for_function("window.__ready === true || !!window.__assetError", timeout=30000)
+                        if await tab.evaluate("window.__assetError"):
+                            errors.append(str(await tab.evaluate("window.__assetError")))
+                        await tab.evaluate("window.__seek(0)")
+                    png = out / f"{row['id']}.png"
+                    png.write_bytes(await tab.screenshot(type="png"))
+                    if a.guides:
+                        print(f"  preview/{png.name}")
+                        continue
+                    page = await tab.evaluate(images.CHECK_JS)
+                    results.append(images.size_result(row, png, page, errors[seen:]))
+                    r = results[-1]
+                    print(f"  {png.name:34} {row['w']}x{row['h']}  " + ("ok" if not r["problems"] else "FAIL: " + "; ".join(r["problems"][:3]))
+                          + ("" if not r["warnings"] else "  (warning: " + "; ".join(r["warnings"][:2]) + ")"))
+            finally:
+                await browser.close()
+        return results
+    try:
+        results = asyncio.run(shoot())
+    except RuntimeError as error:
+        die(str(error))
+    if a.guides:
+        print(f"-> {out.relative_to(ROOT)}  (previews with the safe area; not the final images)")
+        return
+    if not a.only:  # drop images of sizes the brief no longer names
+        catalog = images.load_sizes(ROOT)["sizes"]
+        for old in images.export_files(job):
+            if old.stem in catalog and old.stem not in {r["id"] for r in rows}:
+                old.unlink()
+    report = images.write_report(job, results, partial=bool(a.only))
+    print(f"-> {out.relative_to(ROOT)}  report.json: {'ok' if report['ok'] else 'NOT ok'}")
+    if not report["ok"]:
+        die("fix the design and export again: " + "; ".join(images.report_problems(ROOT, job)[:5]))
+    print(f"next: look at every image, then: python anim.py image review {a.image} final")
+
+
+def _image_review(a, images) -> None:
+    from studio import creative
+    images.job_dir(ROOT, a.image)
+    action = a.ready or a.approve or a.changes or a.accept
+    if action and not a.expected:
+        die("A review action requires --expected <fingerprint>.")
+    if a.ready:
+        state = creative.mark_creative_ready(ROOT, "image", a.image, a.gate, a.expected)
+    elif a.accept:
+        state = creative.accept_creative_under_permission(ROOT, "image", a.image, a.gate, a.expected)
+    elif a.approve or a.changes:
+        if not a.reviewer:
+            die("A human decision requires --reviewer NAME.")
+        state = creative.decide_creative(ROOT, "image", a.image, a.gate, "approved" if a.approve else "changes-requested",
+                                         a.reviewer, a.note or "", a.expected)
+    else:
+        state = creative.creative_review_state(ROOT, "image", a.image, a.gate)
+    print(f"{a.gate}: {state['state']}")
+    print(f"fingerprint: {state['fingerprint']}")
+    for item in state["missing"]:
+        print(f"missing: {item}")
+    for path in state["artifacts"]:
+        print(f"  {path}")
+
+
+def _image_picture(a, images) -> None:
+    print("\n".join(images.add_picture(ROOT, images.job_dir(ROOT, a.image), a.source, a.name)))
+
+
 def cmd_permission(a) -> None:
     from studio.permissions import SESSION_CHOICES, SESSION_QUESTION, grant, revoke, session_state
     if a.grant:
@@ -2762,6 +2890,8 @@ def _dispatch(a) -> None:
     read_only = read_only or (a.cmd == "stock" and a.act == "search")
     read_only = read_only or (a.cmd == "speak" and (a.dry_run or a.check))
     read_only = read_only or (a.cmd == "audio" and a.act == "find")
+    read_only = read_only or (a.cmd == "image" and (a.act in ("sizes", "status") or
+                                                    (a.act == "review" and not (a.ready or a.approve or a.changes or a.accept))))
     if read_only:
         return a.fn(a)
     from studio.production import production_lock
@@ -2799,6 +2929,13 @@ def _dispatch(a) -> None:
                         local = {r["id"]: r for r in audio._jsonl(audio._state() / "local.jsonl")}
                         if aid not in local or not (audio.AUDIO / local[aid]["path"]).is_file():
                             require_permission(ROOT, brand_scope)
+        elif a.cmd == "image" and a.act in ("new", "export", "picture"):
+            ident = f"{a.brand}/{a.slug}" if a.act == "new" else a.image
+            require_permission(ROOT, "image:" + ident)
+            if a.act != "new":
+                from studio.creative import creative_review_state
+                if creative_review_state(ROOT, "image", ident, "brief")["state"] not in {"approved", "accepted"}:
+                    raise ValueError(f"Complete the current brief review before image {a.act}.")
         elif a.cmd == "lib" and getattr(a, "kind", None) == "adapt":
             require_permission(ROOT, "brand:" + a.brand)
         elif a.cmd == "lib" and getattr(a, "kind", None) not in {"find", "fx"}:
@@ -2835,6 +2972,7 @@ HELP = """Voice-first video workspace. Each command does one stage and stops: re
   chapters      YouTube chapter lines from the top-level cues
   preview       open a scene preview
   status        table of all videos by stage
+  image         brand images: one design exported to every platform size (image sizes lists them)
   studio        local web app (dashboard and review pages)
   review        a review gate's state and its studio address
   studio-job    run one validated production job
@@ -2959,8 +3097,39 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--note", help="short review note")
     p.add_argument("--port", type=int, default=8765, help="studio port (default 8765)")
 
+    p = command("image", cmd_image, "Brand images: one design exported to many platform sizes (images/CONTEXT.md).")
+    img = p.add_subparsers(dest="act", required=True, metavar="action")
+    q = command("new", cmd_image, "Start an image job in images/<brand>/<slug> from _templates/image.", parent=img)
+    q.add_argument("slug", help="folder name: lowercase letters, digits, hyphens")
+    q.add_argument("--brand", required=True, help="a brand folder in brands/")
+    q.add_argument("--sizes", help="size ids or set names, comma separated, e.g. instagram-all,linkedin-banner")
+    q.add_argument("--title", help="the headline to start from (default: the slug in words)")
+    q = command("sizes", cmd_image, "List every known platform size and the named sets (_shared/image-sizes.json).", parent=img)
+    q.add_argument("--platform", help="only one platform, e.g. LinkedIn")
+    q.add_argument("--set", help="only the sizes in one set, e.g. profile-all")
+    q = command("export", cmd_image, "Render the design at every brief size to 03_export/ and check each image.", parent=img)
+    q.add_argument("image", help="brand/slug")
+    q.add_argument("--only", help="export only these size ids or sets (they must be in the brief)")
+    q.add_argument("--guides", action="store_true", help="previews with the safe area drawn, in 03_export/preview/")
+    q = command("status", cmd_image, "Table of every image job: brief, export and reviews.", parent=img)
+    q = command("review", cmd_image, "Show or record the brief or final review of an image job.", parent=img)
+    q.add_argument("image", help="brand/slug")
+    q.add_argument("gate", choices=["brief", "final"])
+    actions = q.add_mutually_exclusive_group()
+    actions.add_argument("--ready", action="store_true", help="mark the gate ready for review")
+    actions.add_argument("--approve", action="store_true", help="human approves this revision")
+    actions.add_argument("--changes", action="store_true", help="human requests changes")
+    actions.add_argument("--accept", action="store_true", help="accept under this session's permission")
+    q.add_argument("--expected", help="the current input fingerprint")
+    q.add_argument("--reviewer", help="name of the human reviewer")
+    q.add_argument("--note", help="short review note")
+    q = command("picture", cmd_image, "Copy your own picture or a stock photo into 02_design/pictures and log its source.", parent=img)
+    q.add_argument("image", help="brand/slug")
+    q.add_argument("source", help="a local file, or stock:provider/photo/id")
+    q.add_argument("--name", help="file name for the copy (default: from the source)")
+
     p = command("permission", cmd_permission, "Inspect or change this session's permission for one named item.")
-    p.add_argument("--scope", required=True, help="video:brand/slug, brand:id, style:id or character:id")
+    p.add_argument("--scope", required=True, help="video:brand/slug, image:brand/slug, brand:id, style:id or character:id")
     actions = p.add_mutually_exclusive_group()
     actions.add_argument("--grant", choices=["full", "each-stage", "selected-stages"])
     actions.add_argument("--revoke", action="store_true")

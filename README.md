@@ -41,6 +41,10 @@ A video lives in `videos/<brand>/<slug>/`. The state of a video is simply which 
 
 Nothing is paid for or published without a clear yes from you. Paid voice generation only runs after you approve the script in the Studio.
 
+### Brand images
+
+The same brands also make still images. You write one short brief (message, exact words, sizes), the agent builds one responsive design from the brand's colours, fonts, logo and library, and `python anim.py image export` renders it at every size you picked: Instagram posts and stories, LinkedIn and X banners, YouTube thumbnails and channel art, profile pictures with their round crop, link previews and more. Each image is checked for text outside the platform's safe area, overflow, missing pictures and fonts. A picture can come from the library, a stock photo, your own file, or one AI image after your approval. Contract: `images/CONTEXT.md`; sizes: `_shared/image-sizes.json`.
+
 ## Requirements
 
 - Linux (the tested system)
@@ -84,6 +88,8 @@ Type these in Claude Code or Codex, inside the repo folder. Each command does on
 | `/vf-scene` | Stage 04: builds the animation, takes stills at every cue and runs the checks. |
 | `/vf-render` | Stage 05: mixes voice, music and effects, renders the MP4, the phone copy and the thumbnail. |
 | `/vf-status` | Shows the progress of every video. |
+| `/vf-image` | Makes brand images: one design exported to every size you pick (Instagram, LinkedIn, X, YouTube, profile pictures, link previews). |
+| `/vf-image-sizes` | Lists every known platform size, ratio, round crop and safe area. |
 
 Under the hood the commands call `python anim.py <command>`. Run `python anim.py -h` to see all of them.
 
@@ -132,12 +138,13 @@ The agent talks to you in short, simple sentences (ASD-STE100 Simplified Technic
 | `AGENTS.md`, `CONTEXT.md` | The entry file for the agent and the pipeline definition |
 | `_shared/` | Rules and guides used in every run (tone, voice, motion, sound, review) |
 | `_runtime/` | The scene player, the Modern kit, fonts and the sound generator |
-| `_templates/` | Starters that are copied for a new brand, style, character or video |
+| `_templates/` | Starters that are copied for a new brand, style, character, video or image job |
 | `brands/` | Brands. `videofactory` is the house brand |
 | `styles/`, `characters/`, `library/` | Looks, characters and the shared asset library |
 | `stages/` | One contract per stage |
 | `studio/` | The local web app |
 | `videos/` | Your videos, one folder each |
+| `images/` | Your brand image jobs, one folder each; the sizes live in `_shared/image-sizes.json` |
 | `.claude/skills/`, `.agents/skills/` | The `/vf` commands for Claude Code and Codex |
 
 ## Limits

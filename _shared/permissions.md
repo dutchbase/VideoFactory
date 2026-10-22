@@ -16,9 +16,9 @@ Offer these choices:
 
 Wait for the answer. Silence and permission from an earlier session do not count. Record the session ID, scope, choice and any later grant or revocation. Full permission ends with the current session.
 
-Name the scope as `video:<brand>/<slug>`, `brand:<id>`, `style:<id>` or `character:<id>`. A video permission allows work on that video. It allows the video to use shared assets. It does not allow edits to those shared assets; those need permission for the named brand, style or character.
+Name the scope as `video:<brand>/<slug>`, `image:<brand>/<slug>`, `brand:<id>`, `style:<id>` or `character:<id>`. A video or image permission allows work on that video or image job. It allows the video to use shared assets. It does not allow edits to those shared assets; those need permission for the named brand, style or character.
 
-Permission events are saved with the named item: video records are under `videos/<brand>/.permissions/`; shared records are under `brands/.permissions/`, `styles/.permissions/` or `characters/.permissions/`.
+Permission events are saved with the named item: video records are under `videos/<brand>/.permissions/`, image records under `images/<brand>/.permissions/`; shared records are under `brands/.permissions/`, `styles/.permissions/` or `characters/.permissions/`.
 
 Workers inherit the same session permission and named scope. They cannot broaden it. For each interactive chat session, create a fresh unique session ID and set `VF_SESSION_ID` to it for every production command. Grant permission with that same ID. Do not recover an old ID from a saved run. Studio uses a fresh ID for each browser session and checks it against the server. A saved run cannot infer permission from its settings.
 

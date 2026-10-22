@@ -1,0 +1,55 @@
+/* image.css - layout for still images: one design.html, many sizes. Load after runtime/modern.css.
+   runtime/image-size.js sets --u (short side of the safe area / 100) and the --safe-* insets.
+   Size everything in var(--u), never in pixels, so the same design fits a profile picture and a banner.
+   Guide: images/CONTEXT.md. */
+
+#stage.vf-image {
+  --t-hero: calc(var(--u) * 12); --t-title: calc(var(--u) * 9); --t-h2: calc(var(--u) * 6.5);
+  --t-body: calc(var(--u) * 4); --t-small: calc(var(--u) * 3); --t-kicker: calc(var(--u) * 2.8);
+  --pad: calc(var(--u) * 7); --gap: calc(var(--u) * 4); --logo: calc(var(--u) * 14);
+}
+#stage.vf-image.is-wide     { --t-hero: calc(var(--u) * 14); --t-body: calc(var(--u) * 4.6); --logo: calc(var(--u) * 13); }
+#stage.vf-image.is-portrait { --t-hero: calc(var(--u) * 15); --t-body: calc(var(--u) * 5); }
+#stage.vf-image.is-tall     { --t-hero: calc(var(--u) * 17); --t-body: calc(var(--u) * 5.6); --t-kicker: calc(var(--u) * 3.4); --logo: calc(var(--u) * 16); --pad: calc(var(--u) * 8); }
+#stage.vf-image.is-banner   { --t-hero: calc(var(--u) * 22); --t-title: calc(var(--u) * 16); --t-body: calc(var(--u) * 8);
+                               --t-kicker: calc(var(--u) * 6.5); --pad: calc(var(--u) * 8); --gap: calc(var(--u) * 6); --logo: calc(var(--u) * 34); }
+#stage.vf-image.is-avatar   { --pad: 0px; --logo: calc(var(--u) * 78); }
+
+/* the content frame: the safe area minus padding. Put text and the logo in here. */
+.vf-frame {
+  position: absolute; top: var(--safe-top); right: var(--safe-right); bottom: var(--safe-bottom); left: var(--safe-left);
+  padding: var(--pad); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: var(--gap);
+}
+.vf-frame.center, .is-avatar .vf-frame { align-items: center; text-align: center; }
+.is-banner .vf-frame { flex-direction: row; align-items: center; gap: calc(var(--gap) * 1.5); }
+.is-banner .vf-frame > .vf-stack { display: flex; flex-direction: column; gap: calc(var(--gap) * .6); min-width: 0; align-items: flex-start; }
+.is-banner .vf-frame.center > .vf-stack { align-items: center; }
+.vf-stack { display: flex; flex-direction: column; gap: var(--gap); align-items: inherit; }
+
+.vf-image .vf-hero { font-size: var(--t-hero); max-width: 14ch; }
+.vf-image .vf-title { font-size: var(--t-title); }
+.vf-image .vf-sub { font-size: var(--t-body); max-width: 30ch; }
+.vf-image .vf-kicker { font-size: var(--t-kicker); gap: calc(var(--u) * 1.6); }
+.vf-image .vf-kicker::before { width: calc(var(--u) * 4); height: max(2px, calc(var(--u) * .35)); }
+.vf-image .vf-logo { height: var(--logo); width: auto; flex: none; }
+.is-banner .vf-hero { max-width: 22ch; }
+.is-banner .vf-sub { max-width: 46ch; }
+
+/* backgrounds sized to the image, not to 1920 */
+.vf-image .vf-glow { width: calc(max(var(--w), var(--h)) * .9); height: calc(max(var(--w), var(--h)) * .9);
+  left: calc(max(var(--w), var(--h)) * -.25); top: calc(max(var(--w), var(--h)) * -.35); animation: none; }
+.vf-image .vf-glow.two { left: auto; top: auto; right: calc(max(var(--w), var(--h)) * -.3); bottom: calc(max(var(--w), var(--h)) * -.4); }
+.vf-image .vf-bg.grid::before { background-size: calc(var(--u) * 8) calc(var(--u) * 8); }
+
+/* a full-bleed picture behind the text (data-bleed: the check allows it past the safe area) */
+.vf-picture { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.vf-scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--bg) 85%, transparent) 100%); }
+
+/* show or hide a part per layout: data-hide="avatar banner" */
+.is-avatar [data-hide~="avatar"], .is-banner [data-hide~="banner"], .is-wide [data-hide~="wide"],
+.is-square [data-hide~="square"], .is-portrait [data-hide~="portrait"], .is-tall [data-hide~="tall"] { display: none !important; }
+
+/* preview only (?guides): the safe area. Export never draws it. */
+.vf-safe { position: absolute; top: var(--safe-top); right: var(--safe-right); bottom: var(--safe-bottom); left: var(--safe-left);
+  outline: 2px dashed #00e5ff; outline-offset: -1px; pointer-events: none; z-index: 99; }
+.shape-circle .vf-safe::after { content: ""; position: absolute; inset: -21%; border-radius: 50%; outline: 2px dashed #ff00d4; }

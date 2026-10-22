@@ -12,6 +12,7 @@ Read: `AGENTS.md` (the table "Guided commands").
    - Start here: `/vf` finds the next step for you.
    - Get ready: `/vf-setup`, `/vf-new-brand`, `/vf-new-style`, `/vf-new-character`, `/vf-new-video`.
    - Make a video, in this order: `/vf-research` (optional), `/vf-script`, `/vf-voice`, `/vf-transcript`, `/vf-cues`, `/vf-scene`, `/vf-render`.
+   - Make brand images: `/vf-image`; see every platform size: `/vf-image-sizes`.
    - See progress: `/vf-status`.
 2. Say that a command may stop for review after each stage or at selected stages. Full permission lets work continue through required checks to final review.
 3. Say that paid requests always need separate approval for the exact request and known cost. A person must approve publication.
