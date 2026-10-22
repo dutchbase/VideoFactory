@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .speck { inset: 0; background-image: radial-gradient(circle, color-mix(in srgb, var(--faint) 40%, transparent) 1.5px, transparent 2px); background-size: 14px 14px; opacity: .6; }
+  .note { padding: 28px 24px; font-family: var(--hand), cursive; font-size: 46px; line-height: 1.1; color: var(--ink); box-shadow: 0 6px 14px color-mix(in srgb, var(--ink) 28%, transparent); }
+  .note::before { content: ""; position: absolute; left: 50%; top: -12px; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; background: var(--accent); box-shadow: inset -4px -4px 0 color-mix(in srgb, var(--ink) 25%, transparent), 0 3px 4px color-mix(in srgb, var(--ink) 40%, transparent); }
+  .title { left: 330px; top: 40px; width: 620px; padding: 22px 28px; background: var(--surface); transform: rotate(-1.5deg); font-family: var(--head); font-weight: 800; font-size: 76px; letter-spacing: -0.02em; text-align: center; }
+  .n1 { left: 70px; top: 230px; width: 300px; height: 230px; background: var(--r4); transform: rotate(-4deg); }
+  .n2 { left: 470px; top: 280px; width: 340px; height: 260px; background: var(--accent2); transform: rotate(2deg); font-size: 52px; }
+  .n3 { left: 900px; top: 230px; width: 300px; height: 230px; background: var(--green); transform: rotate(4deg); }
+  .n4 { left: 250px; top: 520px; width: 300px; height: 160px; background: var(--surface); transform: rotate(3deg); }
+  .n5 { left: 890px; top: 520px; width: 300px; height: 160px; background: var(--r4); transform: rotate(-3deg); }
+  .brand { left: 20px; bottom: 12px; font-family: var(--mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+</style></head>
+<body><div class="frame">
+  <div class="abs speck"></div>
+  <svg class="abs" width="1280" height="720" viewBox="0 0 1280 720" fill="none" stroke="var(--danger)" stroke-width="3" stroke-linecap="round">
+    <path d="M220 230 Q330 330 640 280"/><path d="M640 280 Q780 330 1050 230"/><path d="M640 280 Q560 420 400 520"/><path d="M640 280 Q900 450 1040 520"/><path d="M640 40 Q640 150 640 280"/>
+  </svg>
+  <div class="abs note title" style="font-size:76px">The problem</div>
+  <div class="abs note n1">Too many tools</div>
+  <div class="abs note n2">No clear plan</div>
+  <div class="abs note n3">Time lost</div>
+  <div class="abs note n4">Stress</div>
+  <div class="abs note n5">Missed goals</div>
+  <div class="abs brand"><span data-brand="name"></span></div>
+</div></body></html>

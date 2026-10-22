@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="box " style="left:30px;top:30px;width:100px;height:60px;"></div><div class="box " style="left:160px;top:30px;width:100px;height:60px;opacity:.4"></div><div class="box " style="left:30px;top:110px;width:100px;height:60px;opacity:.4"></div><div class="t" style="left:45px;top:52px;font-size:18px;">One</div><div class="tag">cluster 1</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box " style="left:10px;top:20px;width:100px;height:60px;opacity:.4"></div><div class="box " style="left:140px;top:20px;width:100px;height:60px;"></div><div class="streak" style="left:110px;top:50px;width:40px;"></div><div class="box " style="left:140px;top:100px;width:100px;height:60px;opacity:.4"></div><div class="tag">travel</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box " style="left:0px;top:10px;width:60px;height:40px;opacity:.4"></div><div class="box " style="left:100px;top:40px;width:150px;height:100px;"></div><div class="t" style="left:120px;top:75px;font-size:22px;">Two</div><div class="box " style="left:280px;top:40px;width:60px;height:100px;opacity:.3"></div><div class="tag">cluster 2</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">one board: camera travels from area to area</div>
+</body></html>

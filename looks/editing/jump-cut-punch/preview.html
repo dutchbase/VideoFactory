@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="t" style="left:40px;top:60px;font-size:40px;">STOP</div><div class="t" style="left:40px;top:110px;font-size:40px;color:var(--accent)">DOING</div><div class="tag">1.0x: hook</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="t" style="left:10px;top:40px;font-size:66px;color:var(--accent)">THIS</div><div class="streak" style="left:0px;top:150px;width:120px;"></div><div class="tag">cut: 1.2x punch</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box acc" style="left:0px;top:0px;width:357px;height:201px;"></div><div class="t" style="left:50px;top:80px;font-size:44px;color:var(--bg)">Instead</div><div class="tag">interrupt: field flip</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">punch in → cut → interrupt every 1-3 s</div>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .vig { inset: 0; background: radial-gradient(900px 560px at 50% 50%, transparent 50%, color-mix(in srgb, var(--surface) 90%, transparent)); }
+  .scan { inset: 0; background: repeating-linear-gradient(180deg, color-mix(in srgb, var(--ink) 5%, transparent) 0 1px, transparent 1px 3px); }
+  .win { left: 60px; top: 50px; width: 1160px; height: 620px; border: 2px solid var(--line); border-radius: 10px; background: color-mix(in srgb, var(--surface) 60%, var(--bg)); }
+  .bar { left: 60px; top: 50px; width: 1160px; height: 44px; border-bottom: 2px solid var(--line); border-radius: 10px 10px 0 0; background: var(--raised); }
+  .d { top: 64px; width: 16px; height: 16px; border-radius: 50%; background: var(--faint); }
+  .ttl { left: 0; width: 1280px; top: 62px; text-align: center; font-family: var(--mono); font-size: 18px; color: var(--dim); letter-spacing: .1em; }
+  .t { left: 100px; top: 130px; font-family: var(--mono); font-size: 30px; line-height: 1.55; white-space: pre; color: var(--accent); text-shadow: 0 0 10px color-mix(in srgb, var(--accent) 55%, transparent); }
+  .p { color: var(--dim); text-shadow: none; }
+  .ok { color: var(--green); }
+  .h { left: 100px; top: 470px; font-family: var(--mono); font-weight: 700; font-size: 72px; color: var(--ink); text-shadow: 0 0 16px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .cur { display: inline-block; width: 36px; height: 62px; background: var(--accent); vertical-align: -8px; box-shadow: 0 0 14px var(--accent); }
+  .inv { background: var(--accent); color: var(--bg); text-shadow: none; padding: 0 8px; }
+</style></head>
+<body><div class="frame">
+  <div class="abs vig"></div>
+  <div class="abs win"></div><div class="abs bar"></div>
+  <div class="abs d" style="left:84px"></div><div class="abs d" style="left:112px"></div><div class="abs d" style="left:140px"></div>
+  <div class="abs ttl">~/<span data-brand="name"></span> — setup</div>
+  <div class="abs t"><span class="p">$</span> run --steps 3
+<span class="p">&gt;</span> step 1  <span class="ok">[ok]</span>  connect
+<span class="p">&gt;</span> step 2  <span class="ok">[ok]</span>  <span class="inv">configure</span>
+<span class="p">&gt;</span> step 3  [###########-----] 70%</div>
+  <div class="abs h">3 steps<span class="cur"></span></div>
+  <div class="abs scan"></div>
+</div></body></html>

@@ -22,6 +22,9 @@ Read: `brands/CONTEXT.md`, `_templates/brand/`, `brands/videofactory/` (the exam
    Every counter must read 0. Fix and run again.
 5. Make a sample: `python anim.py new <brand>-sample --brand <brand>`.
    Then `python anim.py stills <brand>/<brand>-sample --at 1,4`. Show the stills.
+6. Make the style board and open it for the user: `python anim.py looks open --brand <brand> --rebuild`.
+   If no browser opens, give the printed link. Ask for a default look and a shortlist of up to 5 (`looks/CONTEXT.md`).
+   Save the answer with `python anim.py looks prefs --brand <brand> --default visual=<id> --shortlist <ids>`.
 
 Gate: pause for human review when this session permission requires it.
 Next: `/vf-new-video`.

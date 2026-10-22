@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="t" style="left:30px;top:25px;font-size:22px;">2 of 3</div><div class="box dim" style="left:30px;top:70px;width:60px;height:10px;"></div><div class="box dim" style="left:30px;top:90px;width:120px;height:10px;"></div><div class="tag">top of page</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box dim" style="left:30px;top:30px;width:30px;height:10px;"></div><div class="box dim" style="left:30px;top:60px;width:20px;height:70px;"></div><div class="box acc" style="left:70px;top:40px;width:20px;height:90px;"></div><div class="box dim" style="left:110px;top:80px;width:20px;height:50px;"></div><div class="tag">chart builds</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box dim" style="left:30px;top:10px;width:200px;height:8px;"></div><div class="t" style="left:30px;top:40px;font-size:26px;color:var(--accent)">+42%</div><div class="box dim" style="left:30px;top:90px;width:300px;height:6px;"></div><div class="tag">scrolls to next</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">the page scrolls up; the chart builds in place</div>
+</body></html>

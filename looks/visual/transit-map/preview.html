@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  svg { position: absolute; left: 0; top: 0; }
+  .title { left: 64px; top: 52px; font-family: var(--head); font-weight: 800; font-size: 84px; letter-spacing: -0.02em; color: var(--ink); }
+  .lab { font-family: var(--head); font-weight: 700; font-size: 32px; fill: var(--ink); }
+  .leg { left: 64px; top: 640px; font-family: var(--mono); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+</style></head>
+<body><div class="frame">
+  <svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 330 H420 L500 410 H760 L840 330 H1200" stroke="var(--accent)" stroke-width="18"/>
+    <path d="M420 330 L500 250 H700 L780 170 H1200" stroke="var(--accent2)" stroke-width="18"/>
+    <path d="M500 410 L580 490 H900 L980 570 H1200" stroke="var(--green)" stroke-width="18"/>
+    <path d="M840 330 L920 410 V640" stroke="var(--r4)" stroke-width="18"/>
+    <g fill="var(--surface)" stroke="var(--ink)" stroke-width="6">
+      <circle cx="140" cy="330" r="15"/><circle cx="640" cy="410" r="15"/><circle cx="1000" cy="330" r="15"/>
+      <circle cx="600" cy="250" r="15"/><circle cx="1100" cy="170" r="15"/><circle cx="760" cy="490" r="15"/>
+      <circle cx="1100" cy="570" r="15"/><circle cx="920" cy="560" r="15"/>
+      <circle cx="420" cy="330" r="24"/><circle cx="500" cy="410" r="24"/><circle cx="840" cy="330" r="24"/>
+    </g>
+    <circle cx="1000" cy="330" r="15" fill="var(--accent)" stroke="var(--ink)" stroke-width="6"/>
+    <g class="lab"><text class="lab" x="100" y="388">Start</text><text class="lab" x="560" y="224">Plan</text><text class="lab" x="600" y="456" >Build</text><text class="lab" x="960" y="296">Launch</text><text class="lab" x="1020" y="140">Grow</text></g>
+  </svg>
+  <div class="abs title">How it works</div>
+  <div class="abs leg">Line 1 · 4 steps — <span data-brand="name"></span></div>
+</div></body></html>

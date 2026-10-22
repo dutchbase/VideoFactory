@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .grain { inset: 0; background-image: radial-gradient(color-mix(in srgb, var(--ink) 8%, transparent) 1px, transparent 1.2px); background-size: 7px 7px; opacity: .5; }
+  .cut { box-shadow: 4px 5px 0 color-mix(in srgb, var(--ink) 20%, transparent); }
+  .a { left: 640px; top: 90px; width: 440px; height: 420px; background: var(--accent); clip-path: polygon(4% 8%, 96% 0, 100% 92%, 8% 100%); transform: rotate(3deg); }
+  .b { left: 860px; top: 330px; width: 330px; height: 290px; background: var(--accent2); clip-path: polygon(0 10%, 92% 0, 100% 88%, 12% 100%); transform: rotate(-4deg); }
+  .c { left: 560px; top: 420px; width: 250px; height: 200px; background: var(--r4); clip-path: polygon(6% 0, 100% 12%, 94% 100%, 0 90%); transform: rotate(5deg); }
+  .card { left: 700px; top: 150px; width: 260px; height: 260px; background: var(--surface); border: 10px solid var(--ink); transform: rotate(-3deg); display: flex; align-items: center; justify-content: center; }
+  .tape { left: 790px; top: 126px; width: 110px; height: 34px; background: color-mix(in srgb, var(--r6) 75%, transparent); transform: rotate(-6deg); }
+  .h { left: 64px; top: 140px; font-family: var(--head), serif; font-weight: 800; font-size: 128px; line-height: .95; color: var(--ink); letter-spacing: -0.03em; }
+  .w { display: inline-block; background: var(--surface); padding: 0 14px; margin-bottom: 8px; transform: rotate(-2deg); box-shadow: 4px 5px 0 color-mix(in srgb, var(--ink) 20%, transparent); }
+  .cap { left: 70px; top: 610px; font-family: var(--mono); font-size: 16px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+</style></head>
+<body><div class="frame">
+  <div class="abs grain"></div>
+  <div class="abs cut a"></div><div class="abs cut b"></div><div class="abs cut c"></div>
+  <div class="abs cut card"><svg width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="56" r="34" fill="var(--ink)"/><path d="M20 150 Q80 70 140 150Z" fill="var(--accent2)"/></svg></div>
+  <div class="abs tape"></div>
+  <svg class="abs" style="left:560px;top:60px" width="140" height="120" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"><path d="M10 100 Q20 10 90 20 Q130 40 100 80"/><path d="M100 80 L88 62 M100 80 L116 66"/></svg>
+  <div class="abs h"><span class="w">Save</span><br><span class="w" style="transform:rotate(2deg)">10 hours</span><br><span class="w">a week</span></div>
+  <div class="abs cap">Issue 01 — <span data-brand="name"></span></div>
+</div></body></html>

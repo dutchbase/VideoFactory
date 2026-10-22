@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .dots { inset: 0; background-image: radial-gradient(circle, color-mix(in srgb, var(--ink) 10%, transparent) 2px, transparent 3px); background-size: 22px 22px; }
+  .num { left: 70px; top: 70px; font-family: var(--head); font-weight: 800; font-size: 220px; line-height: 1; color: var(--accent); transform: rotate(-3deg); }
+  .h { left: 70px; top: 330px; width: 600px; font-family: var(--head); font-weight: 800; font-size: 96px; line-height: .98; color: var(--ink); transform: rotate(-3deg); }
+  .cap { left: 76px; top: 620px; font-family: var(--mono); font-size: 18px; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+  svg.art { left: 640px; top: 40px; }
+</style></head>
+<body><div class="frame">
+  <div class="abs dots"></div>
+  <svg class="abs art" width="620" height="640" viewBox="0 0 620 640">
+    <path d="M70 460 C40 260 200 120 360 170 C520 220 540 400 420 480 C320 550 110 590 70 460z" fill="var(--r4)" transform="translate(16 14)"/>
+    <path d="M70 460 C40 260 200 120 360 170 C520 220 540 400 420 480 C320 550 110 590 70 460z" fill="none" stroke="var(--ink)" stroke-width="6"/>
+    <polygon points="440,60 470,150 560,150 490,205 515,295 440,240 365,295 390,205 320,150 410,150" fill="var(--accent2)" transform="translate(10 8)"/>
+    <polygon points="440,60 470,150 560,150 490,205 515,295 440,240 365,295 390,205 320,150 410,150" fill="none" stroke="var(--ink)" stroke-width="5"/>
+    <path d="M150 470 L200 300 L260 470z" fill="var(--green)" transform="translate(10 8)"/>
+    <path d="M150 470 L200 300 L260 470z" fill="none" stroke="var(--ink)" stroke-width="5"/>
+    <circle cx="200" cy="270" r="34" fill="var(--surface)" stroke="var(--ink)" stroke-width="5"/>
+    <circle cx="190" cy="264" r="5" fill="var(--ink)"/><circle cx="212" cy="264" r="5" fill="var(--ink)"/>
+    <circle cx="470" cy="470" r="46" fill="var(--accent)" transform="translate(8 8)"/><circle cx="470" cy="470" r="46" fill="none" stroke="var(--ink)" stroke-width="5"/>
+  </svg>
+  <div class="abs num">1.</div>
+  <div class="abs h">Plan the day</div>
+  <div class="abs cap">Tip one of three — <span data-brand="name"></span></div>
+</div></body></html>

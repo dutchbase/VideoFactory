@@ -173,6 +173,13 @@ def cmd_new(a) -> None:
     if voice and not voice.is_file():
         die(f"voice file not found: {voice}")
     title = slug.replace("-", " ").title()
+    from studio import looks
+    explicit = {axis: getattr(a, axis, None) for axis in looks.AXES}
+    try:
+        chosen = looks.resolve(ROOT, brand, getattr(a, "type", None), explicit)
+    except workspace.WorkspaceError as error:
+        die(str(error))
+    chosen = chosen if any(found for found, _ in chosen.values()) else {}
     try:
         shutil.copytree(TEMPLATE, dest)
         shutil.copytree(scene, dest / "04_scene", dirs_exist_ok=True)
@@ -183,6 +190,8 @@ def cmd_new(a) -> None:
         else:
             workspace.stamp_brand(dest / "04_scene", brand)
         meta = {"format": fmt, "style": style, "renderer": renderer, "brand": brand, "engine": engine, "title": title}
+        if chosen:
+            meta["looks"] = looks.copy_into_video(ROOT, dest / "04_scene", chosen)
         (dest / "project.json").write_text(json.dumps(meta, indent=2) + "\n", encoding="utf-8")
         if voice:
             target = dest / "01_voice" / ("voice" + voice.suffix.lower())
@@ -194,6 +203,8 @@ def cmd_new(a) -> None:
         raise
     shown = dest.relative_to(ROOT) if dest.is_relative_to(ROOT) else dest
     print(f"created {shown}/ ({fmt}, {style})")
+    for axis, (found, source) in chosen.items():
+        print(f"  {axis} look: {', '.join(found) or 'none'} ({source})")
     print("next: agree the direction in 01_voice/brief.md and review it, then draft and review 01_voice/script.md.\n"
           "Then record your voice into 01_voice/, or run speak with --confirm-script <fingerprint>.")
 
@@ -2793,6 +2804,137 @@ def _image_picture(a, images) -> None:
     print("\n".join(images.add_picture(ROOT, images.job_dir(ROOT, a.image), a.source, a.name)))
 
 
+def cmd_looks(a) -> None:
+    """Visual, editing and content looks: list, check, per-brand board and picks (looks/CONTEXT.md, studio/looks.py)."""
+    from studio import looks
+    try:
+        {"list": _looks_list, "check": _looks_check, "board": _looks_board, "open": _looks_open, "pick": _looks_pick, "prefs": _looks_prefs}[a.act](a, looks)
+    except looks.WorkspaceError as error:
+        die(str(error))
+
+
+def _looks_brands(a) -> list[str]:
+    if getattr(a, "all", False):
+        return sorted(d.name for d in (ROOT / "brands").iterdir() if (d / "tokens.js").is_file() and not d.name.startswith(("_", ".")))
+    if not a.brand or not (ROOT / "brands" / a.brand / "tokens.js").is_file():
+        die("give --brand <id> (a folder in brands/ with tokens.js) or --all")
+    return [a.brand]
+
+
+def _looks_list(a, looks) -> None:
+    cards = looks.load_cards(ROOT)
+    for axis in ([a.axis] if a.axis else looks.AXES):
+        print(f"{axis} ({len(cards[axis])})")
+        for ident, card in sorted(cards[axis].items()):
+            print(f"  {ident:28} {card['meta']['summary'][:90]}")
+
+
+def _looks_check(a, looks) -> None:
+    problems = looks.card_problems(ROOT)
+    if not problems:
+        for brand in (_looks_brands(a) if a.brand or a.all else []):
+            problems += looks.prefs_problems(ROOT, brand)
+    cards = looks.load_cards(ROOT) if not problems else {}
+    for line in problems:
+        print("  " + line)
+    if problems:
+        die(f"{len(problems)} problem(s)")
+    print("ok: " + ", ".join(f"{len(cards[x])} {x}" for x in looks.AXES))
+
+
+def _looks_board(a, looks) -> None:
+    from playwright.async_api import async_playwright
+    problems = looks.card_problems(ROOT)
+    if problems:
+        die("fix the cards first (`anim.py looks check`): " + "; ".join(problems[:5]))
+    cards = looks.load_cards(ROOT)
+    jobs = [(axis, ident, card["dir"] / "preview.html") for axis in looks.AXES for ident, card in cards[axis].items()]
+
+    async def shoot(brand: str, out: Path) -> dict:
+        shots = {}
+        tokens = str(ROOT / "brands" / brand / "tokens.js")
+        async with async_playwright() as p:
+            browser, tab, _, errors = await open_page(p, jobs[0][2].resolve().as_uri(), init=tokens)
+            try:
+                for i, (axis, ident, page) in enumerate(jobs):
+                    seen = len(errors)
+                    if i:
+                        await tab.set_viewport_size({"width": 1280, "height": 720})
+                        await tab.goto(page.resolve().as_uri())
+                        await tab.wait_for_function("window.__ready === true", timeout=30000)
+                    if len(errors) > seen:
+                        print(f"  {axis}/{ident}: page error: {errors[seen]}")
+                    png = out / f"{axis}-{ident}.png"
+                    png.write_bytes(await tab.screenshot(type="png"))
+                    shots[(axis, ident)] = png
+            finally:
+                await browser.close()
+        return shots
+    for brand in _looks_brands(a):
+        out = ROOT / "brands" / brand / "looks" / "previews"
+        out.mkdir(parents=True, exist_ok=True)
+        shots = asyncio.run(shoot(brand, out))
+        for old in out.glob("*.png"):
+            if old not in shots.values():
+                old.unlink()
+        for (axis, ident), card in ((k, cards[k[0]][k[1]]) for k in list(shots)):
+            if card["meta"]["preview"] == "ai":
+                shots[(axis, ident)] = looks.ai_image(ROOT, brand, ident) or shots[(axis, ident)]
+        board = ROOT / "brands" / brand / "looks" / "board.html"
+        board.write_text(looks.board_html(ROOT, brand, cards, looks.load_prefs(ROOT, brand), shots), encoding="utf-8")
+        waiting = [i for (x, i), c in ((k, cards[k[0]][k[1]]) for k in shots) if c["meta"]["preview"] == "ai" and not looks.ai_image(ROOT, brand, i)]
+        print(f"-> {board.relative_to(ROOT)}  ({len(shots)} images" + (f"; code stand-in until an AI image is approved: {', '.join(waiting)}" if waiting else "") + ")")
+
+
+def _looks_open(a, looks) -> None:
+    import webbrowser
+    brand = _looks_brands(a)[0]
+    board = ROOT / "brands" / brand / "looks" / "board.html"
+    if a.rebuild or not board.is_file():
+        _looks_board(a, looks)
+    url = board.resolve().as_uri() + (f"#{a.look}" if a.look else "")
+    opened = webbrowser.open(url)
+    print(("opened " if opened else "open this in a browser: ") + url)
+
+
+def _looks_pick(a, looks) -> None:
+    explicit = {axis: getattr(a, axis) for axis in looks.AXES}
+    for axis, (found, source) in looks.resolve(ROOT, _looks_brands(a)[0], a.type, explicit).items():
+        print(f"{axis:8} {', '.join(found) or 'none':40} {source}")
+
+
+def _looks_prefs(a, looks) -> None:
+    brand = _looks_brands(a)[0]
+    prefs = looks.load_prefs(ROOT, brand)
+
+    def pairs(text: str) -> dict:
+        value = {k: (v.split("+") if "+" in v else v) for k, v in (part.split("=", 1) for part in text.split(",") if "=" in part)}
+        if not value or not set(value) <= set(looks.AXES):
+            die(f"use axis=id pairs, e.g. visual=swiss-modernist+data-journalism,editing=mask-wipe (axes: {', '.join(looks.AXES)})")
+        return value
+    if a.default:
+        prefs["default"] = {**prefs["default"], **pairs(a.default)}
+    if a.shortlist is not None:
+        prefs["shortlist"] = [i for i in a.shortlist.split(",") if i]
+    for text in a.rule or []:
+        key, _, value = text.partition(":")
+        prefs["rules"][key] = pairs(value)
+    for key in a.clear_rule or []:
+        prefs["rules"].pop(key, None)
+    before = looks.prefs_path(ROOT, brand)
+    old = before.read_text(encoding="utf-8") if before.is_file() else None
+    path = looks.write_prefs(ROOT, brand, prefs)
+    problems = looks.prefs_problems(ROOT, brand)
+    if problems:
+        if old is None:
+            path.unlink()
+        else:
+            path.write_text(old, encoding="utf-8")
+        die("not saved: " + "; ".join(problems))
+    print(path.read_text(encoding="utf-8").split("\n---", 1)[0].removeprefix("---\n"))
+    print(f"-> {path.relative_to(ROOT)}. Run `python anim.py looks board --brand {brand}` to mark the board.")
+
+
 def cmd_permission(a) -> None:
     from studio.permissions import SESSION_CHOICES, SESSION_QUESTION, grant, revoke, session_state
     if a.grant:
@@ -2890,6 +3032,7 @@ def _dispatch(a) -> None:
     read_only = read_only or (a.cmd == "stock" and a.act == "search")
     read_only = read_only or (a.cmd == "speak" and (a.dry_run or a.check))
     read_only = read_only or (a.cmd == "audio" and a.act == "find")
+    read_only = read_only or (a.cmd == "looks" and a.act != "prefs")  # board writes only generated files
     read_only = read_only or (a.cmd == "image" and (a.act in ("sizes", "status") or
                                                     (a.act == "review" and not (a.ready or a.approve or a.changes or a.accept))))
     if read_only:
@@ -2936,6 +3079,8 @@ def _dispatch(a) -> None:
                 from studio.creative import creative_review_state
                 if creative_review_state(ROOT, "image", ident, "brief")["state"] not in {"approved", "accepted"}:
                     raise ValueError(f"Complete the current brief review before image {a.act}.")
+        elif a.cmd == "looks":
+            require_permission(ROOT, "brand:" + a.brand)
         elif a.cmd == "lib" and getattr(a, "kind", None) == "adapt":
             require_permission(ROOT, "brand:" + a.brand)
         elif a.cmd == "lib" and getattr(a, "kind", None) not in {"find", "fx"}:
@@ -3014,6 +3159,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--engine", choices=["canvas", "hyperframes"], default="canvas",
                    help="canvas (default) or hyperframes (HTML plus GSAP, optional)")
     p.add_argument("--brand", required=True, help="brand folder in brands/")
+    p.add_argument("--type", help="video type from _shared/audience.md; picks looks from the brand's rules (looks/CONTEXT.md)")
+    p.add_argument("--visual", help="visual look ids, comma separated; the first is the main look (default: rule, then brand default)")
+    p.add_argument("--editing", help="editing look ids, comma separated")
+    p.add_argument("--content", help="content look ids, comma separated")
 
     p = command("research", cmd_research, "Add the optional research folder to a video.")
     p.add_argument("slug")
@@ -3127,6 +3276,32 @@ def build_parser() -> argparse.ArgumentParser:
     q.add_argument("image", help="brand/slug")
     q.add_argument("source", help="a local file, or stock:provider/photo/id")
     q.add_argument("--name", help="file name for the copy (default: from the source)")
+
+    p = command("looks", cmd_looks, "Visual, editing and content looks for every brand: list, check, board and picks (looks/CONTEXT.md).")
+    lk = p.add_subparsers(dest="act", required=True, metavar="action")
+    q = command("list", cmd_looks, "List the look cards.", parent=lk)
+    q.add_argument("--axis", choices=["visual", "editing", "content"])
+    q = command("check", cmd_looks, "Check every card, and the picks of one brand or all brands.", parent=lk)
+    q.add_argument("--brand")
+    q.add_argument("--all", action="store_true", help="check the picks of every brand")
+    q = command("board", cmd_looks, "Render every look in the brand's colours and write brands/<id>/looks/board.html.", parent=lk)
+    q.add_argument("--brand")
+    q.add_argument("--all", action="store_true", help="every brand (run after a look is added)")
+    q = command("open", cmd_looks, "Open the brand's board in the default browser (builds it first when missing).", parent=lk)
+    q.add_argument("--brand", required=True)
+    q.add_argument("--look", help="open one look's explanation, e.g. visual-swiss-modernist")
+    q.add_argument("--rebuild", action="store_true", help="render the board again first")
+    q = command("pick", cmd_looks, "Show which looks a new video would get, and why.", parent=lk)
+    q.add_argument("--brand", required=True)
+    q.add_argument("--type", help="video type or content id, e.g. course")
+    for axis in ("visual", "editing", "content"):
+        q.add_argument(f"--{axis}", help=f"explicit {axis} look ids, comma separated")
+    q = command("prefs", cmd_looks, "Set the brand's default, shortlist (max 5) and rules per video type.", parent=lk)
+    q.add_argument("--brand", required=True)
+    q.add_argument("--default", help="axis=id pairs, e.g. visual=swiss-modernist,editing=mask-wipe; join several ids with +")
+    q.add_argument("--shortlist", help="comma-separated visual ids, max 5 (replaces the list; empty clears it)")
+    q.add_argument("--rule", action="append", help="TYPE:axis=id[,axis=id], e.g. course:visual=whiteboard+data-journalism,editing=canvas-pan")
+    q.add_argument("--clear-rule", action="append", help="remove the rule for this type")
 
     p = command("permission", cmd_permission, "Inspect or change this session's permission for one named item.")
     p.add_argument("--scope", required=True, help="video:brand/slug, image:brand/slug, brand:id, style:id or character:id")

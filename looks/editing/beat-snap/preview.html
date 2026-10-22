@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="box acc" style="left:60px;top:40px;width:240px;height:120px;"></div><div class="t" style="left:80px;top:80px;font-size:40px;color:var(--bg)">Fast.</div><div class="tag">beat 1</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box ink" style="left:20px;top:50px;width:120px;height:100px;"></div><div class="box acc" style="left:160px;top:50px;width:180px;height:100px;"></div><div class="streak" style="left:150px;top:100px;width:60px;"></div><div class="t" style="left:180px;top:80px;font-size:34px;color:var(--bg)">Fast.</div><div class="tag">snap on beat</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box ink" style="left:0px;top:0px;width:357px;height:201px;"></div><div class="t" style="left:60px;top:70px;font-size:56px;color:var(--bg)">Simple.</div><div class="tag">beat 2: hard cut</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">on the beat: still → snap → hard cut, never between beats</div>
+</body></html>

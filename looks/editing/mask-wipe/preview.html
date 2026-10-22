@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .ln { position: absolute; left: 22px; font-family: var(--head); font-weight: 800; font-size: 34px; color: var(--ink); line-height: 1; }
+  .clip { position: absolute; left: 22px; overflow: hidden; height: 36px; }
+  .half { transform: translateY(45%); opacity: 1; }
+  .blk { position: absolute; top: 0; bottom: 0; background: var(--accent); }
+  .arrow { position: absolute; font-family: var(--mono); color: var(--faint); font-size: 26px; }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel">
+    <div class="ln" style="top:52px">Three</div>
+    <div class="clip" style="top:92px"><div class="ln half" style="left:0;position:relative">steps.</div></div>
+  </div>
+  <div class="panel">
+    <div class="ln" style="top:52px">Three</div><div class="ln" style="top:92px">steps.</div>
+    <div class="blk" style="left:0;width:62%"></div>
+  </div>
+  <div class="panel" style="background:var(--ink)">
+    <div class="blk" style="left:88%;right:0"></div>
+    <div class="ln" style="top:70px;color:var(--bg)">Step one</div>
+  </div>
+</div>
+<div class="scap">mask reveal → block wipe on the beat → next scene</div>
+</body></html>

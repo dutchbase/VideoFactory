@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  svg { position: absolute; left: 0; top: 0; shape-rendering: crispEdges; }
+  .hud { left: 40px; top: 24px; font-family: var(--mono); font-weight: 700; font-size: 24px; letter-spacing: .1em; color: var(--ink); text-shadow: 3px 3px 0 var(--line); }
+  .hud2 { right: 40px; top: 24px; font-family: var(--mono); font-weight: 700; font-size: 24px; letter-spacing: .1em; color: var(--ink); text-shadow: 3px 3px 0 var(--line); }
+  .h { left: 0; width: 1280px; top: 150px; text-align: center; font-family: var(--head); font-weight: 900; font-size: 96px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink); text-shadow: 6px 6px 0 var(--accent); }
+  .dlg { left: 240px; top: 320px; width: 800px; padding: 22px 28px; background: var(--surface); border: 8px solid var(--ink); box-shadow: 8px 8px 0 var(--line); font-family: var(--mono); font-size: 28px; line-height: 1.4; color: var(--ink); text-transform: uppercase; }
+  .cur { display: inline-block; width: 14px; height: 24px; background: var(--ink); vertical-align: middle; }
+  .tag { left: 40px; bottom: 16px; font-family: var(--mono); font-size: 16px; letter-spacing: .14em; color: var(--bg); text-transform: uppercase; font-weight: 700; }
+</style></head>
+<body><div class="frame">
+  <svg width="1280" height="720" viewBox="0 0 1280 720">
+    <rect x="80" y="104" width="120" height="24" fill="var(--ink)" opacity=".85"/><rect x="104" y="80" width="72" height="24" fill="var(--ink)" opacity=".85"/>
+    <rect x="1040" y="144" width="144" height="24" fill="var(--ink)" opacity=".85"/><rect x="1072" y="120" width="80" height="24" fill="var(--ink)" opacity=".85"/>
+    <rect x="0" y="600" width="1280" height="120" fill="var(--surface)"/>
+    <rect x="0" y="600" width="1280" height="24" fill="var(--green)"/>
+    <g fill="var(--line)"><rect x="40" y="648" width="24" height="24"/><rect x="200" y="672" width="24" height="24"/><rect x="520" y="640" width="24" height="24"/><rect x="760" y="664" width="24" height="24"/><rect x="1000" y="648" width="24" height="24"/></g>
+    <g fill="var(--raised)" stroke="var(--line)" stroke-width="4"><rect x="120" y="480" width="64" height="64"/><rect x="184" y="480" width="64" height="64"/><rect x="248" y="480" width="64" height="64"/><rect x="880" y="480" width="64" height="64"/><rect x="944" y="480" width="64" height="64"/></g>
+    <rect x="920" y="400" width="64" height="64" fill="var(--r4)" stroke="var(--ink)" stroke-width="4"/>
+    <rect x="944" y="424" width="16" height="16" fill="var(--ink)"/>
+    <g fill="var(--accent)"><rect x="424" y="520" width="64" height="80"/><rect x="408" y="544" width="16" height="40"/><rect x="488" y="544" width="16" height="40"/></g>
+    <g fill="var(--ink)"><rect x="440" y="536" width="16" height="16"/><rect x="464" y="536" width="16" height="16"/></g>
+    <rect x="424" y="496" width="64" height="24" fill="var(--accent2)"/>
+    <g fill="var(--danger)"><rect x="720" y="552" width="64" height="48"/><rect x="704" y="576" width="16" height="24"/><rect x="784" y="576" width="16" height="24"/></g>
+    <g fill="var(--ink)"><rect x="736" y="560" width="12" height="12"/><rect x="756" y="560" width="12" height="12"/></g>
+    <g fill="var(--r4)" stroke="var(--ink)" stroke-width="4"><rect x="600" y="520" width="32" height="48"/><rect x="1120" y="540" width="32" height="48"/></g>
+    <g fill="var(--accent)"><rect x="360" y="32" width="24" height="24"/><rect x="392" y="32" width="24" height="24"/><rect x="424" y="32" width="24" height="24"/></g>
+  </svg>
+  <div class="abs hud">SCORE 0420</div><div class="abs hud2">LEVEL 1-3</div>
+  <div class="abs h">3 steps</div>
+  <div class="abs dlg">Press start. Learn the first step.<span class="cur"></span></div>
+  <div class="abs tag"><span data-brand="name"></span></div>
+</div></body></html>

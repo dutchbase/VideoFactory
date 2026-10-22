@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .floor { inset: 0; background: radial-gradient(1100px 600px at 40% 30%, color-mix(in srgb, var(--ink) 12%, transparent), transparent 70%); }
+  .clay { border-radius: 50%; }
+  .sh { left: 220px; top: 590px; width: 640px; height: 60px; border-radius: 50%; background: color-mix(in srgb, var(--faint) 55%, transparent); filter: blur(14px); }
+  .body { left: 340px; top: 270px; width: 300px; height: 340px; border-radius: 48% 48% 42% 42%; background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--accent) 70%, var(--ink) 30%), var(--accent) 45%, color-mix(in srgb, var(--accent) 70%, var(--bg)) 100%); box-shadow: inset -18px -24px 40px color-mix(in srgb, var(--bg) 40%, transparent), inset 12px 14px 24px color-mix(in srgb, var(--ink) 18%, transparent); }
+  .arm { width: 70px; height: 200px; border-radius: 40px; background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 80%, var(--ink) 20%), var(--accent)); box-shadow: inset -10px -12px 20px color-mix(in srgb, var(--bg) 35%, transparent); }
+  .eye { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); box-shadow: inset 8px 8px 0 color-mix(in srgb, var(--bg) 70%, transparent); }
+  .mouth { left: 450px; top: 410px; width: 80px; height: 36px; border-bottom: 10px solid var(--bg); border-radius: 0 0 80px 80px; }
+  .ball { left: 760px; top: 420px; width: 190px; height: 190px; background: radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--accent2) 60%, var(--ink) 40%), var(--accent2) 45%, color-mix(in srgb, var(--accent2) 65%, var(--bg)) 100%); box-shadow: inset -16px -20px 34px color-mix(in srgb, var(--bg) 40%, transparent); }
+  .cube { left: 980px; top: 470px; width: 150px; height: 140px; border-radius: 34px; background: radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--r4) 70%, var(--ink) 30%), var(--r4) 50%, color-mix(in srgb, var(--r4) 70%, var(--bg))); box-shadow: inset -14px -16px 28px color-mix(in srgb, var(--bg) 40%, transparent); transform: rotate(-7deg); }
+  .star { left: 1010px; top: 150px; width: 120px; height: 120px; border-radius: 40% 60% 50% 50%; background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--green) 70%, var(--ink) 30%), var(--green)); box-shadow: inset -10px -12px 22px color-mix(in srgb, var(--bg) 40%, transparent); transform: rotate(14deg); }
+  .print { width: 14px; height: 7px; border-radius: 50%; background: color-mix(in srgb, var(--ink) 16%, transparent); }
+  .h { left: 740px; top: 150px; width: 300px; font-family: var(--head); font-weight: 900; font-size: 78px; line-height: 1; color: var(--ink); text-shadow: 3px 4px 0 color-mix(in srgb, var(--faint) 60%, transparent); transform: rotate(-3deg); }
+  .tag { left: 44px; top: 40px; font-family: var(--mono); font-size: 16px; letter-spacing: .14em; color: var(--faint); text-transform: uppercase; }
+</style></head>
+<body><div class="frame">
+  <div class="abs floor"></div><div class="abs sh"></div>
+  <div class="abs arm" style="left:292px;top:340px;transform:rotate(18deg)"></div>
+  <div class="abs arm" style="left:612px;top:300px;transform:rotate(-34deg)"></div>
+  <div class="abs body"></div>
+  <div class="abs eye" style="left:400px;top:340px"></div><div class="abs eye" style="left:500px;top:340px"></div>
+  <div class="abs mouth"></div>
+  <div class="abs print" style="left:410px;top:500px"></div><div class="abs print" style="left:440px;top:520px;transform:rotate(30deg)"></div><div class="abs print" style="left:540px;top:290px;transform:rotate(-20deg)"></div>
+  <div class="abs clay ball"></div><div class="abs cube"></div><div class="abs star"></div>
+  <div class="abs print" style="left:830px;top:470px"></div><div class="abs print" style="left:1030px;top:500px;transform:rotate(40deg)"></div>
+  <div class="abs h">One idea at a time.</div>
+  <div class="abs tag"><span data-brand="name"></span> · clay</div>
+</div></body></html>

@@ -11,7 +11,7 @@ MAX_LINES = 45
 # Names of the guided commands (AGENTS.md has the table). A missing folder fails the test.
 COMMANDS = ["vf", "vf-help", "vf-setup", "vf-new-brand", "vf-new-style", "vf-new-character", "vf-new-video",
             "vf-research", "vf-script", "vf-voice", "vf-transcript", "vf-cues", "vf-scene", "vf-render", "vf-status",
-            "vf-image", "vf-image-sizes"]
+            "vf-image", "vf-image-sizes", "vf-looks"]
 
 # Company, owner and removed-feature words must not appear in the files below.
 BANNED = [r"\bVAI\b", r"Slimmer met AI", r"slimmer-met-ai", r"\bVince\b", r"\b[Oo]wner", r"\bEduba\b", r"\bDesk\b",

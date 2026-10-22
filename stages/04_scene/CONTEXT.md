@@ -4,6 +4,8 @@ Read `_shared/permissions.md` before production. Pause for human review when the
 
 Engine: `project.json` `engine` is `canvas` (the built-in Modern kit; a missing key means the same) or `hyperframes`. For hyperframes write `index.html` per `_shared/hyperframes.md`, not the Modern steps below. A long video may split its chapters into sub-compositions (`04_scene/compositions/*.html`, mounted with `data-composition-src`). `anim.py check`, the tone gate and the audio guard read those too. `check`, `stills` and `render` apply to both engines.
 
+Looks: if `04_scene/looks/` exists, read its cards (`<axis>-<id>.md`) before the shot plan. They are frozen copies from `looks/`; `project.json` `looks` lists them per axis, main look first. Each scene uses the look its brief line names, else the main look. A card's `## Behaviour` is binding for motion, cuts and structure inside its scenes; `## Look` maps the palette roles onto the brand tokens. Mixing rules: `looks/CONTEXT.md`.
+
 Read `_shared/modern.md`: how to write a scene in the Modern kit. Start from the files `anim.py new` copied into `04_scene/`. Colours and fonts come from the brand's `tokens.js`. Plan one shot per cue before you build.
 
 Motion vocabulary (`P.ease.enter`, `P.spring`, `P.track`, `P.rand`) and banned defaults: `_shared/motion.md`. On-screen text follows `_shared/tone.md`. `stills` and `render` stop on tone problems. Keep provenance in the records (`assets/captures.md`, `assets/library.md`, `REVIEW.md`), never as an on-screen label.

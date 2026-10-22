@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .glow { inset: 0; background: radial-gradient(900px 500px at 70% 35%, color-mix(in srgb, var(--accent2) 22%, transparent), transparent 70%); }
+  .grid { inset: 0; background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 50%, transparent) 0 1px, transparent 1px 60px), repeating-linear-gradient(90deg, color-mix(in srgb, var(--line) 50%, transparent) 0 1px, transparent 1px 60px); opacity: .5; }
+  .live { left: 56px; top: 48px; display: flex; align-items: center; gap: 10px; padding: 8px 16px; background: var(--danger); color: var(--bg); font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: .14em; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); }
+  .time { right: 56px; top: 52px; font-family: var(--mono); font-size: 20px; letter-spacing: .12em; color: var(--dim); }
+  .story { left: 640px; top: 130px; width: 584px; height: 340px; background: var(--surface); border: 2px solid var(--line); }
+  .big { left: 672px; top: 150px; font-family: var(--head); font-weight: 900; font-size: 168px; line-height: 1; color: var(--accent); }
+  .unit { left: 676px; top: 330px; font-family: var(--head); font-weight: 800; font-size: 40px; text-transform: uppercase; color: var(--ink); }
+  .bars { left: 676px; top: 400px; display: flex; gap: 12px; align-items: flex-end; height: 56px; }
+  .bars i { display: block; width: 36px; background: var(--accent2); }
+  .strap { left: 0; top: 500px; padding: 14px 40px 14px 56px; background: var(--accent); color: var(--bg); font-family: var(--head); font-weight: 900; font-size: 68px; text-transform: uppercase; letter-spacing: -.01em; line-height: 1; }
+  .sub { left: 0; top: 584px; padding: 10px 40px 10px 56px; background: var(--raised); color: var(--ink); font-family: var(--head); font-weight: 600; font-size: 28px; border-left: 14px solid var(--accent2); }
+  .tick { left: 0; right: 0; bottom: 0; height: 48px; background: var(--raised); border-top: 2px solid var(--line); }
+  .tl { left: 0; bottom: 0; height: 48px; padding: 0 22px; display: flex; align-items: center; background: var(--accent); color: var(--bg); font-family: var(--mono); font-weight: 700; font-size: 20px; letter-spacing: .14em; }
+  .tt { left: 150px; bottom: 0; height: 48px; display: flex; align-items: center; white-space: nowrap; font-family: var(--mono); font-size: 20px; letter-spacing: .08em; color: var(--ink); text-transform: uppercase; }
+  .tt b { color: var(--accent2); margin: 0 18px; }
+</style></head>
+<body><div class="frame">
+  <div class="abs glow"></div><div class="abs grid"></div>
+  <div class="abs live"><span class="dot"></span>LIVE</div>
+  <div class="abs time">09:41 · <span data-brand="name"></span></div>
+  <div class="abs story"></div>
+  <div class="abs big">10h</div>
+  <div class="abs unit">saved every week</div>
+  <div class="abs bars"><i style="height:20px"></i><i style="height:30px"></i><i style="height:40px"></i><i style="height:56px"></i></div>
+  <div class="abs strap">Save 10 hours a week</div>
+  <div class="abs sub">Three steps. No new tools.</div>
+  <div class="abs tick"></div><div class="abs tl">NEWS</div>
+  <div class="abs tt">Teams report faster work <b>■</b> Setup takes five minutes <b>■</b> Results in the first week <b>■</b> Step one starts today</div>
+</div></body></html>

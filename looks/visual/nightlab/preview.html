@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+body{background:var(--bg)}
+.dots{inset:0;background-image:radial-gradient(color-mix(in srgb,var(--line) 90%,transparent) 2px,transparent 2.5px);background-size:32px 32px}
+.light{inset:0;background:radial-gradient(ellipse 60% 55% at 50% 0%,color-mix(in srgb,var(--accent) 16%,transparent),transparent)}
+.h{left:0;right:0;top:70px;text-align:center;font-family:var(--head);font-weight:700;font-size:64px;color:var(--ink)}
+.h b{color:var(--accent);text-shadow:0 0 24px color-mix(in srgb,var(--accent) 70%,transparent)}
+.p{width:240px;height:130px;border:2px solid var(--accent);border-radius:12px;background:color-mix(in srgb,var(--surface) 85%,transparent);box-shadow:0 0 26px color-mix(in srgb,var(--accent) 38%,transparent);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:20px;color:var(--ink)}
+.brand{right:70px;bottom:40px;font-family:var(--mono);font-size:14px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+</style></head>
+<body><div class="frame">
+<div class="abs dots"></div><div class="abs light"></div>
+<div class="abs h">Save 10 hours a <b>week</b></div>
+<svg class="abs" style="left:0;top:0" width="1280" height="720"><g fill="none" stroke="var(--accent)" stroke-width="2.5" style="filter:drop-shadow(0 0 6px var(--accent))"><path d="M330 430 H520"/><path d="M760 430 H950"/></g>
+<g style="filter:drop-shadow(0 0 10px var(--accent2))"><circle cx="440" cy="430" r="8" fill="var(--accent2)"/><circle cx="415" cy="430" r="5" fill="var(--accent2)" opacity=".5"/><circle cx="395" cy="430" r="3" fill="var(--accent2)" opacity=".25"/></g></svg>
+<div class="abs p" style="left:90px;top:365px">Collect</div>
+<div class="abs p" style="left:520px;top:365px">Process</div>
+<div class="abs p" style="left:950px;top:365px">Deliver</div>
+<div class="abs brand" data-brand="name"></div>
+</div></body></html>

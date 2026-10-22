@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="box " style="left:30px;top:40px;width:150px;height:100px;"></div><div class="t" style="left:50px;top:80px;font-size:26px;">Scene A</div><div class="box acc" style="left:30px;top:155px;width:297px;height:10px"></div><div class="tag">A: voice A</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box " style="left:30px;top:40px;width:150px;height:100px;"></div><div class="t" style="left:50px;top:80px;font-size:26px;">Scene A</div><div class="box acc" style="left:30px;top:155px;width:140px;height:10px"></div><div class="box ink" style="left:170px;top:155px;width:157px;height:10px"></div><div class="tag">J-cut: sound B first</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box ink" style="left:30px;top:40px;width:150px;height:100px;"></div><div class="t" style="left:50px;top:80px;font-size:26px;color:var(--bg)">Scene B</div><div class="box ink" style="left:30px;top:155px;width:297px;height:10px"></div><div class="tag">picture B, sound B</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">sound leads the picture: J-cut, then L-cut</div>
+</body></html>

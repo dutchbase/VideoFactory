@@ -1,0 +1,14 @@
+/* Shared base for look previews: one 1280x720 frame, brand variables from preview.js. */
+@import url("../../_runtime/fonts/fonts.css");
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1280px; height: 720px; overflow: hidden; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+.frame { position: relative; width: 1280px; height: 720px; overflow: hidden; }
+.abs { position: absolute; }
+.head { font-family: var(--head); }
+.mono { font-family: var(--mono); }
+.hand { font-family: var(--hand); }
+/* Filmstrip for editing previews: three panels with an arrow between them. */
+.strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding: 120px 48px; height: 720px; align-items: center; background: var(--bg); }
+.panel { position: relative; aspect-ratio: 16/9; overflow: hidden; border-radius: 10px; background: var(--surface); outline: 1px solid var(--line); }
+.scap { position: absolute; left: 0; right: 0; bottom: 70px; text-align: center; font-family: var(--mono); font-size: 18px; color: var(--faint); letter-spacing: .08em; text-transform: uppercase; }

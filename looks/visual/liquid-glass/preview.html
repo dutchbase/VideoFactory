@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .blob { border-radius: 50%; filter: blur(110px); opacity: .85; }
+  .b1 { left: 120px; top: 60px; width: 560px; height: 520px; background: var(--accent); }
+  .b2 { left: 720px; top: 260px; width: 520px; height: 480px; background: var(--accent2); }
+  .b3 { left: 520px; top: -120px; width: 360px; height: 360px; background: var(--r5); opacity: .6; }
+  .glass { background: color-mix(in srgb, var(--ink) 12%, transparent); backdrop-filter: blur(32px) saturate(1.4);
+    border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent); border-radius: 32px;
+    box-shadow: inset 1px 1px 0 color-mix(in srgb, var(--ink) 55%, transparent), 0 30px 80px color-mix(in srgb, var(--bg) 70%, transparent); }
+  .main { left: 300px; top: 150px; width: 520px; height: 400px; padding: 44px; }
+  .main .k { font-family: var(--mono); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .main .n { font-family: var(--head); font-weight: 600; font-size: 132px; line-height: 1; margin-top: 30px; color: var(--ink); }
+  .main .t { font-family: var(--font); font-size: 28px; margin-top: 18px; color: var(--dim); }
+  .side { left: 760px; top: 250px; width: 300px; height: 200px; padding: 28px; border-radius: 28px; }
+  .side .row { height: 14px; border-radius: 7px; background: color-mix(in srgb, var(--ink) 30%, transparent); margin: 16px 0; }
+  .side .row.a { width: 70%; background: var(--accent); } .side .row.b { width: 45%; }
+  .pill { left: 360px; top: 590px; padding: 16px 30px; border-radius: 99px; font-family: var(--font); font-weight: 600; font-size: 22px; color: var(--ink); }
+  .lens { left: 960px; top: 110px; width: 150px; height: 150px; border-radius: 50%; }
+</style></head>
+<body><div class="frame">
+  <div class="abs blob b1"></div><div class="abs blob b2"></div><div class="abs blob b3"></div>
+  <div class="abs glass main"><div class="k" data-brand="name"></div><div class="n">10×</div><div class="t">faster, without the noise.</div></div>
+  <div class="abs glass side"><div class="row a"></div><div class="row"></div><div class="row b"></div></div>
+  <div class="abs glass lens"></div>
+  <div class="abs glass pill">See how it works</div>
+</div></body></html>

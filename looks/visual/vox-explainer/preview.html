@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .photo { left: 70px; top: 120px; width: 330px; height: 400px; background: var(--raised); border: 12px solid var(--ink); transform: rotate(-3deg); box-shadow: 14px 18px 0 color-mix(in srgb, var(--ink) 25%, transparent); overflow: hidden; }
+  .clip { left: 440px; top: 90px; width: 330px; height: 250px; background: var(--surface); transform: rotate(2.5deg); padding: 20px; box-shadow: 10px 12px 0 color-mix(in srgb, var(--ink) 20%, transparent); }
+  .clip b { display: block; font-family: var(--head); font-size: 34px; line-height: 1; color: var(--ink); margin-bottom: 14px; }
+  .ln { height: 9px; background: color-mix(in srgb, var(--ink) 25%, transparent); margin-bottom: 9px; }
+  .chart { left: 830px; top: 130px; width: 380px; height: 300px; background: var(--surface); border-radius: 6px; padding: 24px; }
+  .bar { position: absolute; bottom: 30px; width: 60px; }
+  .tag { font-family: var(--mono); font-size: 15px; color: var(--faint); letter-spacing: .06em; }
+  .cap { left: 70px; top: 560px; font-family: var(--head); font-weight: 800; font-size: 84px; line-height: 1; color: var(--ink); }
+  .hl { background: linear-gradient(transparent 52%, var(--accent2) 52% 92%, transparent 92%); padding: 0 8px; }
+  .circ { left: 760px; top: 130px; width: 440px; height: 330px; border: 6px solid var(--accent); border-radius: 50%; transform: rotate(-6deg); z-index: 3; }
+</style></head>
+<body><div class="frame">
+  <div class="abs photo"><svg viewBox="0 0 330 400" width="306" height="376"><circle cx="165" cy="150" r="70" fill="var(--faint)"/><path d="M30 400 Q165 190 300 400Z" fill="var(--dim)"/></svg></div>
+  <div class="abs clip"><b>Prices rise again</b><div class="ln"></div><div class="ln"></div><div class="ln" style="width:70%"></div><div class="ln"></div><div class="ln" style="width:85%"></div></div>
+  <div class="abs circ"></div>
+  <div class="abs chart"><div class="tag">SOURCE: OFFICE DATA</div>
+    <div class="bar" style="left:34px;height:70px;background:var(--faint)"></div><div class="bar" style="left:114px;height:120px;background:var(--faint)"></div><div class="bar" style="left:194px;height:170px;background:var(--accent)"></div><div class="bar" style="left:274px;height:210px;background:var(--accent)"></div></div>
+  <div class="abs cap">Why it <span class="hl">costs more</span></div>
+  <div class="abs tag" style="right:60px;bottom:40px" data-brand="name"></div>
+</div></body></html>

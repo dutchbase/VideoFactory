@@ -16,7 +16,8 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | `/vf-new-brand` | Make a brand: colours, fonts, logo, voice, sound | `brands/CONTEXT.md` |
 | `/vf-new-style` | Make a style on the Modern kit | `styles/CONTEXT.md`, `_shared/style-workshop.md` |
 | `/vf-new-character` | Make a character with the character factory | `characters/CONTEXT.md`, `_shared/character-workshop.md` |
-| `/vf-new-video` | Start a video: brand, format, topic | `_shared/audience.md` |
+| `/vf-new-video` | Start a video: brand, format, topic, looks | `_shared/audience.md`, `looks/CONTEXT.md` |
+| `/vf-looks` | Style board per brand; set default, shortlist and rules | `looks/CONTEXT.md` |
 | `/vf-research` | Stage 00: facts and sources | `stages/00_research/CONTEXT.md` |
 | `/vf-script` | Stage 01: brief and script | `stages/01_voice/CONTEXT.md`, `_shared/script-production.md` |
 | `/vf-voice` | Stage 01: record or generate the voice | `_shared/voice.md` |
@@ -35,6 +36,7 @@ One video lives in `videos/<brand>/<slug>/`; its numbered folders are the stages
 | Rules for every run | `_shared/production-policy.md` |
 | Production permission and review decisions | `_shared/permissions.md` |
 | Tone, script, voice | `_shared/tone.md`, `_shared/script-production.md`, `_shared/voice.md` |
+| Video looks (visual, editing, content) and per-brand picks | `looks/CONTEXT.md` |
 | Scene look and helpers | `_shared/modern.md`, `_shared/motion.md`, `_shared/transitions.md` |
 | HTML engine (advanced) | `_shared/hyperframes.md` |
 | Review and checks | `_shared/review.md`, `_shared/plan-check.md` |

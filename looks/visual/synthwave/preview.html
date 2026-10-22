@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: linear-gradient(180deg, var(--bg) 0%, var(--bg) 40%, color-mix(in srgb, var(--accent) 30%, var(--bg)) 100%); }
+  .star { width: 3px; height: 3px; border-radius: 50%; background: var(--ink); opacity: .7; }
+  .sun { left: 400px; top: 150px; width: 480px; height: 480px; border-radius: 50%; background: linear-gradient(180deg, var(--accent) 0%, var(--accent2) 100%); box-shadow: 0 0 120px color-mix(in srgb, var(--accent) 55%, transparent); mask-image: linear-gradient(180deg, var(--ink) 0 55%, transparent 55% 58%, var(--ink) 58% 66%, transparent 66% 71%, var(--ink) 71% 78%, transparent 78% 84%, var(--ink) 84% 90%, transparent 90% 96%, var(--ink) 96%); }
+  .floor { left: 0; top: 440px; width: 1280px; height: 280px; background: var(--bg); }
+  .line { height: 2px; background: var(--accent2); box-shadow: 0 0 10px var(--accent2); }
+  .hor { left: 0; top: 438px; width: 1280px; height: 3px; background: var(--accent); box-shadow: 0 0 22px var(--accent); }
+  .mtn { left: 0; top: 380px; }
+  svg { position: absolute; left: 0; top: 0; }
+  .h { left: 0; width: 1280px; top: 60px; text-align: center; font-family: var(--head); font-weight: 900; font-style: italic; font-size: 104px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); text-shadow: 0 0 18px var(--accent), 0 0 48px var(--accent), 4px 0 0 color-mix(in srgb, var(--accent2) 70%, transparent); }
+  .sub { left: 0; width: 1280px; top: 190px; text-align: center; font-family: var(--mono); font-size: 22px; letter-spacing: .4em; color: var(--ink); text-shadow: 0 0 12px var(--accent2); text-transform: uppercase; }
+  .tag { right: 44px; bottom: 28px; font-family: var(--mono); font-size: 16px; letter-spacing: .14em; color: var(--ink); text-transform: uppercase; }
+</style></head>
+<body><div class="frame">
+  <div class="abs star" style="left:90px;top:80px"></div><div class="abs star" style="left:230px;top:150px"></div><div class="abs star" style="left:1100px;top:70px"></div><div class="abs star" style="left:1180px;top:220px"></div><div class="abs star" style="left:60px;top:300px"></div><div class="abs star" style="left:1000px;top:340px"></div>
+  <div class="abs sun"></div>
+  <svg width="1280" height="720" viewBox="0 0 1280 720">
+    <polygon points="0,440 0,350 90,410 190,330 300,420 400,380 470,440" fill="var(--bg)" stroke="var(--accent)" stroke-width="2"/>
+    <polygon points="810,440 880,370 980,420 1090,340 1180,410 1280,360 1280,440" fill="var(--bg)" stroke="var(--accent)" stroke-width="2"/>
+  </svg>
+  <div class="abs floor"></div><div class="abs hor"></div>
+  <svg width="1280" height="720" viewBox="0 0 1280 720">
+    <g stroke="var(--accent2)" stroke-width="2" style="filter: drop-shadow(0 0 6px var(--accent2))">
+      <line x1="640" y1="440" x2="-600" y2="720"/><line x1="640" y1="440" x2="-200" y2="720"/><line x1="640" y1="440" x2="160" y2="720"/><line x1="640" y1="440" x2="400" y2="720"/><line x1="640" y1="440" x2="640" y2="720"/><line x1="640" y1="440" x2="880" y2="720"/><line x1="640" y1="440" x2="1120" y2="720"/><line x1="640" y1="440" x2="1480" y2="720"/><line x1="640" y1="440" x2="1880" y2="720"/>
+      <line x1="0" y1="452" x2="1280" y2="452"/><line x1="0" y1="474" x2="1280" y2="474"/><line x1="0" y1="504" x2="1280" y2="504"/><line x1="0" y1="544" x2="1280" y2="544"/><line x1="0" y1="600" x2="1280" y2="600"/><line x1="0" y1="676" x2="1280" y2="676"/>
+    </g>
+  </svg>
+  <div class="abs h">Go further</div>
+  <div class="abs sub">Three steps to launch</div>
+  <div class="abs tag"><span data-brand="name"></span></div>
+</div></body></html>

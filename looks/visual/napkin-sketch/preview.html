@@ -1,0 +1,27 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+body{background:var(--surface)}
+.n{left:90px;top:40px;width:1100px;height:640px;background:var(--bg);box-shadow:0 8px 30px color-mix(in srgb,var(--ink) 18%,transparent);border-radius:4px}
+.f1{left:640px;top:40px;width:1px;height:640px;background:var(--line)}.f2{left:90px;top:360px;width:1100px;height:1px;background:var(--line)}
+.ring{left:1000px;top:480px;width:120px;height:120px;border-radius:50%;border:6px solid color-mix(in srgb,var(--faint) 25%,transparent)}
+.h{left:150px;top:90px;font-family:var(--hand);font-size:84px;color:var(--ink);transform:rotate(-2deg)}
+.l{font-family:var(--hand);font-size:36px;color:var(--ink)}
+.brand{right:110px;bottom:56px;font-family:var(--mono);font-size:14px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+</style></head>
+<body><div class="frame">
+<div class="abs n"></div><div class="abs f1"></div><div class="abs f2"></div><div class="abs ring"></div>
+<div class="abs h">Big idea in 1 minute</div>
+<svg class="abs" style="left:0;top:0" width="1280" height="720"><defs><filter id="w"><feTurbulence baseFrequency=".03" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter></defs>
+<g filter="url(#w)" fill="none" stroke="var(--ink)" stroke-width="5" stroke-linecap="round">
+<path d="M170 240 Q400 252 760 236" stroke="var(--accent)"/>
+<circle cx="230" cy="440" r="42"/><path d="M230 482 V560 M190 510 H270 M230 560 L200 620 M230 560 L262 620"/>
+<rect x="470" y="410" width="230" height="130" rx="10"/><path d="M290 480 H455"/><path d="M435 462 L458 480 L435 498"/>
+<path d="M705 475 H850"/><path d="M830 457 L853 475 L830 493"/>
+<path d="M930 410 q-40 0 -40 40 q-35 5 -20 40 h150 q20 -30 -10 -45 q5 -40 -40 -35 z"/></g>
+<path d="M475 580 Q600 600 690 574" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/></svg>
+<div class="abs l" style="left:520px;top:455px">Product</div><div class="abs l" style="left:930px;top:565px;font-size:30px">$$$</div>
+<div class="abs brand" data-brand="name"></div>
+</div></body></html>

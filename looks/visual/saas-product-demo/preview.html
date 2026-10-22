@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .win { left: 150px; top: 110px; width: 980px; height: 520px; background: var(--surface); border-radius: 16px; box-shadow: 0 40px 80px color-mix(in srgb, var(--ink) 18%, transparent); outline: 1px solid var(--line); overflow: hidden; }
+  .top { height: 42px; border-bottom: 1px solid var(--line); display: flex; gap: 8px; align-items: center; padding-left: 16px; }
+  .top i { width: 12px; height: 12px; border-radius: 50%; background: var(--faint); display: block; }
+  .side { position: absolute; left: 0; top: 42px; bottom: 0; width: 190px; border-right: 1px solid var(--line); padding: 20px 18px; }
+  .gb { height: 12px; border-radius: 6px; background: color-mix(in srgb, var(--ink) 18%, transparent); margin-bottom: 16px; }
+  .card { position: absolute; background: var(--raised); border-radius: 12px; padding: 20px; }
+  .btn { position: absolute; padding: 12px 24px; border-radius: 10px; background: var(--accent); color: var(--bg); font-family: var(--head); font-weight: 700; font-size: 20px; }
+  .cap { left: 150px; top: 36px; font-family: var(--head); font-weight: 800; font-size: 44px; color: var(--ink); }
+  .lab { font-family: var(--mono); font-size: 13px; letter-spacing: .1em; color: var(--faint); text-transform: uppercase; }
+</style></head>
+<body><div class="frame">
+  <div class="abs cap">Track it in one click</div>
+  <div class="abs win">
+    <div class="top"><i></i><i></i><i></i></div>
+    <div class="side"><div class="gb" style="background:var(--accent);width:70%"></div><div class="gb"></div><div class="gb" style="width:80%"></div><div class="gb" style="width:60%"></div></div>
+    <div class="card" style="left:220px;top:70px;width:420px;height:230px"><div class="lab">Weekly users</div>
+      <svg width="380" height="170" viewBox="0 0 380 170"><path d="M0 140 L70 110 L140 120 L210 70 L280 80 L380 20" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/><path d="M0 140 L70 110 L140 120 L210 70 L280 80 L380 20 V170 H0Z" fill="var(--accent)" opacity=".15"/></svg></div>
+    <div class="card" style="left:670px;top:70px;width:270px;height:110px"><div class="lab">Saved</div><div class="head" style="font-size:44px;font-weight:800;color:var(--green)">10 h</div></div>
+    <div class="card" style="left:670px;top:200px;width:270px;height:100px"><div class="gb"></div><div class="gb" style="width:70%"></div></div>
+    <div class="card" style="left:220px;top:320px;width:720px;height:150px"><div class="gb"></div><div class="gb" style="width:85%"></div><div class="gb" style="width:60%"></div></div>
+    <div class="btn" style="left:760px;top:420px">Start</div>
+  </div>
+  <svg class="abs" style="left:880px;top:520px" width="60" height="70" viewBox="0 0 60 70"><circle cx="8" cy="8" r="22" fill="none" stroke="var(--accent)" stroke-width="3" opacity=".6"/><path d="M8 8 L8 58 L22 46 L32 66 L42 62 L32 42 L50 40Z" fill="var(--ink)" stroke="var(--bg)" stroke-width="3"/></svg>
+  <div class="abs lab" style="right:50px;bottom:30px" data-brand="name"></div>
+</div></body></html>

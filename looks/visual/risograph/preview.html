@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+body{background:var(--bg)}
+.grain{inset:0;opacity:.08;mix-blend-mode:multiply}
+.dots{left:640px;top:0;width:640px;height:720px;background-image:radial-gradient(var(--accent2) 30%,transparent 32%);background-size:16px 16px;-webkit-mask-image:linear-gradient(90deg,transparent,var(--ink) 70%);mask-image:linear-gradient(90deg,transparent,var(--ink) 70%)}
+.blob{left:760px;top:130px;width:380px;height:380px;border-radius:50%;background:var(--accent);opacity:.9}
+.blob2{left:900px;top:240px;width:300px;height:300px;border-radius:50%;background:var(--accent2);opacity:.75}
+.h{left:70px;top:150px;font-family:var(--head);font-weight:900;font-size:150px;line-height:.9;letter-spacing:-.03em}
+.a{color:var(--accent)}.b{color:var(--accent2);left:76px;top:154px;opacity:.85}
+.k{left:70px;top:70px;font-family:var(--mono);font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.cap{left:70px;top:600px;font-family:var(--mono);font-size:18px;color:var(--ink);text-transform:uppercase;letter-spacing:.1em}
+</style></head>
+<body><div class="frame">
+<div class="abs dots"></div><div class="abs blob"></div><div class="abs blob2"></div>
+<svg class="abs grain" width="1280" height="720"><filter id="g"><feTurbulence baseFrequency=".9" numOctaves="2"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/></filter><rect width="1280" height="720" filter="url(#g)"/></svg>
+<div class="abs k">Zine no. 01 / <span data-brand="name"></span></div>
+<div class="abs h b">Save<br>10 hours<br>a week</div>
+<div class="abs h a">Save<br>10 hours<br>a week</div>
+<div class="abs cap">Print it. Stamp it. Ship it.</div>
+</div></body></html>

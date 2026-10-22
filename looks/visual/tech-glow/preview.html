@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .hor { left: 0; right: 0; top: 330px; height: 200px; background: radial-gradient(ellipse at 50% 0, color-mix(in srgb, var(--accent) 35%, transparent), transparent 70%); }
+  .floor { left: -300px; width: 1880px; top: 400px; height: 520px; transform-origin: 50% 0; transform: perspective(500px) rotateX(62deg); background-image: repeating-linear-gradient(90deg, color-mix(in srgb, var(--accent) 45%, transparent) 0 2px, transparent 2px 90px), repeating-linear-gradient(0deg, color-mix(in srgb, var(--accent) 45%, transparent) 0 2px, transparent 2px 70px); -webkit-mask-image: linear-gradient(to bottom, transparent, var(--ink) 60%); mask-image: linear-gradient(to bottom, transparent, var(--ink) 60%); }
+  .card { border-radius: 22px; background: color-mix(in srgb, var(--surface) 62%, transparent); border: 1.5px solid var(--accent); box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 45%, transparent), inset 0 0 30px color-mix(in srgb, var(--accent) 10%, transparent); padding: 24px 28px; }
+  .h { left: 0; width: 1280px; text-align: center; top: 84px; font-family: var(--head); font-weight: 800; font-size: 92px; letter-spacing: -0.02em; color: var(--ink); text-shadow: 0 0 36px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .lab { font-family: var(--mono); font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+  .big { font-family: var(--head); font-weight: 800; font-size: 72px; color: var(--ink); text-shadow: 0 0 24px var(--accent); line-height: 1; margin-top: 8px; }
+  .p { border-radius: 50%; background: var(--ink); }
+</style></head>
+<body><div class="frame">
+  <div class="abs hor"></div><div class="abs floor"></div>
+  <div class="abs h">Save 10 hours</div>
+  <div class="abs card" style="left:150px;top:290px;width:320px;height:190px"><div class="lab">Step 01</div><div class="big">+24%</div></div>
+  <div class="abs card" style="left:480px;top:250px;width:320px;height:230px;border-color:var(--accent2);box-shadow:0 0 50px color-mix(in srgb, var(--accent2) 50%, transparent)"><div class="lab">Step 02</div><div class="big" style="text-shadow:0 0 24px var(--accent2)">10 h</div></div>
+  <div class="abs card" style="left:810px;top:290px;width:320px;height:190px"><div class="lab">Step 03</div><div class="big">3x</div></div>
+  <div class="abs p" style="left:200px;top:200px;width:6px;height:6px"></div><div class="abs p" style="left:1040px;top:180px;width:5px;height:5px;background:var(--accent)"></div>
+  <div class="abs p" style="left:700px;top:560px;width:4px;height:4px;background:var(--accent)"></div><div class="abs p" style="left:360px;top:560px;width:6px;height:6px"></div>
+  <div class="abs p" style="left:1150px;top:520px;width:4px;height:4px"></div><div class="abs p" style="left:90px;top:420px;width:5px;height:5px;background:var(--accent2)"></div>
+  <div class="abs lab" style="left:0;width:1280px;text-align:center;top:660px" data-brand="name"></div>
+</div></body></html>

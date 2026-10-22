@@ -18,7 +18,8 @@
 - Promised payoff:
 - Essential visual support:
 - Hook (first 1 to 2 s, picture and first spoken words):
-- Scene list (numbered; a new beat every 3 to 5 s; per scene: time, spoken words, picture, motion asset, kinetic type, sound, cut id from `_shared/transitions.md` and the carried thing):
+- Looks (main visual, editing and content look from `project.json`; extra looks and the scenes that use them, `looks/CONTEXT.md`):
+- Scene list (numbered; a new beat every 3 to 5 s; per scene: time, spoken words, picture, look when it is not the main look, motion asset, kinetic type, sound, cut id from `_shared/transitions.md` and the carried thing):
   1. 0:00-0:02 hook:
   2.
 - Plan check (`_shared/plan-check.md` part A; one sentence per reach you chose on purpose, and the one thing):

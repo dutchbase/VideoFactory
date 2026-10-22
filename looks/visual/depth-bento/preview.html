@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  body { background: var(--bg); }
+  .pool { left: 300px; top: 150px; width: 700px; height: 420px; background: radial-gradient(ellipse, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%); }
+  .stage { left: 0; top: 0; width: 1280px; height: 720px; perspective: 1400px; }
+  .grid { position: absolute; left: 150px; top: 100px; width: 980px; height: 520px; transform: rotateX(12deg) rotateY(-10deg); transform-style: preserve-3d; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(3, 1fr); gap: 16px; }
+  .c { border-radius: 30px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 24px 40px color-mix(in srgb, var(--bg) 70%, black); padding: 22px 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .lab { font-family: var(--mono); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+  .n { font-family: var(--head); font-weight: 800; font-size: 76px; line-height: 1; color: var(--accent); }
+  .t { font-size: 22px; color: var(--ink); }
+  .back { filter: blur(3px); opacity: .7; }
+  .hero { grid-column: span 2; grid-row: span 2; background: var(--accent); transform: translateZ(40px); border: none; }
+  .hero .n, .hero .t, .hero .lab { color: var(--bg); }
+  .hero .n { font-size: 150px; }
+  .b { right: 48px; bottom: 30px; font-family: var(--mono); font-size: 13px; letter-spacing: .14em; color: var(--faint); text-transform: uppercase; }
+</style></head>
+<body><div class="frame">
+  <div class="abs pool"></div>
+  <div class="abs stage"><div class="grid">
+    <div class="c back" style="background:var(--raised)"><div class="lab">Speed</div><div class="n" style="color:var(--accent2)">3x</div></div>
+    <div class="c hero"><div class="lab">Save time</div><div><div class="n">10h</div><div class="t">saved every week</div></div></div>
+    <div class="c back"><div class="lab">Steps</div><div class="n">3</div></div>
+    <div class="c back"><div class="lab">Users</div><div class="t">Used by teams worldwide</div></div>
+    <div class="c" style="grid-column: span 2"><div class="lab">How it works</div><div class="t">One tool. One place. No setup.</div></div>
+    <div class="c back" style="background:var(--raised)"><div class="lab">Cost</div><div class="n" style="color:var(--accent2)">0</div></div>
+  </div></div>
+  <div class="abs b" data-brand="name"></div>
+</div></body></html>

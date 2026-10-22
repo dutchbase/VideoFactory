@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="box dim" style="left:30px;top:30px;width:300px;height:140px;"></div><div class="box " style="left:70px;top:60px;width:220px;height:90px;"></div><div class="t" style="left:90px;top:90px;font-size:30px;">Quiet.</div><div class="tag">push in</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box dim" style="left:10px;top:20px;width:330px;height:160px;filter:blur(2px)"></div><div class="box " style="left:60px;top:55px;width:240px;height:95px;opacity:.6"></div><div class="t" style="left:80px;top:85px;font-size:34px;opacity:.6">Quiet.</div><div class="tag">dissolve through blur</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box " style="left:40px;top:40px;width:280px;height:120px;filter:blur(0px)"></div><div class="t" style="left:70px;top:80px;font-size:32px;">Then.</div><div class="box acc" style="left:40px;top:40px;width:280px;height:120px;opacity:.12"></div><div class="tag">next scene sharpens</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">slow push-in → dissolve through blur → next scene sharpens</div>
+</body></html>

@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><svg width="357" height="201"><rect x="120" y="55" width="110" height="80" rx="6" fill="none" stroke="var(--ink)" stroke-width="3"/></svg><div class="tag">step 1</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><svg width="357" height="201"><rect x="123" y="53" width="110" height="82" rx="6" fill="none" stroke="var(--ink)" stroke-width="3" transform="rotate(1 175 95)"/></svg><div class="tag">step 2: line boil</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><svg width="357" height="201"><rect x="119" y="57" width="111" height="80" rx="6" fill="none" stroke="var(--ink)" stroke-width="3" transform="rotate(-1 175 95)"/></svg><div class="tag">step 3</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">10 fps steps: the line jitters each step</div>
+</body></html>

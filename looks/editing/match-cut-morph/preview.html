@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+  .panel { background: var(--bg); }
+  .t { position: absolute; font-family: var(--head); font-weight: 800; color: var(--ink); line-height: 1; white-space: nowrap; }
+  .box { position: absolute; border-radius: 8px; background: var(--surface); outline: 1px solid var(--line); }
+  .acc { background: var(--accent); }
+  .ink { background: var(--ink); }
+  .dim { background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .streak { position: absolute; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 70%, transparent)); }
+  .tag { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .brand { position: absolute; right: 10px; bottom: 8px; font-family: var(--mono); font-size: 10px; color: var(--faint); }
+</style></head>
+<body>
+<div class="strip">
+  <div class="panel"><div class="box acc" style="left:140px;top:60px;width:80px;height:80px;border-radius:50%"></div><div class="tag">A: circle</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box acc" style="left:120px;top:65px;width:120px;height:70px;border-radius:20px"></div><div class="streak" style="left:60px;top:100px;width:50px;"></div><div class="tag">morph</div><div class="brand" data-brand="name">name</div></div>
+  <div class="panel"><div class="box acc" style="left:100px;top:55px;width:160px;height:90px;border-radius:8px"></div><div class="t" style="left:130px;top:88px;font-size:24px;color:var(--bg)">Door</div><div class="tag">B: new form, same place</div><div class="brand" data-brand="name">name</div></div>
+</div>
+<div class="scap">same place, same colour: circle → morph → card</div>
+</body></html>

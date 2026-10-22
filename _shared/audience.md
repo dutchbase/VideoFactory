@@ -11,4 +11,4 @@ Viewers and the default language come from the selected brand's `brands/<id>/bra
 | founder story | show an actual decision and its consequences | wide or tall, per brief | enough for the real story |
 | onboarding | help a new customer do one step | wide | 30 s–2 min |
 
-Write the type, language and call to action in `01_voice/brief.md`.
+Write the type, language and call to action in `01_voice/brief.md`. The type also picks the video's looks from the brand's rules (`looks/CONTEXT.md`); pass it as `anim.py new --type <type>`.

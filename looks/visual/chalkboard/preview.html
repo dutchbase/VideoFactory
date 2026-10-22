@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../_runtime/preview.css">
+<script src="../../_runtime/preview.js"></script>
+<style>
+body{background:var(--raised)}
+.b{inset:26px;background:var(--surface);border-radius:6px;box-shadow:inset 0 0 60px color-mix(in srgb,var(--bg) 60%,transparent)}
+.sm{inset:26px;background:radial-gradient(ellipse 40% 30% at 30% 40%,color-mix(in srgb,var(--ink) 5%,transparent),transparent),radial-gradient(ellipse 35% 25% at 75% 65%,color-mix(in srgb,var(--ink) 4%,transparent),transparent)}
+.tray{left:26px;right:26px;bottom:14px;height:22px;background:var(--raised);border-top:2px solid var(--line)}
+.h{left:110px;top:90px;font-family:var(--hand);font-size:84px;color:var(--ink);transform:rotate(-1.5deg)}
+.l{font-family:var(--hand);font-size:44px;color:var(--ink)}
+.brand{right:70px;bottom:46px;font-family:var(--mono);font-size:14px;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+</style></head>
+<body><div class="frame">
+<div class="abs b"></div><div class="abs sm"></div><div class="abs tray"></div>
+<svg class="abs" style="left:0;top:0" width="1280" height="720"><defs><filter id="rough"><feTurbulence baseFrequency=".05" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="4"/></filter></defs>
+<g filter="url(#rough)" fill="none" stroke-linecap="round" stroke-width="5"><path d="M110 215 Q400 232 760 212" stroke="var(--accent)"/>
+<rect x="130" y="320" width="260" height="130" rx="8" stroke="var(--ink)"/><rect x="520" y="320" width="260" height="130" rx="8" stroke="var(--ink)"/><rect x="910" y="320" width="260" height="130" rx="8" stroke="var(--accent2)"/>
+<path d="M395 385 H505" stroke="var(--ink)"/><path d="M488 368 L508 385 L488 402" stroke="var(--ink)"/><path d="M785 385 H895" stroke="var(--ink)"/><path d="M878 368 L898 385 L878 402" stroke="var(--ink)"/></g>
+<g fill="var(--dust,var(--faint))" opacity=".7"><circle cx="300" cy="640" r="2"/><circle cx="420" cy="655" r="3"/><circle cx="900" cy="648" r="2"/></g></svg>
+<div class="abs h">How it works</div>
+<div class="abs l" style="left:190px;top:358px">Idea</div><div class="abs l" style="left:580px;top:358px">Test</div><div class="abs l" style="left:975px;top:358px">Launch</div>
+<div class="abs l" style="left:130px;top:520px;font-size:34px;color:var(--dim)">1 + 1 = 3 ?</div>
+<div class="abs brand" data-brand="name"></div>
+</div></body></html>
